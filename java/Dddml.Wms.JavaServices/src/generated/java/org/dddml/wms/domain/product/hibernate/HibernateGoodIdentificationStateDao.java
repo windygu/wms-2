@@ -37,13 +37,13 @@ public class HibernateGoodIdentificationStateDao implements GoodIdentificationSt
     @Override
     public GoodIdentificationState get(ProductGoodIdentificationId id, boolean nullAllowed)
     {
-        GoodIdentificationState state = (GoodIdentificationState) getCurrentSession().get(AbstractGoodIdentificationState.SimpleGoodIdentificationState.class, id);
+        GoodIdentificationState.SqlGoodIdentificationState state = (GoodIdentificationState.SqlGoodIdentificationState) getCurrentSession().get(AbstractGoodIdentificationState.SimpleGoodIdentificationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractGoodIdentificationState.SimpleGoodIdentificationState();
             state.setProductGoodIdentificationId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (GoodIdentificationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (GoodIdentificationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationState.SqlGoodIdentificationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

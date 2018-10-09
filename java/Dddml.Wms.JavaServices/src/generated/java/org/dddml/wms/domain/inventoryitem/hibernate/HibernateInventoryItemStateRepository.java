@@ -41,13 +41,13 @@ public class HibernateInventoryItemStateRepository implements InventoryItemState
 
     @Transactional(readOnly = true)
     public InventoryItemState get(InventoryItemId id, boolean nullAllowed) {
-        InventoryItemState state = (InventoryItemState)getCurrentSession().get(AbstractInventoryItemState.SimpleInventoryItemState.class, id);
+        InventoryItemState.SqlInventoryItemState state = (InventoryItemState.SqlInventoryItemState)getCurrentSession().get(AbstractInventoryItemState.SimpleInventoryItemState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryItemState.SimpleInventoryItemState();
             state.setInventoryItemId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemState.SqlInventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

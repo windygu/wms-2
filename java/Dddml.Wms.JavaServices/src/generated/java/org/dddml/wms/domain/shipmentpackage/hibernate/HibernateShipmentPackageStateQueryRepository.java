@@ -43,7 +43,7 @@ public class HibernateShipmentPackageStateQueryRepository implements ShipmentPac
 
         ShipmentPackageState state = (ShipmentPackageState)getCurrentSession().get(AbstractShipmentPackageState.SimpleShipmentPackageState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ShipmentPackageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ShipmentPackageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageState.SqlShipmentPackageState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

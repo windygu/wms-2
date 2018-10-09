@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentEvent.*;
 
-public abstract class AbstractShipmentState implements ShipmentState, Saveable
+public abstract class AbstractShipmentState implements ShipmentState.SqlShipmentState, Saveable
 {
 
     private String shipmentId;
@@ -669,19 +669,19 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
         for (ShipmentImageEvent.ShipmentImageStateCreated innerEvent : e.getShipmentImageEvents()) {
             ShipmentImageState innerState = this.getShipmentImages().get(((ShipmentImageEvent.SqlShipmentImageEvent)innerEvent).getShipmentImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((ShipmentImageState.SqlShipmentImageState)innerState).mutate(innerEvent);
         }
         for (ShipmentItemEvent.ShipmentItemStateCreated innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(((ShipmentItemEvent.SqlShipmentItemEvent)innerEvent).getShipmentItemEventId().getShipmentItemSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentItemState.SqlShipmentItemState)innerState).mutate(innerEvent);
         }
         for (ShipmentReceiptEvent.ShipmentReceiptStateCreated innerEvent : e.getShipmentReceiptEvents()) {
             ShipmentReceiptState innerState = this.getShipmentReceipts().get(((ShipmentReceiptEvent.SqlShipmentReceiptEvent)innerEvent).getShipmentReceiptEventId().getReceiptSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentReceiptState.SqlShipmentReceiptState)innerState).mutate(innerEvent);
         }
         for (ItemIssuanceEvent.ItemIssuanceStateCreated innerEvent : e.getItemIssuanceEvents()) {
             ItemIssuanceState innerState = this.getItemIssuances().get(((ItemIssuanceEvent.SqlItemIssuanceEvent)innerEvent).getItemIssuanceEventId().getItemIssuanceSeqId());
-            innerState.mutate(innerEvent);
+            ((ItemIssuanceState.SqlItemIssuanceState)innerState).mutate(innerEvent);
         }
     }
 
@@ -1091,7 +1091,7 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
 
         for (ShipmentImageEvent innerEvent : e.getShipmentImageEvents()) {
             ShipmentImageState innerState = this.getShipmentImages().get(((ShipmentImageEvent.SqlShipmentImageEvent)innerEvent).getShipmentImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((ShipmentImageState.SqlShipmentImageState)innerState).mutate(innerEvent);
             if (innerEvent instanceof ShipmentImageEvent.ShipmentImageStateRemoved)
             {
                 //ShipmentImageEvent.ShipmentImageStateRemoved removed = (ShipmentImageEvent.ShipmentImageStateRemoved)innerEvent;
@@ -1100,15 +1100,15 @@ public abstract class AbstractShipmentState implements ShipmentState, Saveable
         }
         for (ShipmentItemEvent innerEvent : e.getShipmentItemEvents()) {
             ShipmentItemState innerState = this.getShipmentItems().get(((ShipmentItemEvent.SqlShipmentItemEvent)innerEvent).getShipmentItemEventId().getShipmentItemSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentItemState.SqlShipmentItemState)innerState).mutate(innerEvent);
         }
         for (ShipmentReceiptEvent innerEvent : e.getShipmentReceiptEvents()) {
             ShipmentReceiptState innerState = this.getShipmentReceipts().get(((ShipmentReceiptEvent.SqlShipmentReceiptEvent)innerEvent).getShipmentReceiptEventId().getReceiptSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentReceiptState.SqlShipmentReceiptState)innerState).mutate(innerEvent);
         }
         for (ItemIssuanceEvent innerEvent : e.getItemIssuanceEvents()) {
             ItemIssuanceState innerState = this.getItemIssuances().get(((ItemIssuanceEvent.SqlItemIssuanceEvent)innerEvent).getItemIssuanceEventId().getItemIssuanceSeqId());
-            innerState.mutate(innerEvent);
+            ((ItemIssuanceState.SqlItemIssuanceState)innerState).mutate(innerEvent);
             if (innerEvent instanceof ItemIssuanceEvent.ItemIssuanceStateRemoved)
             {
                 //ItemIssuanceEvent.ItemIssuanceStateRemoved removed = (ItemIssuanceEvent.ItemIssuanceStateRemoved)innerEvent;

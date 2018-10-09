@@ -89,10 +89,9 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
 
     public InventoryPostingRuleEvent getEvent(String inventoryPostingRuleId, long version) {
         InventoryPostingRuleEvent e = (InventoryPostingRuleEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryPostingRuleId), version);
-        if (e != null)
-        { ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(inventoryPostingRuleId, 0);
         }
         return e;
@@ -140,7 +139,7 @@ public abstract class AbstractInventoryPostingRuleApplicationService implements 
 
     public void initialize(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated stateCreated) {
         String aggregateId = ((InventoryPostingRuleEvent.SqlInventoryPostingRuleEvent)stateCreated).getInventoryPostingRuleEventId().getInventoryPostingRuleId();
-        InventoryPostingRuleState state = new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState();
+        InventoryPostingRuleState.SqlInventoryPostingRuleState state = new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState();
         state.setInventoryPostingRuleId(aggregateId);
 
         InventoryPostingRuleAggregate aggregate = getInventoryPostingRuleAggregate(state);

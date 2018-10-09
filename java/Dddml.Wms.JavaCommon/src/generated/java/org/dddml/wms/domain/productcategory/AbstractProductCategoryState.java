@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.productcategory.ProductCategoryEvent.*;
 
-public abstract class AbstractProductCategoryState implements ProductCategoryState
+public abstract class AbstractProductCategoryState implements ProductCategoryState.SqlProductCategoryState
 {
 
     private String productCategoryId;

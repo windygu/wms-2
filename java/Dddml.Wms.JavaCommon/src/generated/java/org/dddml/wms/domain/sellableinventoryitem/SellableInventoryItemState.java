@@ -17,50 +17,53 @@ public interface SellableInventoryItemState
 
     InventoryItemId getSellableInventoryItemId();
 
-    void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
-
     BigDecimal getSellableQuantity();
-
-    void setSellableQuantity(BigDecimal sellableQuantity);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
-
-    void setCommandId(String commandId);
 
     EntityStateCollection<Long, SellableInventoryItemEntryState> getEntries();
 
+    interface MutableSellableInventoryItemState extends SellableInventoryItemState {
+        void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
 
-    void mutate(Event e);
+        void setSellableQuantity(BigDecimal sellableQuantity);
 
-    void when(SellableInventoryItemEvent.SellableInventoryItemStateCreated e);
+        void setVersion(Long version);
 
-    void when(SellableInventoryItemEvent.SellableInventoryItemStateMergePatched e);
+        void setCreatedBy(String createdBy);
 
-    
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setCommandId(String commandId);
+
+
+        void mutate(Event e);
+
+        void when(SellableInventoryItemEvent.SellableInventoryItemStateCreated e);
+
+        void when(SellableInventoryItemEvent.SellableInventoryItemStateMergePatched e);
+
+    }
+
+    interface SqlSellableInventoryItemState extends MutableSellableInventoryItemState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

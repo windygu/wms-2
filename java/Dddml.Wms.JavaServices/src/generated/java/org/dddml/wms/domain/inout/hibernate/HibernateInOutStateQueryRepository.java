@@ -44,7 +44,7 @@ public class HibernateInOutStateQueryRepository implements InOutStateQueryReposi
 
         InOutState state = (InOutState)getCurrentSession().get(AbstractInOutState.SimpleInOutState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InOutState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InOutState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutState.SqlInOutState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

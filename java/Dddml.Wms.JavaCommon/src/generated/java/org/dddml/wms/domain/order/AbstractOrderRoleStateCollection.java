@@ -60,7 +60,7 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         } else {
             List<OrderRoleState> ss = new ArrayList<OrderRoleState>();
             for (OrderRoleState s : loadedOrderRoleStates.values()) {
-                if (!(removedOrderRoleStates.containsKey(s.getOrderRoleId()) && s.getDeleted())) {
+                if (!(removedOrderRoleStates.containsKey(((OrderRoleState.SqlOrderRoleState)s).getOrderRoleId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -70,7 +70,7 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
 
     public AbstractOrderRoleStateCollection(OrderState outerState) {
         this.orderState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((OrderState.SqlOrderState)outerState).getForReapplying());
     }
 
     @Override
@@ -101,14 +101,17 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             OrderRoleState state = new AbstractOrderRoleState.SimpleOrderRoleState(getForReapplying());
-            state.setOrderRoleId(globalId);
+            ((OrderRoleState.SqlOrderRoleState)state).setOrderRoleId(globalId);
             loadedOrderRoleStates.put(globalId, state);
             return state;
         } else {
             OrderRoleState state = getOrderRoleStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((OrderRoleState.SqlOrderRoleState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractOrderRoleState) {
+                    ((AbstractOrderRoleState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedOrderRoleStates.put(globalId, state);
             }
@@ -121,14 +124,14 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedOrderRoleStates.put(state.getOrderRoleId(), state);
+        this.removedOrderRoleStates.put(((OrderRoleState.SqlOrderRoleState)state).getOrderRoleId(), state);
     }
 
     public void add(OrderRoleState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedOrderRoleStates.put(state.getOrderRoleId(), state);
+        this.loadedOrderRoleStates.put(((OrderRoleState.SqlOrderRoleState)state).getOrderRoleId(), state);
     }
 
     //region Saveable Implements

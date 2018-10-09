@@ -40,7 +40,7 @@ public class HibernateInventoryItemRequirementEntryStateDao implements Inventory
     @Override
     public InventoryItemRequirementEntryState get(InventoryItemRequirementEntryId id, boolean nullAllowed)
     {
-        InventoryItemRequirementEntryState state = (InventoryItemRequirementEntryState) getCurrentSession().get(AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState.class, id);
+        InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState state = (InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState) getCurrentSession().get(AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState();
             state.setInventoryItemRequirementEntryId(id);

@@ -12,67 +12,69 @@ public interface ShipmentReceiptImageState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ShipmentReceiptImageId getShipmentReceiptImageId();
-
-    void setShipmentReceiptImageId(ShipmentReceiptImageId shipmentReceiptImageId);
-
     String getSequenceId();
-
-    void setSequenceId(String sequenceId);
 
     String getUrl();
 
-    void setUrl(String url);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getShipmentId();
 
-    void setShipmentId(String shipmentId);
-
     String getShipmentReceiptReceiptSeqId();
 
-    void setShipmentReceiptReceiptSeqId(String shipmentReceiptReceiptSeqId);
+    interface MutableShipmentReceiptImageState extends ShipmentReceiptImageState {
+        void setShipmentReceiptImageId(ShipmentReceiptImageId shipmentReceiptImageId);
+
+        void setSequenceId(String sequenceId);
+
+        void setUrl(String url);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setShipmentId(String shipmentId);
+
+        void setShipmentReceiptReceiptSeqId(String shipmentReceiptReceiptSeqId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e);
 
+        void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e);
+    }
 
-    void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated e);
+    interface SqlShipmentReceiptImageState extends MutableShipmentReceiptImageState {
+        ShipmentReceiptImageId getShipmentReceiptImageId();
 
-    void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

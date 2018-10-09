@@ -14,57 +14,60 @@ public interface PickwaveState
 
     Long getPickwaveId();
 
-    void setPickwaveId(Long pickwaveId);
-
     String getStatusId();
-
-    void setStatusId(String statusId);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutablePickwaveState extends PickwaveState {
+        void setPickwaveId(Long pickwaveId);
+
+        void setStatusId(String statusId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(PickwaveEvent.PickwaveStateCreated e);
 
+        void when(PickwaveEvent.PickwaveStateMergePatched e);
 
-    void mutate(Event e);
+        void when(PickwaveEvent.PickwaveStateDeleted e);
+    }
 
-    void when(PickwaveEvent.PickwaveStateCreated e);
+    interface SqlPickwaveState extends MutablePickwaveState {
 
-    void when(PickwaveEvent.PickwaveStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(PickwaveEvent.PickwaveStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

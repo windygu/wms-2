@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.organizationstructuretype.OrganizationStructureTypeEvent.*;
 
-public abstract class AbstractOrganizationStructureTypeState implements OrganizationStructureTypeState
+public abstract class AbstractOrganizationStructureTypeState implements OrganizationStructureTypeState.SqlOrganizationStructureTypeState
 {
 
     private String id;

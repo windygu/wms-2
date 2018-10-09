@@ -10,37 +10,41 @@ public interface PersonState extends PartyState
 {
     String getSalutation();
 
-    void setSalutation(String salutation);
-
     String getFirstName();
-
-    void setFirstName(String firstName);
 
     String getMiddleName();
 
-    void setMiddleName(String middleName);
-
     String getLastName();
-
-    void setLastName(String lastName);
 
     String getPersonalTitle();
 
-    void setPersonalTitle(String personalTitle);
-
     String getNickname();
-
-    void setNickname(String nickname);
 
     String getCardId();
 
-    void setCardId(String cardId);
+    interface MutablePersonState extends PersonState, PartyState.MutablePartyState {
+        void setSalutation(String salutation);
 
-    void when(PersonEvent.PersonStateCreated e);
+        void setFirstName(String firstName);
 
-    void when(PersonEvent.PersonStateMergePatched e);
+        void setMiddleName(String middleName);
 
-    void when(PersonEvent.PersonStateDeleted e);
-    
+        void setLastName(String lastName);
+
+        void setPersonalTitle(String personalTitle);
+
+        void setNickname(String nickname);
+
+        void setCardId(String cardId);
+
+        void when(PersonEvent.PersonStateCreated e);
+
+        void when(PersonEvent.PersonStateMergePatched e);
+
+        void when(PersonEvent.PersonStateDeleted e);
+    }
+
+    interface SqlPersonState extends MutablePersonState, PartyState.SqlPartyState {
+    }
 }
 

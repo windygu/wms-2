@@ -14,81 +14,84 @@ public interface ProductCategoryState
 
     String getProductCategoryId();
 
-    void setProductCategoryId(String productCategoryId);
-
     String getProductCategoryTypeId();
-
-    void setProductCategoryTypeId(String productCategoryTypeId);
 
     String getPrimaryParentCategoryId();
 
-    void setPrimaryParentCategoryId(String primaryParentCategoryId);
-
     String getCategoryName();
-
-    void setCategoryName(String categoryName);
 
     String getDescription();
 
-    void setDescription(String description);
-
     String getCategoryImageUrl();
-
-    void setCategoryImageUrl(String categoryImageUrl);
 
     String getDetailScreen();
 
-    void setDetailScreen(String detailScreen);
-
     Boolean getShowInSelect();
-
-    void setShowInSelect(Boolean showInSelect);
 
     String getAttributeSetId();
 
-    void setAttributeSetId(String attributeSetId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableProductCategoryState extends ProductCategoryState {
+        void setProductCategoryId(String productCategoryId);
+
+        void setProductCategoryTypeId(String productCategoryTypeId);
+
+        void setPrimaryParentCategoryId(String primaryParentCategoryId);
+
+        void setCategoryName(String categoryName);
+
+        void setDescription(String description);
+
+        void setCategoryImageUrl(String categoryImageUrl);
+
+        void setDetailScreen(String detailScreen);
+
+        void setShowInSelect(Boolean showInSelect);
+
+        void setAttributeSetId(String attributeSetId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ProductCategoryEvent.ProductCategoryStateCreated e);
 
+        void when(ProductCategoryEvent.ProductCategoryStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ProductCategoryEvent.ProductCategoryStateDeleted e);
+    }
 
-    void when(ProductCategoryEvent.ProductCategoryStateCreated e);
+    interface SqlProductCategoryState extends MutableProductCategoryState {
 
-    void when(ProductCategoryEvent.ProductCategoryStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ProductCategoryEvent.ProductCategoryStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractLocatorAggregate extends AbstractAggregate implements LocatorAggregate
 {
-    private LocatorState state;
+    private LocatorState.MutableLocatorState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractLocatorAggregate(LocatorState state)
     {
-        this.state = state;
+        this.state = (LocatorState.MutableLocatorState)state;
     }
 
     public LocatorState getState() {

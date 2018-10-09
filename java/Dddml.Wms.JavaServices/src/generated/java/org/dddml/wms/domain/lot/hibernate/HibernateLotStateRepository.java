@@ -40,13 +40,13 @@ public class HibernateLotStateRepository implements LotStateRepository
 
     @Transactional(readOnly = true)
     public LotState get(String id, boolean nullAllowed) {
-        LotState state = (LotState)getCurrentSession().get(AbstractLotState.SimpleLotState.class, id);
+        LotState.SqlLotState state = (LotState.SqlLotState)getCurrentSession().get(AbstractLotState.SimpleLotState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractLotState.SimpleLotState();
             state.setLotId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (LotState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LotState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (LotState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LotState.SqlLotState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

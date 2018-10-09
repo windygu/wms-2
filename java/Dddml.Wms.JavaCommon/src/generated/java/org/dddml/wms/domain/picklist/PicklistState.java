@@ -15,75 +15,78 @@ public interface PicklistState
 
     String getPicklistId();
 
-    void setPicklistId(String picklistId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getFacilityId();
 
-    void setFacilityId(String facilityId);
-
     String getShipmentMethodTypeId();
-
-    void setShipmentMethodTypeId(String shipmentMethodTypeId);
 
     String getStatusId();
 
-    void setStatusId(String statusId);
-
     java.sql.Timestamp getPicklistDate();
-
-    void setPicklistDate(java.sql.Timestamp picklistDate);
 
     Long getPickwaveId();
 
-    void setPickwaveId(Long pickwaveId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<PartyRoleId, PicklistRoleState> getPicklistRoles();
 
+    interface MutablePicklistState extends PicklistState {
+        void setPicklistId(String picklistId);
 
-    void mutate(Event e);
+        void setDescription(String description);
 
-    void when(PicklistEvent.PicklistStateCreated e);
+        void setFacilityId(String facilityId);
 
-    void when(PicklistEvent.PicklistStateMergePatched e);
+        void setShipmentMethodTypeId(String shipmentMethodTypeId);
 
-    void when(PicklistEvent.PicklistStateDeleted e);
-    
+        void setStatusId(String statusId);
+
+        void setPicklistDate(java.sql.Timestamp picklistDate);
+
+        void setPickwaveId(Long pickwaveId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(PicklistEvent.PicklistStateCreated e);
+
+        void when(PicklistEvent.PicklistStateMergePatched e);
+
+        void when(PicklistEvent.PicklistStateDeleted e);
+    }
+
+    interface SqlPicklistState extends MutablePicklistState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

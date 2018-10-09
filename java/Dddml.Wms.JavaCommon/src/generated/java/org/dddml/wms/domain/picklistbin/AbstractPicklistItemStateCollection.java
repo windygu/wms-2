@@ -59,7 +59,7 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         } else {
             List<PicklistItemState> ss = new ArrayList<PicklistItemState>();
             for (PicklistItemState s : loadedPicklistItemStates.values()) {
-                if (!(removedPicklistItemStates.containsKey(s.getPicklistBinPicklistItemId()) && s.getDeleted())) {
+                if (!(removedPicklistItemStates.containsKey(((PicklistItemState.SqlPicklistItemState)s).getPicklistBinPicklistItemId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
 
     public AbstractPicklistItemStateCollection(PicklistBinState outerState) {
         this.picklistBinState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((PicklistBinState.SqlPicklistBinState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             PicklistItemState state = new AbstractPicklistItemState.SimplePicklistItemState(getForReapplying());
-            state.setPicklistBinPicklistItemId(globalId);
+            ((PicklistItemState.SqlPicklistItemState)state).setPicklistBinPicklistItemId(globalId);
             loadedPicklistItemStates.put(globalId, state);
             return state;
         } else {
             PicklistItemState state = getPicklistItemStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((PicklistItemState.SqlPicklistItemState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractPicklistItemState) {
+                    ((AbstractPicklistItemState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedPicklistItemStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
+        this.removedPicklistItemStates.put(((PicklistItemState.SqlPicklistItemState)state).getPicklistBinPicklistItemId(), state);
     }
 
     public void add(PicklistItemState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedPicklistItemStates.put(state.getPicklistBinPicklistItemId(), state);
+        this.loadedPicklistItemStates.put(((PicklistItemState.SqlPicklistItemState)state).getPicklistBinPicklistItemId(), state);
     }
 
     //region Saveable Implements

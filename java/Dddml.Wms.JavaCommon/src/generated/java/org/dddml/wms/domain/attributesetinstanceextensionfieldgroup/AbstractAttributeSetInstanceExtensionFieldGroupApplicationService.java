@@ -88,10 +88,9 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
 
     public AttributeSetInstanceExtensionFieldGroupEvent getEvent(String id, long version) {
         AttributeSetInstanceExtensionFieldGroupEvent e = (AttributeSetInstanceExtensionFieldGroupEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
-        if (e != null)
-        { ((AttributeSetInstanceExtensionFieldGroupEvent.SqlAttributeSetInstanceExtensionFieldGroupEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((AttributeSetInstanceExtensionFieldGroupEvent.SqlAttributeSetInstanceExtensionFieldGroupEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(id, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupApplication
 
     public void initialize(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated stateCreated) {
         String aggregateId = ((AttributeSetInstanceExtensionFieldGroupEvent.SqlAttributeSetInstanceExtensionFieldGroupEvent)stateCreated).getAttributeSetInstanceExtensionFieldGroupEventId().getId();
-        AttributeSetInstanceExtensionFieldGroupState state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
+        AttributeSetInstanceExtensionFieldGroupState.SqlAttributeSetInstanceExtensionFieldGroupState state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
         state.setId(aggregateId);
 
         AttributeSetInstanceExtensionFieldGroupAggregate aggregate = getAttributeSetInstanceExtensionFieldGroupAggregate(state);

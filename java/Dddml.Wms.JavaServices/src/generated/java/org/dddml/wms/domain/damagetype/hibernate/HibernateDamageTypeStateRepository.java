@@ -40,7 +40,7 @@ public class HibernateDamageTypeStateRepository implements DamageTypeStateReposi
 
     @Transactional(readOnly = true)
     public DamageTypeState get(String id, boolean nullAllowed) {
-        DamageTypeState state = (DamageTypeState)getCurrentSession().get(AbstractDamageTypeState.SimpleDamageTypeState.class, id);
+        DamageTypeState.SqlDamageTypeState state = (DamageTypeState.SqlDamageTypeState)getCurrentSession().get(AbstractDamageTypeState.SimpleDamageTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractDamageTypeState.SimpleDamageTypeState();
             state.setDamageTypeId(id);

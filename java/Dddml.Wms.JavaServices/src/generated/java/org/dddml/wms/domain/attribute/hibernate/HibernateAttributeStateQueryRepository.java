@@ -43,7 +43,7 @@ public class HibernateAttributeStateQueryRepository implements AttributeStateQue
 
         AttributeState state = (AttributeState)getCurrentSession().get(AbstractAttributeState.SimpleAttributeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeState.SqlAttributeState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

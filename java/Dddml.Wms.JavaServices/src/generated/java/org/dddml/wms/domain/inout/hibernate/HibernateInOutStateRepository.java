@@ -41,13 +41,13 @@ public class HibernateInOutStateRepository implements InOutStateRepository
 
     @Transactional(readOnly = true)
     public InOutState get(String id, boolean nullAllowed) {
-        InOutState state = (InOutState)getCurrentSession().get(AbstractInOutState.SimpleInOutState.class, id);
+        InOutState.SqlInOutState state = (InOutState.SqlInOutState)getCurrentSession().get(AbstractInOutState.SimpleInOutState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutState.SimpleInOutState();
             state.setDocumentNumber(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InOutState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InOutState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutState.SqlInOutState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

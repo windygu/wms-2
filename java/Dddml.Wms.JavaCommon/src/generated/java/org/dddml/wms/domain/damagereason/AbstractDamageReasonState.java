@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.damagereason.DamageReasonEvent.*;
 
-public abstract class AbstractDamageReasonState implements DamageReasonState
+public abstract class AbstractDamageReasonState implements DamageReasonState.SqlDamageReasonState
 {
 
     private String damageReasonId;

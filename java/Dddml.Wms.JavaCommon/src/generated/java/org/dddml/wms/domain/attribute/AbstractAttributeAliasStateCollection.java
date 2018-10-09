@@ -59,7 +59,7 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         } else {
             List<AttributeAliasState> ss = new ArrayList<AttributeAliasState>();
             for (AttributeAliasState s : loadedAttributeAliasStates.values()) {
-                if (!(removedAttributeAliasStates.containsKey(s.getAttributeAliasId()) && s.getDeleted())) {
+                if (!(removedAttributeAliasStates.containsKey(((AttributeAliasState.SqlAttributeAliasState)s).getAttributeAliasId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
 
     public AbstractAttributeAliasStateCollection(AttributeState outerState) {
         this.attributeState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((AttributeState.SqlAttributeState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             AttributeAliasState state = new AbstractAttributeAliasState.SimpleAttributeAliasState(getForReapplying());
-            state.setAttributeAliasId(globalId);
+            ((AttributeAliasState.SqlAttributeAliasState)state).setAttributeAliasId(globalId);
             loadedAttributeAliasStates.put(globalId, state);
             return state;
         } else {
             AttributeAliasState state = getAttributeAliasStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((AttributeAliasState.SqlAttributeAliasState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractAttributeAliasState) {
+                    ((AbstractAttributeAliasState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedAttributeAliasStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedAttributeAliasStates.put(state.getAttributeAliasId(), state);
+        this.removedAttributeAliasStates.put(((AttributeAliasState.SqlAttributeAliasState)state).getAttributeAliasId(), state);
     }
 
     public void add(AttributeAliasState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedAttributeAliasStates.put(state.getAttributeAliasId(), state);
+        this.loadedAttributeAliasStates.put(((AttributeAliasState.SqlAttributeAliasState)state).getAttributeAliasId(), state);
     }
 
     //region Saveable Implements

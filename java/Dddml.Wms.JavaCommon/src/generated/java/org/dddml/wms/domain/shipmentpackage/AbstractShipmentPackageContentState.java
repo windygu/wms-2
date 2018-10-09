@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipmentpackage.ShipmentPackageContentEvent.*;
 
-public abstract class AbstractShipmentPackageContentState implements ShipmentPackageContentState
+public abstract class AbstractShipmentPackageContentState implements ShipmentPackageContentState.SqlShipmentPackageContentState
 {
 
     private ShipmentPackageContentId shipmentPackageContentId = new ShipmentPackageContentId();

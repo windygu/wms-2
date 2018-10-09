@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractContactMechAggregate extends AbstractAggregate implements ContactMechAggregate
 {
-    private ContactMechState state;
+    private ContactMechState.MutableContactMechState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractContactMechAggregate(ContactMechState state)
     {
-        this.state = state;
+        this.state = (ContactMechState.MutableContactMechState)state;
     }
 
     public ContactMechState getState() {

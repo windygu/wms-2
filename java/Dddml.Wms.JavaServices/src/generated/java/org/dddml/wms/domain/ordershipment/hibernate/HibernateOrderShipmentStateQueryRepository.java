@@ -43,7 +43,7 @@ public class HibernateOrderShipmentStateQueryRepository implements OrderShipment
 
         OrderShipmentState state = (OrderShipmentState)getCurrentSession().get(AbstractOrderShipmentState.SimpleOrderShipmentState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipmentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipmentState.SqlOrderShipmentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

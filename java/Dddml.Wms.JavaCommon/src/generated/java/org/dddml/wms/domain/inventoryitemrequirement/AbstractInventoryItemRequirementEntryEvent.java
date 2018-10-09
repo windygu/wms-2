@@ -11,9 +11,9 @@ import org.dddml.wms.domain.AbstractEvent;
 
 public abstract class AbstractInventoryItemRequirementEntryEvent extends AbstractEvent implements InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent 
 {
-    private InventoryItemRequirementEntryState state;
+    private InventoryItemRequirementEntryState.MutableInventoryItemRequirementEntryState state;
 
-    public InventoryItemRequirementEntryState getInventoryItemRequirementEntryState() {
+    public InventoryItemRequirementEntryState.MutableInventoryItemRequirementEntryState getInventoryItemRequirementEntryState() {
         return state;
     }
 
@@ -81,7 +81,7 @@ public abstract class AbstractInventoryItemRequirementEntryEvent extends Abstrac
 
     protected AbstractInventoryItemRequirementEntryEvent(InventoryItemRequirementEntryState s) {
         if (s == null) { throw new IllegalArgumentException(); }
-        this.state = s;
+        this.state = (InventoryItemRequirementEntryState.MutableInventoryItemRequirementEntryState)s;
     }
 
 

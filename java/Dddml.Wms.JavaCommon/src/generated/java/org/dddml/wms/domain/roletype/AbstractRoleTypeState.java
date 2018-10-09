@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.roletype.RoleTypeEvent.*;
 
-public abstract class AbstractRoleTypeState implements RoleTypeState
+public abstract class AbstractRoleTypeState implements RoleTypeState.SqlRoleTypeState
 {
 
     private String roleTypeId;

@@ -9,9 +9,9 @@ import org.dddml.wms.domain.AbstractEvent;
 
 public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent implements InventoryItemEntryEvent.SqlInventoryItemEntryEvent 
 {
-    private InventoryItemEntryState state;
+    private InventoryItemEntryState.MutableInventoryItemEntryState state;
 
-    public InventoryItemEntryState getInventoryItemEntryState() {
+    public InventoryItemEntryState.MutableInventoryItemEntryState getInventoryItemEntryState() {
         return state;
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractInventoryItemEntryEvent extends AbstractEvent impl
 
     protected AbstractInventoryItemEntryEvent(InventoryItemEntryState s) {
         if (s == null) { throw new IllegalArgumentException(); }
-        this.state = s;
+        this.state = (InventoryItemEntryState.MutableInventoryItemEntryState)s;
     }
 
 

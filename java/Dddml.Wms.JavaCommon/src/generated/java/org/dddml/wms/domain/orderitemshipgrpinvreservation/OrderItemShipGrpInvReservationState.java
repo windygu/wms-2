@@ -14,89 +14,92 @@ public interface OrderItemShipGrpInvReservationState
 
     OrderItemShipGrpInvResId getOrderItemShipGrpInvResId();
 
-    void setOrderItemShipGrpInvResId(OrderItemShipGrpInvResId orderItemShipGrpInvResId);
-
     String getReserveOrderEnumId();
-
-    void setReserveOrderEnumId(String reserveOrderEnumId);
 
     java.math.BigDecimal getQuantity();
 
-    void setQuantity(java.math.BigDecimal quantity);
-
     java.math.BigDecimal getQuantityNotAvailable();
-
-    void setQuantityNotAvailable(java.math.BigDecimal quantityNotAvailable);
 
     java.sql.Timestamp getReservedDatetime();
 
-    void setReservedDatetime(java.sql.Timestamp reservedDatetime);
-
     java.sql.Timestamp getCreatedDatetime();
-
-    void setCreatedDatetime(java.sql.Timestamp createdDatetime);
 
     java.sql.Timestamp getPromisedDatetime();
 
-    void setPromisedDatetime(java.sql.Timestamp promisedDatetime);
-
     java.sql.Timestamp getCurrentPromisedDate();
-
-    void setCurrentPromisedDate(java.sql.Timestamp currentPromisedDate);
 
     String getPriority();
 
-    void setPriority(String priority);
-
     Long getSequenceId();
-
-    void setSequenceId(Long sequenceId);
 
     java.sql.Timestamp getOldPickStartDate();
 
-    void setOldPickStartDate(java.sql.Timestamp oldPickStartDate);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableOrderItemShipGrpInvReservationState extends OrderItemShipGrpInvReservationState {
+        void setOrderItemShipGrpInvResId(OrderItemShipGrpInvResId orderItemShipGrpInvResId);
+
+        void setReserveOrderEnumId(String reserveOrderEnumId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setQuantityNotAvailable(java.math.BigDecimal quantityNotAvailable);
+
+        void setReservedDatetime(java.sql.Timestamp reservedDatetime);
+
+        void setCreatedDatetime(java.sql.Timestamp createdDatetime);
+
+        void setPromisedDatetime(java.sql.Timestamp promisedDatetime);
+
+        void setCurrentPromisedDate(java.sql.Timestamp currentPromisedDate);
+
+        void setPriority(String priority);
+
+        void setSequenceId(Long sequenceId);
+
+        void setOldPickStartDate(java.sql.Timestamp oldPickStartDate);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e);
 
+        void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e);
 
-    void mutate(Event e);
+        void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e);
+    }
 
-    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated e);
+    interface SqlOrderItemShipGrpInvReservationState extends MutableOrderItemShipGrpInvReservationState {
 
-    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

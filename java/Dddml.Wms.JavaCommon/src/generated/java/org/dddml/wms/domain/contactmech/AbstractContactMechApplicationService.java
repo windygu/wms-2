@@ -88,10 +88,9 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
 
     public ContactMechEvent getEvent(String contactMechId, long version) {
         ContactMechEvent e = (ContactMechEvent)getEventStore().getEvent(toEventStoreAggregateId(contactMechId), version);
-        if (e != null)
-        { ((ContactMechEvent.SqlContactMechEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ContactMechEvent.SqlContactMechEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(contactMechId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractContactMechApplicationService implements ContactMe
 
     public void initialize(ContactMechEvent.ContactMechStateCreated stateCreated) {
         String aggregateId = ((ContactMechEvent.SqlContactMechEvent)stateCreated).getContactMechEventId().getContactMechId();
-        ContactMechState state = new AbstractContactMechState.SimpleContactMechState();
+        ContactMechState.SqlContactMechState state = new AbstractContactMechState.SimpleContactMechState();
         state.setContactMechId(aggregateId);
 
         ContactMechAggregate aggregate = getContactMechAggregate(state);

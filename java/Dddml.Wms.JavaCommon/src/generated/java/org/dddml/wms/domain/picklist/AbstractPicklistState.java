@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.picklist.PicklistEvent.*;
 
-public abstract class AbstractPicklistState implements PicklistState, Saveable
+public abstract class AbstractPicklistState implements PicklistState.SqlPicklistState, Saveable
 {
 
     private String picklistId;
@@ -270,7 +270,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
         for (PicklistRoleEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
             PicklistRoleState innerState = this.getPicklistRoles().get(((PicklistRoleEvent.SqlPicklistRoleEvent)innerEvent).getPicklistRoleEventId().getPartyRoleId());
-            innerState.mutate(innerEvent);
+            ((PicklistRoleState.SqlPicklistRoleState)innerState).mutate(innerEvent);
         }
     }
 
@@ -361,7 +361,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
 
         for (PicklistRoleEvent innerEvent : e.getPicklistRoleEvents()) {
             PicklistRoleState innerState = this.getPicklistRoles().get(((PicklistRoleEvent.SqlPicklistRoleEvent)innerEvent).getPicklistRoleEventId().getPartyRoleId());
-            innerState.mutate(innerEvent);
+            ((PicklistRoleState.SqlPicklistRoleState)innerState).mutate(innerEvent);
             if (innerEvent instanceof PicklistRoleEvent.PicklistRoleStateRemoved)
             {
                 //PicklistRoleEvent.PicklistRoleStateRemoved removed = (PicklistRoleEvent.PicklistRoleStateRemoved)innerEvent;
@@ -385,7 +385,7 @@ public abstract class AbstractPicklistState implements PicklistState, Saveable
             PicklistRoleEvent.PicklistRoleStateRemoved innerE = e.newPicklistRoleStateRemoved(innerState.getPartyRoleId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedByUserLogin(e.getCreatedBy());
-            innerState.when(innerE);
+            ((PicklistRoleState.MutablePicklistRoleState)innerState).when(innerE);
             //e.addPicklistRoleEvent(innerE);
         }
     }

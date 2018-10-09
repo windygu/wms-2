@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inventoryitemrequirement.InventoryItemRequirementEvent.*;
 
-public abstract class AbstractInventoryItemRequirementState implements InventoryItemRequirementState, Saveable
+public abstract class AbstractInventoryItemRequirementState implements InventoryItemRequirementState.SqlInventoryItemRequirementState, Saveable
 {
 
     private InventoryItemId inventoryItemRequirementId;
@@ -188,7 +188,7 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
 
         for (InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated innerEvent : e.getInventoryItemRequirementEntryEvents()) {
             InventoryItemRequirementEntryState innerState = this.getEntries().get(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)innerEvent).getInventoryItemRequirementEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)innerState).mutate(innerEvent);
         }
     }
 
@@ -213,7 +213,7 @@ public abstract class AbstractInventoryItemRequirementState implements Inventory
 
         for (InventoryItemRequirementEntryEvent innerEvent : e.getInventoryItemRequirementEntryEvents()) {
             InventoryItemRequirementEntryState innerState = this.getEntries().get(((InventoryItemRequirementEntryEvent.SqlInventoryItemRequirementEntryEvent)innerEvent).getInventoryItemRequirementEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)innerState).mutate(innerEvent);
         }
     }
 

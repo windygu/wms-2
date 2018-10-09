@@ -43,7 +43,7 @@ public class HibernateFacilityStateQueryRepository implements FacilityStateQuery
 
         FacilityState state = (FacilityState)getCurrentSession().get(AbstractFacilityState.SimpleFacilityState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (FacilityState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{FacilityState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (FacilityState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{FacilityState.SqlFacilityState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

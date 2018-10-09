@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInventoryItemAggregate extends AbstractAggregate implements InventoryItemAggregate
 {
-    private InventoryItemState state;
+    private InventoryItemState.MutableInventoryItemState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractInventoryItemAggregate(InventoryItemState state)
     {
-        this.state = state;
+        this.state = (InventoryItemState.MutableInventoryItemState)state;
     }
 
     public InventoryItemState getState() {

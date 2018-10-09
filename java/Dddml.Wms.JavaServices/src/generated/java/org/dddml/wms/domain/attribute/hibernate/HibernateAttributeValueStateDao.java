@@ -37,13 +37,13 @@ public class HibernateAttributeValueStateDao implements AttributeValueStateDao
     @Override
     public AttributeValueState get(AttributeValueId id, boolean nullAllowed)
     {
-        AttributeValueState state = (AttributeValueState) getCurrentSession().get(AbstractAttributeValueState.SimpleAttributeValueState.class, id);
+        AttributeValueState.SqlAttributeValueState state = (AttributeValueState.SqlAttributeValueState) getCurrentSession().get(AbstractAttributeValueState.SimpleAttributeValueState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeValueState.SimpleAttributeValueState();
             state.setAttributeValueId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (AttributeValueState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (AttributeValueState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeValueState.SqlAttributeValueState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

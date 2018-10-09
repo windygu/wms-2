@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attributeset.AttributeSetEvent.*;
 
-public abstract class AbstractAttributeSetState implements AttributeSetState, Saveable
+public abstract class AbstractAttributeSetState implements AttributeSetState.SqlAttributeSetState, Saveable
 {
 
     private String attributeSetId;
@@ -269,7 +269,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
         for (AttributeUseEvent.AttributeUseStateCreated innerEvent : e.getAttributeUseEvents()) {
             AttributeUseState innerState = this.getAttributeUses().get(((AttributeUseEvent.SqlAttributeUseEvent)innerEvent).getAttributeUseEventId().getAttributeId());
-            innerState.mutate(innerEvent);
+            ((AttributeUseState.SqlAttributeUseState)innerState).mutate(innerEvent);
         }
     }
 
@@ -360,7 +360,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
 
         for (AttributeUseEvent innerEvent : e.getAttributeUseEvents()) {
             AttributeUseState innerState = this.getAttributeUses().get(((AttributeUseEvent.SqlAttributeUseEvent)innerEvent).getAttributeUseEventId().getAttributeId());
-            innerState.mutate(innerEvent);
+            ((AttributeUseState.SqlAttributeUseState)innerState).mutate(innerEvent);
             if (innerEvent instanceof AttributeUseEvent.AttributeUseStateRemoved)
             {
                 //AttributeUseEvent.AttributeUseStateRemoved removed = (AttributeUseEvent.AttributeUseStateRemoved)innerEvent;
@@ -384,7 +384,7 @@ public abstract class AbstractAttributeSetState implements AttributeSetState, Sa
             AttributeUseEvent.AttributeUseStateRemoved innerE = e.newAttributeUseStateRemoved(innerState.getAttributeId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((AttributeUseState.MutableAttributeUseState)innerState).when(innerE);
             //e.addAttributeUseEvent(innerE);
         }
     }

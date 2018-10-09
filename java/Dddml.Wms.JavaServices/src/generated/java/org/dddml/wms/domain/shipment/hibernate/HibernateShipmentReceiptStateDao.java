@@ -37,13 +37,13 @@ public class HibernateShipmentReceiptStateDao implements ShipmentReceiptStateDao
     @Override
     public ShipmentReceiptState get(ShipmentReceiptId id, boolean nullAllowed)
     {
-        ShipmentReceiptState state = (ShipmentReceiptState) getCurrentSession().get(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class, id);
+        ShipmentReceiptState.SqlShipmentReceiptState state = (ShipmentReceiptState.SqlShipmentReceiptState) getCurrentSession().get(AbstractShipmentReceiptState.SimpleShipmentReceiptState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentReceiptState.SimpleShipmentReceiptState();
             state.setShipmentReceiptId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentReceiptState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentReceiptState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptState.SqlShipmentReceiptState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

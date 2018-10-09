@@ -88,10 +88,9 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
 
     public LocatorTypeEvent getEvent(String locatorTypeId, long version) {
         LocatorTypeEvent e = (LocatorTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(locatorTypeId), version);
-        if (e != null)
-        { ((LocatorTypeEvent.SqlLocatorTypeEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((LocatorTypeEvent.SqlLocatorTypeEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(locatorTypeId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractLocatorTypeApplicationService implements LocatorTy
 
     public void initialize(LocatorTypeEvent.LocatorTypeStateCreated stateCreated) {
         String aggregateId = ((LocatorTypeEvent.SqlLocatorTypeEvent)stateCreated).getLocatorTypeEventId().getLocatorTypeId();
-        LocatorTypeState state = new AbstractLocatorTypeState.SimpleLocatorTypeState();
+        LocatorTypeState.SqlLocatorTypeState state = new AbstractLocatorTypeState.SimpleLocatorTypeState();
         state.setLocatorTypeId(aggregateId);
 
         LocatorTypeAggregate aggregate = getLocatorTypeAggregate(state);

@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractRoleTypeAggregate extends AbstractAggregate implements RoleTypeAggregate
 {
-    private RoleTypeState state;
+    private RoleTypeState.MutableRoleTypeState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractRoleTypeAggregate(RoleTypeState state)
     {
-        this.state = state;
+        this.state = (RoleTypeState.MutableRoleTypeState)state;
     }
 
     public RoleTypeState getState() {

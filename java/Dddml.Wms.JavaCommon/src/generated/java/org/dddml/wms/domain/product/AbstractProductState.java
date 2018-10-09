@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.product.ProductEvent.*;
 
-public abstract class AbstractProductState implements ProductState, Saveable
+public abstract class AbstractProductState implements ProductState.SqlProductState, Saveable
 {
 
     private String productId;
@@ -1033,7 +1033,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
 
         for (GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent : e.getGoodIdentificationEvents()) {
             GoodIdentificationState innerState = this.getGoodIdentifications().get(((GoodIdentificationEvent.SqlGoodIdentificationEvent)innerEvent).getGoodIdentificationEventId().getGoodIdentificationTypeId());
-            innerState.mutate(innerEvent);
+            ((GoodIdentificationState.SqlGoodIdentificationState)innerState).mutate(innerEvent);
         }
     }
 
@@ -1784,7 +1784,7 @@ public abstract class AbstractProductState implements ProductState, Saveable
 
         for (GoodIdentificationEvent innerEvent : e.getGoodIdentificationEvents()) {
             GoodIdentificationState innerState = this.getGoodIdentifications().get(((GoodIdentificationEvent.SqlGoodIdentificationEvent)innerEvent).getGoodIdentificationEventId().getGoodIdentificationTypeId());
-            innerState.mutate(innerEvent);
+            ((GoodIdentificationState.SqlGoodIdentificationState)innerState).mutate(innerEvent);
             if (innerEvent instanceof GoodIdentificationEvent.GoodIdentificationStateRemoved)
             {
                 //GoodIdentificationEvent.GoodIdentificationStateRemoved removed = (GoodIdentificationEvent.GoodIdentificationStateRemoved)innerEvent;

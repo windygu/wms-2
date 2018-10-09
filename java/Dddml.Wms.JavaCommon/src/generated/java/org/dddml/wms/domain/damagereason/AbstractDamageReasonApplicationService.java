@@ -88,10 +88,9 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
 
     public DamageReasonEvent getEvent(String damageReasonId, long version) {
         DamageReasonEvent e = (DamageReasonEvent)getEventStore().getEvent(toEventStoreAggregateId(damageReasonId), version);
-        if (e != null)
-        { ((DamageReasonEvent.SqlDamageReasonEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((DamageReasonEvent.SqlDamageReasonEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(damageReasonId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractDamageReasonApplicationService implements DamageRe
 
     public void initialize(DamageReasonEvent.DamageReasonStateCreated stateCreated) {
         String aggregateId = ((DamageReasonEvent.SqlDamageReasonEvent)stateCreated).getDamageReasonEventId().getDamageReasonId();
-        DamageReasonState state = new AbstractDamageReasonState.SimpleDamageReasonState();
+        DamageReasonState.SqlDamageReasonState state = new AbstractDamageReasonState.SimpleDamageReasonState();
         state.setDamageReasonId(aggregateId);
 
         DamageReasonAggregate aggregate = getDamageReasonAggregate(state);

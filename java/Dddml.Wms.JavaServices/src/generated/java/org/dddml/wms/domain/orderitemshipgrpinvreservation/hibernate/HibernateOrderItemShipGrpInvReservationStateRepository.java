@@ -40,13 +40,13 @@ public class HibernateOrderItemShipGrpInvReservationStateRepository implements O
 
     @Transactional(readOnly = true)
     public OrderItemShipGrpInvReservationState get(OrderItemShipGrpInvResId id, boolean nullAllowed) {
-        OrderItemShipGrpInvReservationState state = (OrderItemShipGrpInvReservationState)getCurrentSession().get(AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState.class, id);
+        OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState state = (OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState)getCurrentSession().get(AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState();
             state.setOrderItemShipGrpInvResId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderItemShipGrpInvReservationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGrpInvReservationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderItemShipGrpInvReservationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

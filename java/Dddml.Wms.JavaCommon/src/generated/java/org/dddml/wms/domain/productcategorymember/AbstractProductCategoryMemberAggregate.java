@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractProductCategoryMemberAggregate extends AbstractAggregate implements ProductCategoryMemberAggregate
 {
-    private ProductCategoryMemberState state;
+    private ProductCategoryMemberState.MutableProductCategoryMemberState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractProductCategoryMemberAggregate(ProductCategoryMemberState state)
     {
-        this.state = state;
+        this.state = (ProductCategoryMemberState.MutableProductCategoryMemberState)state;
     }
 
     public ProductCategoryMemberState getState() {

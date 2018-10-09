@@ -37,13 +37,13 @@ public class HibernateShipmentReceiptImageStateDao implements ShipmentReceiptIma
     @Override
     public ShipmentReceiptImageState get(ShipmentReceiptImageId id, boolean nullAllowed)
     {
-        ShipmentReceiptImageState state = (ShipmentReceiptImageState) getCurrentSession().get(AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState.class, id);
+        ShipmentReceiptImageState.SqlShipmentReceiptImageState state = (ShipmentReceiptImageState.SqlShipmentReceiptImageState) getCurrentSession().get(AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState();
             state.setShipmentReceiptImageId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentReceiptImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentReceiptImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentReceiptImageState.SqlShipmentReceiptImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

@@ -15,60 +15,62 @@ public interface SellableInventoryItemEntryState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    SellableInventoryItemEntryId getSellableInventoryItemEntryId();
-
-    void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId);
-
     Long getEntrySeqId();
-
-    void setEntrySeqId(Long entrySeqId);
 
     BigDecimal getSellableQuantity();
 
-    void setSellableQuantity(BigDecimal sellableQuantity);
-
     InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     InventoryItemId getSellableInventoryItemId();
-
-    void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableSellableInventoryItemEntryState extends SellableInventoryItemEntryState {
+        void setSellableInventoryItemEntryId(SellableInventoryItemEntryId sellableInventoryItemEntryId);
+
+        void setEntrySeqId(Long entrySeqId);
+
+        void setSellableQuantity(BigDecimal sellableQuantity);
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setSellableInventoryItemId(InventoryItemId sellableInventoryItemId);
+
+        void setCommandId(String commandId);
 
 
-    void mutate(Event e);
+        void mutate(Event e);
 
-    void when(SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated e);
+        void when(SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated e);
 
-    
+    }
+
+    interface SqlSellableInventoryItemEntryState extends MutableSellableInventoryItemEntryState {
+        SellableInventoryItemEntryId getSellableInventoryItemEntryId();
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

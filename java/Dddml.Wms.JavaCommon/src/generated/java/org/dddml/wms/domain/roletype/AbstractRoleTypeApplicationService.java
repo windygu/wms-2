@@ -138,7 +138,7 @@ public abstract class AbstractRoleTypeApplicationService implements RoleTypeAppl
 
     public void initialize(RoleTypeEvent.RoleTypeStateCreated stateCreated) {
         String aggregateId = ((RoleTypeEvent.SqlRoleTypeEvent)stateCreated).getRoleTypeEventId().getRoleTypeId();
-        RoleTypeState state = new AbstractRoleTypeState.SimpleRoleTypeState();
+        RoleTypeState.SqlRoleTypeState state = new AbstractRoleTypeState.SimpleRoleTypeState();
         state.setRoleTypeId(aggregateId);
 
         RoleTypeAggregate aggregate = getRoleTypeAggregate(state);

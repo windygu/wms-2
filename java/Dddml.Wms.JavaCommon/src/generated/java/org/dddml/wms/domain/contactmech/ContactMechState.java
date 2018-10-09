@@ -14,125 +14,128 @@ public interface ContactMechState
 
     String getContactMechId();
 
-    void setContactMechId(String contactMechId);
-
     String getContactMechTypeId();
-
-    void setContactMechTypeId(String contactMechTypeId);
 
     String getInfoString();
 
-    void setInfoString(String infoString);
-
     String getToName();
-
-    void setToName(String toName);
 
     String getAttnName();
 
-    void setAttnName(String attnName);
-
     String getAddress1();
-
-    void setAddress1(String address1);
 
     String getAddress2();
 
-    void setAddress2(String address2);
-
     String getDirections();
-
-    void setDirections(String directions);
 
     String getCity();
 
-    void setCity(String city);
-
     String getPostalCode();
-
-    void setPostalCode(String postalCode);
 
     String getPostalCodeExt();
 
-    void setPostalCodeExt(String postalCodeExt);
-
     String getCountryGeoId();
-
-    void setCountryGeoId(String countryGeoId);
 
     String getStateProvinceGeoId();
 
-    void setStateProvinceGeoId(String stateProvinceGeoId);
-
     String getCountyGeoId();
-
-    void setCountyGeoId(String countyGeoId);
 
     String getPostalCodeGeoId();
 
-    void setPostalCodeGeoId(String postalCodeGeoId);
-
     String getGeoPointId();
-
-    void setGeoPointId(String geoPointId);
 
     String getCountryCode();
 
-    void setCountryCode(String countryCode);
-
     String getAreaCode();
-
-    void setAreaCode(String areaCode);
 
     String getContactNumber();
 
-    void setContactNumber(String contactNumber);
-
     String getAskForName();
-
-    void setAskForName(String askForName);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableContactMechState extends ContactMechState {
+        void setContactMechId(String contactMechId);
+
+        void setContactMechTypeId(String contactMechTypeId);
+
+        void setInfoString(String infoString);
+
+        void setToName(String toName);
+
+        void setAttnName(String attnName);
+
+        void setAddress1(String address1);
+
+        void setAddress2(String address2);
+
+        void setDirections(String directions);
+
+        void setCity(String city);
+
+        void setPostalCode(String postalCode);
+
+        void setPostalCodeExt(String postalCodeExt);
+
+        void setCountryGeoId(String countryGeoId);
+
+        void setStateProvinceGeoId(String stateProvinceGeoId);
+
+        void setCountyGeoId(String countyGeoId);
+
+        void setPostalCodeGeoId(String postalCodeGeoId);
+
+        void setGeoPointId(String geoPointId);
+
+        void setCountryCode(String countryCode);
+
+        void setAreaCode(String areaCode);
+
+        void setContactNumber(String contactNumber);
+
+        void setAskForName(String askForName);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ContactMechEvent.ContactMechStateCreated e);
 
+        void when(ContactMechEvent.ContactMechStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ContactMechEvent.ContactMechStateDeleted e);
+    }
 
-    void when(ContactMechEvent.ContactMechStateCreated e);
+    interface SqlContactMechState extends MutableContactMechState {
 
-    void when(ContactMechEvent.ContactMechStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ContactMechEvent.ContactMechStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

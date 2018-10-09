@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractOrderAggregate extends AbstractAggregate implements OrderAggregate
 {
-    private OrderState state;
+    private OrderState.MutableOrderState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractOrderAggregate(OrderState state)
     {
-        this.state = state;
+        this.state = (OrderState.MutableOrderState)state;
     }
 
     public OrderState getState() {

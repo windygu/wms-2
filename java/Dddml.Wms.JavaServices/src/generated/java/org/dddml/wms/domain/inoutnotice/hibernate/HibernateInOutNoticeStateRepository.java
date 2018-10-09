@@ -40,13 +40,13 @@ public class HibernateInOutNoticeStateRepository implements InOutNoticeStateRepo
 
     @Transactional(readOnly = true)
     public InOutNoticeState get(String id, boolean nullAllowed) {
-        InOutNoticeState state = (InOutNoticeState)getCurrentSession().get(AbstractInOutNoticeState.SimpleInOutNoticeState.class, id);
+        InOutNoticeState.SqlInOutNoticeState state = (InOutNoticeState.SqlInOutNoticeState)getCurrentSession().get(AbstractInOutNoticeState.SimpleInOutNoticeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutNoticeState.SimpleInOutNoticeState();
             state.setInOutNoticeId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InOutNoticeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutNoticeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InOutNoticeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutNoticeState.SqlInOutNoticeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

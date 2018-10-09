@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInventoryPostingRuleAggregate extends AbstractAggregate implements InventoryPostingRuleAggregate
 {
-    private InventoryPostingRuleState state;
+    private InventoryPostingRuleState.MutableInventoryPostingRuleState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractInventoryPostingRuleAggregate(InventoryPostingRuleState state)
     {
-        this.state = state;
+        this.state = (InventoryPostingRuleState.MutableInventoryPostingRuleState)state;
     }
 
     public InventoryPostingRuleState getState() {

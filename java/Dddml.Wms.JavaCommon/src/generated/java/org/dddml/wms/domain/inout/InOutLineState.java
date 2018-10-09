@@ -13,109 +13,113 @@ public interface InOutLineState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    InOutLineId getInOutLineId();
-
-    void setInOutLineId(InOutLineId inOutLineId);
-
     String getLineNumber();
-
-    void setLineNumber(String lineNumber);
 
     String getLocatorId();
 
-    void setLocatorId(String locatorId);
-
     String getProductId();
-
-    void setProductId(String productId);
 
     String getAttributeSetInstanceId();
 
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getQuantityUomId();
 
-    void setQuantityUomId(String quantityUomId);
-
     BigDecimal getMovementQuantity();
-
-    void setMovementQuantity(BigDecimal movementQuantity);
 
     BigDecimal getPickedQuantity();
 
-    void setPickedQuantity(BigDecimal pickedQuantity);
-
     Boolean getIsInvoiced();
-
-    void setIsInvoiced(Boolean isInvoiced);
 
     Boolean getProcessed();
 
-    void setProcessed(Boolean processed);
-
     String getRmaLineNumber();
-
-    void setRmaLineNumber(String rmaLineNumber);
 
     String getReversalLineNumber();
 
-    void setReversalLineNumber(String reversalLineNumber);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
     String getInOutDocumentNumber();
-
-    void setInOutDocumentNumber(String inOutDocumentNumber);
 
     Set<String> getDamageStatusIds();
 
     void setDamageStatusIds(Set<String> damageStatusIds);
 
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     EntityStateCollection<String, InOutLineImageState> getInOutLineImages();
 
+    interface MutableInOutLineState extends InOutLineState {
+        void setInOutLineId(InOutLineId inOutLineId);
 
-    void mutate(Event e);
+        void setLineNumber(String lineNumber);
 
-    void when(InOutLineEvent.InOutLineStateCreated e);
+        void setLocatorId(String locatorId);
 
-    void when(InOutLineEvent.InOutLineStateMergePatched e);
+        void setProductId(String productId);
 
-    void when(InOutLineEvent.InOutLineStateRemoved e);
-    
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        void setDescription(String description);
+
+        void setQuantityUomId(String quantityUomId);
+
+        void setMovementQuantity(BigDecimal movementQuantity);
+
+        void setPickedQuantity(BigDecimal pickedQuantity);
+
+        void setIsInvoiced(Boolean isInvoiced);
+
+        void setProcessed(Boolean processed);
+
+        void setRmaLineNumber(String rmaLineNumber);
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setInOutDocumentNumber(String inOutDocumentNumber);
+
+        void setDamageStatusIds(Set<String> damageStatusIds);
+
+
+        void mutate(Event e);
+
+        void when(InOutLineEvent.InOutLineStateCreated e);
+
+        void when(InOutLineEvent.InOutLineStateMergePatched e);
+
+        void when(InOutLineEvent.InOutLineStateRemoved e);
+    }
+
+    interface SqlInOutLineState extends MutableInOutLineState {
+        InOutLineId getInOutLineId();
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

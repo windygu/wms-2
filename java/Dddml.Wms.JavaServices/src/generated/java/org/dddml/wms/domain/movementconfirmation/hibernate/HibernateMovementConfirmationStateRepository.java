@@ -41,13 +41,13 @@ public class HibernateMovementConfirmationStateRepository implements MovementCon
 
     @Transactional(readOnly = true)
     public MovementConfirmationState get(String id, boolean nullAllowed) {
-        MovementConfirmationState state = (MovementConfirmationState)getCurrentSession().get(AbstractMovementConfirmationState.SimpleMovementConfirmationState.class, id);
+        MovementConfirmationState.SqlMovementConfirmationState state = (MovementConfirmationState.SqlMovementConfirmationState)getCurrentSession().get(AbstractMovementConfirmationState.SimpleMovementConfirmationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractMovementConfirmationState.SimpleMovementConfirmationState();
             state.setDocumentNumber(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (MovementConfirmationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (MovementConfirmationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationState.SqlMovementConfirmationState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

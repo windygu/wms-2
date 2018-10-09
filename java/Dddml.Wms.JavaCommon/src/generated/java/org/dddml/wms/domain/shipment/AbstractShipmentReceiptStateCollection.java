@@ -59,7 +59,7 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         } else {
             List<ShipmentReceiptState> ss = new ArrayList<ShipmentReceiptState>();
             for (ShipmentReceiptState s : loadedShipmentReceiptStates.values()) {
-                if (!(removedShipmentReceiptStates.containsKey(s.getShipmentReceiptId()))) {
+                if (!(removedShipmentReceiptStates.containsKey(((ShipmentReceiptState.SqlShipmentReceiptState)s).getShipmentReceiptId()))) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
 
     public AbstractShipmentReceiptStateCollection(ShipmentState outerState) {
         this.shipmentState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((ShipmentState.SqlShipmentState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             ShipmentReceiptState state = new AbstractShipmentReceiptState.SimpleShipmentReceiptState(getForReapplying());
-            state.setShipmentReceiptId(globalId);
+            ((ShipmentReceiptState.SqlShipmentReceiptState)state).setShipmentReceiptId(globalId);
             loadedShipmentReceiptStates.put(globalId, state);
             return state;
         } else {
             ShipmentReceiptState state = getShipmentReceiptStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((ShipmentReceiptState.SqlShipmentReceiptState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractShipmentReceiptState) {
+                    ((AbstractShipmentReceiptState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedShipmentReceiptStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
+        this.removedShipmentReceiptStates.put(((ShipmentReceiptState.SqlShipmentReceiptState)state).getShipmentReceiptId(), state);
     }
 
     public void add(ShipmentReceiptState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedShipmentReceiptStates.put(state.getShipmentReceiptId(), state);
+        this.loadedShipmentReceiptStates.put(((ShipmentReceiptState.SqlShipmentReceiptState)state).getShipmentReceiptId(), state);
     }
 
     //region Saveable Implements

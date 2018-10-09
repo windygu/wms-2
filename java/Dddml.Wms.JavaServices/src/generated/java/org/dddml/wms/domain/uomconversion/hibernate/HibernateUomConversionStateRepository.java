@@ -40,13 +40,13 @@ public class HibernateUomConversionStateRepository implements UomConversionState
 
     @Transactional(readOnly = true)
     public UomConversionState get(UomConversionId id, boolean nullAllowed) {
-        UomConversionState state = (UomConversionState)getCurrentSession().get(AbstractUomConversionState.SimpleUomConversionState.class, id);
+        UomConversionState.SqlUomConversionState state = (UomConversionState.SqlUomConversionState)getCurrentSession().get(AbstractUomConversionState.SimpleUomConversionState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUomConversionState.SimpleUomConversionState();
             state.setUomConversionId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (UomConversionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomConversionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (UomConversionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomConversionState.SqlUomConversionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

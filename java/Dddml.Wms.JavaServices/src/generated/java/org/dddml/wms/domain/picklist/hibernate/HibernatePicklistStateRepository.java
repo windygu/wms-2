@@ -41,13 +41,13 @@ public class HibernatePicklistStateRepository implements PicklistStateRepository
 
     @Transactional(readOnly = true)
     public PicklistState get(String id, boolean nullAllowed) {
-        PicklistState state = (PicklistState)getCurrentSession().get(AbstractPicklistState.SimplePicklistState.class, id);
+        PicklistState.SqlPicklistState state = (PicklistState.SqlPicklistState)getCurrentSession().get(AbstractPicklistState.SimplePicklistState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPicklistState.SimplePicklistState();
             state.setPicklistId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PicklistState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PicklistState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistState.SqlPicklistState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

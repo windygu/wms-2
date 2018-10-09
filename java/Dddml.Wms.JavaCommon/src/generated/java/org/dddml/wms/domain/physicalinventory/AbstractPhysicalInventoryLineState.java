@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.physicalinventory.PhysicalInventoryLineEvent.*;
 
-public abstract class AbstractPhysicalInventoryLineState implements PhysicalInventoryLineState
+public abstract class AbstractPhysicalInventoryLineState implements PhysicalInventoryLineState.SqlPhysicalInventoryLineState
 {
 
     private PhysicalInventoryLineId physicalInventoryLineId = new PhysicalInventoryLineId();

@@ -30,13 +30,13 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setDescription(c.getDescription());
-        s.setSequenceId(c.getSequenceId());
-        s.setActive(c.getActive());
-        s.setDeleted(false);
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setDescription(c.getDescription());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setSequenceId(c.getSequenceId());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setActive(c.getActive());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setDeleted(false);
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setCreatedBy(c.getRequesterId());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -47,28 +47,28 @@ public abstract class AbstractDamageHandlingMethodApplicationService implements 
         throwOnConcurrencyConflict(s, c);
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setDescription(c.getDescription());
         }
         if (c.getSequenceId() == null) {
             if (c.getIsPropertySequenceIdRemoved() != null && c.getIsPropertySequenceIdRemoved()) {
-                s.setSequenceId(null);
+                ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setSequenceId(null);
             }
         } else {
-            s.setSequenceId(c.getSequenceId());
+            ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setSequenceId(c.getSequenceId());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setUpdatedBy(c.getRequesterId());
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DamageHandlingMethodState.SqlDamageHandlingMethodState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

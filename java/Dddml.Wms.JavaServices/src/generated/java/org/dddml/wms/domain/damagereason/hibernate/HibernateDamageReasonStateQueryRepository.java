@@ -43,7 +43,7 @@ public class HibernateDamageReasonStateQueryRepository implements DamageReasonSt
 
         DamageReasonState state = (DamageReasonState)getCurrentSession().get(AbstractDamageReasonState.SimpleDamageReasonState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (DamageReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{DamageReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (DamageReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{DamageReasonState.SqlDamageReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

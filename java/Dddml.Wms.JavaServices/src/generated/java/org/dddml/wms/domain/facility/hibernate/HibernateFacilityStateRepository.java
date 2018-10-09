@@ -40,13 +40,13 @@ public class HibernateFacilityStateRepository implements FacilityStateRepository
 
     @Transactional(readOnly = true)
     public FacilityState get(String id, boolean nullAllowed) {
-        FacilityState state = (FacilityState)getCurrentSession().get(AbstractFacilityState.SimpleFacilityState.class, id);
+        FacilityState.SqlFacilityState state = (FacilityState.SqlFacilityState)getCurrentSession().get(AbstractFacilityState.SimpleFacilityState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractFacilityState.SimpleFacilityState();
             state.setFacilityId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (FacilityState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{FacilityState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (FacilityState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{FacilityState.SqlFacilityState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

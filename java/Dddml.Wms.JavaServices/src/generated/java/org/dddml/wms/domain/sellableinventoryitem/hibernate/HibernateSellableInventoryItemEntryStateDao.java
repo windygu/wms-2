@@ -40,7 +40,7 @@ public class HibernateSellableInventoryItemEntryStateDao implements SellableInve
     @Override
     public SellableInventoryItemEntryState get(SellableInventoryItemEntryId id, boolean nullAllowed)
     {
-        SellableInventoryItemEntryState state = (SellableInventoryItemEntryState) getCurrentSession().get(AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState.class, id);
+        SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState state = (SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState) getCurrentSession().get(AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState();
             state.setSellableInventoryItemEntryId(id);

@@ -43,7 +43,7 @@ public class HibernateGoodIdentificationTypeStateQueryRepository implements Good
 
         GoodIdentificationTypeState state = (GoodIdentificationTypeState)getCurrentSession().get(AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (GoodIdentificationTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (GoodIdentificationTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationTypeState.SqlGoodIdentificationTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

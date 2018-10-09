@@ -14,53 +14,56 @@ public interface LocatorTypeState
 
     String getLocatorTypeId();
 
-    void setLocatorTypeId(String locatorTypeId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableLocatorTypeState extends LocatorTypeState {
+        void setLocatorTypeId(String locatorTypeId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(LocatorTypeEvent.LocatorTypeStateCreated e);
 
+        void when(LocatorTypeEvent.LocatorTypeStateMergePatched e);
 
-    void mutate(Event e);
+        void when(LocatorTypeEvent.LocatorTypeStateDeleted e);
+    }
 
-    void when(LocatorTypeEvent.LocatorTypeStateCreated e);
+    interface SqlLocatorTypeState extends MutableLocatorTypeState {
 
-    void when(LocatorTypeEvent.LocatorTypeStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(LocatorTypeEvent.LocatorTypeStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

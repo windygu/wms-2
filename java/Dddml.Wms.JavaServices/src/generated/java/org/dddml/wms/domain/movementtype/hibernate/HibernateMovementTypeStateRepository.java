@@ -40,7 +40,7 @@ public class HibernateMovementTypeStateRepository implements MovementTypeStateRe
 
     @Transactional(readOnly = true)
     public MovementTypeState get(String id, boolean nullAllowed) {
-        MovementTypeState state = (MovementTypeState)getCurrentSession().get(AbstractMovementTypeState.SimpleMovementTypeState.class, id);
+        MovementTypeState.SqlMovementTypeState state = (MovementTypeState.SqlMovementTypeState)getCurrentSession().get(AbstractMovementTypeState.SimpleMovementTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractMovementTypeState.SimpleMovementTypeState();
             state.setMovementTypeId(id);

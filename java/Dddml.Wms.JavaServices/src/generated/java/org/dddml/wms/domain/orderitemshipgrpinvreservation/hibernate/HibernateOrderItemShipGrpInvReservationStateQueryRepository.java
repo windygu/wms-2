@@ -43,7 +43,7 @@ public class HibernateOrderItemShipGrpInvReservationStateQueryRepository impleme
 
         OrderItemShipGrpInvReservationState state = (OrderItemShipGrpInvReservationState)getCurrentSession().get(AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderItemShipGrpInvReservationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGrpInvReservationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderItemShipGrpInvReservationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

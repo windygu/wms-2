@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.warehouse.WarehouseEvent.*;
 
-public abstract class AbstractWarehouseState implements WarehouseState
+public abstract class AbstractWarehouseState implements WarehouseState.SqlWarehouseState
 {
 
     private String warehouseId;

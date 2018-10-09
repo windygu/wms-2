@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractSupplierProductAggregate extends AbstractAggregate implements SupplierProductAggregate
 {
-    private SupplierProductState state;
+    private SupplierProductState.MutableSupplierProductState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractSupplierProductAggregate(SupplierProductState state)
     {
-        this.state = state;
+        this.state = (SupplierProductState.MutableSupplierProductState)state;
     }
 
     public SupplierProductState getState() {

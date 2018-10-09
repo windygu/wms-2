@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractPickwaveAggregate extends AbstractAggregate implements PickwaveAggregate
 {
-    private PickwaveState state;
+    private PickwaveState.MutablePickwaveState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractPickwaveAggregate(PickwaveState state)
     {
-        this.state = state;
+        this.state = (PickwaveState.MutablePickwaveState)state;
     }
 
     public PickwaveState getState() {

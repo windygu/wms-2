@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentReceiptEvent.*;
 
-public abstract class AbstractShipmentReceiptState implements ShipmentReceiptState, Saveable
+public abstract class AbstractShipmentReceiptState implements ShipmentReceiptState.SqlShipmentReceiptState, Saveable
 {
 
     private ShipmentReceiptId shipmentReceiptId = new ShipmentReceiptId();
@@ -412,7 +412,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
         for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated innerEvent : e.getShipmentReceiptImageEvents()) {
             ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)innerEvent).getShipmentReceiptImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((ShipmentReceiptImageState.SqlShipmentReceiptImageState)innerState).mutate(innerEvent);
         }
     }
 
@@ -635,7 +635,7 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
 
         for (ShipmentReceiptImageEvent innerEvent : e.getShipmentReceiptImageEvents()) {
             ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)innerEvent).getShipmentReceiptImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((ShipmentReceiptImageState.SqlShipmentReceiptImageState)innerState).mutate(innerEvent);
             if (innerEvent instanceof ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)
             {
                 //ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved removed = (ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)innerEvent;

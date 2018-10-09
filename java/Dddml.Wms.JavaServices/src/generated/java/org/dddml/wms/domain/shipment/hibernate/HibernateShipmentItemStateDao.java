@@ -37,13 +37,13 @@ public class HibernateShipmentItemStateDao implements ShipmentItemStateDao
     @Override
     public ShipmentItemState get(ShipmentItemId id, boolean nullAllowed)
     {
-        ShipmentItemState state = (ShipmentItemState) getCurrentSession().get(AbstractShipmentItemState.SimpleShipmentItemState.class, id);
+        ShipmentItemState.SqlShipmentItemState state = (ShipmentItemState.SqlShipmentItemState) getCurrentSession().get(AbstractShipmentItemState.SimpleShipmentItemState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentItemState.SimpleShipmentItemState();
             state.setShipmentItemId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentItemState.SqlShipmentItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

@@ -43,7 +43,7 @@ public class HibernateInOutNoticeStateQueryRepository implements InOutNoticeStat
 
         InOutNoticeState state = (InOutNoticeState)getCurrentSession().get(AbstractInOutNoticeState.SimpleInOutNoticeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InOutNoticeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutNoticeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InOutNoticeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutNoticeState.SqlInOutNoticeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

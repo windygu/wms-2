@@ -59,7 +59,7 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         } else {
             List<ShipmentPackageContentState> ss = new ArrayList<ShipmentPackageContentState>();
             for (ShipmentPackageContentState s : loadedShipmentPackageContentStates.values()) {
-                if (!(removedShipmentPackageContentStates.containsKey(s.getShipmentPackageContentId()) && s.getDeleted())) {
+                if (!(removedShipmentPackageContentStates.containsKey(((ShipmentPackageContentState.SqlShipmentPackageContentState)s).getShipmentPackageContentId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
 
     public AbstractShipmentPackageContentStateCollection(ShipmentPackageState outerState) {
         this.shipmentPackageState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((ShipmentPackageState.SqlShipmentPackageState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             ShipmentPackageContentState state = new AbstractShipmentPackageContentState.SimpleShipmentPackageContentState(getForReapplying());
-            state.setShipmentPackageContentId(globalId);
+            ((ShipmentPackageContentState.SqlShipmentPackageContentState)state).setShipmentPackageContentId(globalId);
             loadedShipmentPackageContentStates.put(globalId, state);
             return state;
         } else {
             ShipmentPackageContentState state = getShipmentPackageContentStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((ShipmentPackageContentState.SqlShipmentPackageContentState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractShipmentPackageContentState) {
+                    ((AbstractShipmentPackageContentState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedShipmentPackageContentStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
+        this.removedShipmentPackageContentStates.put(((ShipmentPackageContentState.SqlShipmentPackageContentState)state).getShipmentPackageContentId(), state);
     }
 
     public void add(ShipmentPackageContentState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedShipmentPackageContentStates.put(state.getShipmentPackageContentId(), state);
+        this.loadedShipmentPackageContentStates.put(((ShipmentPackageContentState.SqlShipmentPackageContentState)state).getShipmentPackageContentId(), state);
     }
 
     //region Saveable Implements

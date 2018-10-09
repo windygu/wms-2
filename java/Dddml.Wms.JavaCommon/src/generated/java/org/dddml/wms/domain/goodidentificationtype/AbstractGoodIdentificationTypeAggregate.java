@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractGoodIdentificationTypeAggregate extends AbstractAggregate implements GoodIdentificationTypeAggregate
 {
-    private GoodIdentificationTypeState state;
+    private GoodIdentificationTypeState.MutableGoodIdentificationTypeState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractGoodIdentificationTypeAggregate(GoodIdentificationTypeState state)
     {
-        this.state = state;
+        this.state = (GoodIdentificationTypeState.MutableGoodIdentificationTypeState)state;
     }
 
     public GoodIdentificationTypeState getState() {

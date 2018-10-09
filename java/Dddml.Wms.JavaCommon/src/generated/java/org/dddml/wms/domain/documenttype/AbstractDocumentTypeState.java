@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public abstract class AbstractDocumentTypeState implements DocumentTypeState
+public abstract class AbstractDocumentTypeState implements DocumentTypeState.SqlDocumentTypeState
 {
 
     private String documentTypeId;

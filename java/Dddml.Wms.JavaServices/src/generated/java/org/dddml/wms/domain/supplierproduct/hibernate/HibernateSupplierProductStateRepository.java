@@ -40,13 +40,13 @@ public class HibernateSupplierProductStateRepository implements SupplierProductS
 
     @Transactional(readOnly = true)
     public SupplierProductState get(SupplierProductId id, boolean nullAllowed) {
-        SupplierProductState state = (SupplierProductState)getCurrentSession().get(AbstractSupplierProductState.SimpleSupplierProductState.class, id);
+        SupplierProductState.SqlSupplierProductState state = (SupplierProductState.SqlSupplierProductState)getCurrentSession().get(AbstractSupplierProductState.SimpleSupplierProductState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractSupplierProductState.SimpleSupplierProductState();
             state.setSupplierProductId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (SupplierProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SupplierProductState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (SupplierProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SupplierProductState.SqlSupplierProductState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

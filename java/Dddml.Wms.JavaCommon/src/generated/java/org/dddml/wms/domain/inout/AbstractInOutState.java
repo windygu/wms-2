@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutEvent.*;
 
-public abstract class AbstractInOutState implements InOutState, Saveable
+public abstract class AbstractInOutState implements InOutState.SqlInOutState, Saveable
 {
 
     private String documentNumber;
@@ -579,11 +579,11 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
         for (InOutImageEvent.InOutImageStateCreated innerEvent : e.getInOutImageEvents()) {
             InOutImageState innerState = this.getInOutImages().get(((InOutImageEvent.SqlInOutImageEvent)innerEvent).getInOutImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((InOutImageState.SqlInOutImageState)innerState).mutate(innerEvent);
         }
         for (InOutLineEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(((InOutLineEvent.SqlInOutLineEvent)innerEvent).getInOutLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((InOutLineState.SqlInOutLineState)innerState).mutate(innerEvent);
         }
     }
 
@@ -938,7 +938,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
 
         for (InOutImageEvent innerEvent : e.getInOutImageEvents()) {
             InOutImageState innerState = this.getInOutImages().get(((InOutImageEvent.SqlInOutImageEvent)innerEvent).getInOutImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((InOutImageState.SqlInOutImageState)innerState).mutate(innerEvent);
             if (innerEvent instanceof InOutImageEvent.InOutImageStateRemoved)
             {
                 //InOutImageEvent.InOutImageStateRemoved removed = (InOutImageEvent.InOutImageStateRemoved)innerEvent;
@@ -947,7 +947,7 @@ public abstract class AbstractInOutState implements InOutState, Saveable
         }
         for (InOutLineEvent innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(((InOutLineEvent.SqlInOutLineEvent)innerEvent).getInOutLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((InOutLineState.SqlInOutLineState)innerState).mutate(innerEvent);
             if (innerEvent instanceof InOutLineEvent.InOutLineStateRemoved)
             {
                 //InOutLineEvent.InOutLineStateRemoved removed = (InOutLineEvent.InOutLineStateRemoved)innerEvent;

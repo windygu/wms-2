@@ -14,93 +14,96 @@ public interface InOutNoticeState
 
     String getInOutNoticeId();
 
-    void setInOutNoticeId(String inOutNoticeId);
-
     String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
 
     String getInOutNoticeType();
 
-    void setInOutNoticeType(String inOutNoticeType);
-
     String getTelecomContactMechId();
-
-    void setTelecomContactMechId(String telecomContactMechId);
 
     String getTrackingNumber();
 
-    void setTrackingNumber(String trackingNumber);
-
     String getContactPartyId();
-
-    void setContactPartyId(String contactPartyId);
 
     String getVehiclePlateNumber();
 
-    void setVehiclePlateNumber(String vehiclePlateNumber);
-
     String getShippingInstructions();
-
-    void setShippingInstructions(String shippingInstructions);
 
     java.sql.Timestamp getEstimatedShipDate();
 
-    void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
     java.sql.Timestamp getEstimatedDeliveryDate();
-
-    void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
 
     Boolean getIsScheduleNeeded();
 
-    void setIsScheduleNeeded(Boolean isScheduleNeeded);
-
     String getStatusId();
-
-    void setStatusId(String statusId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableInOutNoticeState extends InOutNoticeState {
+        void setInOutNoticeId(String inOutNoticeId);
+
+        void setWarehouseId(String warehouseId);
+
+        void setInOutNoticeType(String inOutNoticeType);
+
+        void setTelecomContactMechId(String telecomContactMechId);
+
+        void setTrackingNumber(String trackingNumber);
+
+        void setContactPartyId(String contactPartyId);
+
+        void setVehiclePlateNumber(String vehiclePlateNumber);
+
+        void setShippingInstructions(String shippingInstructions);
+
+        void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
+
+        void setEstimatedDeliveryDate(java.sql.Timestamp estimatedDeliveryDate);
+
+        void setIsScheduleNeeded(Boolean isScheduleNeeded);
+
+        void setStatusId(String statusId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(InOutNoticeEvent.InOutNoticeStateCreated e);
 
+        void when(InOutNoticeEvent.InOutNoticeStateMergePatched e);
 
-    void mutate(Event e);
+        void when(InOutNoticeEvent.InOutNoticeStateDeleted e);
+    }
 
-    void when(InOutNoticeEvent.InOutNoticeStateCreated e);
+    interface SqlInOutNoticeState extends MutableInOutNoticeState {
 
-    void when(InOutNoticeEvent.InOutNoticeStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(InOutNoticeEvent.InOutNoticeStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

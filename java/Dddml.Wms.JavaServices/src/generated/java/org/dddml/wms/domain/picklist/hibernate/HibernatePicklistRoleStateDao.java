@@ -38,13 +38,13 @@ public class HibernatePicklistRoleStateDao implements PicklistRoleStateDao
     @Override
     public PicklistRoleState get(PicklistRoleId id, boolean nullAllowed)
     {
-        PicklistRoleState state = (PicklistRoleState) getCurrentSession().get(AbstractPicklistRoleState.SimplePicklistRoleState.class, id);
+        PicklistRoleState.SqlPicklistRoleState state = (PicklistRoleState.SqlPicklistRoleState) getCurrentSession().get(AbstractPicklistRoleState.SimplePicklistRoleState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPicklistRoleState.SimplePicklistRoleState();
             state.setPicklistRoleId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (PicklistRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (PicklistRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistRoleState.SqlPicklistRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

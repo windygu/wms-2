@@ -40,13 +40,13 @@ public class HibernateAttributeSetInstanceExtensionFieldGroupStateRepository imp
 
     @Transactional(readOnly = true)
     public AttributeSetInstanceExtensionFieldGroupState get(String id, boolean nullAllowed) {
-        AttributeSetInstanceExtensionFieldGroupState state = (AttributeSetInstanceExtensionFieldGroupState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState.class, id);
+        AttributeSetInstanceExtensionFieldGroupState.SqlAttributeSetInstanceExtensionFieldGroupState state = (AttributeSetInstanceExtensionFieldGroupState.SqlAttributeSetInstanceExtensionFieldGroupState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldGroupState.SimpleAttributeSetInstanceExtensionFieldGroupState();
             state.setId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetInstanceExtensionFieldGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldGroupState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetInstanceExtensionFieldGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldGroupState.SqlAttributeSetInstanceExtensionFieldGroupState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

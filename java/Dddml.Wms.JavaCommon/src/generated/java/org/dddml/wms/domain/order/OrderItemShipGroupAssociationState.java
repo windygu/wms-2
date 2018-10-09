@@ -12,87 +12,89 @@ public interface OrderItemShipGroupAssociationState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    OrderItemShipGroupAssociationId getOrderItemShipGroupAssociationId();
-
-    void setOrderItemShipGroupAssociationId(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId);
-
     String getOrderItemSeqId();
-
-    void setOrderItemSeqId(String orderItemSeqId);
 
     java.math.BigDecimal getQuantity();
 
-    void setQuantity(java.math.BigDecimal quantity);
-
     java.math.BigDecimal getCancelQuantity();
-
-    void setCancelQuantity(java.math.BigDecimal cancelQuantity);
 
     Integer getNumberOfPackages();
 
-    void setNumberOfPackages(Integer numberOfPackages);
-
     Integer getNumberOfContainers();
-
-    void setNumberOfContainers(Integer numberOfContainers);
 
     Integer getNumberOfPakagesPerContainer();
 
-    void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
-
     String getOrderItemShipGroupAssociationKey();
-
-    void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
     String getOrderId();
-
-    void setOrderId(String orderId);
 
     String getOrderShipGroupShipGroupSeqId();
 
-    void setOrderShipGroupShipGroupSeqId(String orderShipGroupShipGroupSeqId);
+    interface MutableOrderItemShipGroupAssociationState extends OrderItemShipGroupAssociationState {
+        void setOrderItemShipGroupAssociationId(OrderItemShipGroupAssociationId orderItemShipGroupAssociationId);
+
+        void setOrderItemSeqId(String orderItemSeqId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setCancelQuantity(java.math.BigDecimal cancelQuantity);
+
+        void setNumberOfPackages(Integer numberOfPackages);
+
+        void setNumberOfContainers(Integer numberOfContainers);
+
+        void setNumberOfPakagesPerContainer(Integer numberOfPakagesPerContainer);
+
+        void setOrderItemShipGroupAssociationKey(String orderItemShipGroupAssociationKey);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setOrderId(String orderId);
+
+        void setOrderShipGroupShipGroupSeqId(String orderShipGroupShipGroupSeqId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated e);
 
+        void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched e);
 
-    void mutate(Event e);
+        void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved e);
+    }
 
-    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated e);
+    interface SqlOrderItemShipGroupAssociationState extends MutableOrderItemShipGroupAssociationState {
+        OrderItemShipGroupAssociationId getOrderItemShipGroupAssociationId();
 
-    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

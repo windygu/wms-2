@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.picklistbin.PicklistItemEvent.*;
 
-public abstract class AbstractPicklistItemState implements PicklistItemState
+public abstract class AbstractPicklistItemState implements PicklistItemState.SqlPicklistItemState
 {
 
     private PicklistBinPicklistItemId picklistBinPicklistItemId = new PicklistBinPicklistItemId();

@@ -14,64 +14,67 @@ public interface StatusItemState
 
     String getStatusId();
 
-    void setStatusId(String statusId);
-
     String getStatusTypeId();
-
-    void setStatusTypeId(String statusTypeId);
 
     String getStatusCode();
 
-    void setStatusCode(String statusCode);
-
     String getSequenceId();
-
-    void setSequenceId(String sequenceId);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableStatusItemState extends StatusItemState {
+        void setStatusId(String statusId);
+
+        void setStatusTypeId(String statusTypeId);
+
+        void setStatusCode(String statusCode);
+
+        void setSequenceId(String sequenceId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setCommandId(String commandId);
 
 
-    void mutate(Event e);
+        void mutate(Event e);
 
-    void when(StatusItemEvent.StatusItemStateCreated e);
+        void when(StatusItemEvent.StatusItemStateCreated e);
 
-    void when(StatusItemEvent.StatusItemStateMergePatched e);
+        void when(StatusItemEvent.StatusItemStateMergePatched e);
 
-    
+    }
+
+    interface SqlStatusItemState extends MutableStatusItemState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

@@ -12,63 +12,65 @@ public interface ShipmentImageState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ShipmentImageId getShipmentImageId();
-
-    void setShipmentImageId(ShipmentImageId shipmentImageId);
-
     String getSequenceId();
-
-    void setSequenceId(String sequenceId);
 
     String getUrl();
 
-    void setUrl(String url);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getShipmentId();
 
-    void setShipmentId(String shipmentId);
+    interface MutableShipmentImageState extends ShipmentImageState {
+        void setShipmentImageId(ShipmentImageId shipmentImageId);
+
+        void setSequenceId(String sequenceId);
+
+        void setUrl(String url);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setShipmentId(String shipmentId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ShipmentImageEvent.ShipmentImageStateCreated e);
 
+        void when(ShipmentImageEvent.ShipmentImageStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ShipmentImageEvent.ShipmentImageStateRemoved e);
+    }
 
-    void when(ShipmentImageEvent.ShipmentImageStateCreated e);
+    interface SqlShipmentImageState extends MutableShipmentImageState {
+        ShipmentImageId getShipmentImageId();
 
-    void when(ShipmentImageEvent.ShipmentImageStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ShipmentImageEvent.ShipmentImageStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -43,7 +43,7 @@ public class HibernateAttributeSetInstanceExtensionFieldStateQueryRepository imp
 
         AttributeSetInstanceExtensionFieldState state = (AttributeSetInstanceExtensionFieldState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldState.SqlAttributeSetInstanceExtensionFieldState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

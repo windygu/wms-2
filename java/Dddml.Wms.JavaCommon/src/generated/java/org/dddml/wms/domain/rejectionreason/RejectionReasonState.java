@@ -14,53 +14,56 @@ public interface RejectionReasonState
 
     String getRejectionReasonId();
 
-    void setRejectionReasonId(String rejectionReasonId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableRejectionReasonState extends RejectionReasonState {
+        void setRejectionReasonId(String rejectionReasonId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(RejectionReasonEvent.RejectionReasonStateCreated e);
 
+        void when(RejectionReasonEvent.RejectionReasonStateMergePatched e);
 
-    void mutate(Event e);
+        void when(RejectionReasonEvent.RejectionReasonStateDeleted e);
+    }
 
-    void when(RejectionReasonEvent.RejectionReasonStateCreated e);
+    interface SqlRejectionReasonState extends MutableRejectionReasonState {
 
-    void when(RejectionReasonEvent.RejectionReasonStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(RejectionReasonEvent.RejectionReasonStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

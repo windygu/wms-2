@@ -43,7 +43,7 @@ public class HibernateRoleTypeStateQueryRepository implements RoleTypeStateQuery
 
         RoleTypeState state = (RoleTypeState)getCurrentSession().get(AbstractRoleTypeState.SimpleRoleTypeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (RoleTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RoleTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (RoleTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RoleTypeState.SqlRoleTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

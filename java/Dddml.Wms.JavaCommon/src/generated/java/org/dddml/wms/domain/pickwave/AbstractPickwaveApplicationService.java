@@ -88,10 +88,9 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
 
     public PickwaveEvent getEvent(Long pickwaveId, long version) {
         PickwaveEvent e = (PickwaveEvent)getEventStore().getEvent(toEventStoreAggregateId(pickwaveId), version);
-        if (e != null)
-        { ((PickwaveEvent.SqlPickwaveEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PickwaveEvent.SqlPickwaveEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(pickwaveId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractPickwaveApplicationService implements PickwaveAppl
 
     public void initialize(PickwaveEvent.PickwaveStateCreated stateCreated) {
         Long aggregateId = ((PickwaveEvent.SqlPickwaveEvent)stateCreated).getPickwaveEventId().getPickwaveId();
-        PickwaveState state = new AbstractPickwaveState.SimplePickwaveState();
+        PickwaveState.SqlPickwaveState state = new AbstractPickwaveState.SimplePickwaveState();
         state.setPickwaveId(aggregateId);
 
         PickwaveAggregate aggregate = getPickwaveAggregate(state);

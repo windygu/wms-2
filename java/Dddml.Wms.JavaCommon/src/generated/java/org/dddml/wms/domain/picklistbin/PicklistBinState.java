@@ -14,67 +14,70 @@ public interface PicklistBinState
 
     String getPicklistBinId();
 
-    void setPicklistBinId(String picklistBinId);
-
     String getPicklistId();
-
-    void setPicklistId(String picklistId);
 
     Long getBinLocationNumber();
 
-    void setBinLocationNumber(Long binLocationNumber);
-
     String getPrimaryOrderId();
-
-    void setPrimaryOrderId(String primaryOrderId);
 
     String getPrimaryShipGroupSeqId();
 
-    void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<PicklistItemOrderShipGrpInvId, PicklistItemState> getPicklistItems();
 
+    interface MutablePicklistBinState extends PicklistBinState {
+        void setPicklistBinId(String picklistBinId);
 
-    void mutate(Event e);
+        void setPicklistId(String picklistId);
 
-    void when(PicklistBinEvent.PicklistBinStateCreated e);
+        void setBinLocationNumber(Long binLocationNumber);
 
-    void when(PicklistBinEvent.PicklistBinStateMergePatched e);
+        void setPrimaryOrderId(String primaryOrderId);
 
-    void when(PicklistBinEvent.PicklistBinStateDeleted e);
-    
+        void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(PicklistBinEvent.PicklistBinStateCreated e);
+
+        void when(PicklistBinEvent.PicklistBinStateMergePatched e);
+
+        void when(PicklistBinEvent.PicklistBinStateDeleted e);
+    }
+
+    interface SqlPicklistBinState extends MutablePicklistBinState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

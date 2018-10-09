@@ -40,13 +40,13 @@ public class HibernateOrderShipmentStateRepository implements OrderShipmentState
 
     @Transactional(readOnly = true)
     public OrderShipmentState get(OrderShipmentId id, boolean nullAllowed) {
-        OrderShipmentState state = (OrderShipmentState)getCurrentSession().get(AbstractOrderShipmentState.SimpleOrderShipmentState.class, id);
+        OrderShipmentState.SqlOrderShipmentState state = (OrderShipmentState.SqlOrderShipmentState)getCurrentSession().get(AbstractOrderShipmentState.SimpleOrderShipmentState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderShipmentState.SimpleOrderShipmentState();
             state.setOrderShipmentId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipmentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderShipmentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipmentState.SqlOrderShipmentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

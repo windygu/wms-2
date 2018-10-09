@@ -38,13 +38,13 @@ public class HibernateInventoryItemEntryStateDao implements InventoryItemEntrySt
     @Override
     public InventoryItemEntryState get(InventoryItemEntryId id, boolean nullAllowed)
     {
-        InventoryItemEntryState state = (InventoryItemEntryState) getCurrentSession().get(AbstractInventoryItemEntryState.SimpleInventoryItemEntryState.class, id);
+        InventoryItemEntryState.SqlInventoryItemEntryState state = (InventoryItemEntryState.SqlInventoryItemEntryState) getCurrentSession().get(AbstractInventoryItemEntryState.SimpleInventoryItemEntryState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryItemEntryState.SimpleInventoryItemEntryState();
             state.setInventoryItemEntryId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (InventoryItemEntryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemEntryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (InventoryItemEntryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemEntryState.SqlInventoryItemEntryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

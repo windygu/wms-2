@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inventoryitem.InventoryItemEvent.*;
 
-public abstract class AbstractInventoryItemState implements InventoryItemState, Saveable
+public abstract class AbstractInventoryItemState implements InventoryItemState.SqlInventoryItemState, Saveable
 {
 
     private InventoryItemId inventoryItemId;
@@ -228,7 +228,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
 
         for (InventoryItemEntryEvent.InventoryItemEntryStateCreated innerEvent : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryState innerState = this.getEntries().get(((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)innerEvent).getInventoryItemEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((InventoryItemEntryState.SqlInventoryItemEntryState)innerState).mutate(innerEvent);
         }
     }
 
@@ -297,7 +297,7 @@ public abstract class AbstractInventoryItemState implements InventoryItemState, 
 
         for (InventoryItemEntryEvent innerEvent : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryState innerState = this.getEntries().get(((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)innerEvent).getInventoryItemEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((InventoryItemEntryState.SqlInventoryItemEntryState)innerState).mutate(innerEvent);
         }
     }
 

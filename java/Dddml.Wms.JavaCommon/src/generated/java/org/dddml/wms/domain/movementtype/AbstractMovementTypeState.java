@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public abstract class AbstractMovementTypeState implements MovementTypeState
+public abstract class AbstractMovementTypeState implements MovementTypeState.SqlMovementTypeState
 {
 
     private String movementTypeId;

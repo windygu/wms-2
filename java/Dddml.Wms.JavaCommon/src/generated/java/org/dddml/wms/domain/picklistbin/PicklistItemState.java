@@ -12,67 +12,69 @@ public interface PicklistItemState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    PicklistBinPicklistItemId getPicklistBinPicklistItemId();
-
-    void setPicklistBinPicklistItemId(PicklistBinPicklistItemId picklistBinPicklistItemId);
-
     PicklistItemOrderShipGrpInvId getPicklistItemOrderShipGrpInvId();
-
-    void setPicklistItemOrderShipGrpInvId(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
 
     String getItemStatusId();
 
-    void setItemStatusId(String itemStatusId);
-
     java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
     String getPicklistBinId();
 
-    void setPicklistBinId(String picklistBinId);
+    interface MutablePicklistItemState extends PicklistItemState {
+        void setPicklistBinPicklistItemId(PicklistBinPicklistItemId picklistBinPicklistItemId);
+
+        void setPicklistItemOrderShipGrpInvId(PicklistItemOrderShipGrpInvId picklistItemOrderShipGrpInvId);
+
+        void setItemStatusId(String itemStatusId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setPicklistBinId(String picklistBinId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(PicklistItemEvent.PicklistItemStateCreated e);
 
+        void when(PicklistItemEvent.PicklistItemStateMergePatched e);
 
-    void mutate(Event e);
+        void when(PicklistItemEvent.PicklistItemStateRemoved e);
+    }
 
-    void when(PicklistItemEvent.PicklistItemStateCreated e);
+    interface SqlPicklistItemState extends MutablePicklistItemState {
+        PicklistBinPicklistItemId getPicklistBinPicklistItemId();
 
-    void when(PicklistItemEvent.PicklistItemStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(PicklistItemEvent.PicklistItemStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

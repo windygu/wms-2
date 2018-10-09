@@ -43,7 +43,7 @@ public class HibernateContactMechStateQueryRepository implements ContactMechStat
 
         ContactMechState state = (ContactMechState)getCurrentSession().get(AbstractContactMechState.SimpleContactMechState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ContactMechState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ContactMechState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ContactMechState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ContactMechState.SqlContactMechState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

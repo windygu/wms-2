@@ -14,89 +14,92 @@ public interface LocatorState
 
     String getLocatorId();
 
-    void setLocatorId(String locatorId);
-
     String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
 
     String getParentLocatorId();
 
-    void setParentLocatorId(String parentLocatorId);
-
     String getLocatorType();
-
-    void setLocatorType(String locatorType);
 
     String getPriorityNumber();
 
-    void setPriorityNumber(String priorityNumber);
-
     Boolean getIsDefault();
-
-    void setIsDefault(Boolean isDefault);
 
     String getX();
 
-    void setX(String x);
-
     String getY();
-
-    void setY(String y);
 
     String getZ();
 
-    void setZ(String z);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getLocatorTypeId();
 
-    void setLocatorTypeId(String locatorTypeId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableLocatorState extends LocatorState {
+        void setLocatorId(String locatorId);
+
+        void setWarehouseId(String warehouseId);
+
+        void setParentLocatorId(String parentLocatorId);
+
+        void setLocatorType(String locatorType);
+
+        void setPriorityNumber(String priorityNumber);
+
+        void setIsDefault(Boolean isDefault);
+
+        void setX(String x);
+
+        void setY(String y);
+
+        void setZ(String z);
+
+        void setDescription(String description);
+
+        void setLocatorTypeId(String locatorTypeId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(LocatorEvent.LocatorStateCreated e);
 
+        void when(LocatorEvent.LocatorStateMergePatched e);
 
-    void mutate(Event e);
+        void when(LocatorEvent.LocatorStateDeleted e);
+    }
 
-    void when(LocatorEvent.LocatorStateCreated e);
+    interface SqlLocatorState extends MutableLocatorState {
 
-    void when(LocatorEvent.LocatorStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(LocatorEvent.LocatorStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

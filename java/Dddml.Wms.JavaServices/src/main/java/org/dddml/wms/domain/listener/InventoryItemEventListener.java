@@ -101,14 +101,14 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
             return;
         }
         for (InventoryItemEntryEvent.InventoryItemEntryStateCreated iie : itemEntriesCreated) {
-            for (InventoryPostingRuleState pr : getPostingRules(iie.getInventoryItemEntryEventId().getInventoryItemId())) {
+            for (InventoryPostingRuleState pr : getPostingRules(inventoryItemEvent.getInventoryItemId())) {
                 BigDecimal outputQuantity = getOutputQuantity(pr, iie);
                 if (outputQuantity == null || outputQuantity.equals(BigDecimal.ZERO)) {
                     continue;
                 }
-                InventoryPRTriggeredId tid = getOrCreateInventoryPRTriggered(pr, iie);
+                InventoryPRTriggeredId tid = getOrCreateInventoryPRTriggered(inventoryItemEvent.getInventoryItemId(), pr, iie);
 
-                InventoryItemId outputItemId = getOutputInventoryItemId(pr, iie.getInventoryItemEntryEventId().getInventoryItemId());
+                InventoryItemId outputItemId = getOutputInventoryItemId(pr, inventoryItemEvent.getInventoryItemId());
                 //_log.Debug(outputItemId.ProductId + ", " + outputItemId.LocatorId + ", " + outputItemId.AttributeSetInstanceId);
                 createOrUpdateOutputAccount(pr.getOutputAccountName(), outputQuantity, tid, outputItemId);
             }
@@ -200,10 +200,10 @@ public class InventoryItemEventListener implements AggregateEventListener<Invent
 
     // ///////////////////////////////////
 
-    private InventoryPRTriggeredId getOrCreateInventoryPRTriggered(InventoryPostingRuleState pr, InventoryItemEntryEvent.InventoryItemEntryStateCreated iie) {
+    private InventoryPRTriggeredId getOrCreateInventoryPRTriggered(InventoryItemId inventoryItemId, InventoryPostingRuleState pr, InventoryItemEntryEvent.InventoryItemEntryStateCreated iie) {
         InventoryPRTriggeredCommand.CreateInventoryPRTriggered createTriggered = new AbstractInventoryPRTriggeredCommand.SimpleCreateInventoryPRTriggered();
-        InventoryItemEntryId sourceEntryId = new InventoryItemEntryId(iie.getInventoryItemEntryEventId().getInventoryItemId(),
-                iie.getInventoryItemEntryEventId().getEntrySeqId());
+        InventoryItemEntryId sourceEntryId = new InventoryItemEntryId(inventoryItemId,
+                iie.getEntrySeqId());
         String postingRuleId = pr.getInventoryPostingRuleId();
         InventoryPRTriggeredId tid = new InventoryPRTriggeredId(sourceEntryId, postingRuleId);
         createTriggered.setInventoryPRTriggeredId(tid);

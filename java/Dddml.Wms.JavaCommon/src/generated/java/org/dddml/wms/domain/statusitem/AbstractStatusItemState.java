@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.statusitem.StatusItemEvent.*;
 
-public abstract class AbstractStatusItemState implements StatusItemState
+public abstract class AbstractStatusItemState implements StatusItemState.SqlStatusItemState
 {
 
     private String statusId;

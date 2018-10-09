@@ -30,13 +30,13 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setDescription(c.getDescription());
-        s.setParentDocumentTypeId(c.getParentDocumentTypeId());
-        s.setActive(c.getActive());
-        s.setDeleted(false);
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setDescription(c.getDescription());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setParentDocumentTypeId(c.getParentDocumentTypeId());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setActive(c.getActive());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setDeleted(false);
+        ((DocumentTypeState.SqlDocumentTypeState)s).setCreatedBy(c.getRequesterId());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DocumentTypeState.SqlDocumentTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -47,28 +47,28 @@ public abstract class AbstractDocumentTypeApplicationService implements Document
         throwOnConcurrencyConflict(s, c);
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((DocumentTypeState.SqlDocumentTypeState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((DocumentTypeState.SqlDocumentTypeState)s).setDescription(c.getDescription());
         }
         if (c.getParentDocumentTypeId() == null) {
             if (c.getIsPropertyParentDocumentTypeIdRemoved() != null && c.getIsPropertyParentDocumentTypeIdRemoved()) {
-                s.setParentDocumentTypeId(null);
+                ((DocumentTypeState.SqlDocumentTypeState)s).setParentDocumentTypeId(null);
             }
         } else {
-            s.setParentDocumentTypeId(c.getParentDocumentTypeId());
+            ((DocumentTypeState.SqlDocumentTypeState)s).setParentDocumentTypeId(c.getParentDocumentTypeId());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((DocumentTypeState.SqlDocumentTypeState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((DocumentTypeState.SqlDocumentTypeState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setUpdatedBy(c.getRequesterId());
+        ((DocumentTypeState.SqlDocumentTypeState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DocumentTypeState.SqlDocumentTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

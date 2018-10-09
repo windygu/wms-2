@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractOrderShipmentAggregate extends AbstractAggregate implements OrderShipmentAggregate
 {
-    private OrderShipmentState state;
+    private OrderShipmentState.MutableOrderShipmentState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractOrderShipmentAggregate(OrderShipmentState state)
     {
-        this.state = state;
+        this.state = (OrderShipmentState.MutableOrderShipmentState)state;
     }
 
     public OrderShipmentState getState() {

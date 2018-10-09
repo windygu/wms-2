@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public abstract class AbstractShipmentTypeState implements ShipmentTypeState
+public abstract class AbstractShipmentTypeState implements ShipmentTypeState.SqlShipmentTypeState
 {
 
     private String shipmentTypeId;

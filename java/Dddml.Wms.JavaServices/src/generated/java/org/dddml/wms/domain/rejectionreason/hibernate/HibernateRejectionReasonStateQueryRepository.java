@@ -43,7 +43,7 @@ public class HibernateRejectionReasonStateQueryRepository implements RejectionRe
 
         RejectionReasonState state = (RejectionReasonState)getCurrentSession().get(AbstractRejectionReasonState.SimpleRejectionReasonState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (RejectionReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RejectionReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (RejectionReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RejectionReasonState.SqlRejectionReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

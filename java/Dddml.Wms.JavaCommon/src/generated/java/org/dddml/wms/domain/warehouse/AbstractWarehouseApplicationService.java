@@ -138,7 +138,7 @@ public abstract class AbstractWarehouseApplicationService implements WarehouseAp
 
     public void initialize(WarehouseEvent.WarehouseStateCreated stateCreated) {
         String aggregateId = ((WarehouseEvent.SqlWarehouseEvent)stateCreated).getWarehouseEventId().getWarehouseId();
-        WarehouseState state = new AbstractWarehouseState.SimpleWarehouseState();
+        WarehouseState.SqlWarehouseState state = new AbstractWarehouseState.SimpleWarehouseState();
         state.setWarehouseId(aggregateId);
 
         WarehouseAggregate aggregate = getWarehouseAggregate(state);

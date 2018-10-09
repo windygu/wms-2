@@ -40,13 +40,13 @@ public class HibernateContactMechStateRepository implements ContactMechStateRepo
 
     @Transactional(readOnly = true)
     public ContactMechState get(String id, boolean nullAllowed) {
-        ContactMechState state = (ContactMechState)getCurrentSession().get(AbstractContactMechState.SimpleContactMechState.class, id);
+        ContactMechState.SqlContactMechState state = (ContactMechState.SqlContactMechState)getCurrentSession().get(AbstractContactMechState.SimpleContactMechState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractContactMechState.SimpleContactMechState();
             state.setContactMechId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ContactMechState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ContactMechState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ContactMechState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ContactMechState.SqlContactMechState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

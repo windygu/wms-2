@@ -43,7 +43,7 @@ public class HibernateLotStateQueryRepository implements LotStateQueryRepository
 
         LotState state = (LotState)getCurrentSession().get(AbstractLotState.SimpleLotState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (LotState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LotState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (LotState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LotState.SqlLotState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

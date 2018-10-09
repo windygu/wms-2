@@ -88,10 +88,9 @@ public abstract class AbstractGoodIdentificationTypeApplicationService implement
 
     public GoodIdentificationTypeEvent getEvent(String goodIdentificationTypeId, long version) {
         GoodIdentificationTypeEvent e = (GoodIdentificationTypeEvent)getEventStore().getEvent(toEventStoreAggregateId(goodIdentificationTypeId), version);
-        if (e != null)
-        { ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(goodIdentificationTypeId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractGoodIdentificationTypeApplicationService implement
 
     public void initialize(GoodIdentificationTypeEvent.GoodIdentificationTypeStateCreated stateCreated) {
         String aggregateId = ((GoodIdentificationTypeEvent.SqlGoodIdentificationTypeEvent)stateCreated).getGoodIdentificationTypeEventId().getGoodIdentificationTypeId();
-        GoodIdentificationTypeState state = new AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState();
+        GoodIdentificationTypeState.SqlGoodIdentificationTypeState state = new AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState();
         state.setGoodIdentificationTypeId(aggregateId);
 
         GoodIdentificationTypeAggregate aggregate = getGoodIdentificationTypeAggregate(state);

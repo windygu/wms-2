@@ -92,10 +92,9 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
 
     public InOutNoticeEvent getEvent(String inOutNoticeId, long version) {
         InOutNoticeEvent e = (InOutNoticeEvent)getEventStore().getEvent(toEventStoreAggregateId(inOutNoticeId), version);
-        if (e != null)
-        { ((InOutNoticeEvent.SqlInOutNoticeEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((InOutNoticeEvent.SqlInOutNoticeEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(inOutNoticeId, 0);
         }
         return e;
@@ -143,7 +142,7 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
 
     public void initialize(InOutNoticeEvent.InOutNoticeStateCreated stateCreated) {
         String aggregateId = ((InOutNoticeEvent.SqlInOutNoticeEvent)stateCreated).getInOutNoticeEventId().getInOutNoticeId();
-        InOutNoticeState state = new AbstractInOutNoticeState.SimpleInOutNoticeState();
+        InOutNoticeState.SqlInOutNoticeState state = new AbstractInOutNoticeState.SimpleInOutNoticeState();
         state.setInOutNoticeId(aggregateId);
 
         InOutNoticeAggregate aggregate = getInOutNoticeAggregate(state);

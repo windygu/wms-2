@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.lot.LotEvent.*;
 
-public abstract class AbstractLotState implements LotState
+public abstract class AbstractLotState implements LotState.SqlLotState
 {
 
     private String lotId;

@@ -40,13 +40,13 @@ public class HibernatePartyRoleStateRepository implements PartyRoleStateReposito
 
     @Transactional(readOnly = true)
     public PartyRoleState get(PartyRoleId id, boolean nullAllowed) {
-        PartyRoleState state = (PartyRoleState)getCurrentSession().get(AbstractPartyRoleState.SimplePartyRoleState.class, id);
+        PartyRoleState.SqlPartyRoleState state = (PartyRoleState.SqlPartyRoleState)getCurrentSession().get(AbstractPartyRoleState.SimplePartyRoleState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPartyRoleState.SimplePartyRoleState();
             state.setPartyRoleId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PartyRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PartyRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PartyRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PartyRoleState.SqlPartyRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

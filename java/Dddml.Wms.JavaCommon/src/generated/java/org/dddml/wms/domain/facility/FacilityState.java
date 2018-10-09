@@ -14,117 +14,120 @@ public interface FacilityState
 
     String getFacilityId();
 
-    void setFacilityId(String facilityId);
-
     String getFacilityTypeId();
-
-    void setFacilityTypeId(String facilityTypeId);
 
     String getParentFacilityId();
 
-    void setParentFacilityId(String parentFacilityId);
-
     String getOwnerPartyId();
-
-    void setOwnerPartyId(String ownerPartyId);
 
     String getDefaultInventoryItemTypeId();
 
-    void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId);
-
     String getFacilityName();
-
-    void setFacilityName(String facilityName);
 
     String getPrimaryFacilityGroupId();
 
-    void setPrimaryFacilityGroupId(String primaryFacilityGroupId);
-
     Long getOldSquareFootage();
-
-    void setOldSquareFootage(Long oldSquareFootage);
 
     java.math.BigDecimal getFacilitySize();
 
-    void setFacilitySize(java.math.BigDecimal facilitySize);
-
     String getFacilitySizeUomId();
-
-    void setFacilitySizeUomId(String facilitySizeUomId);
 
     String getProductStoreId();
 
-    void setProductStoreId(String productStoreId);
-
     Long getDefaultDaysToShip();
-
-    void setDefaultDaysToShip(Long defaultDaysToShip);
 
     java.sql.Timestamp getOpenedDate();
 
-    void setOpenedDate(java.sql.Timestamp openedDate);
-
     java.sql.Timestamp getClosedDate();
-
-    void setClosedDate(java.sql.Timestamp closedDate);
 
     String getDescription();
 
-    void setDescription(String description);
-
     String getDefaultDimensionUomId();
-
-    void setDefaultDimensionUomId(String defaultDimensionUomId);
 
     String getDefaultWeightUomId();
 
-    void setDefaultWeightUomId(String defaultWeightUomId);
-
     String getGeoPointId();
-
-    void setGeoPointId(String geoPointId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableFacilityState extends FacilityState {
+        void setFacilityId(String facilityId);
+
+        void setFacilityTypeId(String facilityTypeId);
+
+        void setParentFacilityId(String parentFacilityId);
+
+        void setOwnerPartyId(String ownerPartyId);
+
+        void setDefaultInventoryItemTypeId(String defaultInventoryItemTypeId);
+
+        void setFacilityName(String facilityName);
+
+        void setPrimaryFacilityGroupId(String primaryFacilityGroupId);
+
+        void setOldSquareFootage(Long oldSquareFootage);
+
+        void setFacilitySize(java.math.BigDecimal facilitySize);
+
+        void setFacilitySizeUomId(String facilitySizeUomId);
+
+        void setProductStoreId(String productStoreId);
+
+        void setDefaultDaysToShip(Long defaultDaysToShip);
+
+        void setOpenedDate(java.sql.Timestamp openedDate);
+
+        void setClosedDate(java.sql.Timestamp closedDate);
+
+        void setDescription(String description);
+
+        void setDefaultDimensionUomId(String defaultDimensionUomId);
+
+        void setDefaultWeightUomId(String defaultWeightUomId);
+
+        void setGeoPointId(String geoPointId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(FacilityEvent.FacilityStateCreated e);
 
+        void when(FacilityEvent.FacilityStateMergePatched e);
 
-    void mutate(Event e);
+        void when(FacilityEvent.FacilityStateDeleted e);
+    }
 
-    void when(FacilityEvent.FacilityStateCreated e);
+    interface SqlFacilityState extends MutableFacilityState {
 
-    void when(FacilityEvent.FacilityStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(FacilityEvent.FacilityStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

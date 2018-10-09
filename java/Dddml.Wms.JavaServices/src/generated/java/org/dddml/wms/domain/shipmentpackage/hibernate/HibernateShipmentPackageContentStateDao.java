@@ -37,13 +37,13 @@ public class HibernateShipmentPackageContentStateDao implements ShipmentPackageC
     @Override
     public ShipmentPackageContentState get(ShipmentPackageContentId id, boolean nullAllowed)
     {
-        ShipmentPackageContentState state = (ShipmentPackageContentState) getCurrentSession().get(AbstractShipmentPackageContentState.SimpleShipmentPackageContentState.class, id);
+        ShipmentPackageContentState.SqlShipmentPackageContentState state = (ShipmentPackageContentState.SqlShipmentPackageContentState) getCurrentSession().get(AbstractShipmentPackageContentState.SimpleShipmentPackageContentState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentPackageContentState.SimpleShipmentPackageContentState();
             state.setShipmentPackageContentId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentPackageContentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageContentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentPackageContentState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageContentState.SqlShipmentPackageContentState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

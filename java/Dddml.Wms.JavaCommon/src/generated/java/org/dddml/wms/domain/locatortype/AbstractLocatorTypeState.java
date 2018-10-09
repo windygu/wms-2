@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.locatortype.LocatorTypeEvent.*;
 
-public abstract class AbstractLocatorTypeState implements LocatorTypeState
+public abstract class AbstractLocatorTypeState implements LocatorTypeState.SqlLocatorTypeState
 {
 
     private String locatorTypeId;

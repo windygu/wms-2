@@ -12,63 +12,65 @@ public interface GoodIdentificationState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ProductGoodIdentificationId getProductGoodIdentificationId();
-
-    void setProductGoodIdentificationId(ProductGoodIdentificationId productGoodIdentificationId);
-
     String getGoodIdentificationTypeId();
-
-    void setGoodIdentificationTypeId(String goodIdentificationTypeId);
 
     String getIdValue();
 
-    void setIdValue(String idValue);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getProductId();
 
-    void setProductId(String productId);
+    interface MutableGoodIdentificationState extends GoodIdentificationState {
+        void setProductGoodIdentificationId(ProductGoodIdentificationId productGoodIdentificationId);
+
+        void setGoodIdentificationTypeId(String goodIdentificationTypeId);
+
+        void setIdValue(String idValue);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setProductId(String productId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(GoodIdentificationEvent.GoodIdentificationStateCreated e);
 
+        void when(GoodIdentificationEvent.GoodIdentificationStateMergePatched e);
 
-    void mutate(Event e);
+        void when(GoodIdentificationEvent.GoodIdentificationStateRemoved e);
+    }
 
-    void when(GoodIdentificationEvent.GoodIdentificationStateCreated e);
+    interface SqlGoodIdentificationState extends MutableGoodIdentificationState {
+        ProductGoodIdentificationId getProductGoodIdentificationId();
 
-    void when(GoodIdentificationEvent.GoodIdentificationStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(GoodIdentificationEvent.GoodIdentificationStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

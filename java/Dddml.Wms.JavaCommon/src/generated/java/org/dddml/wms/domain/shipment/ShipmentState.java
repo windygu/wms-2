@@ -14,176 +14,87 @@ public interface ShipmentState
 
     String getShipmentId();
 
-    void setShipmentId(String shipmentId);
-
     String getShipmentTypeId();
-
-    void setShipmentTypeId(String shipmentTypeId);
 
     String getStatusId();
 
-    void setStatusId(String statusId);
-
     String getPrimaryOrderId();
-
-    void setPrimaryOrderId(String primaryOrderId);
 
     String getPrimaryReturnId();
 
-    void setPrimaryReturnId(String primaryReturnId);
-
     String getPrimaryShipGroupSeqId();
-
-    void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
 
     Boolean getOnlyOneOrder();
 
-    void setOnlyOneOrder(Boolean onlyOneOrder);
-
     Boolean getOnlyOneOrderShipGroup();
-
-    void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup);
 
     String getPicklistBinId();
 
-    void setPicklistBinId(String picklistBinId);
-
     String getBolNumber();
-
-    void setBolNumber(String bolNumber);
 
     String getSealNumber();
 
-    void setSealNumber(String sealNumber);
-
     String getVehicleId();
-
-    void setVehicleId(String vehicleId);
 
     String getExternalOrderNumber();
 
-    void setExternalOrderNumber(String externalOrderNumber);
-
     String getCarrier();
-
-    void setCarrier(String carrier);
 
     java.sql.Timestamp getDateShipped();
 
-    void setDateShipped(java.sql.Timestamp dateShipped);
-
     Boolean getIsCreatedFromPackingList();
-
-    void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList);
 
     Boolean getIsScheduleNeeded();
 
-    void setIsScheduleNeeded(Boolean isScheduleNeeded);
-
     java.sql.Timestamp getEstimatedReadyDate();
-
-    void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
 
     java.sql.Timestamp getEstimatedShipDate();
 
-    void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
-
     String getEstimatedShipWorkEffId();
-
-    void setEstimatedShipWorkEffId(String estimatedShipWorkEffId);
 
     java.sql.Timestamp getEstimatedArrivalDate();
 
-    void setEstimatedArrivalDate(java.sql.Timestamp estimatedArrivalDate);
-
     String getEstimatedArrivalWorkEffId();
-
-    void setEstimatedArrivalWorkEffId(String estimatedArrivalWorkEffId);
 
     java.sql.Timestamp getLatestCancelDate();
 
-    void setLatestCancelDate(java.sql.Timestamp latestCancelDate);
-
     java.math.BigDecimal getEstimatedShipCost();
-
-    void setEstimatedShipCost(java.math.BigDecimal estimatedShipCost);
 
     String getCurrencyUomId();
 
-    void setCurrencyUomId(String currencyUomId);
-
     String getHandlingInstructions();
-
-    void setHandlingInstructions(String handlingInstructions);
 
     String getOriginFacilityId();
 
-    void setOriginFacilityId(String originFacilityId);
-
     String getDestinationFacilityId();
-
-    void setDestinationFacilityId(String destinationFacilityId);
 
     String getOriginContactMechId();
 
-    void setOriginContactMechId(String originContactMechId);
-
     String getOriginTelecomNumberId();
-
-    void setOriginTelecomNumberId(String originTelecomNumberId);
 
     String getDestinationContactMechId();
 
-    void setDestinationContactMechId(String destinationContactMechId);
-
     String getDestinationTelecomNumberId();
-
-    void setDestinationTelecomNumberId(String destinationTelecomNumberId);
 
     String getPartyIdTo();
 
-    void setPartyIdTo(String partyIdTo);
-
     String getPartyIdFrom();
-
-    void setPartyIdFrom(String partyIdFrom);
 
     java.math.BigDecimal getAdditionalShippingCharge();
 
-    void setAdditionalShippingCharge(java.math.BigDecimal additionalShippingCharge);
-
     String getAddtlShippingChargeDesc();
-
-    void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, ShipmentImageState> getShipmentImages();
 
@@ -193,13 +104,105 @@ public interface ShipmentState
 
     EntityStateCollection<String, ItemIssuanceState> getItemIssuances();
 
+    interface MutableShipmentState extends ShipmentState {
+        void setShipmentId(String shipmentId);
 
-    void mutate(Event e);
+        void setShipmentTypeId(String shipmentTypeId);
 
-    void when(ShipmentEvent.ShipmentStateCreated e);
+        void setStatusId(String statusId);
 
-    void when(ShipmentEvent.ShipmentStateMergePatched e);
+        void setPrimaryOrderId(String primaryOrderId);
 
-    
+        void setPrimaryReturnId(String primaryReturnId);
+
+        void setPrimaryShipGroupSeqId(String primaryShipGroupSeqId);
+
+        void setOnlyOneOrder(Boolean onlyOneOrder);
+
+        void setOnlyOneOrderShipGroup(Boolean onlyOneOrderShipGroup);
+
+        void setPicklistBinId(String picklistBinId);
+
+        void setBolNumber(String bolNumber);
+
+        void setSealNumber(String sealNumber);
+
+        void setVehicleId(String vehicleId);
+
+        void setExternalOrderNumber(String externalOrderNumber);
+
+        void setCarrier(String carrier);
+
+        void setDateShipped(java.sql.Timestamp dateShipped);
+
+        void setIsCreatedFromPackingList(Boolean isCreatedFromPackingList);
+
+        void setIsScheduleNeeded(Boolean isScheduleNeeded);
+
+        void setEstimatedReadyDate(java.sql.Timestamp estimatedReadyDate);
+
+        void setEstimatedShipDate(java.sql.Timestamp estimatedShipDate);
+
+        void setEstimatedShipWorkEffId(String estimatedShipWorkEffId);
+
+        void setEstimatedArrivalDate(java.sql.Timestamp estimatedArrivalDate);
+
+        void setEstimatedArrivalWorkEffId(String estimatedArrivalWorkEffId);
+
+        void setLatestCancelDate(java.sql.Timestamp latestCancelDate);
+
+        void setEstimatedShipCost(java.math.BigDecimal estimatedShipCost);
+
+        void setCurrencyUomId(String currencyUomId);
+
+        void setHandlingInstructions(String handlingInstructions);
+
+        void setOriginFacilityId(String originFacilityId);
+
+        void setDestinationFacilityId(String destinationFacilityId);
+
+        void setOriginContactMechId(String originContactMechId);
+
+        void setOriginTelecomNumberId(String originTelecomNumberId);
+
+        void setDestinationContactMechId(String destinationContactMechId);
+
+        void setDestinationTelecomNumberId(String destinationTelecomNumberId);
+
+        void setPartyIdTo(String partyIdTo);
+
+        void setPartyIdFrom(String partyIdFrom);
+
+        void setAdditionalShippingCharge(java.math.BigDecimal additionalShippingCharge);
+
+        void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+
+        void mutate(Event e);
+
+        void when(ShipmentEvent.ShipmentStateCreated e);
+
+        void when(ShipmentEvent.ShipmentStateMergePatched e);
+
+    }
+
+    interface SqlShipmentState extends MutableShipmentState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

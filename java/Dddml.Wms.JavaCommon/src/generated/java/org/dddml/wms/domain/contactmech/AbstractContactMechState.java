@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.contactmech.ContactMechEvent.*;
 
-public abstract class AbstractContactMechState implements ContactMechState
+public abstract class AbstractContactMechState implements ContactMechState.SqlContactMechState
 {
 
     private String contactMechId;

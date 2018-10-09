@@ -17,50 +17,53 @@ public interface InventoryItemRequirementState
 
     InventoryItemId getInventoryItemRequirementId();
 
-    void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId);
-
     BigDecimal getQuantity();
-
-    void setQuantity(BigDecimal quantity);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
-
-    void setCommandId(String commandId);
 
     EntityStateCollection<Long, InventoryItemRequirementEntryState> getEntries();
 
+    interface MutableInventoryItemRequirementState extends InventoryItemRequirementState {
+        void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId);
 
-    void mutate(Event e);
+        void setQuantity(BigDecimal quantity);
 
-    void when(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated e);
+        void setVersion(Long version);
 
-    void when(InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched e);
+        void setCreatedBy(String createdBy);
 
-    
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setCommandId(String commandId);
+
+
+        void mutate(Event e);
+
+        void when(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated e);
+
+        void when(InventoryItemRequirementEvent.InventoryItemRequirementStateMergePatched e);
+
+    }
+
+    interface SqlInventoryItemRequirementState extends MutableInventoryItemRequirementState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

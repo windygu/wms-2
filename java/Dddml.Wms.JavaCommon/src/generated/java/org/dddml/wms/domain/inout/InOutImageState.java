@@ -12,63 +12,65 @@ public interface InOutImageState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    InOutImageId getInOutImageId();
-
-    void setInOutImageId(InOutImageId inOutImageId);
-
     String getSequenceId();
-
-    void setSequenceId(String sequenceId);
 
     String getUrl();
 
-    void setUrl(String url);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getInOutDocumentNumber();
 
-    void setInOutDocumentNumber(String inOutDocumentNumber);
+    interface MutableInOutImageState extends InOutImageState {
+        void setInOutImageId(InOutImageId inOutImageId);
+
+        void setSequenceId(String sequenceId);
+
+        void setUrl(String url);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setInOutDocumentNumber(String inOutDocumentNumber);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(InOutImageEvent.InOutImageStateCreated e);
 
+        void when(InOutImageEvent.InOutImageStateMergePatched e);
 
-    void mutate(Event e);
+        void when(InOutImageEvent.InOutImageStateRemoved e);
+    }
 
-    void when(InOutImageEvent.InOutImageStateCreated e);
+    interface SqlInOutImageState extends MutableInOutImageState {
+        InOutImageId getInOutImageId();
 
-    void when(InOutImageEvent.InOutImageStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(InOutImageEvent.InOutImageStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

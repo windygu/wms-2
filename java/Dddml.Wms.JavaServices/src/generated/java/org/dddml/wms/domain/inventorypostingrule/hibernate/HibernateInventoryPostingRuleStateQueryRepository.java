@@ -44,7 +44,7 @@ public class HibernateInventoryPostingRuleStateQueryRepository implements Invent
 
         InventoryPostingRuleState state = (InventoryPostingRuleState)getCurrentSession().get(AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InventoryPostingRuleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryPostingRuleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InventoryPostingRuleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryPostingRuleState.SqlInventoryPostingRuleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

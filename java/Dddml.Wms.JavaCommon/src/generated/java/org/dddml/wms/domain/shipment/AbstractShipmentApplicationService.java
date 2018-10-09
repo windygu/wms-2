@@ -202,7 +202,7 @@ public abstract class AbstractShipmentApplicationService implements ShipmentAppl
 
     public void initialize(ShipmentEvent.ShipmentStateCreated stateCreated) {
         String aggregateId = ((ShipmentEvent.SqlShipmentEvent)stateCreated).getShipmentEventId().getShipmentId();
-        ShipmentState state = new AbstractShipmentState.SimpleShipmentState();
+        ShipmentState.SqlShipmentState state = new AbstractShipmentState.SimpleShipmentState();
         state.setShipmentId(aggregateId);
 
         ShipmentAggregate aggregate = getShipmentAggregate(state);

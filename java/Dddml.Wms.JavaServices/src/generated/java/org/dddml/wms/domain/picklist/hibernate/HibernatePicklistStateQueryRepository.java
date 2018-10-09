@@ -44,7 +44,7 @@ public class HibernatePicklistStateQueryRepository implements PicklistStateQuery
 
         PicklistState state = (PicklistState)getCurrentSession().get(AbstractPicklistState.SimplePicklistState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PicklistState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PicklistState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistState.SqlPicklistState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

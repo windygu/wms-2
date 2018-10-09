@@ -30,13 +30,13 @@ public abstract class AbstractShipmentTypeApplicationService implements Shipment
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setParentTypeId(c.getParentTypeId());
-        s.setHasTable(c.getHasTable());
-        s.setDescription(c.getDescription());
-        s.setActive(c.getActive());
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setParentTypeId(c.getParentTypeId());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setHasTable(c.getHasTable());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setDescription(c.getDescription());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setActive(c.getActive());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setCreatedBy(c.getRequesterId());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -47,35 +47,35 @@ public abstract class AbstractShipmentTypeApplicationService implements Shipment
         throwOnConcurrencyConflict(s, c);
         if (c.getParentTypeId() == null) {
             if (c.getIsPropertyParentTypeIdRemoved() != null && c.getIsPropertyParentTypeIdRemoved()) {
-                s.setParentTypeId(null);
+                ((ShipmentTypeState.SqlShipmentTypeState)s).setParentTypeId(null);
             }
         } else {
-            s.setParentTypeId(c.getParentTypeId());
+            ((ShipmentTypeState.SqlShipmentTypeState)s).setParentTypeId(c.getParentTypeId());
         }
         if (c.getHasTable() == null) {
             if (c.getIsPropertyHasTableRemoved() != null && c.getIsPropertyHasTableRemoved()) {
-                s.setHasTable(null);
+                ((ShipmentTypeState.SqlShipmentTypeState)s).setHasTable(null);
             }
         } else {
-            s.setHasTable(c.getHasTable());
+            ((ShipmentTypeState.SqlShipmentTypeState)s).setHasTable(c.getHasTable());
         }
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((ShipmentTypeState.SqlShipmentTypeState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((ShipmentTypeState.SqlShipmentTypeState)s).setDescription(c.getDescription());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((ShipmentTypeState.SqlShipmentTypeState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((ShipmentTypeState.SqlShipmentTypeState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setUpdatedBy(c.getRequesterId());
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((ShipmentTypeState.SqlShipmentTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

@@ -43,7 +43,7 @@ public class HibernatePartyRoleStateQueryRepository implements PartyRoleStateQue
 
         PartyRoleState state = (PartyRoleState)getCurrentSession().get(AbstractPartyRoleState.SimplePartyRoleState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PartyRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PartyRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PartyRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PartyRoleState.SqlPartyRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

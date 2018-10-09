@@ -138,7 +138,7 @@ public abstract class AbstractShipmentMethodTypeApplicationService implements Sh
 
     public void initialize(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated stateCreated) {
         String aggregateId = ((ShipmentMethodTypeEvent.SqlShipmentMethodTypeEvent)stateCreated).getShipmentMethodTypeEventId().getShipmentMethodTypeId();
-        ShipmentMethodTypeState state = new AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState();
+        ShipmentMethodTypeState.SqlShipmentMethodTypeState state = new AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState();
         state.setShipmentMethodTypeId(aggregateId);
 
         ShipmentMethodTypeAggregate aggregate = getShipmentMethodTypeAggregate(state);

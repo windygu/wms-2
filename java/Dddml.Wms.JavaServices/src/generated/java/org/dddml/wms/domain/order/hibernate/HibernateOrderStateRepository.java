@@ -41,13 +41,13 @@ public class HibernateOrderStateRepository implements OrderStateRepository
 
     @Transactional(readOnly = true)
     public OrderState get(String id, boolean nullAllowed) {
-        OrderState state = (OrderState)getCurrentSession().get(AbstractOrderState.SimpleOrderState.class, id);
+        OrderState.SqlOrderState state = (OrderState.SqlOrderState)getCurrentSession().get(AbstractOrderState.SimpleOrderState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderState.SimpleOrderState();
             state.setOrderId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderState.SqlOrderState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

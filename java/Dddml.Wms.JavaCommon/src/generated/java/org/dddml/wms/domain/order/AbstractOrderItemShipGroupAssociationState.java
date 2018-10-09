@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.OrderItemShipGroupAssociationEvent.*;
 
-public abstract class AbstractOrderItemShipGroupAssociationState implements OrderItemShipGroupAssociationState
+public abstract class AbstractOrderItemShipGroupAssociationState implements OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState
 {
 
     private OrderItemShipGroupAssociationId orderItemShipGroupAssociationId = new OrderItemShipGroupAssociationId();

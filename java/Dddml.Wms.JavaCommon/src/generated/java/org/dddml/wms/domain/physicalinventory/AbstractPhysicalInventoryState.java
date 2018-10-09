@@ -8,7 +8,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.physicalinventory.PhysicalInventoryEvent.*;
 
-public abstract class AbstractPhysicalInventoryState implements PhysicalInventoryState, Saveable
+public abstract class AbstractPhysicalInventoryState implements PhysicalInventoryState.SqlPhysicalInventoryState, Saveable
 {
 
     private String documentNumber;
@@ -359,7 +359,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
         for (PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated innerEvent : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)innerEvent).getPhysicalInventoryLineEventId().getInventoryItemId());
-            innerState.mutate(innerEvent);
+            ((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)innerState).mutate(innerEvent);
         }
     }
 
@@ -538,7 +538,7 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
 
         for (PhysicalInventoryLineEvent innerEvent : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)innerEvent).getPhysicalInventoryLineEventId().getInventoryItemId());
-            innerState.mutate(innerEvent);
+            ((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)innerState).mutate(innerEvent);
             if (innerEvent instanceof PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved)
             {
                 //PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved removed = (PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved)innerEvent;

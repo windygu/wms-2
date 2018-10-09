@@ -14,53 +14,56 @@ public interface OrganizationStructureTypeState
 
     String getId();
 
-    void setId(String id);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableOrganizationStructureTypeState extends OrganizationStructureTypeState {
+        void setId(String id);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated e);
 
+        void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched e);
 
-    void mutate(Event e);
+        void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted e);
+    }
 
-    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateCreated e);
+    interface SqlOrganizationStructureTypeState extends MutableOrganizationStructureTypeState {
 
-    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(OrganizationStructureTypeEvent.OrganizationStructureTypeStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

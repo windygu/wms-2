@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inoutnotice.InOutNoticeEvent.*;
 
-public abstract class AbstractInOutNoticeState implements InOutNoticeState
+public abstract class AbstractInOutNoticeState implements InOutNoticeState.SqlInOutNoticeState
 {
 
     private String inOutNoticeId;

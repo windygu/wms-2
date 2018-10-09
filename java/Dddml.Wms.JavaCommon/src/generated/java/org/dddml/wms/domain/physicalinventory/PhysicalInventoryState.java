@@ -16,102 +16,105 @@ public interface PhysicalInventoryState
 
     String getDocumentNumber();
 
-    void setDocumentNumber(String documentNumber);
-
     String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
 
     String getWarehouseId();
 
-    void setWarehouseId(String warehouseId);
-
     String getLocatorIdPattern();
-
-    void setLocatorIdPattern(String locatorIdPattern);
 
     String getProductIdPattern();
 
-    void setProductIdPattern(String productIdPattern);
-
     Boolean getPosted();
-
-    void setPosted(Boolean posted);
 
     Boolean getProcessed();
 
-    void setProcessed(Boolean processed);
-
     String getProcessing();
-
-    void setProcessing(String processing);
 
     String getDocumentTypeId();
 
-    void setDocumentTypeId(String documentTypeId);
-
     Date getMovementDate();
-
-    void setMovementDate(Date movementDate);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
 
     BigDecimal getApprovalAmount();
 
-    void setApprovalAmount(BigDecimal approvalAmount);
-
     Boolean getIsQuantityUpdated();
-
-    void setIsQuantityUpdated(Boolean isQuantityUpdated);
 
     String getReversalDocumentNumber();
 
-    void setReversalDocumentNumber(String reversalDocumentNumber);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> getPhysicalInventoryLines();
 
+    interface MutablePhysicalInventoryState extends PhysicalInventoryState {
+        void setDocumentNumber(String documentNumber);
 
-    void mutate(Event e);
+        void setDocumentStatusId(String documentStatusId);
 
-    void when(PhysicalInventoryEvent.PhysicalInventoryStateCreated e);
+        void setWarehouseId(String warehouseId);
 
-    void when(PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e);
+        void setLocatorIdPattern(String locatorIdPattern);
 
-    
+        void setProductIdPattern(String productIdPattern);
+
+        void setPosted(Boolean posted);
+
+        void setProcessed(Boolean processed);
+
+        void setProcessing(String processing);
+
+        void setDocumentTypeId(String documentTypeId);
+
+        void setMovementDate(Date movementDate);
+
+        void setDescription(String description);
+
+        void setIsApproved(Boolean isApproved);
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        void setIsQuantityUpdated(Boolean isQuantityUpdated);
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+
+        void mutate(Event e);
+
+        void when(PhysicalInventoryEvent.PhysicalInventoryStateCreated e);
+
+        void when(PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e);
+
+    }
+
+    interface SqlPhysicalInventoryState extends MutablePhysicalInventoryState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

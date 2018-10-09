@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.product.GoodIdentificationEvent.*;
 
-public abstract class AbstractGoodIdentificationState implements GoodIdentificationState
+public abstract class AbstractGoodIdentificationState implements GoodIdentificationState.SqlGoodIdentificationState
 {
 
     private ProductGoodIdentificationId productGoodIdentificationId = new ProductGoodIdentificationId();

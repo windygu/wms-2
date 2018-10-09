@@ -59,7 +59,7 @@ public abstract class AbstractInOutImageStateCollection implements EntityStateCo
         } else {
             List<InOutImageState> ss = new ArrayList<InOutImageState>();
             for (InOutImageState s : loadedInOutImageStates.values()) {
-                if (!(removedInOutImageStates.containsKey(s.getInOutImageId()) && s.getDeleted())) {
+                if (!(removedInOutImageStates.containsKey(((InOutImageState.SqlInOutImageState)s).getInOutImageId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractInOutImageStateCollection implements EntityStateCo
 
     public AbstractInOutImageStateCollection(InOutState outerState) {
         this.inOutState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((InOutState.SqlInOutState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractInOutImageStateCollection implements EntityStateCo
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             InOutImageState state = new AbstractInOutImageState.SimpleInOutImageState(getForReapplying());
-            state.setInOutImageId(globalId);
+            ((InOutImageState.SqlInOutImageState)state).setInOutImageId(globalId);
             loadedInOutImageStates.put(globalId, state);
             return state;
         } else {
             InOutImageState state = getInOutImageStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((InOutImageState.SqlInOutImageState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractInOutImageState) {
+                    ((AbstractInOutImageState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedInOutImageStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractInOutImageStateCollection implements EntityStateCo
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedInOutImageStates.put(state.getInOutImageId(), state);
+        this.removedInOutImageStates.put(((InOutImageState.SqlInOutImageState)state).getInOutImageId(), state);
     }
 
     public void add(InOutImageState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedInOutImageStates.put(state.getInOutImageId(), state);
+        this.loadedInOutImageStates.put(((InOutImageState.SqlInOutImageState)state).getInOutImageId(), state);
     }
 
     //region Saveable Implements

@@ -14,96 +14,99 @@ public interface SupplierProductState
 
     SupplierProductId getSupplierProductId();
 
-    void setSupplierProductId(SupplierProductId supplierProductId);
-
     java.sql.Timestamp getAvailableThruDate();
-
-    void setAvailableThruDate(java.sql.Timestamp availableThruDate);
 
     String getSupplierPrefOrderId();
 
-    void setSupplierPrefOrderId(String supplierPrefOrderId);
-
     String getSupplierRatingTypeId();
-
-    void setSupplierRatingTypeId(String supplierRatingTypeId);
 
     java.math.BigDecimal getStandardLeadTimeDays();
 
-    void setStandardLeadTimeDays(java.math.BigDecimal standardLeadTimeDays);
-
     java.math.BigDecimal getManufacturingLeadTimeDays();
-
-    void setManufacturingLeadTimeDays(java.math.BigDecimal manufacturingLeadTimeDays);
 
     java.math.BigDecimal getDeliveryLeadTimeDays();
 
-    void setDeliveryLeadTimeDays(java.math.BigDecimal deliveryLeadTimeDays);
-
     String getQuantityUomId();
-
-    void setQuantityUomId(String quantityUomId);
 
     java.math.BigDecimal getLastPrice();
 
-    void setLastPrice(java.math.BigDecimal lastPrice);
-
     java.math.BigDecimal getShippingPrice();
-
-    void setShippingPrice(java.math.BigDecimal shippingPrice);
 
     String getExternalProductName();
 
-    void setExternalProductName(String externalProductName);
-
     String getExternalProductId();
-
-    void setExternalProductId(String externalProductId);
 
     Boolean getCanDropShip();
 
-    void setCanDropShip(Boolean canDropShip);
-
     String getComments();
-
-    void setComments(String comments);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
 
-    void setActive(Boolean active);
+    interface MutableSupplierProductState extends SupplierProductState {
+        void setSupplierProductId(SupplierProductId supplierProductId);
+
+        void setAvailableThruDate(java.sql.Timestamp availableThruDate);
+
+        void setSupplierPrefOrderId(String supplierPrefOrderId);
+
+        void setSupplierRatingTypeId(String supplierRatingTypeId);
+
+        void setStandardLeadTimeDays(java.math.BigDecimal standardLeadTimeDays);
+
+        void setManufacturingLeadTimeDays(java.math.BigDecimal manufacturingLeadTimeDays);
+
+        void setDeliveryLeadTimeDays(java.math.BigDecimal deliveryLeadTimeDays);
+
+        void setQuantityUomId(String quantityUomId);
+
+        void setLastPrice(java.math.BigDecimal lastPrice);
+
+        void setShippingPrice(java.math.BigDecimal shippingPrice);
+
+        void setExternalProductName(String externalProductName);
+
+        void setExternalProductId(String externalProductId);
+
+        void setCanDropShip(Boolean canDropShip);
+
+        void setComments(String comments);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(SupplierProductEvent.SupplierProductStateCreated e);
 
+        void when(SupplierProductEvent.SupplierProductStateMergePatched e);
 
-    void mutate(Event e);
+    }
 
-    void when(SupplierProductEvent.SupplierProductStateCreated e);
+    interface SqlSupplierProductState extends MutableSupplierProductState {
 
-    void when(SupplierProductEvent.SupplierProductStateMergePatched e);
+        boolean isStateUnsaved();
 
-    
+        boolean getForReapplying();
+    }
 }
 

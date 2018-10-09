@@ -88,10 +88,9 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
 
     public FacilityEvent getEvent(String facilityId, long version) {
         FacilityEvent e = (FacilityEvent)getEventStore().getEvent(toEventStoreAggregateId(facilityId), version);
-        if (e != null)
-        { ((FacilityEvent.SqlFacilityEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((FacilityEvent.SqlFacilityEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(facilityId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractFacilityApplicationService implements FacilityAppl
 
     public void initialize(FacilityEvent.FacilityStateCreated stateCreated) {
         String aggregateId = ((FacilityEvent.SqlFacilityEvent)stateCreated).getFacilityEventId().getFacilityId();
-        FacilityState state = new AbstractFacilityState.SimpleFacilityState();
+        FacilityState.SqlFacilityState state = new AbstractFacilityState.SimpleFacilityState();
         state.setFacilityId(aggregateId);
 
         FacilityAggregate aggregate = getFacilityAggregate(state);

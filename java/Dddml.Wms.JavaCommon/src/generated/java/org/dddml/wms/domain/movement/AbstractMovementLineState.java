@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.movement.MovementLineEvent.*;
 
-public abstract class AbstractMovementLineState implements MovementLineState
+public abstract class AbstractMovementLineState implements MovementLineState.SqlMovementLineState
 {
 
     private MovementLineId movementLineId = new MovementLineId();

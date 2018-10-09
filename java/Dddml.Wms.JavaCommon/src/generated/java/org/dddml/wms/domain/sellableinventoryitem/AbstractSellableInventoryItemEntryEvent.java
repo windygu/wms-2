@@ -11,9 +11,9 @@ import org.dddml.wms.domain.AbstractEvent;
 
 public abstract class AbstractSellableInventoryItemEntryEvent extends AbstractEvent implements SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent 
 {
-    private SellableInventoryItemEntryState state;
+    private SellableInventoryItemEntryState.MutableSellableInventoryItemEntryState state;
 
-    public SellableInventoryItemEntryState getSellableInventoryItemEntryState() {
+    public SellableInventoryItemEntryState.MutableSellableInventoryItemEntryState getSellableInventoryItemEntryState() {
         return state;
     }
 
@@ -81,7 +81,7 @@ public abstract class AbstractSellableInventoryItemEntryEvent extends AbstractEv
 
     protected AbstractSellableInventoryItemEntryEvent(SellableInventoryItemEntryState s) {
         if (s == null) { throw new IllegalArgumentException(); }
-        this.state = s;
+        this.state = (SellableInventoryItemEntryState.MutableSellableInventoryItemEntryState)s;
     }
 
 

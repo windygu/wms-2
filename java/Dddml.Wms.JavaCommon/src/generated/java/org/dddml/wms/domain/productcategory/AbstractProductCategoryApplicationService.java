@@ -88,10 +88,9 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
 
     public ProductCategoryEvent getEvent(String productCategoryId, long version) {
         ProductCategoryEvent e = (ProductCategoryEvent)getEventStore().getEvent(toEventStoreAggregateId(productCategoryId), version);
-        if (e != null)
-        { ((ProductCategoryEvent.SqlProductCategoryEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ProductCategoryEvent.SqlProductCategoryEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(productCategoryId, 0);
         }
         return e;
@@ -144,7 +143,7 @@ public abstract class AbstractProductCategoryApplicationService implements Produ
 
     public void initialize(ProductCategoryEvent.ProductCategoryStateCreated stateCreated) {
         String aggregateId = ((ProductCategoryEvent.SqlProductCategoryEvent)stateCreated).getProductCategoryEventId().getProductCategoryId();
-        ProductCategoryState state = new AbstractProductCategoryState.SimpleProductCategoryState();
+        ProductCategoryState.SqlProductCategoryState state = new AbstractProductCategoryState.SimpleProductCategoryState();
         state.setProductCategoryId(aggregateId);
 
         ProductCategoryAggregate aggregate = getProductCategoryAggregate(state);

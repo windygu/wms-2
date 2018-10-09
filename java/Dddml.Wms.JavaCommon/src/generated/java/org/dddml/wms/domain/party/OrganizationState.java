@@ -10,17 +10,21 @@ public interface OrganizationState extends PartyState
 {
     String getOrganizationName();
 
-    void setOrganizationName(String organizationName);
-
     Boolean getIsSummary();
 
-    void setIsSummary(Boolean isSummary);
+    interface MutableOrganizationState extends OrganizationState, PartyState.MutablePartyState {
+        void setOrganizationName(String organizationName);
 
-    void when(OrganizationEvent.OrganizationStateCreated e);
+        void setIsSummary(Boolean isSummary);
 
-    void when(OrganizationEvent.OrganizationStateMergePatched e);
+        void when(OrganizationEvent.OrganizationStateCreated e);
 
-    void when(OrganizationEvent.OrganizationStateDeleted e);
-    
+        void when(OrganizationEvent.OrganizationStateMergePatched e);
+
+        void when(OrganizationEvent.OrganizationStateDeleted e);
+    }
+
+    interface SqlOrganizationState extends MutableOrganizationState, PartyState.SqlPartyState {
+    }
 }
 

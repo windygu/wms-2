@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInOutAggregate extends AbstractAggregate implements InOutAggregate
 {
-    private InOutState state;
+    private InOutState.MutableInOutState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractInOutAggregate(InOutState state)
     {
-        this.state = state;
+        this.state = (InOutState.MutableInOutState)state;
     }
 
     public InOutState getState() {

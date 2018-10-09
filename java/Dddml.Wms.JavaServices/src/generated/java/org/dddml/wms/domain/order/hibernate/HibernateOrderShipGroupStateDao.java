@@ -37,13 +37,13 @@ public class HibernateOrderShipGroupStateDao implements OrderShipGroupStateDao
     @Override
     public OrderShipGroupState get(OrderShipGroupId id, boolean nullAllowed)
     {
-        OrderShipGroupState state = (OrderShipGroupState) getCurrentSession().get(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class, id);
+        OrderShipGroupState.SqlOrderShipGroupState state = (OrderShipGroupState.SqlOrderShipGroupState) getCurrentSession().get(AbstractOrderShipGroupState.SimpleOrderShipGroupState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderShipGroupState.SimpleOrderShipGroupState();
             state.setOrderShipGroupId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (OrderShipGroupState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderShipGroupState.SqlOrderShipGroupState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

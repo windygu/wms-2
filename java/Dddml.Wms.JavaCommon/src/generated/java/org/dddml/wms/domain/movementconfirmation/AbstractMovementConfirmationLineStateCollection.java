@@ -60,7 +60,7 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         } else {
             List<MovementConfirmationLineState> ss = new ArrayList<MovementConfirmationLineState>();
             for (MovementConfirmationLineState s : loadedMovementConfirmationLineStates.values()) {
-                if (!(removedMovementConfirmationLineStates.containsKey(s.getMovementConfirmationLineId()) && s.getDeleted())) {
+                if (!(removedMovementConfirmationLineStates.containsKey(((MovementConfirmationLineState.SqlMovementConfirmationLineState)s).getMovementConfirmationLineId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -70,7 +70,7 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
 
     public AbstractMovementConfirmationLineStateCollection(MovementConfirmationState outerState) {
         this.movementConfirmationState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((MovementConfirmationState.SqlMovementConfirmationState)outerState).getForReapplying());
     }
 
     @Override
@@ -101,14 +101,17 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             MovementConfirmationLineState state = new AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState(getForReapplying());
-            state.setMovementConfirmationLineId(globalId);
+            ((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).setMovementConfirmationLineId(globalId);
             loadedMovementConfirmationLineStates.put(globalId, state);
             return state;
         } else {
             MovementConfirmationLineState state = getMovementConfirmationLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractMovementConfirmationLineState) {
+                    ((AbstractMovementConfirmationLineState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedMovementConfirmationLineStates.put(globalId, state);
             }
@@ -121,14 +124,14 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
+        this.removedMovementConfirmationLineStates.put(((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).getMovementConfirmationLineId(), state);
     }
 
     public void add(MovementConfirmationLineState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedMovementConfirmationLineStates.put(state.getMovementConfirmationLineId(), state);
+        this.loadedMovementConfirmationLineStates.put(((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).getMovementConfirmationLineId(), state);
     }
 
     //region Saveable Implements

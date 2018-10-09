@@ -60,7 +60,7 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         } else {
             List<PicklistRoleState> ss = new ArrayList<PicklistRoleState>();
             for (PicklistRoleState s : loadedPicklistRoleStates.values()) {
-                if (!(removedPicklistRoleStates.containsKey(s.getPicklistRoleId()) && s.getDeleted())) {
+                if (!(removedPicklistRoleStates.containsKey(((PicklistRoleState.SqlPicklistRoleState)s).getPicklistRoleId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -70,7 +70,7 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
 
     public AbstractPicklistRoleStateCollection(PicklistState outerState) {
         this.picklistState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((PicklistState.SqlPicklistState)outerState).getForReapplying());
     }
 
     @Override
@@ -101,14 +101,17 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             PicklistRoleState state = new AbstractPicklistRoleState.SimplePicklistRoleState(getForReapplying());
-            state.setPicklistRoleId(globalId);
+            ((PicklistRoleState.SqlPicklistRoleState)state).setPicklistRoleId(globalId);
             loadedPicklistRoleStates.put(globalId, state);
             return state;
         } else {
             PicklistRoleState state = getPicklistRoleStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((PicklistRoleState.SqlPicklistRoleState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractPicklistRoleState) {
+                    ((AbstractPicklistRoleState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedPicklistRoleStates.put(globalId, state);
             }
@@ -121,14 +124,14 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedPicklistRoleStates.put(state.getPicklistRoleId(), state);
+        this.removedPicklistRoleStates.put(((PicklistRoleState.SqlPicklistRoleState)state).getPicklistRoleId(), state);
     }
 
     public void add(PicklistRoleState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedPicklistRoleStates.put(state.getPicklistRoleId(), state);
+        this.loadedPicklistRoleStates.put(((PicklistRoleState.SqlPicklistRoleState)state).getPicklistRoleId(), state);
     }
 
     //region Saveable Implements

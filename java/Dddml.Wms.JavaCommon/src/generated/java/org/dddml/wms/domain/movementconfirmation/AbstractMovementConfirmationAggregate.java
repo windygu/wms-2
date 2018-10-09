@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractMovementConfirmationAggregate extends AbstractAggregate implements MovementConfirmationAggregate
 {
-    private MovementConfirmationState state;
+    private MovementConfirmationState.MutableMovementConfirmationState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractMovementConfirmationAggregate(MovementConfirmationState state)
     {
-        this.state = state;
+        this.state = (MovementConfirmationState.MutableMovementConfirmationState)state;
     }
 
     public MovementConfirmationState getState() {

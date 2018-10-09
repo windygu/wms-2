@@ -146,7 +146,7 @@ public abstract class AbstractShipmentPackageApplicationService implements Shipm
 
     public void initialize(ShipmentPackageEvent.ShipmentPackageStateCreated stateCreated) {
         ShipmentPackageId aggregateId = ((ShipmentPackageEvent.SqlShipmentPackageEvent)stateCreated).getShipmentPackageEventId().getShipmentPackageId();
-        ShipmentPackageState state = new AbstractShipmentPackageState.SimpleShipmentPackageState();
+        ShipmentPackageState.SqlShipmentPackageState state = new AbstractShipmentPackageState.SimpleShipmentPackageState();
         state.setShipmentPackageId(aggregateId);
 
         ShipmentPackageAggregate aggregate = getShipmentPackageAggregate(state);

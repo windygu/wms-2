@@ -13,80 +13,82 @@ public interface InventoryItemEntryState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    InventoryItemEntryId getInventoryItemEntryId();
-
-    void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId);
-
     Long getEntrySeqId();
-
-    void setEntrySeqId(Long entrySeqId);
 
     BigDecimal getOnHandQuantity();
 
-    void setOnHandQuantity(BigDecimal onHandQuantity);
-
     BigDecimal getInTransitQuantity();
-
-    void setInTransitQuantity(BigDecimal inTransitQuantity);
 
     BigDecimal getReservedQuantity();
 
-    void setReservedQuantity(BigDecimal reservedQuantity);
-
     BigDecimal getOccupiedQuantity();
-
-    void setOccupiedQuantity(BigDecimal occupiedQuantity);
 
     BigDecimal getVirtualQuantity();
 
-    void setVirtualQuantity(BigDecimal virtualQuantity);
-
     InventoryItemSourceInfo getSource();
-
-    void setSource(InventoryItemSourceInfo source);
 
     java.sql.Timestamp getOccurredAt();
 
-    void setOccurredAt(java.sql.Timestamp occurredAt);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     InventoryItemId getInventoryItemId();
 
-    void setInventoryItemId(InventoryItemId inventoryItemId);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableInventoryItemEntryState extends InventoryItemEntryState {
+        void setInventoryItemEntryId(InventoryItemEntryId inventoryItemEntryId);
+
+        void setEntrySeqId(Long entrySeqId);
+
+        void setOnHandQuantity(BigDecimal onHandQuantity);
+
+        void setInTransitQuantity(BigDecimal inTransitQuantity);
+
+        void setReservedQuantity(BigDecimal reservedQuantity);
+
+        void setOccupiedQuantity(BigDecimal occupiedQuantity);
+
+        void setVirtualQuantity(BigDecimal virtualQuantity);
+
+        void setSource(InventoryItemSourceInfo source);
+
+        void setOccurredAt(java.sql.Timestamp occurredAt);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setInventoryItemId(InventoryItemId inventoryItemId);
+
+        void setCommandId(String commandId);
 
 
-    void mutate(Event e);
+        void mutate(Event e);
 
-    void when(InventoryItemEntryEvent.InventoryItemEntryStateCreated e);
+        void when(InventoryItemEntryEvent.InventoryItemEntryStateCreated e);
 
-    
+    }
+
+    interface SqlInventoryItemEntryState extends MutableInventoryItemEntryState {
+        InventoryItemEntryId getInventoryItemEntryId();
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

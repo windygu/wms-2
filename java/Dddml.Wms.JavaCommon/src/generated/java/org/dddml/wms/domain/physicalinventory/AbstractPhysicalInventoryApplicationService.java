@@ -94,10 +94,9 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
 
     public PhysicalInventoryEvent getEvent(String documentNumber, long version) {
         PhysicalInventoryEvent e = (PhysicalInventoryEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
-        if (e != null)
-        { ((PhysicalInventoryEvent.SqlPhysicalInventoryEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PhysicalInventoryEvent.SqlPhysicalInventoryEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(documentNumber, 0);
         }
         return e;
@@ -153,7 +152,7 @@ public abstract class AbstractPhysicalInventoryApplicationService implements Phy
 
     public void initialize(PhysicalInventoryEvent.PhysicalInventoryStateCreated stateCreated) {
         String aggregateId = ((PhysicalInventoryEvent.SqlPhysicalInventoryEvent)stateCreated).getPhysicalInventoryEventId().getDocumentNumber();
-        PhysicalInventoryState state = new AbstractPhysicalInventoryState.SimplePhysicalInventoryState();
+        PhysicalInventoryState.SqlPhysicalInventoryState state = new AbstractPhysicalInventoryState.SimplePhysicalInventoryState();
         state.setDocumentNumber(aggregateId);
 
         PhysicalInventoryAggregate aggregate = getPhysicalInventoryAggregate(state);

@@ -55,11 +55,11 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
             //if (!getStateCollectionReadOnly()) {
             //    throw new UnsupportedOperationException("State collection is NOT ReadOnly.");
             //}
-            return getShipmentReceiptImageStateDao().findByShipmentIdAndShipmentReceiptReceiptSeqId(shipmentReceiptState.getShipmentReceiptId().getShipmentId(), shipmentReceiptState.getShipmentReceiptId().getReceiptSeqId());
+            return getShipmentReceiptImageStateDao().findByShipmentIdAndShipmentReceiptReceiptSeqId(((ShipmentReceiptState.SqlShipmentReceiptState)shipmentReceiptState).getShipmentReceiptId().getShipmentId(), ((ShipmentReceiptState.SqlShipmentReceiptState)shipmentReceiptState).getShipmentReceiptId().getReceiptSeqId());
         } else {
             List<ShipmentReceiptImageState> ss = new ArrayList<ShipmentReceiptImageState>();
             for (ShipmentReceiptImageState s : loadedShipmentReceiptImageStates.values()) {
-                if (!(removedShipmentReceiptImageStates.containsKey(s.getShipmentReceiptImageId()) && s.getDeleted())) {
+                if (!(removedShipmentReceiptImageStates.containsKey(((ShipmentReceiptImageState.SqlShipmentReceiptImageState)s).getShipmentReceiptImageId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
 
     public AbstractShipmentReceiptImageStateCollection(ShipmentReceiptState outerState) {
         this.shipmentReceiptState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((ShipmentReceiptState.SqlShipmentReceiptState)outerState).getForReapplying());
     }
 
     @Override
@@ -86,7 +86,7 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
     }
 
     ShipmentReceiptImageState get(String sequenceId, boolean nullAllowed, boolean forCreation) {
-        ShipmentReceiptImageId globalId = new ShipmentReceiptImageId(shipmentReceiptState.getShipmentReceiptId().getShipmentId(), shipmentReceiptState.getShipmentReceiptId().getReceiptSeqId(), sequenceId);
+        ShipmentReceiptImageId globalId = new ShipmentReceiptImageId(((ShipmentReceiptState.SqlShipmentReceiptState)shipmentReceiptState).getShipmentReceiptId().getShipmentId(), ((ShipmentReceiptState.SqlShipmentReceiptState)shipmentReceiptState).getShipmentReceiptId().getReceiptSeqId(), sequenceId);
         if (loadedShipmentReceiptImageStates.containsKey(globalId)) {
             ShipmentReceiptImageState state = loadedShipmentReceiptImageStates.get(globalId);
             if (state instanceof AbstractShipmentReceiptImageState) {
@@ -100,14 +100,17 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             ShipmentReceiptImageState state = new AbstractShipmentReceiptImageState.SimpleShipmentReceiptImageState(getForReapplying());
-            state.setShipmentReceiptImageId(globalId);
+            ((ShipmentReceiptImageState.SqlShipmentReceiptImageState)state).setShipmentReceiptImageId(globalId);
             loadedShipmentReceiptImageStates.put(globalId, state);
             return state;
         } else {
             ShipmentReceiptImageState state = getShipmentReceiptImageStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((ShipmentReceiptImageState.SqlShipmentReceiptImageState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractShipmentReceiptImageState) {
+                    ((AbstractShipmentReceiptImageState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedShipmentReceiptImageStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedShipmentReceiptImageStates.put(state.getShipmentReceiptImageId(), state);
+        this.removedShipmentReceiptImageStates.put(((ShipmentReceiptImageState.SqlShipmentReceiptImageState)state).getShipmentReceiptImageId(), state);
     }
 
     public void add(ShipmentReceiptImageState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedShipmentReceiptImageStates.put(state.getShipmentReceiptImageId(), state);
+        this.loadedShipmentReceiptImageStates.put(((ShipmentReceiptImageState.SqlShipmentReceiptImageState)state).getShipmentReceiptImageId(), state);
     }
 
     //region Saveable Implements

@@ -138,7 +138,7 @@ public abstract class AbstractUomConversionApplicationService implements UomConv
 
     public void initialize(UomConversionEvent.UomConversionStateCreated stateCreated) {
         UomConversionId aggregateId = ((UomConversionEvent.SqlUomConversionEvent)stateCreated).getUomConversionEventId().getUomConversionId();
-        UomConversionState state = new AbstractUomConversionState.SimpleUomConversionState();
+        UomConversionState.SqlUomConversionState state = new AbstractUomConversionState.SimpleUomConversionState();
         state.setUomConversionId(aggregateId);
 
         UomConversionAggregate aggregate = getUomConversionAggregate(state);

@@ -40,13 +40,13 @@ public class HibernateRejectionReasonStateRepository implements RejectionReasonS
 
     @Transactional(readOnly = true)
     public RejectionReasonState get(String id, boolean nullAllowed) {
-        RejectionReasonState state = (RejectionReasonState)getCurrentSession().get(AbstractRejectionReasonState.SimpleRejectionReasonState.class, id);
+        RejectionReasonState.SqlRejectionReasonState state = (RejectionReasonState.SqlRejectionReasonState)getCurrentSession().get(AbstractRejectionReasonState.SimpleRejectionReasonState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractRejectionReasonState.SimpleRejectionReasonState();
             state.setRejectionReasonId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (RejectionReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RejectionReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (RejectionReasonState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RejectionReasonState.SqlRejectionReasonState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

@@ -12,71 +12,73 @@ public interface AttributeValueState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    AttributeValueId getAttributeValueId();
-
-    void setAttributeValueId(AttributeValueId attributeValueId);
-
     String getValue();
-
-    void setValue(String value);
 
     String getAttributeValueName();
 
-    void setAttributeValueName(String attributeValueName);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getReferenceId();
 
-    void setReferenceId(String referenceId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getAttributeId();
 
-    void setAttributeId(String attributeId);
+    interface MutableAttributeValueState extends AttributeValueState {
+        void setAttributeValueId(AttributeValueId attributeValueId);
+
+        void setValue(String value);
+
+        void setAttributeValueName(String attributeValueName);
+
+        void setDescription(String description);
+
+        void setReferenceId(String referenceId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setAttributeId(String attributeId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(AttributeValueEvent.AttributeValueStateCreated e);
 
+        void when(AttributeValueEvent.AttributeValueStateMergePatched e);
 
-    void mutate(Event e);
+        void when(AttributeValueEvent.AttributeValueStateRemoved e);
+    }
 
-    void when(AttributeValueEvent.AttributeValueStateCreated e);
+    interface SqlAttributeValueState extends MutableAttributeValueState {
+        AttributeValueId getAttributeValueId();
 
-    void when(AttributeValueEvent.AttributeValueStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(AttributeValueEvent.AttributeValueStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

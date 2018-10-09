@@ -13,53 +13,56 @@ public interface DamageHandlingMethodState
 
     String getDamageHandlingMethodId();
 
-    void setDamageHandlingMethodId(String damageHandlingMethodId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getSequenceId();
 
-    void setSequenceId(String sequenceId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableDamageHandlingMethodState extends DamageHandlingMethodState {
+        void setDamageHandlingMethodId(String damageHandlingMethodId);
 
-    
+        void setDescription(String description);
+
+        void setSequenceId(String sequenceId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setCommandId(String commandId);
+
+    }
+
+    interface SqlDamageHandlingMethodState extends MutableDamageHandlingMethodState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

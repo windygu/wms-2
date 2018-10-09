@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractStatusItemAggregate extends AbstractAggregate implements StatusItemAggregate
 {
-    private StatusItemState state;
+    private StatusItemState.MutableStatusItemState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractStatusItemAggregate(StatusItemState state)
     {
-        this.state = state;
+        this.state = (StatusItemState.MutableStatusItemState)state;
     }
 
     public StatusItemState getState() {

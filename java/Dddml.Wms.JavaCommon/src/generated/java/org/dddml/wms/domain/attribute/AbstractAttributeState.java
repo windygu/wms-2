@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attribute.AttributeEvent.*;
 
-public abstract class AbstractAttributeState implements AttributeState, Saveable
+public abstract class AbstractAttributeState implements AttributeState.SqlAttributeState, Saveable
 {
 
     private String attributeId;
@@ -321,11 +321,11 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
         for (AttributeValueEvent.AttributeValueStateCreated innerEvent : e.getAttributeValueEvents()) {
             AttributeValueState innerState = this.getAttributeValues().get(((AttributeValueEvent.SqlAttributeValueEvent)innerEvent).getAttributeValueEventId().getValue());
-            innerState.mutate(innerEvent);
+            ((AttributeValueState.SqlAttributeValueState)innerState).mutate(innerEvent);
         }
         for (AttributeAliasEvent.AttributeAliasStateCreated innerEvent : e.getAttributeAliasEvents()) {
             AttributeAliasState innerState = this.getAliases().get(((AttributeAliasEvent.SqlAttributeAliasEvent)innerEvent).getAttributeAliasEventId().getCode());
-            innerState.mutate(innerEvent);
+            ((AttributeAliasState.SqlAttributeAliasState)innerState).mutate(innerEvent);
         }
     }
 
@@ -449,7 +449,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
 
         for (AttributeValueEvent innerEvent : e.getAttributeValueEvents()) {
             AttributeValueState innerState = this.getAttributeValues().get(((AttributeValueEvent.SqlAttributeValueEvent)innerEvent).getAttributeValueEventId().getValue());
-            innerState.mutate(innerEvent);
+            ((AttributeValueState.SqlAttributeValueState)innerState).mutate(innerEvent);
             if (innerEvent instanceof AttributeValueEvent.AttributeValueStateRemoved)
             {
                 //AttributeValueEvent.AttributeValueStateRemoved removed = (AttributeValueEvent.AttributeValueStateRemoved)innerEvent;
@@ -458,7 +458,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
         }
         for (AttributeAliasEvent innerEvent : e.getAttributeAliasEvents()) {
             AttributeAliasState innerState = this.getAliases().get(((AttributeAliasEvent.SqlAttributeAliasEvent)innerEvent).getAttributeAliasEventId().getCode());
-            innerState.mutate(innerEvent);
+            ((AttributeAliasState.SqlAttributeAliasState)innerState).mutate(innerEvent);
             if (innerEvent instanceof AttributeAliasEvent.AttributeAliasStateRemoved)
             {
                 //AttributeAliasEvent.AttributeAliasStateRemoved removed = (AttributeAliasEvent.AttributeAliasStateRemoved)innerEvent;
@@ -482,7 +482,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             AttributeValueEvent.AttributeValueStateRemoved innerE = e.newAttributeValueStateRemoved(innerState.getValue());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((AttributeValueState.MutableAttributeValueState)innerState).when(innerE);
             //e.addAttributeValueEvent(innerE);
         }
         for (AttributeAliasState innerState : this.getAliases())
@@ -492,7 +492,7 @@ public abstract class AbstractAttributeState implements AttributeState, Saveable
             AttributeAliasEvent.AttributeAliasStateRemoved innerE = e.newAttributeAliasStateRemoved(innerState.getCode());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((AttributeAliasState.MutableAttributeAliasState)innerState).when(innerE);
             //e.addAttributeAliasEvent(innerE);
         }
     }

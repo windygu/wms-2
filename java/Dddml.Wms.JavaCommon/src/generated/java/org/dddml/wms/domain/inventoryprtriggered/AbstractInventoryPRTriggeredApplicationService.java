@@ -109,7 +109,7 @@ public abstract class AbstractInventoryPRTriggeredApplicationService implements 
 
     public void initialize(InventoryPRTriggeredEvent.InventoryPRTriggeredStateCreated stateCreated) {
         InventoryPRTriggeredId aggregateId = ((InventoryPRTriggeredEvent.SqlInventoryPRTriggeredEvent)stateCreated).getInventoryPRTriggeredEventId().getInventoryPRTriggeredId();
-        InventoryPRTriggeredState state = new AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState();
+        InventoryPRTriggeredState.SqlInventoryPRTriggeredState state = new AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState();
         state.setInventoryPRTriggeredId(aggregateId);
 
         InventoryPRTriggeredAggregate aggregate = getInventoryPRTriggeredAggregate(state);

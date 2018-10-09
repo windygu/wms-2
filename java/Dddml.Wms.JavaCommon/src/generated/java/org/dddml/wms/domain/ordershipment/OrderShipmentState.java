@@ -14,48 +14,51 @@ public interface OrderShipmentState
 
     OrderShipmentId getOrderShipmentId();
 
-    void setOrderShipmentId(OrderShipmentId orderShipmentId);
-
     java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
 
-    void setActive(Boolean active);
+    interface MutableOrderShipmentState extends OrderShipmentState {
+        void setOrderShipmentId(OrderShipmentId orderShipmentId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrderShipmentEvent.OrderShipmentStateCreated e);
 
+        void when(OrderShipmentEvent.OrderShipmentStateMergePatched e);
 
-    void mutate(Event e);
+    }
 
-    void when(OrderShipmentEvent.OrderShipmentStateCreated e);
+    interface SqlOrderShipmentState extends MutableOrderShipmentState {
 
-    void when(OrderShipmentEvent.OrderShipmentStateMergePatched e);
+        boolean isStateUnsaved();
 
-    
+        boolean getForReapplying();
+    }
 }
 

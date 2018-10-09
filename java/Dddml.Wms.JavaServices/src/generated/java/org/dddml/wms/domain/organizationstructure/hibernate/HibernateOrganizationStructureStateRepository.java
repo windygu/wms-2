@@ -40,13 +40,13 @@ public class HibernateOrganizationStructureStateRepository implements Organizati
 
     @Transactional(readOnly = true)
     public OrganizationStructureState get(OrganizationStructureId id, boolean nullAllowed) {
-        OrganizationStructureState state = (OrganizationStructureState)getCurrentSession().get(AbstractOrganizationStructureState.SimpleOrganizationStructureState.class, id);
+        OrganizationStructureState.SqlOrganizationStructureState state = (OrganizationStructureState.SqlOrganizationStructureState)getCurrentSession().get(AbstractOrganizationStructureState.SimpleOrganizationStructureState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrganizationStructureState.SimpleOrganizationStructureState();
             state.setId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrganizationStructureState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrganizationStructureState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrganizationStructureState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrganizationStructureState.SqlOrganizationStructureState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

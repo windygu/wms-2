@@ -15,62 +15,65 @@ public interface InventoryItemState
 
     InventoryItemId getInventoryItemId();
 
-    void setInventoryItemId(InventoryItemId inventoryItemId);
-
     BigDecimal getOnHandQuantity();
-
-    void setOnHandQuantity(BigDecimal onHandQuantity);
 
     BigDecimal getInTransitQuantity();
 
-    void setInTransitQuantity(BigDecimal inTransitQuantity);
-
     BigDecimal getReservedQuantity();
-
-    void setReservedQuantity(BigDecimal reservedQuantity);
 
     BigDecimal getOccupiedQuantity();
 
-    void setOccupiedQuantity(BigDecimal occupiedQuantity);
-
     BigDecimal getVirtualQuantity();
-
-    void setVirtualQuantity(BigDecimal virtualQuantity);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     EntityStateCollection<Long, InventoryItemEntryState> getEntries();
 
+    interface MutableInventoryItemState extends InventoryItemState {
+        void setInventoryItemId(InventoryItemId inventoryItemId);
 
-    void mutate(Event e);
+        void setOnHandQuantity(BigDecimal onHandQuantity);
 
-    void when(InventoryItemEvent.InventoryItemStateCreated e);
+        void setInTransitQuantity(BigDecimal inTransitQuantity);
 
-    void when(InventoryItemEvent.InventoryItemStateMergePatched e);
+        void setReservedQuantity(BigDecimal reservedQuantity);
 
-    
+        void setOccupiedQuantity(BigDecimal occupiedQuantity);
+
+        void setVirtualQuantity(BigDecimal virtualQuantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+
+        void mutate(Event e);
+
+        void when(InventoryItemEvent.InventoryItemStateCreated e);
+
+        void when(InventoryItemEvent.InventoryItemStateMergePatched e);
+
+    }
+
+    interface SqlInventoryItemState extends MutableInventoryItemState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

@@ -68,7 +68,7 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
 
     public AbstractInventoryItemEntryStateCollection(InventoryItemState outerState) {
         this.inventoryItemState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((InventoryItemState.SqlInventoryItemState)outerState).getForReapplying());
     }
 
     @Override
@@ -99,14 +99,17 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             InventoryItemEntryState state = new AbstractInventoryItemEntryState.SimpleInventoryItemEntryState(getForReapplying());
-            state.setInventoryItemEntryId(globalId);
+            ((InventoryItemEntryState.SqlInventoryItemEntryState)state).setInventoryItemEntryId(globalId);
             loadedInventoryItemEntryStates.put(globalId, state);
             return state;
         } else {
             InventoryItemEntryState state = getInventoryItemEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((InventoryItemEntryState.SqlInventoryItemEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractInventoryItemEntryState) {
+                    ((AbstractInventoryItemEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedInventoryItemEntryStates.put(globalId, state);
             }
@@ -119,14 +122,14 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedInventoryItemEntryStates.put(state.getInventoryItemEntryId(), state);
+        this.removedInventoryItemEntryStates.put(((InventoryItemEntryState.SqlInventoryItemEntryState)state).getInventoryItemEntryId(), state);
     }
 
     public void add(InventoryItemEntryState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedInventoryItemEntryStates.put(state.getInventoryItemEntryId(), state);
+        this.loadedInventoryItemEntryStates.put(((InventoryItemEntryState.SqlInventoryItemEntryState)state).getInventoryItemEntryId(), state);
     }
 
     //region Saveable Implements

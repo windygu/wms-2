@@ -12,117 +12,119 @@ public interface OrderShipGroupState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    OrderShipGroupId getOrderShipGroupId();
-
-    void setOrderShipGroupId(OrderShipGroupId orderShipGroupId);
-
     String getShipGroupSeqId();
-
-    void setShipGroupSeqId(String shipGroupSeqId);
 
     String getShipmentMethodTypeId();
 
-    void setShipmentMethodTypeId(String shipmentMethodTypeId);
-
     String getSupplierPartyId();
-
-    void setSupplierPartyId(String supplierPartyId);
 
     String getVendorPartyId();
 
-    void setVendorPartyId(String vendorPartyId);
-
     String getCarrierPartyId();
-
-    void setCarrierPartyId(String carrierPartyId);
 
     String getCarrierRoleTypeId();
 
-    void setCarrierRoleTypeId(String carrierRoleTypeId);
-
     String getFacilityId();
-
-    void setFacilityId(String facilityId);
 
     String getContactMechId();
 
-    void setContactMechId(String contactMechId);
-
     String getTelecomContactMechId();
-
-    void setTelecomContactMechId(String telecomContactMechId);
 
     String getMaySplit();
 
-    void setMaySplit(String maySplit);
-
     String getGiftMessage();
-
-    void setGiftMessage(String giftMessage);
 
     String getIsGift();
 
-    void setIsGift(String isGift);
-
     java.sql.Timestamp getShipAfterDate();
-
-    void setShipAfterDate(java.sql.Timestamp shipAfterDate);
 
     java.sql.Timestamp getShipByDate();
 
-    void setShipByDate(java.sql.Timestamp shipByDate);
-
     String getOrderShipGroupStatusId();
-
-    void setOrderShipGroupStatusId(String orderShipGroupStatusId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
     String getOrderId();
-
-    void setOrderId(String orderId);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, OrderItemShipGroupAssociationState> getOrderItemShipGroupAssociations();
 
+    interface MutableOrderShipGroupState extends OrderShipGroupState {
+        void setOrderShipGroupId(OrderShipGroupId orderShipGroupId);
 
-    void mutate(Event e);
+        void setShipGroupSeqId(String shipGroupSeqId);
 
-    void when(OrderShipGroupEvent.OrderShipGroupStateCreated e);
+        void setShipmentMethodTypeId(String shipmentMethodTypeId);
 
-    void when(OrderShipGroupEvent.OrderShipGroupStateMergePatched e);
+        void setSupplierPartyId(String supplierPartyId);
 
-    void when(OrderShipGroupEvent.OrderShipGroupStateRemoved e);
-    
+        void setVendorPartyId(String vendorPartyId);
+
+        void setCarrierPartyId(String carrierPartyId);
+
+        void setCarrierRoleTypeId(String carrierRoleTypeId);
+
+        void setFacilityId(String facilityId);
+
+        void setContactMechId(String contactMechId);
+
+        void setTelecomContactMechId(String telecomContactMechId);
+
+        void setMaySplit(String maySplit);
+
+        void setGiftMessage(String giftMessage);
+
+        void setIsGift(String isGift);
+
+        void setShipAfterDate(java.sql.Timestamp shipAfterDate);
+
+        void setShipByDate(java.sql.Timestamp shipByDate);
+
+        void setOrderShipGroupStatusId(String orderShipGroupStatusId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setOrderId(String orderId);
+
+
+        void mutate(Event e);
+
+        void when(OrderShipGroupEvent.OrderShipGroupStateCreated e);
+
+        void when(OrderShipGroupEvent.OrderShipGroupStateMergePatched e);
+
+        void when(OrderShipGroupEvent.OrderShipGroupStateRemoved e);
+    }
+
+    interface SqlOrderShipGroupState extends MutableOrderShipGroupState {
+        OrderShipGroupId getOrderShipGroupId();
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

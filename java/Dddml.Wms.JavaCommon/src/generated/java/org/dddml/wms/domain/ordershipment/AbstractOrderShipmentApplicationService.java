@@ -84,10 +84,9 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
 
     public OrderShipmentEvent getEvent(OrderShipmentId orderShipmentId, long version) {
         OrderShipmentEvent e = (OrderShipmentEvent)getEventStore().getEvent(toEventStoreAggregateId(orderShipmentId), version);
-        if (e != null)
-        { ((OrderShipmentEvent.SqlOrderShipmentEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((OrderShipmentEvent.SqlOrderShipmentEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(orderShipmentId, 0);
         }
         return e;
@@ -135,7 +134,7 @@ public abstract class AbstractOrderShipmentApplicationService implements OrderSh
 
     public void initialize(OrderShipmentEvent.OrderShipmentStateCreated stateCreated) {
         OrderShipmentId aggregateId = ((OrderShipmentEvent.SqlOrderShipmentEvent)stateCreated).getOrderShipmentEventId().getOrderShipmentId();
-        OrderShipmentState state = new AbstractOrderShipmentState.SimpleOrderShipmentState();
+        OrderShipmentState.SqlOrderShipmentState state = new AbstractOrderShipmentState.SimpleOrderShipmentState();
         state.setOrderShipmentId(aggregateId);
 
         OrderShipmentAggregate aggregate = getOrderShipmentAggregate(state);

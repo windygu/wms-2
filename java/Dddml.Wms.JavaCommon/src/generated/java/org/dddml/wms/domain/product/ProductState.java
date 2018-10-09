@@ -14,310 +14,313 @@ public interface ProductState
 
     String getProductId();
 
-    void setProductId(String productId);
-
     String getProductTypeId();
-
-    void setProductTypeId(String productTypeId);
 
     String getPrimaryProductCategoryId();
 
-    void setPrimaryProductCategoryId(String primaryProductCategoryId);
-
     String getManufacturerPartyId();
-
-    void setManufacturerPartyId(String manufacturerPartyId);
 
     String getFacilityId();
 
-    void setFacilityId(String facilityId);
-
     java.sql.Timestamp getIntroductionDate();
-
-    void setIntroductionDate(java.sql.Timestamp introductionDate);
 
     java.sql.Timestamp getReleaseDate();
 
-    void setReleaseDate(java.sql.Timestamp releaseDate);
-
     java.sql.Timestamp getSupportDiscontinuationDate();
-
-    void setSupportDiscontinuationDate(java.sql.Timestamp supportDiscontinuationDate);
 
     java.sql.Timestamp getSalesDiscontinuationDate();
 
-    void setSalesDiscontinuationDate(java.sql.Timestamp salesDiscontinuationDate);
-
     String getSalesDiscWhenNotAvail();
-
-    void setSalesDiscWhenNotAvail(String salesDiscWhenNotAvail);
 
     String getInternalName();
 
-    void setInternalName(String internalName);
-
     String getBrandName();
-
-    void setBrandName(String brandName);
 
     String getComments();
 
-    void setComments(String comments);
-
     String getProductName();
-
-    void setProductName(String productName);
 
     String getDescription();
 
-    void setDescription(String description);
-
     String getPriceDetailText();
-
-    void setPriceDetailText(String priceDetailText);
 
     String getSmallImageUrl();
 
-    void setSmallImageUrl(String smallImageUrl);
-
     String getMediumImageUrl();
-
-    void setMediumImageUrl(String mediumImageUrl);
 
     String getLargeImageUrl();
 
-    void setLargeImageUrl(String largeImageUrl);
-
     String getDetailImageUrl();
-
-    void setDetailImageUrl(String detailImageUrl);
 
     String getOriginalImageUrl();
 
-    void setOriginalImageUrl(String originalImageUrl);
-
     String getDetailScreen();
-
-    void setDetailScreen(String detailScreen);
 
     String getInventoryMessage();
 
-    void setInventoryMessage(String inventoryMessage);
-
     String getInventoryItemTypeId();
-
-    void setInventoryItemTypeId(String inventoryItemTypeId);
 
     String getRequireInventory();
 
-    void setRequireInventory(String requireInventory);
-
     String getQuantityUomId();
-
-    void setQuantityUomId(String quantityUomId);
 
     java.math.BigDecimal getQuantityIncluded();
 
-    void setQuantityIncluded(java.math.BigDecimal quantityIncluded);
-
     Long getPiecesIncluded();
-
-    void setPiecesIncluded(Long piecesIncluded);
 
     String getRequireAmount();
 
-    void setRequireAmount(String requireAmount);
-
     java.math.BigDecimal getFixedAmount();
-
-    void setFixedAmount(java.math.BigDecimal fixedAmount);
 
     String getAmountUomTypeId();
 
-    void setAmountUomTypeId(String amountUomTypeId);
-
     String getWeightUomId();
-
-    void setWeightUomId(String weightUomId);
 
     java.math.BigDecimal getShippingWeight();
 
-    void setShippingWeight(java.math.BigDecimal shippingWeight);
-
     java.math.BigDecimal getProductWeight();
-
-    void setProductWeight(java.math.BigDecimal productWeight);
 
     String getHeightUomId();
 
-    void setHeightUomId(String heightUomId);
-
     java.math.BigDecimal getProductHeight();
-
-    void setProductHeight(java.math.BigDecimal productHeight);
 
     java.math.BigDecimal getShippingHeight();
 
-    void setShippingHeight(java.math.BigDecimal shippingHeight);
-
     String getWidthUomId();
-
-    void setWidthUomId(String widthUomId);
 
     java.math.BigDecimal getProductWidth();
 
-    void setProductWidth(java.math.BigDecimal productWidth);
-
     java.math.BigDecimal getShippingWidth();
-
-    void setShippingWidth(java.math.BigDecimal shippingWidth);
 
     String getDepthUomId();
 
-    void setDepthUomId(String depthUomId);
-
     java.math.BigDecimal getProductDepth();
-
-    void setProductDepth(java.math.BigDecimal productDepth);
 
     java.math.BigDecimal getShippingDepth();
 
-    void setShippingDepth(java.math.BigDecimal shippingDepth);
-
     String getDiameterUomId();
-
-    void setDiameterUomId(String diameterUomId);
 
     java.math.BigDecimal getProductDiameter();
 
-    void setProductDiameter(java.math.BigDecimal productDiameter);
-
     java.math.BigDecimal getProductRating();
-
-    void setProductRating(java.math.BigDecimal productRating);
 
     String getRatingTypeEnum();
 
-    void setRatingTypeEnum(String ratingTypeEnum);
-
     String getReturnable();
-
-    void setReturnable(String returnable);
 
     String getTaxable();
 
-    void setTaxable(String taxable);
-
     String getChargeShipping();
-
-    void setChargeShipping(String chargeShipping);
 
     String getAutoCreateKeywords();
 
-    void setAutoCreateKeywords(String autoCreateKeywords);
-
     String getIncludeInPromotions();
-
-    void setIncludeInPromotions(String includeInPromotions);
 
     String getIsVirtual();
 
-    void setIsVirtual(String isVirtual);
-
     String getIsVariant();
-
-    void setIsVariant(String isVariant);
 
     String getVirtualVariantMethodEnum();
 
-    void setVirtualVariantMethodEnum(String virtualVariantMethodEnum);
-
     String getInShippingBox();
-
-    void setInShippingBox(String inShippingBox);
 
     String getDefaultShipmentBoxTypeId();
 
-    void setDefaultShipmentBoxTypeId(String defaultShipmentBoxTypeId);
-
     Boolean getIsSerialNumbered();
-
-    void setIsSerialNumbered(Boolean isSerialNumbered);
 
     Boolean getIsManagedByLot();
 
-    void setIsManagedByLot(Boolean isManagedByLot);
-
     String getAttributeSetId();
-
-    void setAttributeSetId(String attributeSetId);
 
     String getAttributeSetInstanceId();
 
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
     String getGrade();
-
-    void setGrade(String grade);
 
     java.math.BigDecimal getGsm();
 
-    void setGsm(java.math.BigDecimal gsm);
-
     java.math.BigDecimal getCoreDiameter();
-
-    void setCoreDiameter(java.math.BigDecimal coreDiameter);
 
     java.math.BigDecimal getOutsideDiameter();
 
-    void setOutsideDiameter(java.math.BigDecimal outsideDiameter);
-
     java.math.BigDecimal getMoisturePct();
-
-    void setMoisturePct(java.math.BigDecimal moisturePct);
 
     String getRollCnt();
 
-    void setRollCnt(String rollCnt);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     EntityStateCollection<String, GoodIdentificationState> getGoodIdentifications();
 
+    interface MutableProductState extends ProductState {
+        void setProductId(String productId);
 
-    void mutate(Event e);
+        void setProductTypeId(String productTypeId);
 
-    void when(ProductEvent.ProductStateCreated e);
+        void setPrimaryProductCategoryId(String primaryProductCategoryId);
 
-    void when(ProductEvent.ProductStateMergePatched e);
+        void setManufacturerPartyId(String manufacturerPartyId);
 
-    
+        void setFacilityId(String facilityId);
+
+        void setIntroductionDate(java.sql.Timestamp introductionDate);
+
+        void setReleaseDate(java.sql.Timestamp releaseDate);
+
+        void setSupportDiscontinuationDate(java.sql.Timestamp supportDiscontinuationDate);
+
+        void setSalesDiscontinuationDate(java.sql.Timestamp salesDiscontinuationDate);
+
+        void setSalesDiscWhenNotAvail(String salesDiscWhenNotAvail);
+
+        void setInternalName(String internalName);
+
+        void setBrandName(String brandName);
+
+        void setComments(String comments);
+
+        void setProductName(String productName);
+
+        void setDescription(String description);
+
+        void setPriceDetailText(String priceDetailText);
+
+        void setSmallImageUrl(String smallImageUrl);
+
+        void setMediumImageUrl(String mediumImageUrl);
+
+        void setLargeImageUrl(String largeImageUrl);
+
+        void setDetailImageUrl(String detailImageUrl);
+
+        void setOriginalImageUrl(String originalImageUrl);
+
+        void setDetailScreen(String detailScreen);
+
+        void setInventoryMessage(String inventoryMessage);
+
+        void setInventoryItemTypeId(String inventoryItemTypeId);
+
+        void setRequireInventory(String requireInventory);
+
+        void setQuantityUomId(String quantityUomId);
+
+        void setQuantityIncluded(java.math.BigDecimal quantityIncluded);
+
+        void setPiecesIncluded(Long piecesIncluded);
+
+        void setRequireAmount(String requireAmount);
+
+        void setFixedAmount(java.math.BigDecimal fixedAmount);
+
+        void setAmountUomTypeId(String amountUomTypeId);
+
+        void setWeightUomId(String weightUomId);
+
+        void setShippingWeight(java.math.BigDecimal shippingWeight);
+
+        void setProductWeight(java.math.BigDecimal productWeight);
+
+        void setHeightUomId(String heightUomId);
+
+        void setProductHeight(java.math.BigDecimal productHeight);
+
+        void setShippingHeight(java.math.BigDecimal shippingHeight);
+
+        void setWidthUomId(String widthUomId);
+
+        void setProductWidth(java.math.BigDecimal productWidth);
+
+        void setShippingWidth(java.math.BigDecimal shippingWidth);
+
+        void setDepthUomId(String depthUomId);
+
+        void setProductDepth(java.math.BigDecimal productDepth);
+
+        void setShippingDepth(java.math.BigDecimal shippingDepth);
+
+        void setDiameterUomId(String diameterUomId);
+
+        void setProductDiameter(java.math.BigDecimal productDiameter);
+
+        void setProductRating(java.math.BigDecimal productRating);
+
+        void setRatingTypeEnum(String ratingTypeEnum);
+
+        void setReturnable(String returnable);
+
+        void setTaxable(String taxable);
+
+        void setChargeShipping(String chargeShipping);
+
+        void setAutoCreateKeywords(String autoCreateKeywords);
+
+        void setIncludeInPromotions(String includeInPromotions);
+
+        void setIsVirtual(String isVirtual);
+
+        void setIsVariant(String isVariant);
+
+        void setVirtualVariantMethodEnum(String virtualVariantMethodEnum);
+
+        void setInShippingBox(String inShippingBox);
+
+        void setDefaultShipmentBoxTypeId(String defaultShipmentBoxTypeId);
+
+        void setIsSerialNumbered(Boolean isSerialNumbered);
+
+        void setIsManagedByLot(Boolean isManagedByLot);
+
+        void setAttributeSetId(String attributeSetId);
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        void setGrade(String grade);
+
+        void setGsm(java.math.BigDecimal gsm);
+
+        void setCoreDiameter(java.math.BigDecimal coreDiameter);
+
+        void setOutsideDiameter(java.math.BigDecimal outsideDiameter);
+
+        void setMoisturePct(java.math.BigDecimal moisturePct);
+
+        void setRollCnt(String rollCnt);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+
+        void mutate(Event e);
+
+        void when(ProductEvent.ProductStateCreated e);
+
+        void when(ProductEvent.ProductStateMergePatched e);
+
+    }
+
+    interface SqlProductState extends MutableProductState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

@@ -43,7 +43,7 @@ public class HibernateUomStateQueryRepository implements UomStateQueryRepository
 
         UomState state = (UomState)getCurrentSession().get(AbstractUomState.SimpleUomState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (UomState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (UomState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomState.SqlUomState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

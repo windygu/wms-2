@@ -37,13 +37,13 @@ public class HibernateAttributeUseStateDao implements AttributeUseStateDao
     @Override
     public AttributeUseState get(AttributeSetAttributeUseId id, boolean nullAllowed)
     {
-        AttributeUseState state = (AttributeUseState) getCurrentSession().get(AbstractAttributeUseState.SimpleAttributeUseState.class, id);
+        AttributeUseState.SqlAttributeUseState state = (AttributeUseState.SqlAttributeUseState) getCurrentSession().get(AbstractAttributeUseState.SimpleAttributeUseState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeUseState.SimpleAttributeUseState();
             state.setAttributeSetAttributeUseId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (AttributeUseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (AttributeUseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeUseState.SqlAttributeUseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

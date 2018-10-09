@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceEvent.*;
 
-public abstract class AbstractAttributeSetInstanceState implements AttributeSetInstanceState
+public abstract class AbstractAttributeSetInstanceState implements AttributeSetInstanceState.SqlAttributeSetInstanceState
 {
 
     private String attributeSetInstanceId;

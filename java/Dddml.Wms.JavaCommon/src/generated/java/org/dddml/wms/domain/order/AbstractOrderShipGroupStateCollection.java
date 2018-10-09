@@ -59,7 +59,7 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         } else {
             List<OrderShipGroupState> ss = new ArrayList<OrderShipGroupState>();
             for (OrderShipGroupState s : loadedOrderShipGroupStates.values()) {
-                if (!(removedOrderShipGroupStates.containsKey(s.getOrderShipGroupId()) && s.getDeleted())) {
+                if (!(removedOrderShipGroupStates.containsKey(((OrderShipGroupState.SqlOrderShipGroupState)s).getOrderShipGroupId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
 
     public AbstractOrderShipGroupStateCollection(OrderState outerState) {
         this.orderState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((OrderState.SqlOrderState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             OrderShipGroupState state = new AbstractOrderShipGroupState.SimpleOrderShipGroupState(getForReapplying());
-            state.setOrderShipGroupId(globalId);
+            ((OrderShipGroupState.SqlOrderShipGroupState)state).setOrderShipGroupId(globalId);
             loadedOrderShipGroupStates.put(globalId, state);
             return state;
         } else {
             OrderShipGroupState state = getOrderShipGroupStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((OrderShipGroupState.SqlOrderShipGroupState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractOrderShipGroupState) {
+                    ((AbstractOrderShipGroupState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedOrderShipGroupStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
+        this.removedOrderShipGroupStates.put(((OrderShipGroupState.SqlOrderShipGroupState)state).getOrderShipGroupId(), state);
     }
 
     public void add(OrderShipGroupState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedOrderShipGroupStates.put(state.getOrderShipGroupId(), state);
+        this.loadedOrderShipGroupStates.put(((OrderShipGroupState.SqlOrderShipGroupState)state).getOrderShipGroupId(), state);
     }
 
     //region Saveable Implements

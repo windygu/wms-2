@@ -13,53 +13,56 @@ public interface ShipmentTypeState
 
     String getShipmentTypeId();
 
-    void setShipmentTypeId(String shipmentTypeId);
-
     String getParentTypeId();
-
-    void setParentTypeId(String parentTypeId);
 
     String getHasTable();
 
-    void setHasTable(String hasTable);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableShipmentTypeState extends ShipmentTypeState {
+        void setShipmentTypeId(String shipmentTypeId);
 
-    
+        void setParentTypeId(String parentTypeId);
+
+        void setHasTable(String hasTable);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setCommandId(String commandId);
+
+    }
+
+    interface SqlShipmentTypeState extends MutableShipmentTypeState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

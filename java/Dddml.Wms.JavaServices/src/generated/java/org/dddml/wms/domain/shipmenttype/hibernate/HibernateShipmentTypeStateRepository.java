@@ -40,7 +40,7 @@ public class HibernateShipmentTypeStateRepository implements ShipmentTypeStateRe
 
     @Transactional(readOnly = true)
     public ShipmentTypeState get(String id, boolean nullAllowed) {
-        ShipmentTypeState state = (ShipmentTypeState)getCurrentSession().get(AbstractShipmentTypeState.SimpleShipmentTypeState.class, id);
+        ShipmentTypeState.SqlShipmentTypeState state = (ShipmentTypeState.SqlShipmentTypeState)getCurrentSession().get(AbstractShipmentTypeState.SimpleShipmentTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentTypeState.SimpleShipmentTypeState();
             state.setShipmentTypeId(id);

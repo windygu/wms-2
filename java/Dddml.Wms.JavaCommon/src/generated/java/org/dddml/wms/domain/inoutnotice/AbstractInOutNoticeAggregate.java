@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate implements InOutNoticeAggregate
 {
-    private InOutNoticeState state;
+    private InOutNoticeState.MutableInOutNoticeState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractInOutNoticeAggregate(InOutNoticeState state)
     {
-        this.state = state;
+        this.state = (InOutNoticeState.MutableInOutNoticeState)state;
     }
 
     public InOutNoticeState getState() {

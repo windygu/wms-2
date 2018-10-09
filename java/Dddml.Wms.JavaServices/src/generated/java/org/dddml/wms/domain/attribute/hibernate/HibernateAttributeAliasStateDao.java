@@ -37,13 +37,13 @@ public class HibernateAttributeAliasStateDao implements AttributeAliasStateDao
     @Override
     public AttributeAliasState get(AttributeAliasId id, boolean nullAllowed)
     {
-        AttributeAliasState state = (AttributeAliasState) getCurrentSession().get(AbstractAttributeAliasState.SimpleAttributeAliasState.class, id);
+        AttributeAliasState.SqlAttributeAliasState state = (AttributeAliasState.SqlAttributeAliasState) getCurrentSession().get(AbstractAttributeAliasState.SimpleAttributeAliasState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeAliasState.SimpleAttributeAliasState();
             state.setAttributeAliasId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (AttributeAliasState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeAliasState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (AttributeAliasState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeAliasState.SqlAttributeAliasState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

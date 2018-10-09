@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.movementconfirmation.MovementConfirmationEvent.*;
 
-public abstract class AbstractMovementConfirmationState implements MovementConfirmationState, Saveable
+public abstract class AbstractMovementConfirmationState implements MovementConfirmationState.SqlMovementConfirmationState, Saveable
 {
 
     private String documentNumber;
@@ -296,7 +296,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
 
         for (MovementConfirmationLineEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)innerEvent).getMovementConfirmationLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((MovementConfirmationLineState.SqlMovementConfirmationLineState)innerState).mutate(innerEvent);
         }
     }
 
@@ -409,7 +409,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
 
         for (MovementConfirmationLineEvent innerEvent : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)innerEvent).getMovementConfirmationLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((MovementConfirmationLineState.SqlMovementConfirmationLineState)innerState).mutate(innerEvent);
             if (innerEvent instanceof MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)
             {
                 //MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved removed = (MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved)innerEvent;
@@ -433,7 +433,7 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
             MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved innerE = e.newMovementConfirmationLineStateRemoved(innerState.getLineNumber());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((MovementConfirmationLineState.MutableMovementConfirmationLineState)innerState).when(innerE);
             //e.addMovementConfirmationLineEvent(innerE);
         }
     }

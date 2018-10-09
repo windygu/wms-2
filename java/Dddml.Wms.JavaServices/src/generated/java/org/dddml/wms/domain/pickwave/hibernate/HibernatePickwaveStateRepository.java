@@ -40,13 +40,13 @@ public class HibernatePickwaveStateRepository implements PickwaveStateRepository
 
     @Transactional(readOnly = true)
     public PickwaveState get(Long id, boolean nullAllowed) {
-        PickwaveState state = (PickwaveState)getCurrentSession().get(AbstractPickwaveState.SimplePickwaveState.class, id);
+        PickwaveState.SqlPickwaveState state = (PickwaveState.SqlPickwaveState)getCurrentSession().get(AbstractPickwaveState.SimplePickwaveState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPickwaveState.SimplePickwaveState();
             state.setPickwaveId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PickwaveState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PickwaveState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PickwaveState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PickwaveState.SqlPickwaveState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

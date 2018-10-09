@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.picklist.PicklistRoleEvent.*;
 
-public abstract class AbstractPicklistRoleState implements PicklistRoleState
+public abstract class AbstractPicklistRoleState implements PicklistRoleState.SqlPicklistRoleState
 {
 
     private PicklistRoleId picklistRoleId = new PicklistRoleId();

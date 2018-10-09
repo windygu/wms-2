@@ -70,7 +70,7 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
 
     public AbstractInventoryItemRequirementEntryStateCollection(InventoryItemRequirementState outerState) {
         this.inventoryItemRequirementState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((InventoryItemRequirementState.SqlInventoryItemRequirementState)outerState).getForReapplying());
     }
 
     @Override
@@ -101,14 +101,17 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             InventoryItemRequirementEntryState state = new AbstractInventoryItemRequirementEntryState.SimpleInventoryItemRequirementEntryState(getForReapplying());
-            state.setInventoryItemRequirementEntryId(globalId);
+            ((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).setInventoryItemRequirementEntryId(globalId);
             loadedInventoryItemRequirementEntryStates.put(globalId, state);
             return state;
         } else {
             InventoryItemRequirementEntryState state = getInventoryItemRequirementEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractInventoryItemRequirementEntryState) {
+                    ((AbstractInventoryItemRequirementEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedInventoryItemRequirementEntryStates.put(globalId, state);
             }
@@ -121,14 +124,14 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
+        this.removedInventoryItemRequirementEntryStates.put(((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).getInventoryItemRequirementEntryId(), state);
     }
 
     public void add(InventoryItemRequirementEntryState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedInventoryItemRequirementEntryStates.put(state.getInventoryItemRequirementEntryId(), state);
+        this.loadedInventoryItemRequirementEntryStates.put(((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).getInventoryItemRequirementEntryId(), state);
     }
 
     //region Saveable Implements

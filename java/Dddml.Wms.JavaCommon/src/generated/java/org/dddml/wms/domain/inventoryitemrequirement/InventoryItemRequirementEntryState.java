@@ -15,60 +15,62 @@ public interface InventoryItemRequirementEntryState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    InventoryItemRequirementEntryId getInventoryItemRequirementEntryId();
-
-    void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryId inventoryItemRequirementEntryId);
-
     Long getEntrySeqId();
-
-    void setEntrySeqId(Long entrySeqId);
 
     BigDecimal getQuantity();
 
-    void setQuantity(BigDecimal quantity);
-
     InventoryPRTriggeredId getSourceEventId();
-
-    void setSourceEventId(InventoryPRTriggeredId sourceEventId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     InventoryItemId getInventoryItemRequirementId();
-
-    void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableInventoryItemRequirementEntryState extends InventoryItemRequirementEntryState {
+        void setInventoryItemRequirementEntryId(InventoryItemRequirementEntryId inventoryItemRequirementEntryId);
+
+        void setEntrySeqId(Long entrySeqId);
+
+        void setQuantity(BigDecimal quantity);
+
+        void setSourceEventId(InventoryPRTriggeredId sourceEventId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setInventoryItemRequirementId(InventoryItemId inventoryItemRequirementId);
+
+        void setCommandId(String commandId);
 
 
-    void mutate(Event e);
+        void mutate(Event e);
 
-    void when(InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated e);
+        void when(InventoryItemRequirementEntryEvent.InventoryItemRequirementEntryStateCreated e);
 
-    
+    }
+
+    interface SqlInventoryItemRequirementEntryState extends MutableInventoryItemRequirementEntryState {
+        InventoryItemRequirementEntryId getInventoryItemRequirementEntryId();
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

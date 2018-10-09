@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEvent.*;
 
-public abstract class AbstractSellableInventoryItemState implements SellableInventoryItemState, Saveable
+public abstract class AbstractSellableInventoryItemState implements SellableInventoryItemState.SqlSellableInventoryItemState, Saveable
 {
 
     private InventoryItemId sellableInventoryItemId;
@@ -188,7 +188,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
         for (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated innerEvent : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryState innerState = this.getEntries().get(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)innerEvent).getSellableInventoryItemEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)innerState).mutate(innerEvent);
         }
     }
 
@@ -213,7 +213,7 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
 
         for (SellableInventoryItemEntryEvent innerEvent : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryState innerState = this.getEntries().get(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)innerEvent).getSellableInventoryItemEntryEventId().getEntrySeqId());
-            innerState.mutate(innerEvent);
+            ((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)innerState).mutate(innerEvent);
         }
     }
 

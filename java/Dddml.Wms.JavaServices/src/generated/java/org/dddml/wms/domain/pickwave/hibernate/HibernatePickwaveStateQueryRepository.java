@@ -43,7 +43,7 @@ public class HibernatePickwaveStateQueryRepository implements PickwaveStateQuery
 
         PickwaveState state = (PickwaveState)getCurrentSession().get(AbstractPickwaveState.SimplePickwaveState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PickwaveState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PickwaveState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PickwaveState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PickwaveState.SqlPickwaveState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

@@ -44,7 +44,7 @@ public class HibernateInventoryItemStateQueryRepository implements InventoryItem
 
         InventoryItemState state = (InventoryItemState)getCurrentSession().get(AbstractInventoryItemState.SimpleInventoryItemState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InventoryItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryItemState.SqlInventoryItemState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

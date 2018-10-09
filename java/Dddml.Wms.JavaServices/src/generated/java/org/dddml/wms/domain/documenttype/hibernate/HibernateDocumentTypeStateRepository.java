@@ -40,7 +40,7 @@ public class HibernateDocumentTypeStateRepository implements DocumentTypeStateRe
 
     @Transactional(readOnly = true)
     public DocumentTypeState get(String id, boolean nullAllowed) {
-        DocumentTypeState state = (DocumentTypeState)getCurrentSession().get(AbstractDocumentTypeState.SimpleDocumentTypeState.class, id);
+        DocumentTypeState.SqlDocumentTypeState state = (DocumentTypeState.SqlDocumentTypeState)getCurrentSession().get(AbstractDocumentTypeState.SimpleDocumentTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractDocumentTypeState.SimpleDocumentTypeState();
             state.setDocumentTypeId(id);

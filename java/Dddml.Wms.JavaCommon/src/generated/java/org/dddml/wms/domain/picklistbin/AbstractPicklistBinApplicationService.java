@@ -88,10 +88,9 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
 
     public PicklistBinEvent getEvent(String picklistBinId, long version) {
         PicklistBinEvent e = (PicklistBinEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistBinId), version);
-        if (e != null)
-        { ((PicklistBinEvent.SqlPicklistBinEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PicklistBinEvent.SqlPicklistBinEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(picklistBinId, 0);
         }
         return e;
@@ -147,7 +146,7 @@ public abstract class AbstractPicklistBinApplicationService implements PicklistB
 
     public void initialize(PicklistBinEvent.PicklistBinStateCreated stateCreated) {
         String aggregateId = ((PicklistBinEvent.SqlPicklistBinEvent)stateCreated).getPicklistBinEventId().getPicklistBinId();
-        PicklistBinState state = new AbstractPicklistBinState.SimplePicklistBinState();
+        PicklistBinState.SqlPicklistBinState state = new AbstractPicklistBinState.SimplePicklistBinState();
         state.setPicklistBinId(aggregateId);
 
         PicklistBinAggregate aggregate = getPicklistBinAggregate(state);

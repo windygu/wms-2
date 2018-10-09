@@ -12,70 +12,72 @@ public interface ShipmentItemState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ShipmentItemId getShipmentItemId();
-
-    void setShipmentItemId(ShipmentItemId shipmentItemId);
-
     String getShipmentItemSeqId();
-
-    void setShipmentItemSeqId(String shipmentItemSeqId);
 
     String getProductId();
 
-    void setProductId(String productId);
-
     String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
 
     java.math.BigDecimal getQuantity();
 
-    void setQuantity(java.math.BigDecimal quantity);
-
     String getShipmentContentDescription();
-
-    void setShipmentContentDescription(String shipmentContentDescription);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     String getShipmentId();
 
-    void setShipmentId(String shipmentId);
+    interface MutableShipmentItemState extends ShipmentItemState {
+        void setShipmentItemId(ShipmentItemId shipmentItemId);
+
+        void setShipmentItemSeqId(String shipmentItemSeqId);
+
+        void setProductId(String productId);
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setShipmentContentDescription(String shipmentContentDescription);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setShipmentId(String shipmentId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ShipmentItemEvent.ShipmentItemStateCreated e);
 
+        void when(ShipmentItemEvent.ShipmentItemStateMergePatched e);
 
-    void mutate(Event e);
+    }
 
-    void when(ShipmentItemEvent.ShipmentItemStateCreated e);
+    interface SqlShipmentItemState extends MutableShipmentItemState {
+        ShipmentItemId getShipmentItemId();
 
-    void when(ShipmentItemEvent.ShipmentItemStateMergePatched e);
+        boolean isStateUnsaved();
 
-    
+        boolean getForReapplying();
+    }
 }
 

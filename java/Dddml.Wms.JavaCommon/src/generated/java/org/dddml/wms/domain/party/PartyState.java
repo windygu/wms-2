@@ -14,69 +14,72 @@ public interface PartyState
 
     String getPartyId();
 
-    void setPartyId(String partyId);
-
     String getPartyTypeId();
-
-    void setPartyTypeId(String partyTypeId);
 
     String getPrimaryRoleTypeId();
 
-    void setPrimaryRoleTypeId(String primaryRoleTypeId);
-
     String getExternalId();
-
-    void setExternalId(String externalId);
 
     String getPreferredCurrencyUomId();
 
-    void setPreferredCurrencyUomId(String preferredCurrencyUomId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutablePartyState extends PartyState {
+        void setPartyId(String partyId);
+
+        void setPartyTypeId(String partyTypeId);
+
+        void setPrimaryRoleTypeId(String primaryRoleTypeId);
+
+        void setExternalId(String externalId);
+
+        void setPreferredCurrencyUomId(String preferredCurrencyUomId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(PartyEvent.PartyStateCreated e);
 
+        void when(PartyEvent.PartyStateMergePatched e);
 
-    void mutate(Event e);
+        void when(PartyEvent.PartyStateDeleted e);
+    }
 
-    void when(PartyEvent.PartyStateCreated e);
+    interface SqlPartyState extends MutablePartyState {
 
-    void when(PartyEvent.PartyStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(PartyEvent.PartyStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

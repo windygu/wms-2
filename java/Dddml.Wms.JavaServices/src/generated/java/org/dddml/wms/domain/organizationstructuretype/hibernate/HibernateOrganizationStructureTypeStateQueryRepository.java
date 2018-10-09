@@ -43,7 +43,7 @@ public class HibernateOrganizationStructureTypeStateQueryRepository implements O
 
         OrganizationStructureTypeState state = (OrganizationStructureTypeState)getCurrentSession().get(AbstractOrganizationStructureTypeState.SimpleOrganizationStructureTypeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrganizationStructureTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrganizationStructureTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrganizationStructureTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrganizationStructureTypeState.SqlOrganizationStructureTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

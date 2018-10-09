@@ -43,7 +43,7 @@ public class HibernateShipmentMethodTypeStateQueryRepository implements Shipment
 
         ShipmentMethodTypeState state = (ShipmentMethodTypeState)getCurrentSession().get(AbstractShipmentMethodTypeState.SimpleShipmentMethodTypeState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ShipmentMethodTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentMethodTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ShipmentMethodTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentMethodTypeState.SqlShipmentMethodTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

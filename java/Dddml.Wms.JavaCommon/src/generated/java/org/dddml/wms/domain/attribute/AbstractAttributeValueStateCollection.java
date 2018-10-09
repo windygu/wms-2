@@ -59,7 +59,7 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         } else {
             List<AttributeValueState> ss = new ArrayList<AttributeValueState>();
             for (AttributeValueState s : loadedAttributeValueStates.values()) {
-                if (!(removedAttributeValueStates.containsKey(s.getAttributeValueId()) && s.getDeleted())) {
+                if (!(removedAttributeValueStates.containsKey(((AttributeValueState.SqlAttributeValueState)s).getAttributeValueId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
 
     public AbstractAttributeValueStateCollection(AttributeState outerState) {
         this.attributeState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((AttributeState.SqlAttributeState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             AttributeValueState state = new AbstractAttributeValueState.SimpleAttributeValueState(getForReapplying());
-            state.setAttributeValueId(globalId);
+            ((AttributeValueState.SqlAttributeValueState)state).setAttributeValueId(globalId);
             loadedAttributeValueStates.put(globalId, state);
             return state;
         } else {
             AttributeValueState state = getAttributeValueStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((AttributeValueState.SqlAttributeValueState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractAttributeValueState) {
+                    ((AbstractAttributeValueState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedAttributeValueStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedAttributeValueStates.put(state.getAttributeValueId(), state);
+        this.removedAttributeValueStates.put(((AttributeValueState.SqlAttributeValueState)state).getAttributeValueId(), state);
     }
 
     public void add(AttributeValueState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedAttributeValueStates.put(state.getAttributeValueId(), state);
+        this.loadedAttributeValueStates.put(((AttributeValueState.SqlAttributeValueState)state).getAttributeValueId(), state);
     }
 
     //region Saveable Implements

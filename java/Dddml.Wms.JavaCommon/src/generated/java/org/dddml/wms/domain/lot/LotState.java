@@ -14,57 +14,60 @@ public interface LotState
 
     String getLotId();
 
-    void setLotId(String lotId);
-
     java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
 
     java.sql.Timestamp getExpirationDate();
 
-    void setExpirationDate(java.sql.Timestamp expirationDate);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableLotState extends LotState {
+        void setLotId(String lotId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setExpirationDate(java.sql.Timestamp expirationDate);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(LotEvent.LotStateCreated e);
 
+        void when(LotEvent.LotStateMergePatched e);
 
-    void mutate(Event e);
+        void when(LotEvent.LotStateDeleted e);
+    }
 
-    void when(LotEvent.LotStateCreated e);
+    interface SqlLotState extends MutableLotState {
 
-    void when(LotEvent.LotStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(LotEvent.LotStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

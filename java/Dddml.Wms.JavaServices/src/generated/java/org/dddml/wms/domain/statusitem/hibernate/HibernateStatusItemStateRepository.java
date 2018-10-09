@@ -40,7 +40,7 @@ public class HibernateStatusItemStateRepository implements StatusItemStateReposi
 
     @Transactional(readOnly = true)
     public StatusItemState get(String id, boolean nullAllowed) {
-        StatusItemState state = (StatusItemState)getCurrentSession().get(AbstractStatusItemState.SimpleStatusItemState.class, id);
+        StatusItemState.SqlStatusItemState state = (StatusItemState.SqlStatusItemState)getCurrentSession().get(AbstractStatusItemState.SimpleStatusItemState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractStatusItemState.SimpleStatusItemState();
             state.setStatusId(id);

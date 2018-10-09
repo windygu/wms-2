@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inventorypostingrule.InventoryPostingRuleEvent.*;
 
-public abstract class AbstractInventoryPostingRuleState implements InventoryPostingRuleState
+public abstract class AbstractInventoryPostingRuleState implements InventoryPostingRuleState.SqlInventoryPostingRuleState
 {
 
     private String inventoryPostingRuleId;

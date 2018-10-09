@@ -40,13 +40,13 @@ public class HibernateAttributeSetStateRepository implements AttributeSetStateRe
 
     @Transactional(readOnly = true)
     public AttributeSetState get(String id, boolean nullAllowed) {
-        AttributeSetState state = (AttributeSetState)getCurrentSession().get(AbstractAttributeSetState.SimpleAttributeSetState.class, id);
+        AttributeSetState.SqlAttributeSetState state = (AttributeSetState.SqlAttributeSetState)getCurrentSession().get(AbstractAttributeSetState.SimpleAttributeSetState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetState.SimpleAttributeSetState();
             state.setAttributeSetId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetState.SqlAttributeSetState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

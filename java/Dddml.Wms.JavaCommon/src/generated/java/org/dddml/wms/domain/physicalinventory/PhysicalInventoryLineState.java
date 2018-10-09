@@ -14,79 +14,81 @@ public interface PhysicalInventoryLineState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    PhysicalInventoryLineId getPhysicalInventoryLineId();
-
-    void setPhysicalInventoryLineId(PhysicalInventoryLineId physicalInventoryLineId);
-
     InventoryItemId getInventoryItemId();
-
-    void setInventoryItemId(InventoryItemId inventoryItemId);
 
     BigDecimal getBookQuantity();
 
-    void setBookQuantity(BigDecimal bookQuantity);
-
     BigDecimal getCountedQuantity();
-
-    void setCountedQuantity(BigDecimal countedQuantity);
 
     Boolean getProcessed();
 
-    void setProcessed(Boolean processed);
-
     String getLineNumber();
-
-    void setLineNumber(String lineNumber);
 
     String getReversalLineNumber();
 
-    void setReversalLineNumber(String reversalLineNumber);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getPhysicalInventoryDocumentNumber();
 
-    void setPhysicalInventoryDocumentNumber(String physicalInventoryDocumentNumber);
+    interface MutablePhysicalInventoryLineState extends PhysicalInventoryLineState {
+        void setPhysicalInventoryLineId(PhysicalInventoryLineId physicalInventoryLineId);
+
+        void setInventoryItemId(InventoryItemId inventoryItemId);
+
+        void setBookQuantity(BigDecimal bookQuantity);
+
+        void setCountedQuantity(BigDecimal countedQuantity);
+
+        void setProcessed(Boolean processed);
+
+        void setLineNumber(String lineNumber);
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setDeleted(Boolean deleted);
+
+        void setPhysicalInventoryDocumentNumber(String physicalInventoryDocumentNumber);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated e);
 
+        void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateMergePatched e);
 
-    void mutate(Event e);
+        void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved e);
+    }
 
-    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated e);
+    interface SqlPhysicalInventoryLineState extends MutablePhysicalInventoryLineState {
+        PhysicalInventoryLineId getPhysicalInventoryLineId();
 
-    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(PhysicalInventoryLineEvent.PhysicalInventoryLineStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

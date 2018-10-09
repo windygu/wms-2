@@ -13,59 +13,61 @@ public interface OrderRoleState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    OrderRoleId getOrderRoleId();
-
-    void setOrderRoleId(OrderRoleId orderRoleId);
-
     PartyRoleId getPartyRoleId();
-
-    void setPartyRoleId(PartyRoleId partyRoleId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
     String getOrderId();
 
-    void setOrderId(String orderId);
+    interface MutableOrderRoleState extends OrderRoleState {
+        void setOrderRoleId(OrderRoleId orderRoleId);
+
+        void setPartyRoleId(PartyRoleId partyRoleId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setOrderId(String orderId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrderRoleEvent.OrderRoleStateCreated e);
 
+        void when(OrderRoleEvent.OrderRoleStateMergePatched e);
 
-    void mutate(Event e);
+        void when(OrderRoleEvent.OrderRoleStateRemoved e);
+    }
 
-    void when(OrderRoleEvent.OrderRoleStateCreated e);
+    interface SqlOrderRoleState extends MutableOrderRoleState {
+        OrderRoleId getOrderRoleId();
 
-    void when(OrderRoleEvent.OrderRoleStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(OrderRoleEvent.OrderRoleStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

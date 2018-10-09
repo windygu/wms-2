@@ -107,10 +107,9 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
 
     public AttributeSetInstanceEvent getEvent(String attributeSetInstanceId, long version) {
         AttributeSetInstanceEvent e = (AttributeSetInstanceEvent)getEventStore().getEvent(toEventStoreAggregateId(attributeSetInstanceId), version);
-        if (e != null)
-        { ((AttributeSetInstanceEvent.SqlAttributeSetInstanceEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((AttributeSetInstanceEvent.SqlAttributeSetInstanceEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(attributeSetInstanceId, 0);
         }
         return e;
@@ -158,7 +157,7 @@ public abstract class AbstractAttributeSetInstanceApplicationService implements 
 
     public void initialize(AttributeSetInstanceEvent.AttributeSetInstanceStateCreated stateCreated) {
         String aggregateId = ((AttributeSetInstanceEvent.SqlAttributeSetInstanceEvent)stateCreated).getAttributeSetInstanceEventId().getAttributeSetInstanceId();
-        AttributeSetInstanceState state = new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState();
+        AttributeSetInstanceState.SqlAttributeSetInstanceState state = new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState();
         state.setAttributeSetInstanceId(aggregateId);
 
         AttributeSetInstanceAggregate aggregate = getAttributeSetInstanceAggregate(state);

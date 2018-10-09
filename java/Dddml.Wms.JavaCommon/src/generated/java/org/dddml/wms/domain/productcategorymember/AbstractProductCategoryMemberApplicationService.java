@@ -134,7 +134,7 @@ public abstract class AbstractProductCategoryMemberApplicationService implements
 
     public void initialize(ProductCategoryMemberEvent.ProductCategoryMemberStateCreated stateCreated) {
         ProductCategoryMemberId aggregateId = ((ProductCategoryMemberEvent.SqlProductCategoryMemberEvent)stateCreated).getProductCategoryMemberEventId().getProductCategoryMemberId();
-        ProductCategoryMemberState state = new AbstractProductCategoryMemberState.SimpleProductCategoryMemberState();
+        ProductCategoryMemberState.SqlProductCategoryMemberState state = new AbstractProductCategoryMemberState.SimpleProductCategoryMemberState();
         state.setProductCategoryMemberId(aggregateId);
 
         ProductCategoryMemberAggregate aggregate = getProductCategoryMemberAggregate(state);

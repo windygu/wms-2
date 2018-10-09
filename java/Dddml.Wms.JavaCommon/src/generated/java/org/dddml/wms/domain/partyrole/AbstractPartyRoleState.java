@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.partyrole.PartyRoleEvent.*;
 
-public abstract class AbstractPartyRoleState implements PartyRoleState
+public abstract class AbstractPartyRoleState implements PartyRoleState.SqlPartyRoleState
 {
 
     private PartyRoleId partyRoleId;

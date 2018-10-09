@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.movement.MovementEvent.*;
 
-public abstract class AbstractMovementState implements MovementState, Saveable
+public abstract class AbstractMovementState implements MovementState.SqlMovementState, Saveable
 {
 
     private String documentNumber;
@@ -452,7 +452,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
         for (MovementLineEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(((MovementLineEvent.SqlMovementLineEvent)innerEvent).getMovementLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((MovementLineState.SqlMovementLineState)innerState).mutate(innerEvent);
         }
     }
 
@@ -697,7 +697,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
 
         for (MovementLineEvent innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(((MovementLineEvent.SqlMovementLineEvent)innerEvent).getMovementLineEventId().getLineNumber());
-            innerState.mutate(innerEvent);
+            ((MovementLineState.SqlMovementLineState)innerState).mutate(innerEvent);
             if (innerEvent instanceof MovementLineEvent.MovementLineStateRemoved)
             {
                 //MovementLineEvent.MovementLineStateRemoved removed = (MovementLineEvent.MovementLineStateRemoved)innerEvent;
@@ -721,7 +721,7 @@ public abstract class AbstractMovementState implements MovementState, Saveable
             MovementLineEvent.MovementLineStateRemoved innerE = e.newMovementLineStateRemoved(innerState.getLineNumber());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((MovementLineState.MutableMovementLineState)innerState).when(innerE);
             //e.addMovementLineEvent(innerE);
         }
     }

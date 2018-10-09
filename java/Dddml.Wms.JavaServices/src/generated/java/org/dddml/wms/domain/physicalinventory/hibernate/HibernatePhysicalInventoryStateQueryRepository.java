@@ -45,7 +45,7 @@ public class HibernatePhysicalInventoryStateQueryRepository implements PhysicalI
 
         PhysicalInventoryState state = (PhysicalInventoryState)getCurrentSession().get(AbstractPhysicalInventoryState.SimplePhysicalInventoryState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PhysicalInventoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PhysicalInventoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryState.SqlPhysicalInventoryState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

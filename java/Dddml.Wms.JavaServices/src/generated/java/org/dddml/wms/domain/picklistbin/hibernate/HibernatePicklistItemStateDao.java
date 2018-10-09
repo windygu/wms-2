@@ -37,13 +37,13 @@ public class HibernatePicklistItemStateDao implements PicklistItemStateDao
     @Override
     public PicklistItemState get(PicklistBinPicklistItemId id, boolean nullAllowed)
     {
-        PicklistItemState state = (PicklistItemState) getCurrentSession().get(AbstractPicklistItemState.SimplePicklistItemState.class, id);
+        PicklistItemState.SqlPicklistItemState state = (PicklistItemState.SqlPicklistItemState) getCurrentSession().get(AbstractPicklistItemState.SimplePicklistItemState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPicklistItemState.SimplePicklistItemState();
             state.setPicklistBinPicklistItemId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (PicklistItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (PicklistItemState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistItemState.SqlPicklistItemState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

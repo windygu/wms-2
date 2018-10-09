@@ -30,14 +30,14 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setDescription(c.getDescription());
-        s.setSequenceId(c.getSequenceId());
-        s.setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
-        s.setActive(c.getActive());
-        s.setDeleted(false);
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DamageTypeState.SqlDamageTypeState)s).setDescription(c.getDescription());
+        ((DamageTypeState.SqlDamageTypeState)s).setSequenceId(c.getSequenceId());
+        ((DamageTypeState.SqlDamageTypeState)s).setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
+        ((DamageTypeState.SqlDamageTypeState)s).setActive(c.getActive());
+        ((DamageTypeState.SqlDamageTypeState)s).setDeleted(false);
+        ((DamageTypeState.SqlDamageTypeState)s).setCreatedBy(c.getRequesterId());
+        ((DamageTypeState.SqlDamageTypeState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DamageTypeState.SqlDamageTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -48,35 +48,35 @@ public abstract class AbstractDamageTypeApplicationService implements DamageType
         throwOnConcurrencyConflict(s, c);
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((DamageTypeState.SqlDamageTypeState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((DamageTypeState.SqlDamageTypeState)s).setDescription(c.getDescription());
         }
         if (c.getSequenceId() == null) {
             if (c.getIsPropertySequenceIdRemoved() != null && c.getIsPropertySequenceIdRemoved()) {
-                s.setSequenceId(null);
+                ((DamageTypeState.SqlDamageTypeState)s).setSequenceId(null);
             }
         } else {
-            s.setSequenceId(c.getSequenceId());
+            ((DamageTypeState.SqlDamageTypeState)s).setSequenceId(c.getSequenceId());
         }
         if (c.getDefaultHandlingMethodId() == null) {
             if (c.getIsPropertyDefaultHandlingMethodIdRemoved() != null && c.getIsPropertyDefaultHandlingMethodIdRemoved()) {
-                s.setDefaultHandlingMethodId(null);
+                ((DamageTypeState.SqlDamageTypeState)s).setDefaultHandlingMethodId(null);
             }
         } else {
-            s.setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
+            ((DamageTypeState.SqlDamageTypeState)s).setDefaultHandlingMethodId(c.getDefaultHandlingMethodId());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((DamageTypeState.SqlDamageTypeState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((DamageTypeState.SqlDamageTypeState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((DamageTypeState.SqlDamageTypeState)s).setUpdatedBy(c.getRequesterId());
+        ((DamageTypeState.SqlDamageTypeState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((DamageTypeState.SqlDamageTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

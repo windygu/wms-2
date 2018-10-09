@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attributeset.AttributeUseEvent.*;
 
-public abstract class AbstractAttributeUseState implements AttributeUseState
+public abstract class AbstractAttributeUseState implements AttributeUseState.SqlAttributeUseState
 {
 
     private AttributeSetAttributeUseId attributeSetAttributeUseId = new AttributeSetAttributeUseId();

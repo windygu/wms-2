@@ -40,13 +40,13 @@ public class HibernateWarehouseStateRepository implements WarehouseStateReposito
 
     @Transactional(readOnly = true)
     public WarehouseState get(String id, boolean nullAllowed) {
-        WarehouseState state = (WarehouseState)getCurrentSession().get(AbstractWarehouseState.SimpleWarehouseState.class, id);
+        WarehouseState.SqlWarehouseState state = (WarehouseState.SqlWarehouseState)getCurrentSession().get(AbstractWarehouseState.SimpleWarehouseState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractWarehouseState.SimpleWarehouseState();
             state.setWarehouseId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (WarehouseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{WarehouseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (WarehouseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{WarehouseState.SqlWarehouseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

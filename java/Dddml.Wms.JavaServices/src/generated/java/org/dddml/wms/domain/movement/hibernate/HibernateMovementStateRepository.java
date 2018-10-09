@@ -41,13 +41,13 @@ public class HibernateMovementStateRepository implements MovementStateRepository
 
     @Transactional(readOnly = true)
     public MovementState get(String id, boolean nullAllowed) {
-        MovementState state = (MovementState)getCurrentSession().get(AbstractMovementState.SimpleMovementState.class, id);
+        MovementState.SqlMovementState state = (MovementState.SqlMovementState)getCurrentSession().get(AbstractMovementState.SimpleMovementState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractMovementState.SimpleMovementState();
             state.setDocumentNumber(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (MovementState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (MovementState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementState.SqlMovementState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

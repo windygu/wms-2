@@ -89,10 +89,9 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
 
     public PicklistEvent getEvent(String picklistId, long version) {
         PicklistEvent e = (PicklistEvent)getEventStore().getEvent(toEventStoreAggregateId(picklistId), version);
-        if (e != null)
-        { ((PicklistEvent.SqlPicklistEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PicklistEvent.SqlPicklistEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(picklistId, 0);
         }
         return e;
@@ -148,7 +147,7 @@ public abstract class AbstractPicklistApplicationService implements PicklistAppl
 
     public void initialize(PicklistEvent.PicklistStateCreated stateCreated) {
         String aggregateId = ((PicklistEvent.SqlPicklistEvent)stateCreated).getPicklistEventId().getPicklistId();
-        PicklistState state = new AbstractPicklistState.SimplePicklistState();
+        PicklistState.SqlPicklistState state = new AbstractPicklistState.SimplePicklistState();
         state.setPicklistId(aggregateId);
 
         PicklistAggregate aggregate = getPicklistAggregate(state);

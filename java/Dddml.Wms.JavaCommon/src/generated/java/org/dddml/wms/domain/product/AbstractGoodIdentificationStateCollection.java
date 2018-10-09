@@ -59,7 +59,7 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         } else {
             List<GoodIdentificationState> ss = new ArrayList<GoodIdentificationState>();
             for (GoodIdentificationState s : loadedGoodIdentificationStates.values()) {
-                if (!(removedGoodIdentificationStates.containsKey(s.getProductGoodIdentificationId()) && s.getDeleted())) {
+                if (!(removedGoodIdentificationStates.containsKey(((GoodIdentificationState.SqlGoodIdentificationState)s).getProductGoodIdentificationId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -69,7 +69,7 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
 
     public AbstractGoodIdentificationStateCollection(ProductState outerState) {
         this.productState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((ProductState.SqlProductState)outerState).getForReapplying());
     }
 
     @Override
@@ -100,14 +100,17 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             GoodIdentificationState state = new AbstractGoodIdentificationState.SimpleGoodIdentificationState(getForReapplying());
-            state.setProductGoodIdentificationId(globalId);
+            ((GoodIdentificationState.SqlGoodIdentificationState)state).setProductGoodIdentificationId(globalId);
             loadedGoodIdentificationStates.put(globalId, state);
             return state;
         } else {
             GoodIdentificationState state = getGoodIdentificationStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((GoodIdentificationState.SqlGoodIdentificationState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractGoodIdentificationState) {
+                    ((AbstractGoodIdentificationState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedGoodIdentificationStates.put(globalId, state);
             }
@@ -120,14 +123,14 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
+        this.removedGoodIdentificationStates.put(((GoodIdentificationState.SqlGoodIdentificationState)state).getProductGoodIdentificationId(), state);
     }
 
     public void add(GoodIdentificationState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedGoodIdentificationStates.put(state.getProductGoodIdentificationId(), state);
+        this.loadedGoodIdentificationStates.put(((GoodIdentificationState.SqlGoodIdentificationState)state).getProductGoodIdentificationId(), state);
     }
 
     //region Saveable Implements

@@ -84,10 +84,9 @@ public abstract class AbstractProductApplicationService implements ProductApplic
 
     public ProductEvent getEvent(String productId, long version) {
         ProductEvent e = (ProductEvent)getEventStore().getEvent(toEventStoreAggregateId(productId), version);
-        if (e != null)
-        { ((ProductEvent.SqlProductEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((ProductEvent.SqlProductEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(productId, 0);
         }
         return e;
@@ -143,7 +142,7 @@ public abstract class AbstractProductApplicationService implements ProductApplic
 
     public void initialize(ProductEvent.ProductStateCreated stateCreated) {
         String aggregateId = ((ProductEvent.SqlProductEvent)stateCreated).getProductEventId().getProductId();
-        ProductState state = new AbstractProductState.SimpleProductState();
+        ProductState.SqlProductState state = new AbstractProductState.SimpleProductState();
         state.setProductId(aggregateId);
 
         ProductAggregate aggregate = getProductAggregate(state);

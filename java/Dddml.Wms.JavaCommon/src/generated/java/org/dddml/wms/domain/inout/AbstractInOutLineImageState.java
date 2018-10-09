@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutLineImageEvent.*;
 
-public abstract class AbstractInOutLineImageState implements InOutLineImageState
+public abstract class AbstractInOutLineImageState implements InOutLineImageState.SqlInOutLineImageState
 {
 
     private InOutLineImageId inOutLineImageId = new InOutLineImageId();

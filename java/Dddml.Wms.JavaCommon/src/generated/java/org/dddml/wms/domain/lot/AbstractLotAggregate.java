@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractLotAggregate extends AbstractAggregate implements LotAggregate
 {
-    private LotState state;
+    private LotState.MutableLotState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractLotAggregate(LotState state)
     {
-        this.state = state;
+        this.state = (LotState.MutableLotState)state;
     }
 
     public LotState getState() {

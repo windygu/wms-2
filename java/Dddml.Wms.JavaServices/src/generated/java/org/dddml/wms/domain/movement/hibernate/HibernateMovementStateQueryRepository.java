@@ -44,7 +44,7 @@ public class HibernateMovementStateQueryRepository implements MovementStateQuery
 
         MovementState state = (MovementState)getCurrentSession().get(AbstractMovementState.SimpleMovementState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (MovementState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (MovementState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementState.SqlMovementState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

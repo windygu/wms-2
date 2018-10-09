@@ -10,13 +10,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractSellableInventoryItemAggregate extends AbstractAggregate implements SellableInventoryItemAggregate
 {
-    private SellableInventoryItemState state;
+    private SellableInventoryItemState.MutableSellableInventoryItemState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractSellableInventoryItemAggregate(SellableInventoryItemState state)
     {
-        this.state = state;
+        this.state = (SellableInventoryItemState.MutableSellableInventoryItemState)state;
     }
 
     public SellableInventoryItemState getState() {

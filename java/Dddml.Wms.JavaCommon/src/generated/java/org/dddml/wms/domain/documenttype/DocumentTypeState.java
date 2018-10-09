@@ -13,53 +13,56 @@ public interface DocumentTypeState
 
     String getDocumentTypeId();
 
-    void setDocumentTypeId(String documentTypeId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getParentDocumentTypeId();
 
-    void setParentDocumentTypeId(String parentDocumentTypeId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableDocumentTypeState extends DocumentTypeState {
+        void setDocumentTypeId(String documentTypeId);
 
-    
+        void setDescription(String description);
+
+        void setParentDocumentTypeId(String parentDocumentTypeId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setCommandId(String commandId);
+
+    }
+
+    interface SqlDocumentTypeState extends MutableDocumentTypeState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

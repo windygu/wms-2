@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public abstract class AbstractDamageTypeState implements DamageTypeState
+public abstract class AbstractDamageTypeState implements DamageTypeState.SqlDamageTypeState
 {
 
     private String damageTypeId;

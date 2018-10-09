@@ -13,57 +13,60 @@ public interface UomTypeState
 
     String getUomTypeId();
 
-    void setUomTypeId(String uomTypeId);
-
     String getParentTypeId();
-
-    void setParentTypeId(String parentTypeId);
 
     String getHasTable();
 
-    void setHasTable(String hasTable);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableUomTypeState extends UomTypeState {
+        void setUomTypeId(String uomTypeId);
 
-    
+        void setParentTypeId(String parentTypeId);
+
+        void setHasTable(String hasTable);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setCommandId(String commandId);
+
+    }
+
+    interface SqlUomTypeState extends MutableUomTypeState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

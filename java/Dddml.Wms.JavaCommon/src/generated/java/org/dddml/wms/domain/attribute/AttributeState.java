@@ -14,89 +14,92 @@ public interface AttributeState
 
     String getAttributeId();
 
-    void setAttributeId(String attributeId);
-
     String getAttributeName();
-
-    void setAttributeName(String attributeName);
 
     String getOrganizationId();
 
-    void setOrganizationId(String organizationId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Boolean getIsMandatory();
 
-    void setIsMandatory(Boolean isMandatory);
-
     String getAttributeValueType();
-
-    void setAttributeValueType(String attributeValueType);
 
     Integer getAttributeValueLength();
 
-    void setAttributeValueLength(Integer attributeValueLength);
-
     Boolean getIsList();
-
-    void setIsList(Boolean isList);
 
     String getFieldName();
 
-    void setFieldName(String fieldName);
-
     String getReferenceId();
-
-    void setReferenceId(String referenceId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, AttributeValueState> getAttributeValues();
 
     EntityStateCollection<String, AttributeAliasState> getAliases();
 
+    interface MutableAttributeState extends AttributeState {
+        void setAttributeId(String attributeId);
 
-    void mutate(Event e);
+        void setAttributeName(String attributeName);
 
-    void when(AttributeEvent.AttributeStateCreated e);
+        void setOrganizationId(String organizationId);
 
-    void when(AttributeEvent.AttributeStateMergePatched e);
+        void setDescription(String description);
 
-    void when(AttributeEvent.AttributeStateDeleted e);
-    
+        void setIsMandatory(Boolean isMandatory);
+
+        void setAttributeValueType(String attributeValueType);
+
+        void setAttributeValueLength(Integer attributeValueLength);
+
+        void setIsList(Boolean isList);
+
+        void setFieldName(String fieldName);
+
+        void setReferenceId(String referenceId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(AttributeEvent.AttributeStateCreated e);
+
+        void when(AttributeEvent.AttributeStateMergePatched e);
+
+        void when(AttributeEvent.AttributeStateDeleted e);
+    }
+
+    interface SqlAttributeState extends MutableAttributeState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

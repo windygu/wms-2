@@ -40,13 +40,13 @@ public class HibernateRoleTypeStateRepository implements RoleTypeStateRepository
 
     @Transactional(readOnly = true)
     public RoleTypeState get(String id, boolean nullAllowed) {
-        RoleTypeState state = (RoleTypeState)getCurrentSession().get(AbstractRoleTypeState.SimpleRoleTypeState.class, id);
+        RoleTypeState.SqlRoleTypeState state = (RoleTypeState.SqlRoleTypeState)getCurrentSession().get(AbstractRoleTypeState.SimpleRoleTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractRoleTypeState.SimpleRoleTypeState();
             state.setRoleTypeId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (RoleTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RoleTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (RoleTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{RoleTypeState.SqlRoleTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

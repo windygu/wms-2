@@ -41,13 +41,13 @@ public class HibernateInventoryPostingRuleStateRepository implements InventoryPo
 
     @Transactional(readOnly = true)
     public InventoryPostingRuleState get(String id, boolean nullAllowed) {
-        InventoryPostingRuleState state = (InventoryPostingRuleState)getCurrentSession().get(AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState.class, id);
+        InventoryPostingRuleState.SqlInventoryPostingRuleState state = (InventoryPostingRuleState.SqlInventoryPostingRuleState)getCurrentSession().get(AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryPostingRuleState.SimpleInventoryPostingRuleState();
             state.setInventoryPostingRuleId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (InventoryPostingRuleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryPostingRuleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (InventoryPostingRuleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InventoryPostingRuleState.SqlInventoryPostingRuleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

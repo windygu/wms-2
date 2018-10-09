@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inventoryitem.InventoryItemEntryEvent.*;
 
-public abstract class AbstractInventoryItemEntryState implements InventoryItemEntryState
+public abstract class AbstractInventoryItemEntryState implements InventoryItemEntryState.SqlInventoryItemEntryState
 {
 
     private InventoryItemEntryId inventoryItemEntryId = new InventoryItemEntryId();

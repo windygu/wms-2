@@ -12,63 +12,65 @@ public interface AttributeAliasState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    AttributeAliasId getAttributeAliasId();
-
-    void setAttributeAliasId(AttributeAliasId attributeAliasId);
-
     String getCode();
-
-    void setCode(String code);
 
     String getName();
 
-    void setName(String name);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getAttributeId();
 
-    void setAttributeId(String attributeId);
+    interface MutableAttributeAliasState extends AttributeAliasState {
+        void setAttributeAliasId(AttributeAliasId attributeAliasId);
+
+        void setCode(String code);
+
+        void setName(String name);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setAttributeId(String attributeId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(AttributeAliasEvent.AttributeAliasStateCreated e);
 
+        void when(AttributeAliasEvent.AttributeAliasStateMergePatched e);
 
-    void mutate(Event e);
+        void when(AttributeAliasEvent.AttributeAliasStateRemoved e);
+    }
 
-    void when(AttributeAliasEvent.AttributeAliasStateCreated e);
+    interface SqlAttributeAliasState extends MutableAttributeAliasState {
+        AttributeAliasId getAttributeAliasId();
 
-    void when(AttributeAliasEvent.AttributeAliasStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(AttributeAliasEvent.AttributeAliasStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

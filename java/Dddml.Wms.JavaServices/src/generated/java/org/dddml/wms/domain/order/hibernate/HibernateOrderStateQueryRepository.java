@@ -44,7 +44,7 @@ public class HibernateOrderStateQueryRepository implements OrderStateQueryReposi
 
         OrderState state = (OrderState)getCurrentSession().get(AbstractOrderState.SimpleOrderState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (OrderState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (OrderState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderState.SqlOrderState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

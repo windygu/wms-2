@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inventoryprtriggered.InventoryPRTriggeredEvent.*;
 
-public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTriggeredState
+public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTriggeredState.SqlInventoryPRTriggeredState
 {
 
     private InventoryPRTriggeredId inventoryPRTriggeredId;

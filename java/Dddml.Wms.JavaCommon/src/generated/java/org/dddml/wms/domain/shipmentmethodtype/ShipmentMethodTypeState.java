@@ -14,57 +14,60 @@ public interface ShipmentMethodTypeState
 
     String getShipmentMethodTypeId();
 
-    void setShipmentMethodTypeId(String shipmentMethodTypeId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getSequenceNum();
 
-    void setSequenceNum(Long sequenceNum);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableShipmentMethodTypeState extends ShipmentMethodTypeState {
+        void setShipmentMethodTypeId(String shipmentMethodTypeId);
+
+        void setDescription(String description);
+
+        void setSequenceNum(Long sequenceNum);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e);
 
+        void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e);
+    }
 
-    void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateCreated e);
+    interface SqlShipmentMethodTypeState extends MutableShipmentMethodTypeState {
 
-    void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ShipmentMethodTypeEvent.ShipmentMethodTypeStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

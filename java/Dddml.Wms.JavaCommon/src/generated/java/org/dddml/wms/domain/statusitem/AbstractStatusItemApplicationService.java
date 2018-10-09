@@ -109,7 +109,7 @@ public abstract class AbstractStatusItemApplicationService implements StatusItem
 
     public void initialize(StatusItemEvent.StatusItemStateCreated stateCreated) {
         String aggregateId = ((StatusItemEvent.SqlStatusItemEvent)stateCreated).getStatusItemEventId().getStatusId();
-        StatusItemState state = new AbstractStatusItemState.SimpleStatusItemState();
+        StatusItemState.SqlStatusItemState state = new AbstractStatusItemState.SimpleStatusItemState();
         state.setStatusId(aggregateId);
 
         StatusItemAggregate aggregate = getStatusItemAggregate(state);

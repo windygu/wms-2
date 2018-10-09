@@ -8,13 +8,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractMovementAggregate extends AbstractAggregate implements MovementAggregate
 {
-    private MovementState state;
+    private MovementState.MutableMovementState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractMovementAggregate(MovementState state)
     {
-        this.state = state;
+        this.state = (MovementState.MutableMovementState)state;
     }
 
     public MovementState getState() {

@@ -13,57 +13,60 @@ public interface DamageTypeState
 
     String getDamageTypeId();
 
-    void setDamageTypeId(String damageTypeId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getSequenceId();
 
-    void setSequenceId(String sequenceId);
-
     String getDefaultHandlingMethodId();
-
-    void setDefaultHandlingMethodId(String defaultHandlingMethodId);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     String getCommandId();
 
-    void setCommandId(String commandId);
+    interface MutableDamageTypeState extends DamageTypeState {
+        void setDamageTypeId(String damageTypeId);
 
-    
+        void setDescription(String description);
+
+        void setSequenceId(String sequenceId);
+
+        void setDefaultHandlingMethodId(String defaultHandlingMethodId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setCommandId(String commandId);
+
+    }
+
+    interface SqlDamageTypeState extends MutableDamageTypeState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

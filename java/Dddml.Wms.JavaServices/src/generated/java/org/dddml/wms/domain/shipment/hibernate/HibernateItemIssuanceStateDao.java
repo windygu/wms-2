@@ -37,13 +37,13 @@ public class HibernateItemIssuanceStateDao implements ItemIssuanceStateDao
     @Override
     public ItemIssuanceState get(ShipmentItemIssuanceId id, boolean nullAllowed)
     {
-        ItemIssuanceState state = (ItemIssuanceState) getCurrentSession().get(AbstractItemIssuanceState.SimpleItemIssuanceState.class, id);
+        ItemIssuanceState.SqlItemIssuanceState state = (ItemIssuanceState.SqlItemIssuanceState) getCurrentSession().get(AbstractItemIssuanceState.SimpleItemIssuanceState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractItemIssuanceState.SimpleItemIssuanceState();
             state.setShipmentItemIssuanceId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ItemIssuanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ItemIssuanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ItemIssuanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ItemIssuanceState.SqlItemIssuanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

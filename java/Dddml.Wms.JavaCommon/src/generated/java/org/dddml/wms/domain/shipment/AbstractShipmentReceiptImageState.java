@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentReceiptImageEvent.*;
 
-public abstract class AbstractShipmentReceiptImageState implements ShipmentReceiptImageState
+public abstract class AbstractShipmentReceiptImageState implements ShipmentReceiptImageState.SqlShipmentReceiptImageState
 {
 
     private ShipmentReceiptImageId shipmentReceiptImageId = new ShipmentReceiptImageId();

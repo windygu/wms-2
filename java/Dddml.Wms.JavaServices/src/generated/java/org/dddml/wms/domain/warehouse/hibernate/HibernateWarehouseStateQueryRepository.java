@@ -43,7 +43,7 @@ public class HibernateWarehouseStateQueryRepository implements WarehouseStateQue
 
         WarehouseState state = (WarehouseState)getCurrentSession().get(AbstractWarehouseState.SimpleWarehouseState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (WarehouseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{WarehouseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (WarehouseState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{WarehouseState.SqlWarehouseState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

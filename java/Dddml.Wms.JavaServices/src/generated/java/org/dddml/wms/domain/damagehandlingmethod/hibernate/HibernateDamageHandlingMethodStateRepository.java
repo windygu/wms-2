@@ -40,7 +40,7 @@ public class HibernateDamageHandlingMethodStateRepository implements DamageHandl
 
     @Transactional(readOnly = true)
     public DamageHandlingMethodState get(String id, boolean nullAllowed) {
-        DamageHandlingMethodState state = (DamageHandlingMethodState)getCurrentSession().get(AbstractDamageHandlingMethodState.SimpleDamageHandlingMethodState.class, id);
+        DamageHandlingMethodState.SqlDamageHandlingMethodState state = (DamageHandlingMethodState.SqlDamageHandlingMethodState)getCurrentSession().get(AbstractDamageHandlingMethodState.SimpleDamageHandlingMethodState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractDamageHandlingMethodState.SimpleDamageHandlingMethodState();
             state.setDamageHandlingMethodId(id);

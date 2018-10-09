@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.OrderEvent.*;
 
-public abstract class AbstractOrderState implements OrderState, Saveable
+public abstract class AbstractOrderState implements OrderState.SqlOrderState, Saveable
 {
 
     private String orderId;
@@ -514,15 +514,15 @@ public abstract class AbstractOrderState implements OrderState, Saveable
 
         for (OrderRoleEvent.OrderRoleStateCreated innerEvent : e.getOrderRoleEvents()) {
             OrderRoleState innerState = this.getOrderRoles().get(((OrderRoleEvent.SqlOrderRoleEvent)innerEvent).getOrderRoleEventId().getPartyRoleId());
-            innerState.mutate(innerEvent);
+            ((OrderRoleState.SqlOrderRoleState)innerState).mutate(innerEvent);
         }
         for (OrderItemEvent.OrderItemStateCreated innerEvent : e.getOrderItemEvents()) {
             OrderItemState innerState = this.getOrderItems().get(((OrderItemEvent.SqlOrderItemEvent)innerEvent).getOrderItemEventId().getOrderItemSeqId());
-            innerState.mutate(innerEvent);
+            ((OrderItemState.SqlOrderItemState)innerState).mutate(innerEvent);
         }
         for (OrderShipGroupEvent.OrderShipGroupStateCreated innerEvent : e.getOrderShipGroupEvents()) {
             OrderShipGroupState innerState = this.getOrderShipGroups().get(((OrderShipGroupEvent.SqlOrderShipGroupEvent)innerEvent).getOrderShipGroupEventId().getShipGroupSeqId());
-            innerState.mutate(innerEvent);
+            ((OrderShipGroupState.SqlOrderShipGroupState)innerState).mutate(innerEvent);
         }
     }
 
@@ -811,7 +811,7 @@ public abstract class AbstractOrderState implements OrderState, Saveable
 
         for (OrderRoleEvent innerEvent : e.getOrderRoleEvents()) {
             OrderRoleState innerState = this.getOrderRoles().get(((OrderRoleEvent.SqlOrderRoleEvent)innerEvent).getOrderRoleEventId().getPartyRoleId());
-            innerState.mutate(innerEvent);
+            ((OrderRoleState.SqlOrderRoleState)innerState).mutate(innerEvent);
             if (innerEvent instanceof OrderRoleEvent.OrderRoleStateRemoved)
             {
                 //OrderRoleEvent.OrderRoleStateRemoved removed = (OrderRoleEvent.OrderRoleStateRemoved)innerEvent;
@@ -820,11 +820,11 @@ public abstract class AbstractOrderState implements OrderState, Saveable
         }
         for (OrderItemEvent innerEvent : e.getOrderItemEvents()) {
             OrderItemState innerState = this.getOrderItems().get(((OrderItemEvent.SqlOrderItemEvent)innerEvent).getOrderItemEventId().getOrderItemSeqId());
-            innerState.mutate(innerEvent);
+            ((OrderItemState.SqlOrderItemState)innerState).mutate(innerEvent);
         }
         for (OrderShipGroupEvent innerEvent : e.getOrderShipGroupEvents()) {
             OrderShipGroupState innerState = this.getOrderShipGroups().get(((OrderShipGroupEvent.SqlOrderShipGroupEvent)innerEvent).getOrderShipGroupEventId().getShipGroupSeqId());
-            innerState.mutate(innerEvent);
+            ((OrderShipGroupState.SqlOrderShipGroupState)innerState).mutate(innerEvent);
             if (innerEvent instanceof OrderShipGroupEvent.OrderShipGroupStateRemoved)
             {
                 //OrderShipGroupEvent.OrderShipGroupStateRemoved removed = (OrderShipGroupEvent.OrderShipGroupStateRemoved)innerEvent;

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.ordershipment.OrderShipmentEvent.*;
 
-public abstract class AbstractOrderShipmentState implements OrderShipmentState
+public abstract class AbstractOrderShipmentState implements OrderShipmentState.SqlOrderShipmentState
 {
 
     private OrderShipmentId orderShipmentId;

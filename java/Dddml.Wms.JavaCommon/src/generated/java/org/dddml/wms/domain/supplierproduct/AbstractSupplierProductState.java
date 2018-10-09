@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.supplierproduct.SupplierProductEvent.*;
 
-public abstract class AbstractSupplierProductState implements SupplierProductState
+public abstract class AbstractSupplierProductState implements SupplierProductState.SqlSupplierProductState
 {
 
     private SupplierProductId supplierProductId;

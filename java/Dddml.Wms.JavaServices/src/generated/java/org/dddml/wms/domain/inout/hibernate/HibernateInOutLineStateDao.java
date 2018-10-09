@@ -38,13 +38,13 @@ public class HibernateInOutLineStateDao implements InOutLineStateDao
     @Override
     public InOutLineState get(InOutLineId id, boolean nullAllowed)
     {
-        InOutLineState state = (InOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, id);
+        InOutLineState.SqlInOutLineState state = (InOutLineState.SqlInOutLineState) getCurrentSession().get(AbstractInOutLineState.SimpleInOutLineState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutLineState.SimpleInOutLineState();
             state.setInOutLineId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (InOutLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineState.SqlInOutLineState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

@@ -14,65 +14,68 @@ public interface UomConversionState
 
     UomConversionId getUomConversionId();
 
-    void setUomConversionId(UomConversionId uomConversionId);
-
     Double getConversionFactor();
-
-    void setConversionFactor(Double conversionFactor);
 
     String getCustomMethodId();
 
-    void setCustomMethodId(String customMethodId);
-
     Long getDecimalScale();
-
-    void setDecimalScale(Long decimalScale);
 
     String getRoundingMode();
 
-    void setRoundingMode(String roundingMode);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableUomConversionState extends UomConversionState {
+        void setUomConversionId(UomConversionId uomConversionId);
+
+        void setConversionFactor(Double conversionFactor);
+
+        void setCustomMethodId(String customMethodId);
+
+        void setDecimalScale(Long decimalScale);
+
+        void setRoundingMode(String roundingMode);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(UomConversionEvent.UomConversionStateCreated e);
 
+        void when(UomConversionEvent.UomConversionStateMergePatched e);
 
-    void mutate(Event e);
+        void when(UomConversionEvent.UomConversionStateDeleted e);
+    }
 
-    void when(UomConversionEvent.UomConversionStateCreated e);
+    interface SqlUomConversionState extends MutableUomConversionState {
 
-    void when(UomConversionEvent.UomConversionStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(UomConversionEvent.UomConversionStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -44,7 +44,7 @@ public class HibernateMovementConfirmationStateQueryRepository implements Moveme
 
         MovementConfirmationState state = (MovementConfirmationState)getCurrentSession().get(AbstractMovementConfirmationState.SimpleMovementConfirmationState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (MovementConfirmationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (MovementConfirmationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationState.SqlMovementConfirmationState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

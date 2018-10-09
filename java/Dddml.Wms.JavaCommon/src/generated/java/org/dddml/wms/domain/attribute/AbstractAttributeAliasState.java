@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attribute.AttributeAliasEvent.*;
 
-public abstract class AbstractAttributeAliasState implements AttributeAliasState
+public abstract class AbstractAttributeAliasState implements AttributeAliasState.SqlAttributeAliasState
 {
 
     private AttributeAliasId attributeAliasId = new AttributeAliasId();

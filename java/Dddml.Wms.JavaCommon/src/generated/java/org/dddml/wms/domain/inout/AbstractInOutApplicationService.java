@@ -113,10 +113,9 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
 
     public InOutEvent getEvent(String documentNumber, long version) {
         InOutEvent e = (InOutEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
-        if (e != null)
-        { ((InOutEvent.SqlInOutEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((InOutEvent.SqlInOutEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(documentNumber, 0);
         }
         return e;
@@ -188,7 +187,7 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
 
     public void initialize(InOutEvent.InOutStateCreated stateCreated) {
         String aggregateId = ((InOutEvent.SqlInOutEvent)stateCreated).getInOutEventId().getDocumentNumber();
-        InOutState state = new AbstractInOutState.SimpleInOutState();
+        InOutState.SqlInOutState state = new AbstractInOutState.SimpleInOutState();
         state.setDocumentNumber(aggregateId);
 
         InOutAggregate aggregate = getInOutAggregate(state);

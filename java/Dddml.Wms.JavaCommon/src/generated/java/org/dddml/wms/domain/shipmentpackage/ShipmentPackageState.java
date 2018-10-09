@@ -14,87 +14,90 @@ public interface ShipmentPackageState
 
     ShipmentPackageId getShipmentPackageId();
 
-    void setShipmentPackageId(ShipmentPackageId shipmentPackageId);
-
     String getShipmentBoxTypeId();
-
-    void setShipmentBoxTypeId(String shipmentBoxTypeId);
 
     java.sql.Timestamp getDateCreated();
 
-    void setDateCreated(java.sql.Timestamp dateCreated);
-
     java.math.BigDecimal getBoxLength();
-
-    void setBoxLength(java.math.BigDecimal boxLength);
 
     java.math.BigDecimal getBoxHeight();
 
-    void setBoxHeight(java.math.BigDecimal boxHeight);
-
     java.math.BigDecimal getBoxWidth();
-
-    void setBoxWidth(java.math.BigDecimal boxWidth);
 
     String getDimensionUomId();
 
-    void setDimensionUomId(String dimensionUomId);
-
     java.math.BigDecimal getWeight();
-
-    void setWeight(java.math.BigDecimal weight);
 
     String getWeightUomId();
 
-    void setWeightUomId(String weightUomId);
-
     java.math.BigDecimal getInsuredValue();
-
-    void setInsuredValue(java.math.BigDecimal insuredValue);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
-
     EntityStateCollection<String, ShipmentPackageContentState> getShipmentPackageContents();
 
+    interface MutableShipmentPackageState extends ShipmentPackageState {
+        void setShipmentPackageId(ShipmentPackageId shipmentPackageId);
 
-    void mutate(Event e);
+        void setShipmentBoxTypeId(String shipmentBoxTypeId);
 
-    void when(ShipmentPackageEvent.ShipmentPackageStateCreated e);
+        void setDateCreated(java.sql.Timestamp dateCreated);
 
-    void when(ShipmentPackageEvent.ShipmentPackageStateMergePatched e);
+        void setBoxLength(java.math.BigDecimal boxLength);
 
-    void when(ShipmentPackageEvent.ShipmentPackageStateDeleted e);
-    
+        void setBoxHeight(java.math.BigDecimal boxHeight);
+
+        void setBoxWidth(java.math.BigDecimal boxWidth);
+
+        void setDimensionUomId(String dimensionUomId);
+
+        void setWeight(java.math.BigDecimal weight);
+
+        void setWeightUomId(String weightUomId);
+
+        void setInsuredValue(java.math.BigDecimal insuredValue);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(ShipmentPackageEvent.ShipmentPackageStateCreated e);
+
+        void when(ShipmentPackageEvent.ShipmentPackageStateMergePatched e);
+
+        void when(ShipmentPackageEvent.ShipmentPackageStateDeleted e);
+    }
+
+    interface SqlShipmentPackageState extends MutableShipmentPackageState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

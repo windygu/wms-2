@@ -88,10 +88,9 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
 
     public LotEvent getEvent(String lotId, long version) {
         LotEvent e = (LotEvent)getEventStore().getEvent(toEventStoreAggregateId(lotId), version);
-        if (e != null)
-        { ((LotEvent.SqlLotEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((LotEvent.SqlLotEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(lotId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractLotApplicationService implements LotApplicationSer
 
     public void initialize(LotEvent.LotStateCreated stateCreated) {
         String aggregateId = ((LotEvent.SqlLotEvent)stateCreated).getLotEventId().getLotId();
-        LotState state = new AbstractLotState.SimpleLotState();
+        LotState.SqlLotState state = new AbstractLotState.SimpleLotState();
         state.setLotId(aggregateId);
 
         LotAggregate aggregate = getLotAggregate(state);

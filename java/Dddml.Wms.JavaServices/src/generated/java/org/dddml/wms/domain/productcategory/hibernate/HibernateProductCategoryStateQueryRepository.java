@@ -43,7 +43,7 @@ public class HibernateProductCategoryStateQueryRepository implements ProductCate
 
         ProductCategoryState state = (ProductCategoryState)getCurrentSession().get(AbstractProductCategoryState.SimpleProductCategoryState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ProductCategoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductCategoryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ProductCategoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductCategoryState.SqlProductCategoryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

@@ -45,12 +45,12 @@ public class HibernatePartyStateRepository implements PartyStateRepository
 
     @Transactional(readOnly = true)
     public PartyState get(Class<? extends PartyState> type, String id, boolean nullAllowed) {
-        PartyState state = (PartyState)getCurrentSession().get(AbstractPartyState.SimplePartyState.class, id);
+        PartyState.SqlPartyState state = (PartyState.SqlPartyState)getCurrentSession().get(AbstractPartyState.SimplePartyState.class, id);
         if (state != null && !type.isAssignableFrom(state.getClass())) {
             throw new ClassCastException(String.format("state is NOT instance of %1$s", type.getName()));
         }
         if (!nullAllowed && state == null) {
-            state = newEmptyState(type);
+            state = (PartyState.SqlPartyState)newEmptyState(type);
             state.setPartyId(id);
         }
         return state;

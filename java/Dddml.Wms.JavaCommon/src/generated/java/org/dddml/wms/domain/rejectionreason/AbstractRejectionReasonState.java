@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.rejectionreason.RejectionReasonEvent.*;
 
-public abstract class AbstractRejectionReasonState implements RejectionReasonState
+public abstract class AbstractRejectionReasonState implements RejectionReasonState.SqlRejectionReasonState
 {
 
     private String rejectionReasonId;

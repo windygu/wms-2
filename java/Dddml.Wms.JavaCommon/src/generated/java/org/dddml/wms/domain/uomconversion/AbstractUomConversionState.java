@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.uomconversion.UomConversionEvent.*;
 
-public abstract class AbstractUomConversionState implements UomConversionState
+public abstract class AbstractUomConversionState implements UomConversionState.SqlUomConversionState
 {
 
     private UomConversionId uomConversionId;

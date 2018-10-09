@@ -37,13 +37,13 @@ public class HibernateShipmentImageStateDao implements ShipmentImageStateDao
     @Override
     public ShipmentImageState get(ShipmentImageId id, boolean nullAllowed)
     {
-        ShipmentImageState state = (ShipmentImageState) getCurrentSession().get(AbstractShipmentImageState.SimpleShipmentImageState.class, id);
+        ShipmentImageState.SqlShipmentImageState state = (ShipmentImageState.SqlShipmentImageState) getCurrentSession().get(AbstractShipmentImageState.SimpleShipmentImageState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentImageState.SimpleShipmentImageState();
             state.setShipmentImageId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (ShipmentImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (ShipmentImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentImageState.SqlShipmentImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractPartyRoleAggregate extends AbstractAggregate implements PartyRoleAggregate
 {
-    private PartyRoleState state;
+    private PartyRoleState.MutablePartyRoleState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractPartyRoleAggregate(PartyRoleState state)
     {
-        this.state = state;
+        this.state = (PartyRoleState.MutablePartyRoleState)state;
     }
 
     public PartyRoleState getState() {

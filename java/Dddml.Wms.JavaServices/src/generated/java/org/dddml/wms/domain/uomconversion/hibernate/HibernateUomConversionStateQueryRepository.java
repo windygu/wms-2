@@ -43,7 +43,7 @@ public class HibernateUomConversionStateQueryRepository implements UomConversion
 
         UomConversionState state = (UomConversionState)getCurrentSession().get(AbstractUomConversionState.SimpleUomConversionState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (UomConversionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomConversionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (UomConversionState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{UomConversionState.SqlUomConversionState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

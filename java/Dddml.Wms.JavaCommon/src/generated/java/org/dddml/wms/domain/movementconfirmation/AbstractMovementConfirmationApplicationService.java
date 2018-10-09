@@ -93,10 +93,9 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
 
     public MovementConfirmationEvent getEvent(String documentNumber, long version) {
         MovementConfirmationEvent e = (MovementConfirmationEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
-        if (e != null)
-        { ((MovementConfirmationEvent.SqlMovementConfirmationEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((MovementConfirmationEvent.SqlMovementConfirmationEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(documentNumber, 0);
         }
         return e;
@@ -152,7 +151,7 @@ public abstract class AbstractMovementConfirmationApplicationService implements 
 
     public void initialize(MovementConfirmationEvent.MovementConfirmationStateCreated stateCreated) {
         String aggregateId = ((MovementConfirmationEvent.SqlMovementConfirmationEvent)stateCreated).getMovementConfirmationEventId().getDocumentNumber();
-        MovementConfirmationState state = new AbstractMovementConfirmationState.SimpleMovementConfirmationState();
+        MovementConfirmationState.SqlMovementConfirmationState state = new AbstractMovementConfirmationState.SimpleMovementConfirmationState();
         state.setDocumentNumber(aggregateId);
 
         MovementConfirmationAggregate aggregate = getMovementConfirmationAggregate(state);

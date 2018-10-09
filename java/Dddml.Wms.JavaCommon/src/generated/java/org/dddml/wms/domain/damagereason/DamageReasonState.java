@@ -14,57 +14,60 @@ public interface DamageReasonState
 
     String getDamageReasonId();
 
-    void setDamageReasonId(String damageReasonId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getSequenceId();
 
-    void setSequenceId(String sequenceId);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableDamageReasonState extends DamageReasonState {
+        void setDamageReasonId(String damageReasonId);
+
+        void setDescription(String description);
+
+        void setSequenceId(String sequenceId);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(DamageReasonEvent.DamageReasonStateCreated e);
 
+        void when(DamageReasonEvent.DamageReasonStateMergePatched e);
 
-    void mutate(Event e);
+        void when(DamageReasonEvent.DamageReasonStateDeleted e);
+    }
 
-    void when(DamageReasonEvent.DamageReasonStateCreated e);
+    interface SqlDamageReasonState extends MutableDamageReasonState {
 
-    void when(DamageReasonEvent.DamageReasonStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(DamageReasonEvent.DamageReasonStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

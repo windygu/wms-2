@@ -134,7 +134,7 @@ public abstract class AbstractSupplierProductApplicationService implements Suppl
 
     public void initialize(SupplierProductEvent.SupplierProductStateCreated stateCreated) {
         SupplierProductId aggregateId = ((SupplierProductEvent.SqlSupplierProductEvent)stateCreated).getSupplierProductEventId().getSupplierProductId();
-        SupplierProductState state = new AbstractSupplierProductState.SimpleSupplierProductState();
+        SupplierProductState.SqlSupplierProductState state = new AbstractSupplierProductState.SimpleSupplierProductState();
         state.setSupplierProductId(aggregateId);
 
         SupplierProductAggregate aggregate = getSupplierProductAggregate(state);

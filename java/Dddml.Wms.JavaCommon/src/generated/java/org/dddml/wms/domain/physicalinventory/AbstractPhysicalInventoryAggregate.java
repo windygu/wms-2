@@ -9,13 +9,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggregate implements PhysicalInventoryAggregate
 {
-    private PhysicalInventoryState state;
+    private PhysicalInventoryState.MutablePhysicalInventoryState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractPhysicalInventoryAggregate(PhysicalInventoryState state)
     {
-        this.state = state;
+        this.state = (PhysicalInventoryState.MutablePhysicalInventoryState)state;
     }
 
     public PhysicalInventoryState getState() {

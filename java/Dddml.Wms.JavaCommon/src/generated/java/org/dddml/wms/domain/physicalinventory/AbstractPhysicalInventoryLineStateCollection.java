@@ -61,7 +61,7 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
         } else {
             List<PhysicalInventoryLineState> ss = new ArrayList<PhysicalInventoryLineState>();
             for (PhysicalInventoryLineState s : loadedPhysicalInventoryLineStates.values()) {
-                if (!(removedPhysicalInventoryLineStates.containsKey(s.getPhysicalInventoryLineId()) && s.getDeleted())) {
+                if (!(removedPhysicalInventoryLineStates.containsKey(((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)s).getPhysicalInventoryLineId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }
@@ -71,7 +71,7 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
 
     public AbstractPhysicalInventoryLineStateCollection(PhysicalInventoryState outerState) {
         this.physicalInventoryState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((PhysicalInventoryState.SqlPhysicalInventoryState)outerState).getForReapplying());
     }
 
     @Override
@@ -102,14 +102,17 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             PhysicalInventoryLineState state = new AbstractPhysicalInventoryLineState.SimplePhysicalInventoryLineState(getForReapplying());
-            state.setPhysicalInventoryLineId(globalId);
+            ((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).setPhysicalInventoryLineId(globalId);
             loadedPhysicalInventoryLineStates.put(globalId, state);
             return state;
         } else {
             PhysicalInventoryLineState state = getPhysicalInventoryLineStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractPhysicalInventoryLineState) {
+                    ((AbstractPhysicalInventoryLineState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedPhysicalInventoryLineStates.put(globalId, state);
             }
@@ -122,14 +125,14 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedPhysicalInventoryLineStates.put(state.getPhysicalInventoryLineId(), state);
+        this.removedPhysicalInventoryLineStates.put(((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).getPhysicalInventoryLineId(), state);
     }
 
     public void add(PhysicalInventoryLineState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedPhysicalInventoryLineStates.put(state.getPhysicalInventoryLineId(), state);
+        this.loadedPhysicalInventoryLineStates.put(((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).getPhysicalInventoryLineId(), state);
     }
 
     //region Saveable Implements

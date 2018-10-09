@@ -12,63 +12,65 @@ public interface AttributeUseState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    AttributeSetAttributeUseId getAttributeSetAttributeUseId();
-
-    void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId);
-
     String getAttributeId();
-
-    void setAttributeId(String attributeId);
 
     Integer getSequenceNumber();
 
-    void setSequenceNumber(Integer sequenceNumber);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getAttributeSetId();
 
-    void setAttributeSetId(String attributeSetId);
+    interface MutableAttributeUseState extends AttributeUseState {
+        void setAttributeSetAttributeUseId(AttributeSetAttributeUseId attributeSetAttributeUseId);
+
+        void setAttributeId(String attributeId);
+
+        void setSequenceNumber(Integer sequenceNumber);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setAttributeSetId(String attributeSetId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(AttributeUseEvent.AttributeUseStateCreated e);
 
+        void when(AttributeUseEvent.AttributeUseStateMergePatched e);
 
-    void mutate(Event e);
+        void when(AttributeUseEvent.AttributeUseStateRemoved e);
+    }
 
-    void when(AttributeUseEvent.AttributeUseStateCreated e);
+    interface SqlAttributeUseState extends MutableAttributeUseState {
+        AttributeSetAttributeUseId getAttributeSetAttributeUseId();
 
-    void when(AttributeUseEvent.AttributeUseStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(AttributeUseEvent.AttributeUseStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

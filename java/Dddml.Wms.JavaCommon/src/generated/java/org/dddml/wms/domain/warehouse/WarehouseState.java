@@ -14,61 +14,64 @@ public interface WarehouseState
 
     String getWarehouseId();
 
-    void setWarehouseId(String warehouseId);
-
     String getWarehouseName();
-
-    void setWarehouseName(String warehouseName);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Boolean getIsInTransit();
-
-    void setIsInTransit(Boolean isInTransit);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableWarehouseState extends WarehouseState {
+        void setWarehouseId(String warehouseId);
+
+        void setWarehouseName(String warehouseName);
+
+        void setDescription(String description);
+
+        void setIsInTransit(Boolean isInTransit);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(WarehouseEvent.WarehouseStateCreated e);
 
+        void when(WarehouseEvent.WarehouseStateMergePatched e);
 
-    void mutate(Event e);
+        void when(WarehouseEvent.WarehouseStateDeleted e);
+    }
 
-    void when(WarehouseEvent.WarehouseStateCreated e);
+    interface SqlWarehouseState extends MutableWarehouseState {
 
-    void when(WarehouseEvent.WarehouseStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(WarehouseEvent.WarehouseStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractFacilityAggregate extends AbstractAggregate implements FacilityAggregate
 {
-    private FacilityState state;
+    private FacilityState.MutableFacilityState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractFacilityAggregate(FacilityState state)
     {
-        this.state = state;
+        this.state = (FacilityState.MutableFacilityState)state;
     }
 
     public FacilityState getState() {

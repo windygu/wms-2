@@ -43,7 +43,7 @@ public class HibernateInventoryItemRequirementStateRepository implements Invento
 
     @Transactional(readOnly = true)
     public InventoryItemRequirementState get(InventoryItemId id, boolean nullAllowed) {
-        InventoryItemRequirementState state = (InventoryItemRequirementState)getCurrentSession().get(AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState.class, id);
+        InventoryItemRequirementState.SqlInventoryItemRequirementState state = (InventoryItemRequirementState.SqlInventoryItemRequirementState)getCurrentSession().get(AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState();
             state.setInventoryItemRequirementId(id);

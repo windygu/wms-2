@@ -14,69 +14,72 @@ public interface AttributeSetInstanceExtensionFieldGroupState
 
     String getId();
 
-    void setId(String id);
-
     String getFieldType();
-
-    void setFieldType(String fieldType);
 
     Integer getFieldLength();
 
-    void setFieldLength(Integer fieldLength);
-
     Integer getFieldCount();
-
-    void setFieldCount(Integer fieldCount);
 
     String getNameFormat();
 
-    void setNameFormat(String nameFormat);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableAttributeSetInstanceExtensionFieldGroupState extends AttributeSetInstanceExtensionFieldGroupState {
+        void setId(String id);
+
+        void setFieldType(String fieldType);
+
+        void setFieldLength(Integer fieldLength);
+
+        void setFieldCount(Integer fieldCount);
+
+        void setNameFormat(String nameFormat);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e);
 
+        void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e);
 
-    void mutate(Event e);
+        void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e);
+    }
 
-    void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateCreated e);
+    interface SqlAttributeSetInstanceExtensionFieldGroupState extends MutableAttributeSetInstanceExtensionFieldGroupState {
 
-    void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(AttributeSetInstanceExtensionFieldGroupEvent.AttributeSetInstanceExtensionFieldGroupStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -14,75 +14,78 @@ public interface AttributeSetState
 
     String getAttributeSetId();
 
-    void setAttributeSetId(String attributeSetId);
-
     String getAttributeSetName();
-
-    void setAttributeSetName(String attributeSetName);
 
     String getOrganizationId();
 
-    void setOrganizationId(String organizationId);
-
     String getDescription();
-
-    void setDescription(String description);
 
     String getReferenceId();
 
-    void setReferenceId(String referenceId);
-
     Boolean getIsInstanceAttributeSet();
-
-    void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
 
     Boolean getIsMandatory();
 
-    void setIsMandatory(Boolean isMandatory);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, AttributeUseState> getAttributeUses();
 
+    interface MutableAttributeSetState extends AttributeSetState {
+        void setAttributeSetId(String attributeSetId);
 
-    void mutate(Event e);
+        void setAttributeSetName(String attributeSetName);
 
-    void when(AttributeSetEvent.AttributeSetStateCreated e);
+        void setOrganizationId(String organizationId);
 
-    void when(AttributeSetEvent.AttributeSetStateMergePatched e);
+        void setDescription(String description);
 
-    void when(AttributeSetEvent.AttributeSetStateDeleted e);
-    
+        void setReferenceId(String referenceId);
+
+        void setIsInstanceAttributeSet(Boolean isInstanceAttributeSet);
+
+        void setIsMandatory(Boolean isMandatory);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(AttributeSetEvent.AttributeSetStateCreated e);
+
+        void when(AttributeSetEvent.AttributeSetStateMergePatched e);
+
+        void when(AttributeSetEvent.AttributeSetStateDeleted e);
+    }
+
+    interface SqlAttributeSetState extends MutableAttributeSetState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

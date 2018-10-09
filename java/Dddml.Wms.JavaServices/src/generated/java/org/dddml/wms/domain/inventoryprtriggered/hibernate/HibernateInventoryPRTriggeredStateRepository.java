@@ -40,7 +40,7 @@ public class HibernateInventoryPRTriggeredStateRepository implements InventoryPR
 
     @Transactional(readOnly = true)
     public InventoryPRTriggeredState get(InventoryPRTriggeredId id, boolean nullAllowed) {
-        InventoryPRTriggeredState state = (InventoryPRTriggeredState)getCurrentSession().get(AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState.class, id);
+        InventoryPRTriggeredState.SqlInventoryPRTriggeredState state = (InventoryPRTriggeredState.SqlInventoryPRTriggeredState)getCurrentSession().get(AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInventoryPRTriggeredState.SimpleInventoryPRTriggeredState();
             state.setInventoryPRTriggeredId(id);

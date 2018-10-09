@@ -38,13 +38,13 @@ public class HibernateOrderRoleStateDao implements OrderRoleStateDao
     @Override
     public OrderRoleState get(OrderRoleId id, boolean nullAllowed)
     {
-        OrderRoleState state = (OrderRoleState) getCurrentSession().get(AbstractOrderRoleState.SimpleOrderRoleState.class, id);
+        OrderRoleState.SqlOrderRoleState state = (OrderRoleState.SqlOrderRoleState) getCurrentSession().get(AbstractOrderRoleState.SimpleOrderRoleState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderRoleState.SimpleOrderRoleState();
             state.setOrderRoleId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (OrderRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (OrderRoleState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderRoleState.SqlOrderRoleState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

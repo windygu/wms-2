@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractPicklistBinAggregate extends AbstractAggregate implements PicklistBinAggregate
 {
-    private PicklistBinState state;
+    private PicklistBinState.MutablePicklistBinState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractPicklistBinAggregate(PicklistBinState state)
     {
-        this.state = state;
+        this.state = (PicklistBinState.MutablePicklistBinState)state;
     }
 
     public PicklistBinState getState() {

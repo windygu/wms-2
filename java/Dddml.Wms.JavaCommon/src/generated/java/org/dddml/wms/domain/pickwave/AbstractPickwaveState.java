@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.pickwave.PickwaveEvent.*;
 
-public abstract class AbstractPickwaveState implements PickwaveState
+public abstract class AbstractPickwaveState implements PickwaveState.SqlPickwaveState
 {
 
     private Long pickwaveId;

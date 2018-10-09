@@ -30,14 +30,14 @@ public abstract class AbstractUomTypeApplicationService implements UomTypeApplic
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setParentTypeId(c.getParentTypeId());
-        s.setHasTable(c.getHasTable());
-        s.setDescription(c.getDescription());
-        s.setActive(c.getActive());
-        s.setDeleted(false);
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((UomTypeState.SqlUomTypeState)s).setParentTypeId(c.getParentTypeId());
+        ((UomTypeState.SqlUomTypeState)s).setHasTable(c.getHasTable());
+        ((UomTypeState.SqlUomTypeState)s).setDescription(c.getDescription());
+        ((UomTypeState.SqlUomTypeState)s).setActive(c.getActive());
+        ((UomTypeState.SqlUomTypeState)s).setDeleted(false);
+        ((UomTypeState.SqlUomTypeState)s).setCreatedBy(c.getRequesterId());
+        ((UomTypeState.SqlUomTypeState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((UomTypeState.SqlUomTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -48,35 +48,35 @@ public abstract class AbstractUomTypeApplicationService implements UomTypeApplic
         throwOnConcurrencyConflict(s, c);
         if (c.getParentTypeId() == null) {
             if (c.getIsPropertyParentTypeIdRemoved() != null && c.getIsPropertyParentTypeIdRemoved()) {
-                s.setParentTypeId(null);
+                ((UomTypeState.SqlUomTypeState)s).setParentTypeId(null);
             }
         } else {
-            s.setParentTypeId(c.getParentTypeId());
+            ((UomTypeState.SqlUomTypeState)s).setParentTypeId(c.getParentTypeId());
         }
         if (c.getHasTable() == null) {
             if (c.getIsPropertyHasTableRemoved() != null && c.getIsPropertyHasTableRemoved()) {
-                s.setHasTable(null);
+                ((UomTypeState.SqlUomTypeState)s).setHasTable(null);
             }
         } else {
-            s.setHasTable(c.getHasTable());
+            ((UomTypeState.SqlUomTypeState)s).setHasTable(c.getHasTable());
         }
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((UomTypeState.SqlUomTypeState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((UomTypeState.SqlUomTypeState)s).setDescription(c.getDescription());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((UomTypeState.SqlUomTypeState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((UomTypeState.SqlUomTypeState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((UomTypeState.SqlUomTypeState)s).setUpdatedBy(c.getRequesterId());
+        ((UomTypeState.SqlUomTypeState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((UomTypeState.SqlUomTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

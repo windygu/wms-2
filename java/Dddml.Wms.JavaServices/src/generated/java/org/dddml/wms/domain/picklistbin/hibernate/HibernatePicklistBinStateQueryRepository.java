@@ -43,7 +43,7 @@ public class HibernatePicklistBinStateQueryRepository implements PicklistBinStat
 
         PicklistBinState state = (PicklistBinState)getCurrentSession().get(AbstractPicklistBinState.SimplePicklistBinState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PicklistBinState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistBinState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PicklistBinState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PicklistBinState.SqlPicklistBinState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.orderitemshipgrpinvreservation.OrderItemShipGrpInvReservationEvent.*;
 
-public abstract class AbstractOrderItemShipGrpInvReservationState implements OrderItemShipGrpInvReservationState
+public abstract class AbstractOrderItemShipGrpInvReservationState implements OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState
 {
 
     private OrderItemShipGrpInvResId orderItemShipGrpInvResId;

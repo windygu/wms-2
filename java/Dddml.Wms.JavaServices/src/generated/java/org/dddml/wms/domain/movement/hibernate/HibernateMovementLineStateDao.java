@@ -38,13 +38,13 @@ public class HibernateMovementLineStateDao implements MovementLineStateDao
     @Override
     public MovementLineState get(MovementLineId id, boolean nullAllowed)
     {
-        MovementLineState state = (MovementLineState) getCurrentSession().get(AbstractMovementLineState.SimpleMovementLineState.class, id);
+        MovementLineState.SqlMovementLineState state = (MovementLineState.SqlMovementLineState) getCurrentSession().get(AbstractMovementLineState.SimpleMovementLineState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractMovementLineState.SimpleMovementLineState();
             state.setMovementLineId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (MovementLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (MovementLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementLineState.SqlMovementLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.party.PersonEvent.*;
 
-public abstract class AbstractPersonState extends AbstractPartyState implements PersonState
+public abstract class AbstractPersonState extends AbstractPartyState implements PersonState.SqlPersonState
 {
 
     private String salutation;

@@ -37,13 +37,13 @@ public class HibernateInOutLineImageStateDao implements InOutLineImageStateDao
     @Override
     public InOutLineImageState get(InOutLineImageId id, boolean nullAllowed)
     {
-        InOutLineImageState state = (InOutLineImageState) getCurrentSession().get(AbstractInOutLineImageState.SimpleInOutLineImageState.class, id);
+        InOutLineImageState.SqlInOutLineImageState state = (InOutLineImageState.SqlInOutLineImageState) getCurrentSession().get(AbstractInOutLineImageState.SimpleInOutLineImageState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractInOutLineImageState.SimpleInOutLineImageState();
             state.setInOutLineImageId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (InOutLineImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (InOutLineImageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{InOutLineImageState.SqlInOutLineImageState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

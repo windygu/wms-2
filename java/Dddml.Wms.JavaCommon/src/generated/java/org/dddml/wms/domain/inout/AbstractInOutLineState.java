@@ -7,7 +7,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.inout.InOutLineEvent.*;
 
-public abstract class AbstractInOutLineState implements InOutLineState, Saveable
+public abstract class AbstractInOutLineState implements InOutLineState.SqlInOutLineState, Saveable
 {
 
     private InOutLineId inOutLineId = new InOutLineId();
@@ -351,7 +351,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
 
         for (InOutLineImageEvent.InOutLineImageStateCreated innerEvent : e.getInOutLineImageEvents()) {
             InOutLineImageState innerState = this.getInOutLineImages().get(((InOutLineImageEvent.SqlInOutLineImageEvent)innerEvent).getInOutLineImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((InOutLineImageState.SqlInOutLineImageState)innerState).mutate(innerEvent);
         }
     }
 
@@ -508,7 +508,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
 
         for (InOutLineImageEvent innerEvent : e.getInOutLineImageEvents()) {
             InOutLineImageState innerState = this.getInOutLineImages().get(((InOutLineImageEvent.SqlInOutLineImageEvent)innerEvent).getInOutLineImageEventId().getSequenceId());
-            innerState.mutate(innerEvent);
+            ((InOutLineImageState.SqlInOutLineImageState)innerState).mutate(innerEvent);
             if (innerEvent instanceof InOutLineImageEvent.InOutLineImageStateRemoved)
             {
                 //InOutLineImageEvent.InOutLineImageStateRemoved removed = (InOutLineImageEvent.InOutLineImageStateRemoved)innerEvent;
@@ -532,7 +532,7 @@ public abstract class AbstractInOutLineState implements InOutLineState, Saveable
             InOutLineImageEvent.InOutLineImageStateRemoved innerE = e.newInOutLineImageStateRemoved(innerState.getSequenceId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((InOutLineImageState.MutableInOutLineImageState)innerState).when(innerE);
             //e.addInOutLineImageEvent(innerE);
         }
     }

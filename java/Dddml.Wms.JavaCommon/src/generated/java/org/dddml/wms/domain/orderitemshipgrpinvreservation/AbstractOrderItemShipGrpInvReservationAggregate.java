@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractOrderItemShipGrpInvReservationAggregate extends AbstractAggregate implements OrderItemShipGrpInvReservationAggregate
 {
-    private OrderItemShipGrpInvReservationState state;
+    private OrderItemShipGrpInvReservationState.MutableOrderItemShipGrpInvReservationState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractOrderItemShipGrpInvReservationAggregate(OrderItemShipGrpInvReservationState state)
     {
-        this.state = state;
+        this.state = (OrderItemShipGrpInvReservationState.MutableOrderItemShipGrpInvReservationState)state;
     }
 
     public OrderItemShipGrpInvReservationState getState() {

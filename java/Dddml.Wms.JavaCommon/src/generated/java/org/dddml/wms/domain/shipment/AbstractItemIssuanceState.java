@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ItemIssuanceEvent.*;
 
-public abstract class AbstractItemIssuanceState implements ItemIssuanceState
+public abstract class AbstractItemIssuanceState implements ItemIssuanceState.SqlItemIssuanceState
 {
 
     private ShipmentItemIssuanceId shipmentItemIssuanceId = new ShipmentItemIssuanceId();

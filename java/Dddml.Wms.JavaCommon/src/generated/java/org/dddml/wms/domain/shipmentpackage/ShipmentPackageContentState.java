@@ -12,71 +12,73 @@ public interface ShipmentPackageContentState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ShipmentPackageContentId getShipmentPackageContentId();
-
-    void setShipmentPackageContentId(ShipmentPackageContentId shipmentPackageContentId);
-
     String getShipmentItemSeqId();
-
-    void setShipmentItemSeqId(String shipmentItemSeqId);
 
     java.math.BigDecimal getQuantity();
 
-    void setQuantity(java.math.BigDecimal quantity);
-
     String getSubProductId();
-
-    void setSubProductId(String subProductId);
 
     java.math.BigDecimal getSubProductQuantity();
 
-    void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     ShipmentPackageId getShipmentPackageId();
 
-    void setShipmentPackageId(ShipmentPackageId shipmentPackageId);
+    interface MutableShipmentPackageContentState extends ShipmentPackageContentState {
+        void setShipmentPackageContentId(ShipmentPackageContentId shipmentPackageContentId);
+
+        void setShipmentItemSeqId(String shipmentItemSeqId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setSubProductId(String subProductId);
+
+        void setSubProductQuantity(java.math.BigDecimal subProductQuantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setShipmentPackageId(ShipmentPackageId shipmentPackageId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ShipmentPackageContentEvent.ShipmentPackageContentStateCreated e);
 
+        void when(ShipmentPackageContentEvent.ShipmentPackageContentStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved e);
+    }
 
-    void when(ShipmentPackageContentEvent.ShipmentPackageContentStateCreated e);
+    interface SqlShipmentPackageContentState extends MutableShipmentPackageContentState {
+        ShipmentPackageContentId getShipmentPackageContentId();
 
-    void when(ShipmentPackageContentEvent.ShipmentPackageContentStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

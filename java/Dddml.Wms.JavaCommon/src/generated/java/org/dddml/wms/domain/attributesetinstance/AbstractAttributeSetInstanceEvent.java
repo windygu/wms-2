@@ -9,9 +9,9 @@ import org.dddml.wms.domain.AbstractEvent;
 
 public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent implements AttributeSetInstanceEvent.SqlAttributeSetInstanceEvent 
 {
-    private AttributeSetInstanceState state;
+    private AttributeSetInstanceState.MutableAttributeSetInstanceState state;
 
-    public AttributeSetInstanceState getAttributeSetInstanceState() {
+    public AttributeSetInstanceState.MutableAttributeSetInstanceState getAttributeSetInstanceState() {
         return state;
     }
 
@@ -86,7 +86,7 @@ public abstract class AbstractAttributeSetInstanceEvent extends AbstractEvent im
 
     protected AbstractAttributeSetInstanceEvent(AttributeSetInstanceState s) {
         if (s == null) { throw new IllegalArgumentException(); }
-        this.state = s;
+        this.state = (AttributeSetInstanceState.MutableAttributeSetInstanceState)s;
     }
 
 

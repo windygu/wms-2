@@ -43,7 +43,7 @@ public class HibernateLocatorStateQueryRepository implements LocatorStateQueryRe
 
         LocatorState state = (LocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (LocatorState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LocatorState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (LocatorState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LocatorState.SqlLocatorState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

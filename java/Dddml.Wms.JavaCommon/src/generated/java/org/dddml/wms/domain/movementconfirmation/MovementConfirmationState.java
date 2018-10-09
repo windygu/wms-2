@@ -15,83 +15,86 @@ public interface MovementConfirmationState
 
     String getDocumentNumber();
 
-    void setDocumentNumber(String documentNumber);
-
     String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
 
     String getMovementDocumentNumber();
 
-    void setMovementDocumentNumber(String movementDocumentNumber);
-
     Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
 
     BigDecimal getApprovalAmount();
 
-    void setApprovalAmount(BigDecimal approvalAmount);
-
     Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
 
     String getProcessing();
 
-    void setProcessing(String processing);
-
     String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, MovementConfirmationLineState> getMovementConfirmationLines();
 
+    interface MutableMovementConfirmationState extends MovementConfirmationState {
+        void setDocumentNumber(String documentNumber);
 
-    void mutate(Event e);
+        void setDocumentStatusId(String documentStatusId);
 
-    void when(MovementConfirmationEvent.MovementConfirmationStateCreated e);
+        void setMovementDocumentNumber(String movementDocumentNumber);
 
-    void when(MovementConfirmationEvent.MovementConfirmationStateMergePatched e);
+        void setIsApproved(Boolean isApproved);
 
-    void when(MovementConfirmationEvent.MovementConfirmationStateDeleted e);
-    
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        void setProcessed(Boolean processed);
+
+        void setProcessing(String processing);
+
+        void setDocumentTypeId(String documentTypeId);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(MovementConfirmationEvent.MovementConfirmationStateCreated e);
+
+        void when(MovementConfirmationEvent.MovementConfirmationStateMergePatched e);
+
+        void when(MovementConfirmationEvent.MovementConfirmationStateDeleted e);
+    }
+
+    interface SqlMovementConfirmationState extends MutableMovementConfirmationState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

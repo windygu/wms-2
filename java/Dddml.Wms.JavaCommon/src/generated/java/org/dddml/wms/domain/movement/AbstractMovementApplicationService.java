@@ -97,10 +97,9 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
 
     public MovementEvent getEvent(String documentNumber, long version) {
         MovementEvent e = (MovementEvent)getEventStore().getEvent(toEventStoreAggregateId(documentNumber), version);
-        if (e != null)
-        { ((MovementEvent.SqlMovementEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((MovementEvent.SqlMovementEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(documentNumber, 0);
         }
         return e;
@@ -156,7 +155,7 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
 
     public void initialize(MovementEvent.MovementStateCreated stateCreated) {
         String aggregateId = ((MovementEvent.SqlMovementEvent)stateCreated).getMovementEventId().getDocumentNumber();
-        MovementState state = new AbstractMovementState.SimpleMovementState();
+        MovementState.SqlMovementState state = new AbstractMovementState.SimpleMovementState();
         state.setDocumentNumber(aggregateId);
 
         MovementAggregate aggregate = getMovementAggregate(state);

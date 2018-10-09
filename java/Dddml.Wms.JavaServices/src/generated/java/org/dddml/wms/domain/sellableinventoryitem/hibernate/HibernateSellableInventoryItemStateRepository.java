@@ -43,7 +43,7 @@ public class HibernateSellableInventoryItemStateRepository implements SellableIn
 
     @Transactional(readOnly = true)
     public SellableInventoryItemState get(InventoryItemId id, boolean nullAllowed) {
-        SellableInventoryItemState state = (SellableInventoryItemState)getCurrentSession().get(AbstractSellableInventoryItemState.SimpleSellableInventoryItemState.class, id);
+        SellableInventoryItemState.SqlSellableInventoryItemState state = (SellableInventoryItemState.SqlSellableInventoryItemState)getCurrentSession().get(AbstractSellableInventoryItemState.SimpleSellableInventoryItemState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractSellableInventoryItemState.SimpleSellableInventoryItemState();
             state.setSellableInventoryItemId(id);

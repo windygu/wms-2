@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.facility.FacilityEvent.*;
 
-public abstract class AbstractFacilityState implements FacilityState
+public abstract class AbstractFacilityState implements FacilityState.SqlFacilityState
 {
 
     private String facilityId;

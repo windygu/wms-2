@@ -9,7 +9,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.sellableinventoryitem.SellableInventoryItemEntryEvent.*;
 
-public abstract class AbstractSellableInventoryItemEntryState implements SellableInventoryItemEntryState
+public abstract class AbstractSellableInventoryItemEntryState implements SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState
 {
 
     private SellableInventoryItemEntryId sellableInventoryItemEntryId = new SellableInventoryItemEntryId();

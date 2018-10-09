@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipmentmethodtype.ShipmentMethodTypeEvent.*;
 
-public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodTypeState
+public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodTypeState.SqlShipmentMethodTypeState
 {
 
     private String shipmentMethodTypeId;

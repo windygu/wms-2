@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.attribute.AttributeValueEvent.*;
 
-public abstract class AbstractAttributeValueState implements AttributeValueState
+public abstract class AbstractAttributeValueState implements AttributeValueState.SqlAttributeValueState
 {
 
     private AttributeValueId attributeValueId = new AttributeValueId();

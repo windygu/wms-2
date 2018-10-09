@@ -85,10 +85,9 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
 
     public InventoryItemEvent getEvent(InventoryItemId inventoryItemId, long version) {
         InventoryItemEvent e = (InventoryItemEvent)getEventStore().getEvent(toEventStoreAggregateId(inventoryItemId), version);
-        if (e != null)
-        { ((InventoryItemEvent.SqlInventoryItemEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((InventoryItemEvent.SqlInventoryItemEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(inventoryItemId, 0);
         }
         return e;
@@ -144,7 +143,7 @@ public abstract class AbstractInventoryItemApplicationService implements Invento
 
     public void initialize(InventoryItemEvent.InventoryItemStateCreated stateCreated) {
         InventoryItemId aggregateId = ((InventoryItemEvent.SqlInventoryItemEvent)stateCreated).getInventoryItemEventId().getInventoryItemId();
-        InventoryItemState state = new AbstractInventoryItemState.SimpleInventoryItemState();
+        InventoryItemState.SqlInventoryItemState state = new AbstractInventoryItemState.SimpleInventoryItemState();
         state.setInventoryItemId(aggregateId);
 
         InventoryItemAggregate aggregate = getInventoryItemAggregate(state);

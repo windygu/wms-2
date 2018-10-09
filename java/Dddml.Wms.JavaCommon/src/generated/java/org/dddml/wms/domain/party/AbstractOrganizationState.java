@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.party.OrganizationEvent.*;
 
-public abstract class AbstractOrganizationState extends AbstractPartyState implements OrganizationState
+public abstract class AbstractOrganizationState extends AbstractPartyState implements OrganizationState.SqlOrganizationState
 {
 
     private String organizationName;

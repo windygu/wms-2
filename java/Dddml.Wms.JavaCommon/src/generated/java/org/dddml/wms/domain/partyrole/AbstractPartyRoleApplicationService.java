@@ -88,10 +88,9 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
 
     public PartyRoleEvent getEvent(PartyRoleId partyRoleId, long version) {
         PartyRoleEvent e = (PartyRoleEvent)getEventStore().getEvent(toEventStoreAggregateId(partyRoleId), version);
-        if (e != null)
-        { ((PartyRoleEvent.SqlPartyRoleEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PartyRoleEvent.SqlPartyRoleEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(partyRoleId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractPartyRoleApplicationService implements PartyRoleAp
 
     public void initialize(PartyRoleEvent.PartyRoleStateCreated stateCreated) {
         PartyRoleId aggregateId = ((PartyRoleEvent.SqlPartyRoleEvent)stateCreated).getPartyRoleEventId().getPartyRoleId();
-        PartyRoleState state = new AbstractPartyRoleState.SimplePartyRoleState();
+        PartyRoleState.SqlPartyRoleState state = new AbstractPartyRoleState.SimplePartyRoleState();
         state.setPartyRoleId(aggregateId);
 
         PartyRoleAggregate aggregate = getPartyRoleAggregate(state);

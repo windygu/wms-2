@@ -89,10 +89,9 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
 
     public OrderEvent getEvent(String orderId, long version) {
         OrderEvent e = (OrderEvent)getEventStore().getEvent(toEventStoreAggregateId(orderId), version);
-        if (e != null)
-        { ((OrderEvent.SqlOrderEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((OrderEvent.SqlOrderEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(orderId, 0);
         }
         return e;
@@ -172,7 +171,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
 
     public void initialize(OrderEvent.OrderStateCreated stateCreated) {
         String aggregateId = ((OrderEvent.SqlOrderEvent)stateCreated).getOrderEventId().getOrderId();
-        OrderState state = new AbstractOrderState.SimpleOrderState();
+        OrderState.SqlOrderState state = new AbstractOrderState.SimpleOrderState();
         state.setOrderId(aggregateId);
 
         OrderAggregate aggregate = getOrderAggregate(state);

@@ -13,87 +13,89 @@ public interface MovementLineState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    MovementLineId getMovementLineId();
-
-    void setMovementLineId(MovementLineId movementLineId);
-
     String getLineNumber();
-
-    void setLineNumber(String lineNumber);
 
     BigDecimal getMovementQuantity();
 
-    void setMovementQuantity(BigDecimal movementQuantity);
-
     String getProductId();
-
-    void setProductId(String productId);
 
     String getLocatorIdFrom();
 
-    void setLocatorIdFrom(String locatorIdFrom);
-
     String getLocatorIdTo();
-
-    void setLocatorIdTo(String locatorIdTo);
 
     String getAttributeSetInstanceId();
 
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
-
     Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
 
     String getReversalLineNumber();
 
-    void setReversalLineNumber(String reversalLineNumber);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getMovementDocumentNumber();
 
-    void setMovementDocumentNumber(String movementDocumentNumber);
+    interface MutableMovementLineState extends MovementLineState {
+        void setMovementLineId(MovementLineId movementLineId);
+
+        void setLineNumber(String lineNumber);
+
+        void setMovementQuantity(BigDecimal movementQuantity);
+
+        void setProductId(String productId);
+
+        void setLocatorIdFrom(String locatorIdFrom);
+
+        void setLocatorIdTo(String locatorIdTo);
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        void setProcessed(Boolean processed);
+
+        void setReversalLineNumber(String reversalLineNumber);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setMovementDocumentNumber(String movementDocumentNumber);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(MovementLineEvent.MovementLineStateCreated e);
 
+        void when(MovementLineEvent.MovementLineStateMergePatched e);
 
-    void mutate(Event e);
+        void when(MovementLineEvent.MovementLineStateRemoved e);
+    }
 
-    void when(MovementLineEvent.MovementLineStateCreated e);
+    interface SqlMovementLineState extends MutableMovementLineState {
+        MovementLineId getMovementLineId();
 
-    void when(MovementLineEvent.MovementLineStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(MovementLineEvent.MovementLineStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.goodidentificationtype.GoodIdentificationTypeEvent.*;
 
-public abstract class AbstractGoodIdentificationTypeState implements GoodIdentificationTypeState
+public abstract class AbstractGoodIdentificationTypeState implements GoodIdentificationTypeState.SqlGoodIdentificationTypeState
 {
 
     private String goodIdentificationTypeId;

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipmentpackage.ShipmentPackageEvent.*;
 
-public abstract class AbstractShipmentPackageState implements ShipmentPackageState, Saveable
+public abstract class AbstractShipmentPackageState implements ShipmentPackageState.SqlShipmentPackageState, Saveable
 {
 
     private ShipmentPackageId shipmentPackageId;
@@ -308,7 +308,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
 
         for (ShipmentPackageContentEvent.ShipmentPackageContentStateCreated innerEvent : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)innerEvent).getShipmentPackageContentEventId().getShipmentItemSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentPackageContentState.SqlShipmentPackageContentState)innerState).mutate(innerEvent);
         }
     }
 
@@ -432,7 +432,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
 
         for (ShipmentPackageContentEvent innerEvent : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)innerEvent).getShipmentPackageContentEventId().getShipmentItemSeqId());
-            innerState.mutate(innerEvent);
+            ((ShipmentPackageContentState.SqlShipmentPackageContentState)innerState).mutate(innerEvent);
             if (innerEvent instanceof ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)
             {
                 //ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved removed = (ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved)innerEvent;
@@ -456,7 +456,7 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
             ShipmentPackageContentEvent.ShipmentPackageContentStateRemoved innerE = e.newShipmentPackageContentStateRemoved(innerState.getShipmentItemSeqId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((ShipmentPackageContentState.MutableShipmentPackageContentState)innerState).when(innerE);
             //e.addShipmentPackageContentEvent(innerE);
         }
     }

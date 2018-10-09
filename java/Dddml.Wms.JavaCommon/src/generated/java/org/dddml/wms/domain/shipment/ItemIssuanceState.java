@@ -12,111 +12,113 @@ public interface ItemIssuanceState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    ShipmentItemIssuanceId getShipmentItemIssuanceId();
-
-    void setShipmentItemIssuanceId(ShipmentItemIssuanceId shipmentItemIssuanceId);
-
     String getItemIssuanceSeqId();
-
-    void setItemIssuanceSeqId(String itemIssuanceSeqId);
 
     String getOrderId();
 
-    void setOrderId(String orderId);
-
     String getOrderItemSeqId();
-
-    void setOrderItemSeqId(String orderItemSeqId);
 
     String getShipGroupSeqId();
 
-    void setShipGroupSeqId(String shipGroupSeqId);
-
     String getProductId();
-
-    void setProductId(String productId);
 
     String getLocatorId();
 
-    void setLocatorId(String locatorId);
-
     String getAttributeSetInstanceId();
-
-    void setAttributeSetInstanceId(String attributeSetInstanceId);
 
     String getShipmentItemSeqId();
 
-    void setShipmentItemSeqId(String shipmentItemSeqId);
-
     String getFixedAssetId();
-
-    void setFixedAssetId(String fixedAssetId);
 
     String getMaintHistSeqId();
 
-    void setMaintHistSeqId(String maintHistSeqId);
-
     java.sql.Timestamp getIssuedDateTime();
-
-    void setIssuedDateTime(java.sql.Timestamp issuedDateTime);
 
     String getIssuedByUserLoginId();
 
-    void setIssuedByUserLoginId(String issuedByUserLoginId);
-
     java.math.BigDecimal getQuantity();
-
-    void setQuantity(java.math.BigDecimal quantity);
 
     java.math.BigDecimal getCancelQuantity();
 
-    void setCancelQuantity(java.math.BigDecimal cancelQuantity);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getShipmentId();
 
-    void setShipmentId(String shipmentId);
+    interface MutableItemIssuanceState extends ItemIssuanceState {
+        void setShipmentItemIssuanceId(ShipmentItemIssuanceId shipmentItemIssuanceId);
+
+        void setItemIssuanceSeqId(String itemIssuanceSeqId);
+
+        void setOrderId(String orderId);
+
+        void setOrderItemSeqId(String orderItemSeqId);
+
+        void setShipGroupSeqId(String shipGroupSeqId);
+
+        void setProductId(String productId);
+
+        void setLocatorId(String locatorId);
+
+        void setAttributeSetInstanceId(String attributeSetInstanceId);
+
+        void setShipmentItemSeqId(String shipmentItemSeqId);
+
+        void setFixedAssetId(String fixedAssetId);
+
+        void setMaintHistSeqId(String maintHistSeqId);
+
+        void setIssuedDateTime(java.sql.Timestamp issuedDateTime);
+
+        void setIssuedByUserLoginId(String issuedByUserLoginId);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setCancelQuantity(java.math.BigDecimal cancelQuantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setShipmentId(String shipmentId);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ItemIssuanceEvent.ItemIssuanceStateCreated e);
 
+        void when(ItemIssuanceEvent.ItemIssuanceStateMergePatched e);
 
-    void mutate(Event e);
+        void when(ItemIssuanceEvent.ItemIssuanceStateRemoved e);
+    }
 
-    void when(ItemIssuanceEvent.ItemIssuanceStateCreated e);
+    interface SqlItemIssuanceState extends MutableItemIssuanceState {
+        ShipmentItemIssuanceId getShipmentItemIssuanceId();
 
-    void when(ItemIssuanceEvent.ItemIssuanceStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(ItemIssuanceEvent.ItemIssuanceStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

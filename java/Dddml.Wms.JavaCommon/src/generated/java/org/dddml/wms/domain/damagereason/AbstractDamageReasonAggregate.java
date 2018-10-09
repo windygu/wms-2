@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractDamageReasonAggregate extends AbstractAggregate implements DamageReasonAggregate
 {
-    private DamageReasonState state;
+    private DamageReasonState.MutableDamageReasonState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractDamageReasonAggregate(DamageReasonState state)
     {
-        this.state = state;
+        this.state = (DamageReasonState.MutableDamageReasonState)state;
     }
 
     public DamageReasonState getState() {

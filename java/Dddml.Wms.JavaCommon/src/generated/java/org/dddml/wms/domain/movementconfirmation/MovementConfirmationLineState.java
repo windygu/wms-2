@@ -13,87 +13,89 @@ public interface MovementConfirmationLineState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    MovementConfirmationLineId getMovementConfirmationLineId();
-
-    void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId);
-
     String getLineNumber();
-
-    void setLineNumber(String lineNumber);
 
     String getMovementLineNumber();
 
-    void setMovementLineNumber(String movementLineNumber);
-
     BigDecimal getTargetQuantity();
-
-    void setTargetQuantity(BigDecimal targetQuantity);
 
     BigDecimal getConfirmedQuantity();
 
-    void setConfirmedQuantity(BigDecimal confirmedQuantity);
-
     BigDecimal getDifferenceQuantity();
-
-    void setDifferenceQuantity(BigDecimal differenceQuantity);
 
     BigDecimal getScrappedQuantity();
 
-    void setScrappedQuantity(BigDecimal scrappedQuantity);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Boolean getProcessed();
 
-    void setProcessed(Boolean processed);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getMovementConfirmationDocumentNumber();
 
-    void setMovementConfirmationDocumentNumber(String movementConfirmationDocumentNumber);
+    interface MutableMovementConfirmationLineState extends MovementConfirmationLineState {
+        void setMovementConfirmationLineId(MovementConfirmationLineId movementConfirmationLineId);
+
+        void setLineNumber(String lineNumber);
+
+        void setMovementLineNumber(String movementLineNumber);
+
+        void setTargetQuantity(BigDecimal targetQuantity);
+
+        void setConfirmedQuantity(BigDecimal confirmedQuantity);
+
+        void setDifferenceQuantity(BigDecimal differenceQuantity);
+
+        void setScrappedQuantity(BigDecimal scrappedQuantity);
+
+        void setDescription(String description);
+
+        void setProcessed(Boolean processed);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setMovementConfirmationDocumentNumber(String movementConfirmationDocumentNumber);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(MovementConfirmationLineEvent.MovementConfirmationLineStateCreated e);
 
+        void when(MovementConfirmationLineEvent.MovementConfirmationLineStateMergePatched e);
 
-    void mutate(Event e);
+        void when(MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved e);
+    }
 
-    void when(MovementConfirmationLineEvent.MovementConfirmationLineStateCreated e);
+    interface SqlMovementConfirmationLineState extends MutableMovementConfirmationLineState {
+        MovementConfirmationLineId getMovementConfirmationLineId();
 
-    void when(MovementConfirmationLineEvent.MovementConfirmationLineStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(MovementConfirmationLineEvent.MovementConfirmationLineStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

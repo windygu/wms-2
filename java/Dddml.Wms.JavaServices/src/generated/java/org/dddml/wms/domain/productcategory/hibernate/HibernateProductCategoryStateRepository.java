@@ -40,13 +40,13 @@ public class HibernateProductCategoryStateRepository implements ProductCategoryS
 
     @Transactional(readOnly = true)
     public ProductCategoryState get(String id, boolean nullAllowed) {
-        ProductCategoryState state = (ProductCategoryState)getCurrentSession().get(AbstractProductCategoryState.SimpleProductCategoryState.class, id);
+        ProductCategoryState.SqlProductCategoryState state = (ProductCategoryState.SqlProductCategoryState)getCurrentSession().get(AbstractProductCategoryState.SimpleProductCategoryState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractProductCategoryState.SimpleProductCategoryState();
             state.setProductCategoryId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ProductCategoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductCategoryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ProductCategoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ProductCategoryState.SqlProductCategoryState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

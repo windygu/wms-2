@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractAttributeAggregate extends AbstractAggregate implements AttributeAggregate
 {
-    private AttributeState state;
+    private AttributeState.MutableAttributeState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractAttributeAggregate(AttributeState state)
     {
-        this.state = state;
+        this.state = (AttributeState.MutableAttributeState)state;
     }
 
     public AttributeState getState() {

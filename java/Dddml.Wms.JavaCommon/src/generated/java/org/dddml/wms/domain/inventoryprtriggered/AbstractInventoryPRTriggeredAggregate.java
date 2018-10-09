@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractInventoryPRTriggeredAggregate extends AbstractAggregate implements InventoryPRTriggeredAggregate
 {
-    private InventoryPRTriggeredState state;
+    private InventoryPRTriggeredState.MutableInventoryPRTriggeredState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractInventoryPRTriggeredAggregate(InventoryPRTriggeredState state)
     {
-        this.state = state;
+        this.state = (InventoryPRTriggeredState.MutableInventoryPRTriggeredState)state;
     }
 
     public InventoryPRTriggeredState getState() {

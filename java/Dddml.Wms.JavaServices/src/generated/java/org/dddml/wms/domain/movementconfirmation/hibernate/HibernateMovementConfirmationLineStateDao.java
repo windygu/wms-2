@@ -38,13 +38,13 @@ public class HibernateMovementConfirmationLineStateDao implements MovementConfir
     @Override
     public MovementConfirmationLineState get(MovementConfirmationLineId id, boolean nullAllowed)
     {
-        MovementConfirmationLineState state = (MovementConfirmationLineState) getCurrentSession().get(AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState.class, id);
+        MovementConfirmationLineState.SqlMovementConfirmationLineState state = (MovementConfirmationLineState.SqlMovementConfirmationLineState) getCurrentSession().get(AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractMovementConfirmationLineState.SimpleMovementConfirmationLineState();
             state.setMovementConfirmationLineId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (MovementConfirmationLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (MovementConfirmationLineState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{MovementConfirmationLineState.SqlMovementConfirmationLineState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

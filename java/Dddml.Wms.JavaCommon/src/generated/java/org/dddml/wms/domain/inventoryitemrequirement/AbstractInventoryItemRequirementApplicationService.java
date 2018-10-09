@@ -120,7 +120,7 @@ public abstract class AbstractInventoryItemRequirementApplicationService impleme
 
     public void initialize(InventoryItemRequirementEvent.InventoryItemRequirementStateCreated stateCreated) {
         InventoryItemId aggregateId = ((InventoryItemRequirementEvent.SqlInventoryItemRequirementEvent)stateCreated).getInventoryItemRequirementEventId().getInventoryItemRequirementId();
-        InventoryItemRequirementState state = new AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState();
+        InventoryItemRequirementState.SqlInventoryItemRequirementState state = new AbstractInventoryItemRequirementState.SimpleInventoryItemRequirementState();
         state.setInventoryItemRequirementId(aggregateId);
 
         InventoryItemRequirementAggregate aggregate = getInventoryItemRequirementAggregate(state);

@@ -15,69 +15,72 @@ public interface InventoryPostingRuleState
 
     String getInventoryPostingRuleId();
 
-    void setInventoryPostingRuleId(String inventoryPostingRuleId);
-
     InventoryItemId getTriggerInventoryItemId();
-
-    void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
 
     InventoryItemId getOutputInventoryItemId();
 
-    void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
-
     String getTriggerAccountName();
-
-    void setTriggerAccountName(String triggerAccountName);
 
     String getOutputAccountName();
 
-    void setOutputAccountName(String outputAccountName);
-
     Boolean getIsOutputNegated();
-
-    void setIsOutputNegated(Boolean isOutputNegated);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableInventoryPostingRuleState extends InventoryPostingRuleState {
+        void setInventoryPostingRuleId(String inventoryPostingRuleId);
+
+        void setTriggerInventoryItemId(InventoryItemId triggerInventoryItemId);
+
+        void setOutputInventoryItemId(InventoryItemId outputInventoryItemId);
+
+        void setTriggerAccountName(String triggerAccountName);
+
+        void setOutputAccountName(String outputAccountName);
+
+        void setIsOutputNegated(Boolean isOutputNegated);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e);
 
+        void when(InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e);
 
-    void mutate(Event e);
+        void when(InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e);
+    }
 
-    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateCreated e);
+    interface SqlInventoryPostingRuleState extends MutableInventoryPostingRuleState {
 
-    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(InventoryPostingRuleEvent.InventoryPostingRuleStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

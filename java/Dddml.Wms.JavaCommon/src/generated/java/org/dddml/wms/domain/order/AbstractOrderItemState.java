@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.order.OrderItemEvent.*;
 
-public abstract class AbstractOrderItemState implements OrderItemState
+public abstract class AbstractOrderItemState implements OrderItemState.SqlOrderItemState
 {
 
     private OrderItemId orderItemId = new OrderItemId();

@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.shipment.ShipmentItemEvent.*;
 
-public abstract class AbstractShipmentItemState implements ShipmentItemState
+public abstract class AbstractShipmentItemState implements ShipmentItemState.SqlShipmentItemState
 {
 
     private ShipmentItemId shipmentItemId = new ShipmentItemId();

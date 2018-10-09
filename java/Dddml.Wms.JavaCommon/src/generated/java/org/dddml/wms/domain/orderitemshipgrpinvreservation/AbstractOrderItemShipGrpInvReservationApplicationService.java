@@ -88,10 +88,9 @@ public abstract class AbstractOrderItemShipGrpInvReservationApplicationService i
 
     public OrderItemShipGrpInvReservationEvent getEvent(OrderItemShipGrpInvResId orderItemShipGrpInvResId, long version) {
         OrderItemShipGrpInvReservationEvent e = (OrderItemShipGrpInvReservationEvent)getEventStore().getEvent(toEventStoreAggregateId(orderItemShipGrpInvResId), version);
-        if (e != null)
-        { ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(orderItemShipGrpInvResId, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractOrderItemShipGrpInvReservationApplicationService i
 
     public void initialize(OrderItemShipGrpInvReservationEvent.OrderItemShipGrpInvReservationStateCreated stateCreated) {
         OrderItemShipGrpInvResId aggregateId = ((OrderItemShipGrpInvReservationEvent.SqlOrderItemShipGrpInvReservationEvent)stateCreated).getOrderItemShipGrpInvReservationEventId().getOrderItemShipGrpInvResId();
-        OrderItemShipGrpInvReservationState state = new AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState();
+        OrderItemShipGrpInvReservationState.SqlOrderItemShipGrpInvReservationState state = new AbstractOrderItemShipGrpInvReservationState.SimpleOrderItemShipGrpInvReservationState();
         state.setOrderItemShipGrpInvResId(aggregateId);
 
         OrderItemShipGrpInvReservationAggregate aggregate = getOrderItemShipGrpInvReservationAggregate(state);

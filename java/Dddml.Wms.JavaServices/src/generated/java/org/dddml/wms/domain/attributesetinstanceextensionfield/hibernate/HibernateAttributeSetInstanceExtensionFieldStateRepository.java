@@ -40,13 +40,13 @@ public class HibernateAttributeSetInstanceExtensionFieldStateRepository implemen
 
     @Transactional(readOnly = true)
     public AttributeSetInstanceExtensionFieldState get(String id, boolean nullAllowed) {
-        AttributeSetInstanceExtensionFieldState state = (AttributeSetInstanceExtensionFieldState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState.class, id);
+        AttributeSetInstanceExtensionFieldState.SqlAttributeSetInstanceExtensionFieldState state = (AttributeSetInstanceExtensionFieldState.SqlAttributeSetInstanceExtensionFieldState)getCurrentSession().get(AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceExtensionFieldState.SimpleAttributeSetInstanceExtensionFieldState();
             state.setName(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetInstanceExtensionFieldState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceExtensionFieldState.SqlAttributeSetInstanceExtensionFieldState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

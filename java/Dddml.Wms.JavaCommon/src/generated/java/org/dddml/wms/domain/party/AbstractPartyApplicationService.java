@@ -112,10 +112,9 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
 
     public PartyEvent getEvent(String partyId, long version) {
         PartyEvent e = (PartyEvent)getEventStore().getEvent(toEventStoreAggregateId(partyId), version);
-        if (e != null)
-        { ((PartyEvent.SqlPartyEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((PartyEvent.SqlPartyEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(partyId, 0);
         }
         return e;
@@ -164,7 +163,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
 
     public void initialize(PartyEvent.PartyStateCreated stateCreated) {
         String aggregateId = ((PartyEvent.SqlPartyEvent)stateCreated).getPartyEventId().getPartyId();
-        PartyState state = new AbstractPartyState.SimplePartyState();
+        PartyState.SqlPartyState state = new AbstractPartyState.SimplePartyState();
         state.setPartyId(aggregateId);
 
         PartyAggregate aggregate = getPartyAggregate(state);
@@ -176,7 +175,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
 
     public void initialize(OrganizationEvent.OrganizationStateCreated stateCreated) {
         String aggregateId = ((PartyEvent.SqlPartyEvent)stateCreated).getPartyEventId().getPartyId();
-        OrganizationState state = new AbstractOrganizationState.SimpleOrganizationState();
+        OrganizationState.SqlOrganizationState state = new AbstractOrganizationState.SimpleOrganizationState();
         state.setPartyId(aggregateId);
 
         PartyAggregate aggregate = getPartyAggregate(state);
@@ -188,7 +187,7 @@ public abstract class AbstractPartyApplicationService implements PartyApplicatio
 
     public void initialize(PersonEvent.PersonStateCreated stateCreated) {
         String aggregateId = ((PartyEvent.SqlPartyEvent)stateCreated).getPartyEventId().getPartyId();
-        PersonState state = new AbstractPersonState.SimplePersonState();
+        PersonState.SqlPersonState state = new AbstractPersonState.SimplePersonState();
         state.setPartyId(aggregateId);
 
         PartyAggregate aggregate = getPartyAggregate(state);

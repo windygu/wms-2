@@ -88,10 +88,9 @@ public abstract class AbstractOrganizationStructureApplicationService implements
 
     public OrganizationStructureEvent getEvent(OrganizationStructureId id, long version) {
         OrganizationStructureEvent e = (OrganizationStructureEvent)getEventStore().getEvent(toEventStoreAggregateId(id), version);
-        if (e != null)
-        { ((OrganizationStructureEvent.SqlOrganizationStructureEvent)e).setEventReadOnly(true); }
-        else if (version == -1)
-        {
+        if (e != null) {
+            ((OrganizationStructureEvent.SqlOrganizationStructureEvent)e).setEventReadOnly(true); 
+        } else if (version == -1) {
             return getEvent(id, 0);
         }
         return e;
@@ -139,7 +138,7 @@ public abstract class AbstractOrganizationStructureApplicationService implements
 
     public void initialize(OrganizationStructureEvent.OrganizationStructureStateCreated stateCreated) {
         OrganizationStructureId aggregateId = ((OrganizationStructureEvent.SqlOrganizationStructureEvent)stateCreated).getOrganizationStructureEventId().getId();
-        OrganizationStructureState state = new AbstractOrganizationStructureState.SimpleOrganizationStructureState();
+        OrganizationStructureState.SqlOrganizationStructureState state = new AbstractOrganizationStructureState.SimpleOrganizationStructureState();
         state.setId(aggregateId);
 
         OrganizationStructureAggregate aggregate = getOrganizationStructureAggregate(state);

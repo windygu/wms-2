@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.picklistbin.PicklistBinEvent.*;
 
-public abstract class AbstractPicklistBinState implements PicklistBinState, Saveable
+public abstract class AbstractPicklistBinState implements PicklistBinState.SqlPicklistBinState, Saveable
 {
 
     private String picklistBinId;
@@ -243,7 +243,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
         for (PicklistItemEvent.PicklistItemStateCreated innerEvent : e.getPicklistItemEvents()) {
             PicklistItemState innerState = this.getPicklistItems().get(((PicklistItemEvent.SqlPicklistItemEvent)innerEvent).getPicklistItemEventId().getPicklistItemOrderShipGrpInvId());
-            innerState.mutate(innerEvent);
+            ((PicklistItemState.SqlPicklistItemState)innerState).mutate(innerEvent);
         }
     }
 
@@ -312,7 +312,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
 
         for (PicklistItemEvent innerEvent : e.getPicklistItemEvents()) {
             PicklistItemState innerState = this.getPicklistItems().get(((PicklistItemEvent.SqlPicklistItemEvent)innerEvent).getPicklistItemEventId().getPicklistItemOrderShipGrpInvId());
-            innerState.mutate(innerEvent);
+            ((PicklistItemState.SqlPicklistItemState)innerState).mutate(innerEvent);
             if (innerEvent instanceof PicklistItemEvent.PicklistItemStateRemoved)
             {
                 //PicklistItemEvent.PicklistItemStateRemoved removed = (PicklistItemEvent.PicklistItemStateRemoved)innerEvent;
@@ -336,7 +336,7 @@ public abstract class AbstractPicklistBinState implements PicklistBinState, Save
             PicklistItemEvent.PicklistItemStateRemoved innerE = e.newPicklistItemStateRemoved(innerState.getPicklistItemOrderShipGrpInvId());
             innerE.setCreatedAt(e.getCreatedAt());
             innerE.setCreatedBy(e.getCreatedBy());
-            innerState.when(innerE);
+            ((PicklistItemState.MutablePicklistItemState)innerState).when(innerE);
             //e.addPicklistItemEvent(innerE);
         }
     }

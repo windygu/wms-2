@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractRejectionReasonAggregate extends AbstractAggregate implements RejectionReasonAggregate
 {
-    private RejectionReasonState state;
+    private RejectionReasonState.MutableRejectionReasonState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractRejectionReasonAggregate(RejectionReasonState state)
     {
-        this.state = state;
+        this.state = (RejectionReasonState.MutableRejectionReasonState)state;
     }
 
     public RejectionReasonState getState() {

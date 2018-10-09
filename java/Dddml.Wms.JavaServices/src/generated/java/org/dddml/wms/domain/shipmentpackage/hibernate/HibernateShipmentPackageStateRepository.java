@@ -40,13 +40,13 @@ public class HibernateShipmentPackageStateRepository implements ShipmentPackageS
 
     @Transactional(readOnly = true)
     public ShipmentPackageState get(ShipmentPackageId id, boolean nullAllowed) {
-        ShipmentPackageState state = (ShipmentPackageState)getCurrentSession().get(AbstractShipmentPackageState.SimpleShipmentPackageState.class, id);
+        ShipmentPackageState.SqlShipmentPackageState state = (ShipmentPackageState.SqlShipmentPackageState)getCurrentSession().get(AbstractShipmentPackageState.SimpleShipmentPackageState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractShipmentPackageState.SimpleShipmentPackageState();
             state.setShipmentPackageId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (ShipmentPackageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (ShipmentPackageState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{ShipmentPackageState.SqlShipmentPackageState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

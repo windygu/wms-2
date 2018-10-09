@@ -30,12 +30,12 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
         update(c, s -> {
         // //////////////////////////
         throwOnConcurrencyConflict(s, c);
-        s.setDescription(c.getDescription());
-        s.setActive(c.getActive());
-        s.setDeleted(false);
-        s.setCreatedBy(c.getRequesterId());
-        s.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((MovementTypeState.SqlMovementTypeState)s).setDescription(c.getDescription());
+        ((MovementTypeState.SqlMovementTypeState)s).setActive(c.getActive());
+        ((MovementTypeState.SqlMovementTypeState)s).setDeleted(false);
+        ((MovementTypeState.SqlMovementTypeState)s).setCreatedBy(c.getRequesterId());
+        ((MovementTypeState.SqlMovementTypeState)s).setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((MovementTypeState.SqlMovementTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////
         });
     }
@@ -46,21 +46,21 @@ public abstract class AbstractMovementTypeApplicationService implements Movement
         throwOnConcurrencyConflict(s, c);
         if (c.getDescription() == null) {
             if (c.getIsPropertyDescriptionRemoved() != null && c.getIsPropertyDescriptionRemoved()) {
-                s.setDescription(null);
+                ((MovementTypeState.SqlMovementTypeState)s).setDescription(null);
             }
         } else {
-            s.setDescription(c.getDescription());
+            ((MovementTypeState.SqlMovementTypeState)s).setDescription(c.getDescription());
         }
         if (c.getActive() == null) {
             if (c.getIsPropertyActiveRemoved() != null && c.getIsPropertyActiveRemoved()) {
-                s.setActive(null);
+                ((MovementTypeState.SqlMovementTypeState)s).setActive(null);
             }
         } else {
-            s.setActive(c.getActive());
+            ((MovementTypeState.SqlMovementTypeState)s).setActive(c.getActive());
         }
-        s.setUpdatedBy(c.getRequesterId());
-        s.setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
-        s.setCommandId(c.getCommandId());
+        ((MovementTypeState.SqlMovementTypeState)s).setUpdatedBy(c.getRequesterId());
+        ((MovementTypeState.SqlMovementTypeState)s).setUpdatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+        ((MovementTypeState.SqlMovementTypeState)s).setCommandId(c.getCommandId());
         // //////////////////////////////////
         });
     }

@@ -15,131 +15,134 @@ public interface MovementState
 
     String getDocumentNumber();
 
-    void setDocumentNumber(String documentNumber);
-
     String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
 
     Date getMovementDate();
 
-    void setMovementDate(Date movementDate);
-
     Boolean getPosted();
-
-    void setPosted(Boolean posted);
 
     Boolean getProcessed();
 
-    void setProcessed(Boolean processed);
-
     String getProcessing();
-
-    void setProcessing(String processing);
 
     Date getDateReceived();
 
-    void setDateReceived(Date dateReceived);
-
     String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
 
     Boolean getIsInTransit();
 
-    void setIsInTransit(Boolean isInTransit);
-
     Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
 
     BigDecimal getApprovalAmount();
 
-    void setApprovalAmount(BigDecimal approvalAmount);
-
     String getShipperId();
-
-    void setShipperId(String shipperId);
 
     String getSalesRepresentativeId();
 
-    void setSalesRepresentativeId(String salesRepresentativeId);
-
     String getBusinessPartnerId();
-
-    void setBusinessPartnerId(String businessPartnerId);
 
     BigDecimal getChargeAmount();
 
-    void setChargeAmount(BigDecimal chargeAmount);
-
     String getCreateFrom();
-
-    void setCreateFrom(String createFrom);
 
     BigDecimal getFreightAmount();
 
-    void setFreightAmount(BigDecimal freightAmount);
-
     String getReversalDocumentNumber();
-
-    void setReversalDocumentNumber(String reversalDocumentNumber);
 
     String getWarehouseIdFrom();
 
-    void setWarehouseIdFrom(String warehouseIdFrom);
-
     String getWarehouseIdTo();
-
-    void setWarehouseIdTo(String warehouseIdTo);
 
     String getDescription();
 
-    void setDescription(String description);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, MovementLineState> getMovementLines();
 
+    interface MutableMovementState extends MovementState {
+        void setDocumentNumber(String documentNumber);
 
-    void mutate(Event e);
+        void setDocumentStatusId(String documentStatusId);
 
-    void when(MovementEvent.MovementStateCreated e);
+        void setMovementDate(Date movementDate);
 
-    void when(MovementEvent.MovementStateMergePatched e);
+        void setPosted(Boolean posted);
 
-    void when(MovementEvent.MovementStateDeleted e);
-    
+        void setProcessed(Boolean processed);
+
+        void setProcessing(String processing);
+
+        void setDateReceived(Date dateReceived);
+
+        void setDocumentTypeId(String documentTypeId);
+
+        void setIsInTransit(Boolean isInTransit);
+
+        void setIsApproved(Boolean isApproved);
+
+        void setApprovalAmount(BigDecimal approvalAmount);
+
+        void setShipperId(String shipperId);
+
+        void setSalesRepresentativeId(String salesRepresentativeId);
+
+        void setBusinessPartnerId(String businessPartnerId);
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
+        void setCreateFrom(String createFrom);
+
+        void setFreightAmount(BigDecimal freightAmount);
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        void setWarehouseIdFrom(String warehouseIdFrom);
+
+        void setWarehouseIdTo(String warehouseIdTo);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+
+        void mutate(Event e);
+
+        void when(MovementEvent.MovementStateCreated e);
+
+        void when(MovementEvent.MovementStateMergePatched e);
+
+        void when(MovementEvent.MovementStateDeleted e);
+    }
+
+    interface SqlMovementState extends MutableMovementState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

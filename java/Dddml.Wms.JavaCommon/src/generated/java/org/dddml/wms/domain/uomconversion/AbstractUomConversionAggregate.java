@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractUomConversionAggregate extends AbstractAggregate implements UomConversionAggregate
 {
-    private UomConversionState state;
+    private UomConversionState.MutableUomConversionState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractUomConversionAggregate(UomConversionState state)
     {
-        this.state = state;
+        this.state = (UomConversionState.MutableUomConversionState)state;
     }
 
     public UomConversionState getState() {

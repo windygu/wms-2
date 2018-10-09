@@ -37,13 +37,13 @@ public class HibernateOrderItemShipGroupAssociationStateDao implements OrderItem
     @Override
     public OrderItemShipGroupAssociationState get(OrderItemShipGroupAssociationId id, boolean nullAllowed)
     {
-        OrderItemShipGroupAssociationState state = (OrderItemShipGroupAssociationState) getCurrentSession().get(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class, id);
+        OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState state = (OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState) getCurrentSession().get(AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractOrderItemShipGroupAssociationState.SimpleOrderItemShipGroupAssociationState();
             state.setOrderItemShipGroupAssociationId(id);
         }
         //if (getReadOnlyProxyGenerator() != null && state != null) {
-        //    return (OrderItemShipGroupAssociationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGroupAssociationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+        //    return (OrderItemShipGroupAssociationState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         //}
         return state;
     }

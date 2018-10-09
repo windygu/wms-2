@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractWarehouseAggregate extends AbstractAggregate implements WarehouseAggregate
 {
-    private WarehouseState state;
+    private WarehouseState.MutableWarehouseState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractWarehouseAggregate(WarehouseState state)
     {
-        this.state = state;
+        this.state = (WarehouseState.MutableWarehouseState)state;
     }
 
     public WarehouseState getState() {

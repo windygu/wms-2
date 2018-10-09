@@ -138,7 +138,7 @@ public abstract class AbstractRejectionReasonApplicationService implements Rejec
 
     public void initialize(RejectionReasonEvent.RejectionReasonStateCreated stateCreated) {
         String aggregateId = ((RejectionReasonEvent.SqlRejectionReasonEvent)stateCreated).getRejectionReasonEventId().getRejectionReasonId();
-        RejectionReasonState state = new AbstractRejectionReasonState.SimpleRejectionReasonState();
+        RejectionReasonState.SqlRejectionReasonState state = new AbstractRejectionReasonState.SimpleRejectionReasonState();
         state.setRejectionReasonId(aggregateId);
 
         RejectionReasonAggregate aggregate = getRejectionReasonAggregate(state);

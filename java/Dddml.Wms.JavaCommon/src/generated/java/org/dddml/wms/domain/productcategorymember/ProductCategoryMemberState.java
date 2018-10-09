@@ -14,60 +14,63 @@ public interface ProductCategoryMemberState
 
     ProductCategoryMemberId getProductCategoryMemberId();
 
-    void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId);
-
     java.sql.Timestamp getThruDate();
-
-    void setThruDate(java.sql.Timestamp thruDate);
 
     String getComments();
 
-    void setComments(String comments);
-
     Long getSequenceNum();
-
-    void setSequenceNum(Long sequenceNum);
 
     java.math.BigDecimal getQuantity();
 
-    void setQuantity(java.math.BigDecimal quantity);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
+    interface MutableProductCategoryMemberState extends ProductCategoryMemberState {
+        void setProductCategoryMemberId(ProductCategoryMemberId productCategoryMemberId);
+
+        void setThruDate(java.sql.Timestamp thruDate);
+
+        void setComments(String comments);
+
+        void setSequenceNum(Long sequenceNum);
+
+        void setQuantity(java.math.BigDecimal quantity);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(ProductCategoryMemberEvent.ProductCategoryMemberStateCreated e);
 
+        void when(ProductCategoryMemberEvent.ProductCategoryMemberStateMergePatched e);
 
-    void mutate(Event e);
+    }
 
-    void when(ProductCategoryMemberEvent.ProductCategoryMemberStateCreated e);
+    interface SqlProductCategoryMemberState extends MutableProductCategoryMemberState {
 
-    void when(ProductCategoryMemberEvent.ProductCategoryMemberStateMergePatched e);
+        boolean isStateUnsaved();
 
-    
+        boolean getForReapplying();
+    }
 }
 

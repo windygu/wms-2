@@ -70,7 +70,7 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
 
     public AbstractSellableInventoryItemEntryStateCollection(SellableInventoryItemState outerState) {
         this.sellableInventoryItemState = outerState;
-        this.setForReapplying(outerState.getForReapplying());
+        this.setForReapplying(((SellableInventoryItemState.SqlSellableInventoryItemState)outerState).getForReapplying());
     }
 
     @Override
@@ -101,14 +101,17 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
                 throw new UnsupportedOperationException("State collection is ReadOnly.");
             }
             SellableInventoryItemEntryState state = new AbstractSellableInventoryItemEntryState.SimpleSellableInventoryItemEntryState(getForReapplying());
-            state.setSellableInventoryItemEntryId(globalId);
+            ((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)state).setSellableInventoryItemEntryId(globalId);
             loadedSellableInventoryItemEntryStates.put(globalId, state);
             return state;
         } else {
             SellableInventoryItemEntryState state = getSellableInventoryItemEntryStateDao().get(globalId, nullAllowed);
             if (state != null) {
-                if (state.isStateUnsaved() && getStateCollectionReadOnly()) {
+                if (((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)state).isStateUnsaved() && getStateCollectionReadOnly()) {
                     throw new UnsupportedOperationException("State collection is ReadOnly.");
+                }
+                if (state instanceof AbstractSellableInventoryItemEntryState) {
+                    ((AbstractSellableInventoryItemEntryState)state).setStateReadOnly(getStateCollectionReadOnly());
                 }
                 loadedSellableInventoryItemEntryStates.put(globalId, state);
             }
@@ -121,14 +124,14 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.removedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
+        this.removedSellableInventoryItemEntryStates.put(((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)state).getSellableInventoryItemEntryId(), state);
     }
 
     public void add(SellableInventoryItemEntryState state) {
         if (getStateCollectionReadOnly()) {
             throw new UnsupportedOperationException("State collection is ReadOnly.");
         }
-        this.loadedSellableInventoryItemEntryStates.put(state.getSellableInventoryItemEntryId(), state);
+        this.loadedSellableInventoryItemEntryStates.put(((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)state).getSellableInventoryItemEntryId(), state);
     }
 
     //region Saveable Implements

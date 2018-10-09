@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractAttributeSetInstanceExtensionFieldAggregate extends AbstractAggregate implements AttributeSetInstanceExtensionFieldAggregate
 {
-    private AttributeSetInstanceExtensionFieldState state;
+    private AttributeSetInstanceExtensionFieldState.MutableAttributeSetInstanceExtensionFieldState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractAttributeSetInstanceExtensionFieldAggregate(AttributeSetInstanceExtensionFieldState state)
     {
-        this.state = state;
+        this.state = (AttributeSetInstanceExtensionFieldState.MutableAttributeSetInstanceExtensionFieldState)state;
     }
 
     public AttributeSetInstanceExtensionFieldState getState() {

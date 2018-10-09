@@ -7,13 +7,13 @@ import org.dddml.wms.specialization.*;
 
 public abstract class AbstractOrganizationStructureTypeAggregate extends AbstractAggregate implements OrganizationStructureTypeAggregate
 {
-    private OrganizationStructureTypeState state;
+    private OrganizationStructureTypeState.MutableOrganizationStructureTypeState state;
 
     private List<Event> changes = new ArrayList<Event>();
 
     public AbstractOrganizationStructureTypeAggregate(OrganizationStructureTypeState state)
     {
-        this.state = state;
+        this.state = (OrganizationStructureTypeState.MutableOrganizationStructureTypeState)state;
     }
 
     public OrganizationStructureTypeState getState() {

@@ -42,13 +42,13 @@ public class HibernatePhysicalInventoryStateRepository implements PhysicalInvent
 
     @Transactional(readOnly = true)
     public PhysicalInventoryState get(String id, boolean nullAllowed) {
-        PhysicalInventoryState state = (PhysicalInventoryState)getCurrentSession().get(AbstractPhysicalInventoryState.SimplePhysicalInventoryState.class, id);
+        PhysicalInventoryState.SqlPhysicalInventoryState state = (PhysicalInventoryState.SqlPhysicalInventoryState)getCurrentSession().get(AbstractPhysicalInventoryState.SimplePhysicalInventoryState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractPhysicalInventoryState.SimplePhysicalInventoryState();
             state.setDocumentNumber(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (PhysicalInventoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (PhysicalInventoryState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{PhysicalInventoryState.SqlPhysicalInventoryState.class, Saveable.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

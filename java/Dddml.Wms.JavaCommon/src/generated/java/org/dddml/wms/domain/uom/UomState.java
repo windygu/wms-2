@@ -14,61 +14,64 @@ public interface UomState
 
     String getUomId();
 
-    void setUomId(String uomId);
-
     String getUomTypeId();
-
-    void setUomTypeId(String uomTypeId);
 
     String getAbbreviation();
 
-    void setAbbreviation(String abbreviation);
-
     String getDescription();
-
-    void setDescription(String description);
 
     Long getVersion();
 
-    void setVersion(Long version);
-
     String getCreatedBy();
-
-    void setCreatedBy(String createdBy);
 
     Date getCreatedAt();
 
-    void setCreatedAt(Date createdAt);
-
     String getUpdatedBy();
-
-    void setUpdatedBy(String updatedBy);
 
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
 
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableUomState extends UomState {
+        void setUomId(String uomId);
+
+        void setUomTypeId(String uomTypeId);
+
+        void setAbbreviation(String abbreviation);
+
+        void setDescription(String description);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(UomEvent.UomStateCreated e);
 
+        void when(UomEvent.UomStateMergePatched e);
 
-    void mutate(Event e);
+        void when(UomEvent.UomStateDeleted e);
+    }
 
-    void when(UomEvent.UomStateCreated e);
+    interface SqlUomState extends MutableUomState {
 
-    void when(UomEvent.UomStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(UomEvent.UomStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

@@ -14,49 +14,52 @@ public interface OrganizationStructureState
 
     OrganizationStructureId getId();
 
-    void setId(OrganizationStructureId id);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
 
-    void setDeleted(Boolean deleted);
+    interface MutableOrganizationStructureState extends OrganizationStructureState {
+        void setId(OrganizationStructureId id);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(OrganizationStructureEvent.OrganizationStructureStateCreated e);
 
+        void when(OrganizationStructureEvent.OrganizationStructureStateMergePatched e);
 
-    void mutate(Event e);
+        void when(OrganizationStructureEvent.OrganizationStructureStateDeleted e);
+    }
 
-    void when(OrganizationStructureEvent.OrganizationStructureStateCreated e);
+    interface SqlOrganizationStructureState extends MutableOrganizationStructureState {
 
-    void when(OrganizationStructureEvent.OrganizationStructureStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(OrganizationStructureEvent.OrganizationStructureStateDeleted e);
-    
+        boolean getForReapplying();
+    }
 }
 

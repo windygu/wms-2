@@ -41,13 +41,13 @@ public class HibernateAttributeSetInstanceStateRepository implements AttributeSe
 
     @Transactional(readOnly = true)
     public AttributeSetInstanceState get(String id, boolean nullAllowed) {
-        AttributeSetInstanceState state = (AttributeSetInstanceState)getCurrentSession().get(AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState.class, id);
+        AttributeSetInstanceState.SqlAttributeSetInstanceState state = (AttributeSetInstanceState.SqlAttributeSetInstanceState)getCurrentSession().get(AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractAttributeSetInstanceState.SimpleAttributeSetInstanceState();
             state.setAttributeSetInstanceId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (AttributeSetInstanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (AttributeSetInstanceState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{AttributeSetInstanceState.SqlAttributeSetInstanceState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

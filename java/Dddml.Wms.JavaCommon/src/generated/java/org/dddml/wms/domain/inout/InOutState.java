@@ -15,168 +15,171 @@ public interface InOutState
 
     String getDocumentNumber();
 
-    void setDocumentNumber(String documentNumber);
-
     String getDocumentStatusId();
-
-    void setDocumentStatusId(String documentStatusId);
 
     Boolean getPosted();
 
-    void setPosted(Boolean posted);
-
     Boolean getProcessed();
-
-    void setProcessed(Boolean processed);
 
     String getProcessing();
 
-    void setProcessing(String processing);
-
     String getDocumentTypeId();
-
-    void setDocumentTypeId(String documentTypeId);
 
     String getDescription();
 
-    void setDescription(String description);
-
     String getOrderId();
-
-    void setOrderId(String orderId);
 
     Date getDateOrdered();
 
-    void setDateOrdered(Date dateOrdered);
-
     Boolean getIsPrinted();
-
-    void setIsPrinted(Boolean isPrinted);
 
     String getMovementTypeId();
 
-    void setMovementTypeId(String movementTypeId);
-
     Date getMovementDate();
-
-    void setMovementDate(Date movementDate);
 
     String getBusinessPartnerId();
 
-    void setBusinessPartnerId(String businessPartnerId);
-
     String getWarehouseId();
-
-    void setWarehouseId(String warehouseId);
 
     String getPOReference();
 
-    void setPOReference(String poReference);
-
     BigDecimal getFreightAmount();
-
-    void setFreightAmount(BigDecimal freightAmount);
 
     String getShipperId();
 
-    void setShipperId(String shipperId);
-
     BigDecimal getChargeAmount();
-
-    void setChargeAmount(BigDecimal chargeAmount);
 
     Date getDatePrinted();
 
-    void setDatePrinted(Date datePrinted);
-
     String getCreatedFrom();
-
-    void setCreatedFrom(String createdFrom);
 
     String getSalesRepresentativeId();
 
-    void setSalesRepresentativeId(String salesRepresentativeId);
-
     Integer getNumberOfPackages();
-
-    void setNumberOfPackages(Integer numberOfPackages);
 
     Date getPickDate();
 
-    void setPickDate(Date pickDate);
-
     Date getShipDate();
-
-    void setShipDate(Date shipDate);
 
     String getTrackingNumber();
 
-    void setTrackingNumber(String trackingNumber);
-
     Date getDateReceived();
-
-    void setDateReceived(Date dateReceived);
 
     Boolean getIsInTransit();
 
-    void setIsInTransit(Boolean isInTransit);
-
     Boolean getIsApproved();
-
-    void setIsApproved(Boolean isApproved);
 
     Boolean getIsInDispute();
 
-    void setIsInDispute(Boolean isInDispute);
-
     String getRmaDocumentNumber();
-
-    void setRmaDocumentNumber(String rmaDocumentNumber);
 
     String getReversalDocumentNumber();
 
-    void setReversalDocumentNumber(String reversalDocumentNumber);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
-
     Boolean getActive();
-
-    void setActive(Boolean active);
-
-
-    boolean isStateUnsaved();
-
-    boolean getForReapplying();
 
     EntityStateCollection<String, InOutImageState> getInOutImages();
 
     EntityStateCollection<String, InOutLineState> getInOutLines();
 
+    interface MutableInOutState extends InOutState {
+        void setDocumentNumber(String documentNumber);
 
-    void mutate(Event e);
+        void setDocumentStatusId(String documentStatusId);
 
-    void when(InOutEvent.InOutStateCreated e);
+        void setPosted(Boolean posted);
 
-    void when(InOutEvent.InOutStateMergePatched e);
+        void setProcessed(Boolean processed);
 
-    
+        void setProcessing(String processing);
+
+        void setDocumentTypeId(String documentTypeId);
+
+        void setDescription(String description);
+
+        void setOrderId(String orderId);
+
+        void setDateOrdered(Date dateOrdered);
+
+        void setIsPrinted(Boolean isPrinted);
+
+        void setMovementTypeId(String movementTypeId);
+
+        void setMovementDate(Date movementDate);
+
+        void setBusinessPartnerId(String businessPartnerId);
+
+        void setWarehouseId(String warehouseId);
+
+        void setPOReference(String poReference);
+
+        void setFreightAmount(BigDecimal freightAmount);
+
+        void setShipperId(String shipperId);
+
+        void setChargeAmount(BigDecimal chargeAmount);
+
+        void setDatePrinted(Date datePrinted);
+
+        void setCreatedFrom(String createdFrom);
+
+        void setSalesRepresentativeId(String salesRepresentativeId);
+
+        void setNumberOfPackages(Integer numberOfPackages);
+
+        void setPickDate(Date pickDate);
+
+        void setShipDate(Date shipDate);
+
+        void setTrackingNumber(String trackingNumber);
+
+        void setDateReceived(Date dateReceived);
+
+        void setIsInTransit(Boolean isInTransit);
+
+        void setIsApproved(Boolean isApproved);
+
+        void setIsInDispute(Boolean isInDispute);
+
+        void setRmaDocumentNumber(String rmaDocumentNumber);
+
+        void setReversalDocumentNumber(String reversalDocumentNumber);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+
+        void mutate(Event e);
+
+        void when(InOutEvent.InOutStateCreated e);
+
+        void when(InOutEvent.InOutStateMergePatched e);
+
+    }
+
+    interface SqlInOutState extends MutableInOutState {
+
+        boolean isStateUnsaved();
+
+        boolean getForReapplying();
+    }
 }
 

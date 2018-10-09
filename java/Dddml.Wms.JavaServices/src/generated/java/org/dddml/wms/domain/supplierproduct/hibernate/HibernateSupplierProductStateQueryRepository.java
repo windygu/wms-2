@@ -43,7 +43,7 @@ public class HibernateSupplierProductStateQueryRepository implements SupplierPro
 
         SupplierProductState state = (SupplierProductState)getCurrentSession().get(AbstractSupplierProductState.SimpleSupplierProductState.class, id);
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (SupplierProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SupplierProductState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (SupplierProductState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{SupplierProductState.SqlSupplierProductState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

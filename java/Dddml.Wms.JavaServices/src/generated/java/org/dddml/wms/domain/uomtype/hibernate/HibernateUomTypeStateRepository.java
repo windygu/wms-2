@@ -40,7 +40,7 @@ public class HibernateUomTypeStateRepository implements UomTypeStateRepository
 
     @Transactional(readOnly = true)
     public UomTypeState get(String id, boolean nullAllowed) {
-        UomTypeState state = (UomTypeState)getCurrentSession().get(AbstractUomTypeState.SimpleUomTypeState.class, id);
+        UomTypeState.SqlUomTypeState state = (UomTypeState.SqlUomTypeState)getCurrentSession().get(AbstractUomTypeState.SimpleUomTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractUomTypeState.SimpleUomTypeState();
             state.setUomTypeId(id);

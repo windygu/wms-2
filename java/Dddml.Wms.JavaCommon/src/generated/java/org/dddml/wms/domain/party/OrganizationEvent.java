@@ -7,9 +7,6 @@ import org.dddml.wms.specialization.Event;
 
 public interface OrganizationEvent extends PartyEvent {
 
-    interface SqlOrganizationEvent extends OrganizationEvent {
-    }
-
     interface OrganizationStateEvent extends PartyStateEvent, OrganizationEvent {
         String getOrganizationName();
 

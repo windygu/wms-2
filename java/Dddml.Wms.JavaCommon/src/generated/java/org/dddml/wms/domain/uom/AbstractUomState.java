@@ -6,7 +6,7 @@ import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 import org.dddml.wms.domain.uom.UomEvent.*;
 
-public abstract class AbstractUomState implements UomState
+public abstract class AbstractUomState implements UomState.SqlUomState
 {
 
     private String uomId;

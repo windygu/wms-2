@@ -12,67 +12,69 @@ public interface InOutLineImageState
 
     Long VERSION_NULL = VERSION_ZERO - 1;
 
-    InOutLineImageId getInOutLineImageId();
-
-    void setInOutLineImageId(InOutLineImageId inOutLineImageId);
-
     String getSequenceId();
-
-    void setSequenceId(String sequenceId);
 
     String getUrl();
 
-    void setUrl(String url);
-
     Long getVersion();
-
-    void setVersion(Long version);
 
     String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
-
     Date getCreatedAt();
-
-    void setCreatedAt(Date createdAt);
 
     String getUpdatedBy();
 
-    void setUpdatedBy(String updatedBy);
-
     Date getUpdatedAt();
-
-    void setUpdatedAt(Date updatedAt);
 
     Boolean getActive();
 
-    void setActive(Boolean active);
-
     Boolean getDeleted();
-
-    void setDeleted(Boolean deleted);
 
     String getInOutDocumentNumber();
 
-    void setInOutDocumentNumber(String inOutDocumentNumber);
-
     String getInOutLineLineNumber();
 
-    void setInOutLineLineNumber(String inOutLineLineNumber);
+    interface MutableInOutLineImageState extends InOutLineImageState {
+        void setInOutLineImageId(InOutLineImageId inOutLineImageId);
+
+        void setSequenceId(String sequenceId);
+
+        void setUrl(String url);
+
+        void setVersion(Long version);
+
+        void setCreatedBy(String createdBy);
+
+        void setCreatedAt(Date createdAt);
+
+        void setUpdatedBy(String updatedBy);
+
+        void setUpdatedAt(Date updatedAt);
+
+        void setActive(Boolean active);
+
+        void setDeleted(Boolean deleted);
+
+        void setInOutDocumentNumber(String inOutDocumentNumber);
+
+        void setInOutLineLineNumber(String inOutLineLineNumber);
 
 
-    boolean isStateUnsaved();
+        void mutate(Event e);
 
-    boolean getForReapplying();
+        void when(InOutLineImageEvent.InOutLineImageStateCreated e);
 
+        void when(InOutLineImageEvent.InOutLineImageStateMergePatched e);
 
-    void mutate(Event e);
+        void when(InOutLineImageEvent.InOutLineImageStateRemoved e);
+    }
 
-    void when(InOutLineImageEvent.InOutLineImageStateCreated e);
+    interface SqlInOutLineImageState extends MutableInOutLineImageState {
+        InOutLineImageId getInOutLineImageId();
 
-    void when(InOutLineImageEvent.InOutLineImageStateMergePatched e);
+        boolean isStateUnsaved();
 
-    void when(InOutLineImageEvent.InOutLineImageStateRemoved e);
-    
+        boolean getForReapplying();
+    }
 }
 

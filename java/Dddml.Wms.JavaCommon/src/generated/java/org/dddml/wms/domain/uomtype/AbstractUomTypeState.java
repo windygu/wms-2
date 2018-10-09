@@ -5,7 +5,7 @@ import java.util.Date;
 import org.dddml.wms.domain.*;
 import org.dddml.wms.specialization.*;
 
-public abstract class AbstractUomTypeState implements UomTypeState
+public abstract class AbstractUomTypeState implements UomTypeState.SqlUomTypeState
 {
 
     private String uomTypeId;

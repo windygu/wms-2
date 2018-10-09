@@ -40,13 +40,13 @@ public class HibernateLocatorStateRepository implements LocatorStateRepository
 
     @Transactional(readOnly = true)
     public LocatorState get(String id, boolean nullAllowed) {
-        LocatorState state = (LocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
+        LocatorState.SqlLocatorState state = (LocatorState.SqlLocatorState)getCurrentSession().get(AbstractLocatorState.SimpleLocatorState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractLocatorState.SimpleLocatorState();
             state.setLocatorId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (LocatorState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LocatorState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (LocatorState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{LocatorState.SqlLocatorState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }

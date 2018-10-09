@@ -40,13 +40,13 @@ public class HibernateGoodIdentificationTypeStateRepository implements GoodIdent
 
     @Transactional(readOnly = true)
     public GoodIdentificationTypeState get(String id, boolean nullAllowed) {
-        GoodIdentificationTypeState state = (GoodIdentificationTypeState)getCurrentSession().get(AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState.class, id);
+        GoodIdentificationTypeState.SqlGoodIdentificationTypeState state = (GoodIdentificationTypeState.SqlGoodIdentificationTypeState)getCurrentSession().get(AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState.class, id);
         if (!nullAllowed && state == null) {
             state = new AbstractGoodIdentificationTypeState.SimpleGoodIdentificationTypeState();
             state.setGoodIdentificationTypeId(id);
         }
         if (getReadOnlyProxyGenerator() != null && state != null) {
-            return (GoodIdentificationTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
+            return (GoodIdentificationTypeState) getReadOnlyProxyGenerator().createProxy(state, new Class[]{GoodIdentificationTypeState.SqlGoodIdentificationTypeState.class}, "getStateReadOnly", readOnlyPropertyPascalCaseNames);
         }
         return state;
     }
