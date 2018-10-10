@@ -417,6 +417,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         shipment.setAddtlShippingChargeDesc(c.getAddtlShippingChargeDesc());
         //标记为从“码单”导入
         shipment.setIsCreatedFromPackingList(true);
+        shipment.setActive(true);
+        shipment.setRequesterId(c.getRequesterId());
         // More properties ???
 
         int i = 0;
