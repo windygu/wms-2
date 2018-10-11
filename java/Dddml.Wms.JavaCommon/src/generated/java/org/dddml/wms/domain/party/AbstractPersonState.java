@@ -119,7 +119,6 @@ public abstract class AbstractPersonState extends AbstractPartyState implements 
         super.initializeProperties();
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof PersonStateCreated) {
@@ -158,6 +157,30 @@ public abstract class AbstractPersonState extends AbstractPartyState implements 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    @Override
+    protected void merge(PartyState s) {
+        merge((PersonState)s);
+    }
+
+    protected void merge(PersonState s) {
+        if (s == this) {
+            return;
+        }
+        this.setPartyTypeId(s.getPartyTypeId());
+        this.setPrimaryRoleTypeId(s.getPrimaryRoleTypeId());
+        this.setExternalId(s.getExternalId());
+        this.setPreferredCurrencyUomId(s.getPreferredCurrencyUomId());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
+        this.setSalutation(s.getSalutation());
+        this.setFirstName(s.getFirstName());
+        this.setMiddleName(s.getMiddleName());
+        this.setLastName(s.getLastName());
+        this.setPersonalTitle(s.getPersonalTitle());
+        this.setNickname(s.getNickname());
+        this.setCardId(s.getCardId());
     }
 
     public void when(PersonStateMergePatched e)

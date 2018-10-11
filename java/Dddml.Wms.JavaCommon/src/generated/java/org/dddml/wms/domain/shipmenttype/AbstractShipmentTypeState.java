@@ -173,6 +173,16 @@ public abstract class AbstractShipmentTypeState implements ShipmentTypeState.Sql
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getShipmentTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getShipmentTypeId(), ((ShipmentTypeState)obj).getShipmentTypeId());
+    }
+
     public void save()
     {
     }

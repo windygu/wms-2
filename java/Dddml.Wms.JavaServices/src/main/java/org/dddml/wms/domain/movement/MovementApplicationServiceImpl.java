@@ -132,7 +132,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         return prdState;
     }
     public void confirmUpdateMovement(MovementCommands.DocumentAction c) {
-        update(c, ar -> ((MovementAggregate) ar).documentAction(DocumentAction.CONFIRM, c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ((MovementAggregate) ar).documentAction(DocumentAction.CONFIRM, c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     private void reverseUpdateSourceMovement(MovementCommands.DocumentAction c, MovementCommand.CreateMovement reversalMovInfo) {

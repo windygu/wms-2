@@ -174,7 +174,6 @@ public abstract class AbstractShipmentReceiptImageState implements ShipmentRecei
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ShipmentReceiptImageStateCreated) {
@@ -200,6 +199,14 @@ public abstract class AbstractShipmentReceiptImageState implements ShipmentRecei
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ShipmentReceiptImageState s) {
+        if (s == this) {
+            return;
+        }
+        this.setUrl(s.getUrl());
+        this.setActive(s.getActive());
     }
 
     public void when(ShipmentReceiptImageStateMergePatched e)

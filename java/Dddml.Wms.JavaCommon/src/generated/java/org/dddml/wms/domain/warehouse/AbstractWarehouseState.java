@@ -187,6 +187,16 @@ public abstract class AbstractWarehouseState implements WarehouseState.SqlWareho
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getWarehouseId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getWarehouseId(), ((WarehouseState)obj).getWarehouseId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -215,6 +225,16 @@ public abstract class AbstractWarehouseState implements WarehouseState.SqlWareho
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(WarehouseState s) {
+        if (s == this) {
+            return;
+        }
+        this.setWarehouseName(s.getWarehouseName());
+        this.setDescription(s.getDescription());
+        this.setIsInTransit(s.getIsInTransit());
+        this.setActive(s.getActive());
     }
 
     public void when(WarehouseStateMergePatched e)

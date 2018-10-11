@@ -133,6 +133,14 @@ public abstract class AbstractShipmentReceiptImageStateCollection implements Ent
         this.loadedShipmentReceiptImageStates.put(((ShipmentReceiptImageState.SqlShipmentReceiptImageState)state).getShipmentReceiptImageId(), state);
     }
 
+    public Collection<ShipmentReceiptImageState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedShipmentReceiptImageStates.values());
+    }
+
+    public Collection<ShipmentReceiptImageState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedShipmentReceiptImageStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

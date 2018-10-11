@@ -133,6 +133,14 @@ public abstract class AbstractShipmentItemStateCollection implements EntityState
         this.loadedShipmentItemStates.put(((ShipmentItemState.SqlShipmentItemState)state).getShipmentItemId(), state);
     }
 
+    public Collection<ShipmentItemState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedShipmentItemStates.values());
+    }
+
+    public Collection<ShipmentItemState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedShipmentItemStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

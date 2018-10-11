@@ -185,6 +185,16 @@ public abstract class AbstractUomTypeState implements UomTypeState.SqlUomTypeSta
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getUomTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getUomTypeId(), ((UomTypeState)obj).getUomTypeId());
+    }
+
     public void save()
     {
     }

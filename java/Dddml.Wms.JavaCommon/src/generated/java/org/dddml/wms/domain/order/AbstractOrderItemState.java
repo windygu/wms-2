@@ -562,7 +562,6 @@ public abstract class AbstractOrderItemState implements OrderItemState.SqlOrderI
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof OrderItemStateCreated) {
@@ -618,6 +617,48 @@ public abstract class AbstractOrderItemState implements OrderItemState.SqlOrderI
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrderItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setProductId(s.getProductId());
+        this.setExternalProductId(s.getExternalProductId());
+        this.setQuantity(s.getQuantity());
+        this.setCancelQuantity(s.getCancelQuantity());
+        this.setSelectedAmount(s.getSelectedAmount());
+        this.setExternalId(s.getExternalId());
+        this.setOrderItemTypeId(s.getOrderItemTypeId());
+        this.setOrderItemGroupSeqId(s.getOrderItemGroupSeqId());
+        this.setIsItemGroupPrimary(s.getIsItemGroupPrimary());
+        this.setFromInventoryItemId(s.getFromInventoryItemId());
+        this.setIsPromo(s.getIsPromo());
+        this.setQuoteId(s.getQuoteId());
+        this.setQuoteItemSeqId(s.getQuoteItemSeqId());
+        this.setShoppingListId(s.getShoppingListId());
+        this.setShoppingListItemSeqId(s.getShoppingListItemSeqId());
+        this.setUnitPrice(s.getUnitPrice());
+        this.setUnitListPrice(s.getUnitListPrice());
+        this.setUnitAverageCost(s.getUnitAverageCost());
+        this.setUnitRecurringPrice(s.getUnitRecurringPrice());
+        this.setIsModifiedPrice(s.getIsModifiedPrice());
+        this.setRecurringFreqUomId(s.getRecurringFreqUomId());
+        this.setItemDescription(s.getItemDescription());
+        this.setComments(s.getComments());
+        this.setCorrespondingPoId(s.getCorrespondingPoId());
+        this.setStatusId(s.getStatusId());
+        this.setSyncStatusId(s.getSyncStatusId());
+        this.setEstimatedShipDate(s.getEstimatedShipDate());
+        this.setEstimatedDeliveryDate(s.getEstimatedDeliveryDate());
+        this.setAutoCancelDate(s.getAutoCancelDate());
+        this.setDontCancelSetDate(s.getDontCancelSetDate());
+        this.setDontCancelSetBy(s.getDontCancelSetBy());
+        this.setShipBeforeDate(s.getShipBeforeDate());
+        this.setShipAfterDate(s.getShipAfterDate());
+        this.setCancelBackOrderDate(s.getCancelBackOrderDate());
+        this.setOverrideGlAccountId(s.getOverrideGlAccountId());
+        this.setActive(s.getActive());
     }
 
     public void when(OrderItemStateMergePatched e)

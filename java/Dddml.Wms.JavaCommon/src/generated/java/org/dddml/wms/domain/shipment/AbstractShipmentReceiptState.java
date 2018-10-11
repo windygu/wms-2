@@ -371,7 +371,6 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         shipmentReceiptImages = new SimpleShipmentReceiptImageStateCollection(this);
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ShipmentReceiptStateCreated) {
@@ -413,6 +412,40 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated innerEvent : e.getShipmentReceiptImageEvents()) {
             ShipmentReceiptImageState innerState = this.getShipmentReceiptImages().get(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)innerEvent).getShipmentReceiptImageEventId().getSequenceId());
             ((ShipmentReceiptImageState.SqlShipmentReceiptImageState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(ShipmentReceiptState s) {
+        if (s == this) {
+            return;
+        }
+        this.setProductId(s.getProductId());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setLocatorId(s.getLocatorId());
+        this.setShipmentItemSeqId(s.getShipmentItemSeqId());
+        this.setShipmentPackageSeqId(s.getShipmentPackageSeqId());
+        this.setOrderId(s.getOrderId());
+        this.setOrderItemSeqId(s.getOrderItemSeqId());
+        this.setReturnId(s.getReturnId());
+        this.setReturnItemSeqId(s.getReturnItemSeqId());
+        this.setRejectionReasonId(s.getRejectionReasonId());
+        this.setDamageStatusIds(s.getDamageStatusIds());
+        this.setDamageReasonId(s.getDamageReasonId());
+        this.setReceivedBy(s.getReceivedBy());
+        this.setDatetimeReceived(s.getDatetimeReceived());
+        this.setItemDescription(s.getItemDescription());
+        this.setAcceptedQuantity(s.getAcceptedQuantity());
+        this.setRejectedQuantity(s.getRejectedQuantity());
+        this.setDamagedQuantity(s.getDamagedQuantity());
+        this.setActive(s.getActive());
+
+        for (ShipmentReceiptImageState ss : s.getShipmentReceiptImages().getLoadedStates()) {
+            ShipmentReceiptImageState thisInnerState = this.getShipmentReceiptImages().get(ss.getSequenceId());
+            ((AbstractShipmentReceiptImageState) thisInnerState).merge(ss);
+        }
+        for (ShipmentReceiptImageState ss : s.getShipmentReceiptImages().getRemovedStates()) {
+            ShipmentReceiptImageState thisInnerState = this.getShipmentReceiptImages().get(ss.getSequenceId());
+            this.getShipmentReceiptImages().remove(thisInnerState);
         }
     }
 

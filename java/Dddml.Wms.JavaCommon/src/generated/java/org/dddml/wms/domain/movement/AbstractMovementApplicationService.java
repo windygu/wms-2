@@ -59,11 +59,11 @@ public abstract class AbstractMovementApplicationService implements MovementAppl
     }
 
     public void when(MovementCommands.AddLine c) {
-        update(c, ar -> ar.addLine(c.getLineNumber(), c.getProductId(), c.getLocatorIdFrom(), c.getLocatorIdTo(), c.getAttributeSetInstance(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.addLine(c.getLineNumber(), c.getProductId(), c.getLocatorIdFrom(), c.getLocatorIdTo(), c.getAttributeSetInstance(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(MovementCommands.DocumentAction c) {
-        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public MovementState get(String id) {

@@ -237,6 +237,16 @@ public abstract class AbstractPicklistState implements PicklistState.SqlPicklist
         picklistRoles = new SimplePicklistRoleStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getPicklistId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getPicklistId(), ((PicklistState)obj).getPicklistId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -271,6 +281,28 @@ public abstract class AbstractPicklistState implements PicklistState.SqlPicklist
         for (PicklistRoleEvent.PicklistRoleStateCreated innerEvent : e.getPicklistRoleEvents()) {
             PicklistRoleState innerState = this.getPicklistRoles().get(((PicklistRoleEvent.SqlPicklistRoleEvent)innerEvent).getPicklistRoleEventId().getPartyRoleId());
             ((PicklistRoleState.SqlPicklistRoleState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(PicklistState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setFacilityId(s.getFacilityId());
+        this.setShipmentMethodTypeId(s.getShipmentMethodTypeId());
+        this.setStatusId(s.getStatusId());
+        this.setPicklistDate(s.getPicklistDate());
+        this.setPickwaveId(s.getPickwaveId());
+        this.setActive(s.getActive());
+
+        for (PicklistRoleState ss : s.getPicklistRoles().getLoadedStates()) {
+            PicklistRoleState thisInnerState = this.getPicklistRoles().get(ss.getPartyRoleId());
+            ((AbstractPicklistRoleState) thisInnerState).merge(ss);
+        }
+        for (PicklistRoleState ss : s.getPicklistRoles().getRemovedStates()) {
+            PicklistRoleState thisInnerState = this.getPicklistRoles().get(ss.getPartyRoleId());
+            this.getPicklistRoles().remove(thisInnerState);
         }
     }
 

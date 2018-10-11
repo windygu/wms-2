@@ -133,6 +133,14 @@ public abstract class AbstractAttributeUseStateCollection implements EntityState
         this.loadedAttributeUseStates.put(((AttributeUseState.SqlAttributeUseState)state).getAttributeSetAttributeUseId(), state);
     }
 
+    public Collection<AttributeUseState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedAttributeUseStates.values());
+    }
+
+    public Collection<AttributeUseState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedAttributeUseStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

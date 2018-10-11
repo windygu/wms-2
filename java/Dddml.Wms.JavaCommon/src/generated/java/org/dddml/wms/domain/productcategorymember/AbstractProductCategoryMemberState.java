@@ -187,6 +187,16 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getProductCategoryMemberId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getProductCategoryMemberId(), ((ProductCategoryMemberState)obj).getProductCategoryMemberId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -212,6 +222,17 @@ public abstract class AbstractProductCategoryMemberState implements ProductCateg
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ProductCategoryMemberState s) {
+        if (s == this) {
+            return;
+        }
+        this.setThruDate(s.getThruDate());
+        this.setComments(s.getComments());
+        this.setSequenceNum(s.getSequenceNum());
+        this.setQuantity(s.getQuantity());
+        this.setActive(s.getActive());
     }
 
     public void when(ProductCategoryMemberStateMergePatched e)

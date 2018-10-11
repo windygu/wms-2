@@ -133,6 +133,14 @@ public abstract class AbstractInOutImageStateCollection implements EntityStateCo
         this.loadedInOutImageStates.put(((InOutImageState.SqlInOutImageState)state).getInOutImageId(), state);
     }
 
+    public Collection<InOutImageState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedInOutImageStates.values());
+    }
+
+    public Collection<InOutImageState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedInOutImageStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

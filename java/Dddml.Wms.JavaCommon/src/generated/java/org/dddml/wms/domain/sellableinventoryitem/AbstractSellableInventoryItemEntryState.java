@@ -167,7 +167,6 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof SellableInventoryItemEntryStateCreated) {
@@ -187,6 +186,14 @@ public abstract class AbstractSellableInventoryItemEntryState implements Sellabl
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(SellableInventoryItemEntryState s) {
+        if (s == this) {
+            return;
+        }
+        this.setSellableQuantity(s.getSellableQuantity());
+        this.setSourceEventId(s.getSourceEventId());
     }
 
     public void save()

@@ -239,7 +239,6 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof MovementConfirmationLineStateCreated) {
@@ -277,6 +276,20 @@ public abstract class AbstractMovementConfirmationLineState implements MovementC
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(MovementConfirmationLineState s) {
+        if (s == this) {
+            return;
+        }
+        this.setMovementLineNumber(s.getMovementLineNumber());
+        this.setTargetQuantity(s.getTargetQuantity());
+        this.setConfirmedQuantity(s.getConfirmedQuantity());
+        this.setDifferenceQuantity(s.getDifferenceQuantity());
+        this.setScrappedQuantity(s.getScrappedQuantity());
+        this.setDescription(s.getDescription());
+        this.setProcessed(s.getProcessed());
+        this.setActive(s.getActive());
     }
 
     public void when(MovementConfirmationLineStateMergePatched e)

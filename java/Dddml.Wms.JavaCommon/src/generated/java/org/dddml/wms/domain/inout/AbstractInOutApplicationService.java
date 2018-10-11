@@ -55,31 +55,31 @@ public abstract class AbstractInOutApplicationService implements InOutApplicatio
     }
 
     public void when(InOutCommands.Complete c) {
-        update(c, ar -> ar.complete(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.complete(c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.Close c) {
-        update(c, ar -> ar.close(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.close(c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.Void c) {
-        update(c, ar -> ar._void(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._void(c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.Reverse c) {
-        update(c, ar -> ar.reverse(c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.reverse(c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.AddLine c) {
-        update(c, ar -> ar.addLine(c.getLineNumber(), c.getLocatorId(), c.getProductId(), c.getAttributeSetInstance(), c.getDamageStatusIds(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.addLine(c.getLineNumber(), c.getLocatorId(), c.getProductId(), c.getAttributeSetInstance(), c.getDamageStatusIds(), c.getDescription(), c.getQuantityUomId(), c.getMovementQuantity(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.Import c) {
-        update(c, ar -> ar._import(c.getDocumentTypeId(), c.getDescription(), c.getOrderId(), c.getDateOrdered(), c.getMovementTypeId(), c.getMovementDate(), c.getWarehouseId(), c.getPOReference(), c.getShipperId(), c.getInOutLines(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar._import(c.getDocumentTypeId(), c.getDescription(), c.getOrderId(), c.getDateOrdered(), c.getMovementTypeId(), c.getMovementDate(), c.getWarehouseId(), c.getPOReference(), c.getShipperId(), c.getInOutLines(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public void when(InOutCommands.DocumentAction c) {
-        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.documentAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public InOutState get(String id) {

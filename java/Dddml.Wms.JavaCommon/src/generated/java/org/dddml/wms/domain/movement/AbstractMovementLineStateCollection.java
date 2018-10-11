@@ -134,6 +134,14 @@ public abstract class AbstractMovementLineStateCollection implements EntityState
         this.loadedMovementLineStates.put(((MovementLineState.SqlMovementLineState)state).getMovementLineId(), state);
     }
 
+    public Collection<MovementLineState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedMovementLineStates.values());
+    }
+
+    public Collection<MovementLineState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedMovementLineStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

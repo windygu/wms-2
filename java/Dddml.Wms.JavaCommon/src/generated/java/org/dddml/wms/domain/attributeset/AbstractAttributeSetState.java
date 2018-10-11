@@ -236,6 +236,16 @@ public abstract class AbstractAttributeSetState implements AttributeSetState.Sql
         attributeUses = new SimpleAttributeUseStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getAttributeSetId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getAttributeSetId(), ((AttributeSetState)obj).getAttributeSetId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -270,6 +280,28 @@ public abstract class AbstractAttributeSetState implements AttributeSetState.Sql
         for (AttributeUseEvent.AttributeUseStateCreated innerEvent : e.getAttributeUseEvents()) {
             AttributeUseState innerState = this.getAttributeUses().get(((AttributeUseEvent.SqlAttributeUseEvent)innerEvent).getAttributeUseEventId().getAttributeId());
             ((AttributeUseState.SqlAttributeUseState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(AttributeSetState s) {
+        if (s == this) {
+            return;
+        }
+        this.setAttributeSetName(s.getAttributeSetName());
+        this.setOrganizationId(s.getOrganizationId());
+        this.setDescription(s.getDescription());
+        this.setReferenceId(s.getReferenceId());
+        this.setIsInstanceAttributeSet(s.getIsInstanceAttributeSet());
+        this.setIsMandatory(s.getIsMandatory());
+        this.setActive(s.getActive());
+
+        for (AttributeUseState ss : s.getAttributeUses().getLoadedStates()) {
+            AttributeUseState thisInnerState = this.getAttributeUses().get(ss.getAttributeId());
+            ((AbstractAttributeUseState) thisInnerState).merge(ss);
+        }
+        for (AttributeUseState ss : s.getAttributeUses().getRemovedStates()) {
+            AttributeUseState thisInnerState = this.getAttributeUses().get(ss.getAttributeId());
+            this.getAttributeUses().remove(thisInnerState);
         }
     }
 

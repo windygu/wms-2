@@ -173,6 +173,16 @@ public abstract class AbstractDocumentTypeState implements DocumentTypeState.Sql
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getDocumentTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDocumentTypeId(), ((DocumentTypeState)obj).getDocumentTypeId());
+    }
+
     public void save()
     {
     }

@@ -239,7 +239,6 @@ public abstract class AbstractMovementLineState implements MovementLineState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof MovementLineStateCreated) {
@@ -271,6 +270,20 @@ public abstract class AbstractMovementLineState implements MovementLineState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(MovementLineState s) {
+        if (s == this) {
+            return;
+        }
+        this.setMovementQuantity(s.getMovementQuantity());
+        this.setProductId(s.getProductId());
+        this.setLocatorIdFrom(s.getLocatorIdFrom());
+        this.setLocatorIdTo(s.getLocatorIdTo());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setProcessed(s.getProcessed());
+        this.setReversalLineNumber(s.getReversalLineNumber());
+        this.setActive(s.getActive());
     }
 
     public void when(MovementLineStateMergePatched e)

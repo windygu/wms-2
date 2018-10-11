@@ -166,7 +166,6 @@ public abstract class AbstractAttributeAliasState implements AttributeAliasState
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof AttributeAliasStateCreated) {
@@ -192,6 +191,14 @@ public abstract class AbstractAttributeAliasState implements AttributeAliasState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeAliasState s) {
+        if (s == this) {
+            return;
+        }
+        this.setName(s.getName());
+        this.setActive(s.getActive());
     }
 
     public void when(AttributeAliasStateMergePatched e)

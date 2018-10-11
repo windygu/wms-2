@@ -18,9 +18,9 @@ public interface PhysicalInventoryAggregate
 
     void mergePatch(PhysicalInventoryCommand.MergePatchPhysicalInventory c);
 
-    void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId);
+    void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId, PhysicalInventoryCommands.CountItem c);
 
-    void documentAction(String value, Long version, String commandId, String requesterId);
+    void documentAction(String value, Long version, String commandId, String requesterId, PhysicalInventoryCommands.DocumentAction c);
 
     void throwOnInvalidStateTransition(Command c);
 }

@@ -133,6 +133,14 @@ public abstract class AbstractOrderShipGroupStateCollection implements EntitySta
         this.loadedOrderShipGroupStates.put(((OrderShipGroupState.SqlOrderShipGroupState)state).getOrderShipGroupId(), state);
     }
 
+    public Collection<OrderShipGroupState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedOrderShipGroupStates.values());
+    }
+
+    public Collection<OrderShipGroupState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedOrderShipGroupStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

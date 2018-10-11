@@ -165,6 +165,16 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         entries = new SimpleSellableInventoryItemEntryStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getSellableInventoryItemId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getSellableInventoryItemId(), ((SellableInventoryItemState)obj).getSellableInventoryItemId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -189,6 +199,22 @@ public abstract class AbstractSellableInventoryItemState implements SellableInve
         for (SellableInventoryItemEntryEvent.SellableInventoryItemEntryStateCreated innerEvent : e.getSellableInventoryItemEntryEvents()) {
             SellableInventoryItemEntryState innerState = this.getEntries().get(((SellableInventoryItemEntryEvent.SqlSellableInventoryItemEntryEvent)innerEvent).getSellableInventoryItemEntryEventId().getEntrySeqId());
             ((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(SellableInventoryItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setSellableQuantity(s.getSellableQuantity());
+
+        for (SellableInventoryItemEntryState ss : s.getEntries().getLoadedStates()) {
+            SellableInventoryItemEntryState thisInnerState = this.getEntries().get(ss.getEntrySeqId());
+            ((AbstractSellableInventoryItemEntryState) thisInnerState).merge(ss);
+        }
+        for (SellableInventoryItemEntryState ss : s.getEntries().getRemovedStates()) {
+            SellableInventoryItemEntryState thisInnerState = this.getEntries().get(ss.getEntrySeqId());
+            this.getEntries().remove(thisInnerState);
         }
     }
 

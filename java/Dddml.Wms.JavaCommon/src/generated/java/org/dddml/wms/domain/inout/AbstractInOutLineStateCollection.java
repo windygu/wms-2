@@ -134,6 +134,14 @@ public abstract class AbstractInOutLineStateCollection implements EntityStateCol
         this.loadedInOutLineStates.put(((InOutLineState.SqlInOutLineState)state).getInOutLineId(), state);
     }
 
+    public Collection<InOutLineState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedInOutLineStates.values());
+    }
+
+    public Collection<InOutLineState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedInOutLineStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

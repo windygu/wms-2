@@ -178,7 +178,6 @@ public abstract class AbstractPicklistItemState implements PicklistItemState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof PicklistItemStateCreated) {
@@ -205,6 +204,15 @@ public abstract class AbstractPicklistItemState implements PicklistItemState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(PicklistItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setItemStatusId(s.getItemStatusId());
+        this.setQuantity(s.getQuantity());
+        this.setActive(s.getActive());
     }
 
     public void when(PicklistItemStateMergePatched e)

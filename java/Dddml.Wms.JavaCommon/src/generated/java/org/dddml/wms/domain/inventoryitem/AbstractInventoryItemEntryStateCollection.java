@@ -132,6 +132,14 @@ public abstract class AbstractInventoryItemEntryStateCollection implements Entit
         this.loadedInventoryItemEntryStates.put(((InventoryItemEntryState.SqlInventoryItemEntryState)state).getInventoryItemEntryId(), state);
     }
 
+    public Collection<InventoryItemEntryState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedInventoryItemEntryStates.values());
+    }
+
+    public Collection<InventoryItemEntryState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedInventoryItemEntryStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

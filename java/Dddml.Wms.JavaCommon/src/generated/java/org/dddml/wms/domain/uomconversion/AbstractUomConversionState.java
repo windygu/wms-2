@@ -199,6 +199,16 @@ public abstract class AbstractUomConversionState implements UomConversionState.S
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getUomConversionId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getUomConversionId(), ((UomConversionState)obj).getUomConversionId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -228,6 +238,17 @@ public abstract class AbstractUomConversionState implements UomConversionState.S
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(UomConversionState s) {
+        if (s == this) {
+            return;
+        }
+        this.setConversionFactor(s.getConversionFactor());
+        this.setCustomMethodId(s.getCustomMethodId());
+        this.setDecimalScale(s.getDecimalScale());
+        this.setRoundingMode(s.getRoundingMode());
+        this.setActive(s.getActive());
     }
 
     public void when(UomConversionStateMergePatched e)

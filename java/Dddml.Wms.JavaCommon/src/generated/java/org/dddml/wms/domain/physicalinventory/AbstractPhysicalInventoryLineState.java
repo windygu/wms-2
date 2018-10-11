@@ -216,7 +216,6 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof PhysicalInventoryLineStateCreated) {
@@ -246,6 +245,18 @@ public abstract class AbstractPhysicalInventoryLineState implements PhysicalInve
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(PhysicalInventoryLineState s) {
+        if (s == this) {
+            return;
+        }
+        this.setBookQuantity(s.getBookQuantity());
+        this.setCountedQuantity(s.getCountedQuantity());
+        this.setProcessed(s.getProcessed());
+        this.setLineNumber(s.getLineNumber());
+        this.setReversalLineNumber(s.getReversalLineNumber());
+        this.setDescription(s.getDescription());
     }
 
     public void when(PhysicalInventoryLineStateMergePatched e)

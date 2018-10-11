@@ -151,6 +151,16 @@ public abstract class AbstractOrderShipmentState implements OrderShipmentState.S
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getOrderShipmentId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getOrderShipmentId(), ((OrderShipmentState)obj).getOrderShipmentId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -173,6 +183,14 @@ public abstract class AbstractOrderShipmentState implements OrderShipmentState.S
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrderShipmentState s) {
+        if (s == this) {
+            return;
+        }
+        this.setQuantity(s.getQuantity());
+        this.setActive(s.getActive());
     }
 
     public void when(OrderShipmentStateMergePatched e)

@@ -133,6 +133,14 @@ public abstract class AbstractGoodIdentificationStateCollection implements Entit
         this.loadedGoodIdentificationStates.put(((GoodIdentificationState.SqlGoodIdentificationState)state).getProductGoodIdentificationId(), state);
     }
 
+    public Collection<GoodIdentificationState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedGoodIdentificationStates.values());
+    }
+
+    public Collection<GoodIdentificationState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedGoodIdentificationStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

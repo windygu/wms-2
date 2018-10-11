@@ -247,6 +247,16 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getProductCategoryId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getProductCategoryId(), ((ProductCategoryState)obj).getProductCategoryId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -280,6 +290,21 @@ public abstract class AbstractProductCategoryState implements ProductCategorySta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ProductCategoryState s) {
+        if (s == this) {
+            return;
+        }
+        this.setProductCategoryTypeId(s.getProductCategoryTypeId());
+        this.setPrimaryParentCategoryId(s.getPrimaryParentCategoryId());
+        this.setCategoryName(s.getCategoryName());
+        this.setDescription(s.getDescription());
+        this.setCategoryImageUrl(s.getCategoryImageUrl());
+        this.setDetailScreen(s.getDetailScreen());
+        this.setShowInSelect(s.getShowInSelect());
+        this.setAttributeSetId(s.getAttributeSetId());
+        this.setActive(s.getActive());
     }
 
     public void when(ProductCategoryStateMergePatched e)

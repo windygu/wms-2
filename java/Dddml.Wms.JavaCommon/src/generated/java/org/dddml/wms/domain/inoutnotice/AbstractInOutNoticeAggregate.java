@@ -235,7 +235,7 @@ public abstract class AbstractInOutNoticeAggregate extends AbstractAggregate imp
         }
 
         @Override
-        public void inOutNoticeAction(String value, Long version, String commandId, String requesterId) {
+        public void inOutNoticeAction(String value, Long version, String commandId, String requesterId, InOutNoticeCommands.InOutNoticeAction c) {
             InOutNoticeEvent.InOutNoticeStateMergePatched e = newInOutNoticeStateMergePatched(version, commandId, requesterId);
             inOutNoticeAction(e, value);
             apply(e);

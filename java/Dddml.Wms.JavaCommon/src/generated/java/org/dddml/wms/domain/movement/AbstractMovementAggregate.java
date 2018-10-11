@@ -454,12 +454,12 @@ public abstract class AbstractMovementAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void addLine(String lineNumber, String productId, String locatorIdFrom, String locatorIdTo, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
+        public void addLine(String lineNumber, String productId, String locatorIdFrom, String locatorIdTo, java.util.Map<String, Object> attributeSetInstance, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId, MovementCommands.AddLine c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void documentAction(String value, Long version, String commandId, String requesterId) {
+        public void documentAction(String value, Long version, String commandId, String requesterId, MovementCommands.DocumentAction c) {
             MovementEvent.MovementStateMergePatched e = newMovementStateMergePatched(version, commandId, requesterId);
             documentAction(e, value);
             apply(e);

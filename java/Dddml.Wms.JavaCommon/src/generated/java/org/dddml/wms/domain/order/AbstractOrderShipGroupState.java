@@ -335,7 +335,6 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         orderItemShipGroupAssociations = new SimpleOrderItemShipGroupAssociationStateCollection(this);
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof OrderShipGroupStateCreated) {
@@ -377,6 +376,36 @@ public abstract class AbstractOrderShipGroupState implements OrderShipGroupState
         for (OrderItemShipGroupAssociationEvent.OrderItemShipGroupAssociationStateCreated innerEvent : e.getOrderItemShipGroupAssociationEvents()) {
             OrderItemShipGroupAssociationState innerState = this.getOrderItemShipGroupAssociations().get(((OrderItemShipGroupAssociationEvent.SqlOrderItemShipGroupAssociationEvent)innerEvent).getOrderItemShipGroupAssociationEventId().getOrderItemSeqId());
             ((OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(OrderShipGroupState s) {
+        if (s == this) {
+            return;
+        }
+        this.setShipmentMethodTypeId(s.getShipmentMethodTypeId());
+        this.setSupplierPartyId(s.getSupplierPartyId());
+        this.setVendorPartyId(s.getVendorPartyId());
+        this.setCarrierPartyId(s.getCarrierPartyId());
+        this.setCarrierRoleTypeId(s.getCarrierRoleTypeId());
+        this.setFacilityId(s.getFacilityId());
+        this.setContactMechId(s.getContactMechId());
+        this.setTelecomContactMechId(s.getTelecomContactMechId());
+        this.setMaySplit(s.getMaySplit());
+        this.setGiftMessage(s.getGiftMessage());
+        this.setIsGift(s.getIsGift());
+        this.setShipAfterDate(s.getShipAfterDate());
+        this.setShipByDate(s.getShipByDate());
+        this.setOrderShipGroupStatusId(s.getOrderShipGroupStatusId());
+        this.setActive(s.getActive());
+
+        for (OrderItemShipGroupAssociationState ss : s.getOrderItemShipGroupAssociations().getLoadedStates()) {
+            OrderItemShipGroupAssociationState thisInnerState = this.getOrderItemShipGroupAssociations().get(ss.getOrderItemSeqId());
+            ((AbstractOrderItemShipGroupAssociationState) thisInnerState).merge(ss);
+        }
+        for (OrderItemShipGroupAssociationState ss : s.getOrderItemShipGroupAssociations().getRemovedStates()) {
+            OrderItemShipGroupAssociationState thisInnerState = this.getOrderItemShipGroupAssociations().get(ss.getOrderItemSeqId());
+            this.getOrderItemShipGroupAssociations().remove(thisInnerState);
         }
     }
 

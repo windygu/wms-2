@@ -611,6 +611,16 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         itemIssuances = new SimpleItemIssuanceStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getShipmentId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getShipmentId(), ((ShipmentState)obj).getShipmentId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -682,6 +692,84 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         for (ItemIssuanceEvent.ItemIssuanceStateCreated innerEvent : e.getItemIssuanceEvents()) {
             ItemIssuanceState innerState = this.getItemIssuances().get(((ItemIssuanceEvent.SqlItemIssuanceEvent)innerEvent).getItemIssuanceEventId().getItemIssuanceSeqId());
             ((ItemIssuanceState.SqlItemIssuanceState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(ShipmentState s) {
+        if (s == this) {
+            return;
+        }
+        this.setShipmentTypeId(s.getShipmentTypeId());
+        this.setStatusId(s.getStatusId());
+        this.setPrimaryOrderId(s.getPrimaryOrderId());
+        this.setPrimaryReturnId(s.getPrimaryReturnId());
+        this.setPrimaryShipGroupSeqId(s.getPrimaryShipGroupSeqId());
+        this.setOnlyOneOrder(s.getOnlyOneOrder());
+        this.setOnlyOneOrderShipGroup(s.getOnlyOneOrderShipGroup());
+        this.setPicklistBinId(s.getPicklistBinId());
+        this.setBolNumber(s.getBolNumber());
+        this.setSealNumber(s.getSealNumber());
+        this.setVehicleId(s.getVehicleId());
+        this.setExternalOrderNumber(s.getExternalOrderNumber());
+        this.setCarrier(s.getCarrier());
+        this.setDateShipped(s.getDateShipped());
+        this.setIsCreatedFromPackingList(s.getIsCreatedFromPackingList());
+        this.setIsScheduleNeeded(s.getIsScheduleNeeded());
+        this.setEstimatedReadyDate(s.getEstimatedReadyDate());
+        this.setEstimatedShipDate(s.getEstimatedShipDate());
+        this.setEstimatedShipWorkEffId(s.getEstimatedShipWorkEffId());
+        this.setEstimatedArrivalDate(s.getEstimatedArrivalDate());
+        this.setEstimatedArrivalWorkEffId(s.getEstimatedArrivalWorkEffId());
+        this.setLatestCancelDate(s.getLatestCancelDate());
+        this.setEstimatedShipCost(s.getEstimatedShipCost());
+        this.setCurrencyUomId(s.getCurrencyUomId());
+        this.setHandlingInstructions(s.getHandlingInstructions());
+        this.setOriginFacilityId(s.getOriginFacilityId());
+        this.setDestinationFacilityId(s.getDestinationFacilityId());
+        this.setOriginContactMechId(s.getOriginContactMechId());
+        this.setOriginTelecomNumberId(s.getOriginTelecomNumberId());
+        this.setDestinationContactMechId(s.getDestinationContactMechId());
+        this.setDestinationTelecomNumberId(s.getDestinationTelecomNumberId());
+        this.setPartyIdTo(s.getPartyIdTo());
+        this.setPartyIdFrom(s.getPartyIdFrom());
+        this.setAdditionalShippingCharge(s.getAdditionalShippingCharge());
+        this.setAddtlShippingChargeDesc(s.getAddtlShippingChargeDesc());
+        this.setActive(s.getActive());
+
+        for (ShipmentImageState ss : s.getShipmentImages().getLoadedStates()) {
+            ShipmentImageState thisInnerState = this.getShipmentImages().get(ss.getSequenceId());
+            ((AbstractShipmentImageState) thisInnerState).merge(ss);
+        }
+        for (ShipmentImageState ss : s.getShipmentImages().getRemovedStates()) {
+            ShipmentImageState thisInnerState = this.getShipmentImages().get(ss.getSequenceId());
+            this.getShipmentImages().remove(thisInnerState);
+        }
+
+        for (ShipmentItemState ss : s.getShipmentItems().getLoadedStates()) {
+            ShipmentItemState thisInnerState = this.getShipmentItems().get(ss.getShipmentItemSeqId());
+            ((AbstractShipmentItemState) thisInnerState).merge(ss);
+        }
+        for (ShipmentItemState ss : s.getShipmentItems().getRemovedStates()) {
+            ShipmentItemState thisInnerState = this.getShipmentItems().get(ss.getShipmentItemSeqId());
+            this.getShipmentItems().remove(thisInnerState);
+        }
+
+        for (ShipmentReceiptState ss : s.getShipmentReceipts().getLoadedStates()) {
+            ShipmentReceiptState thisInnerState = this.getShipmentReceipts().get(ss.getReceiptSeqId());
+            ((AbstractShipmentReceiptState) thisInnerState).merge(ss);
+        }
+        for (ShipmentReceiptState ss : s.getShipmentReceipts().getRemovedStates()) {
+            ShipmentReceiptState thisInnerState = this.getShipmentReceipts().get(ss.getReceiptSeqId());
+            this.getShipmentReceipts().remove(thisInnerState);
+        }
+
+        for (ItemIssuanceState ss : s.getItemIssuances().getLoadedStates()) {
+            ItemIssuanceState thisInnerState = this.getItemIssuances().get(ss.getItemIssuanceSeqId());
+            ((AbstractItemIssuanceState) thisInnerState).merge(ss);
+        }
+        for (ItemIssuanceState ss : s.getItemIssuances().getRemovedStates()) {
+            ItemIssuanceState thisInnerState = this.getItemIssuances().get(ss.getItemIssuanceSeqId());
+            this.getItemIssuances().remove(thisInnerState);
         }
     }
 

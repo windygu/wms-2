@@ -133,6 +133,14 @@ public abstract class AbstractPicklistItemStateCollection implements EntityState
         this.loadedPicklistItemStates.put(((PicklistItemState.SqlPicklistItemState)state).getPicklistBinPicklistItemId(), state);
     }
 
+    public Collection<PicklistItemState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedPicklistItemStates.values());
+    }
+
+    public Collection<PicklistItemState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedPicklistItemStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

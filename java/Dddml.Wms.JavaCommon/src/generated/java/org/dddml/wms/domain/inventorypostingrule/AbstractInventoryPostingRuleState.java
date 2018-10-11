@@ -212,6 +212,16 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getInventoryPostingRuleId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getInventoryPostingRuleId(), ((InventoryPostingRuleState)obj).getInventoryPostingRuleId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -242,6 +252,18 @@ public abstract class AbstractInventoryPostingRuleState implements InventoryPost
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InventoryPostingRuleState s) {
+        if (s == this) {
+            return;
+        }
+        this.setTriggerInventoryItemId(s.getTriggerInventoryItemId());
+        this.setOutputInventoryItemId(s.getOutputInventoryItemId());
+        this.setTriggerAccountName(s.getTriggerAccountName());
+        this.setOutputAccountName(s.getOutputAccountName());
+        this.setIsOutputNegated(s.getIsOutputNegated());
+        this.setActive(s.getActive());
     }
 
     public void when(InventoryPostingRuleStateMergePatched e)

@@ -155,7 +155,6 @@ public abstract class AbstractOrderRoleState implements OrderRoleState.SqlOrderR
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof OrderRoleStateCreated) {
@@ -180,6 +179,13 @@ public abstract class AbstractOrderRoleState implements OrderRoleState.SqlOrderR
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrderRoleState s) {
+        if (s == this) {
+            return;
+        }
+        this.setActive(s.getActive());
     }
 
     public void when(OrderRoleStateMergePatched e)

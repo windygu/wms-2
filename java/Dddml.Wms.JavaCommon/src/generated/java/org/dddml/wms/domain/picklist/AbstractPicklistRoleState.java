@@ -155,7 +155,6 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof PicklistRoleStateCreated) {
@@ -180,6 +179,13 @@ public abstract class AbstractPicklistRoleState implements PicklistRoleState.Sql
         this.setCreatedByUserLogin(e.getCreatedByUserLogin());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(PicklistRoleState s) {
+        if (s == this) {
+            return;
+        }
+        this.setActive(s.getActive());
     }
 
     public void when(PicklistRoleStateMergePatched e)

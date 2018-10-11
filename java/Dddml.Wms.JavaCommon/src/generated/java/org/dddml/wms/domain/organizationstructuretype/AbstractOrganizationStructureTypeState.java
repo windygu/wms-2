@@ -163,6 +163,16 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getId(), ((OrganizationStructureTypeState)obj).getId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -189,6 +199,14 @@ public abstract class AbstractOrganizationStructureTypeState implements Organiza
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrganizationStructureTypeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(OrganizationStructureTypeStateMergePatched e)

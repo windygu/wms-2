@@ -58,7 +58,7 @@ public abstract class AbstractInOutNoticeApplicationService implements InOutNoti
     }
 
     public void when(InOutNoticeCommands.InOutNoticeAction c) {
-        update(c, ar -> ar.inOutNoticeAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.inOutNoticeAction(c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public InOutNoticeState get(String id) {

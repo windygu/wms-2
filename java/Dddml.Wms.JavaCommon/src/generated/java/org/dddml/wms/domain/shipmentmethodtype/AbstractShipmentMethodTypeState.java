@@ -175,6 +175,16 @@ public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodT
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getShipmentMethodTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getShipmentMethodTypeId(), ((ShipmentMethodTypeState)obj).getShipmentMethodTypeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -202,6 +212,15 @@ public abstract class AbstractShipmentMethodTypeState implements ShipmentMethodT
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ShipmentMethodTypeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setSequenceNum(s.getSequenceNum());
+        this.setActive(s.getActive());
     }
 
     public void when(ShipmentMethodTypeStateMergePatched e)

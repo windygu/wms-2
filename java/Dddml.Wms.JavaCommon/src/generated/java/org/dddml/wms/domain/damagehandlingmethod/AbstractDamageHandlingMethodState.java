@@ -173,6 +173,16 @@ public abstract class AbstractDamageHandlingMethodState implements DamageHandlin
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getDamageHandlingMethodId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDamageHandlingMethodId(), ((DamageHandlingMethodState)obj).getDamageHandlingMethodId());
+    }
+
     public void save()
     {
     }

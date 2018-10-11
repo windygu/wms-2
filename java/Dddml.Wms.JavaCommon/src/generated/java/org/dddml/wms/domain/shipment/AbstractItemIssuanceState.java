@@ -310,7 +310,6 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ItemIssuanceStateCreated) {
@@ -348,6 +347,26 @@ public abstract class AbstractItemIssuanceState implements ItemIssuanceState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ItemIssuanceState s) {
+        if (s == this) {
+            return;
+        }
+        this.setOrderId(s.getOrderId());
+        this.setOrderItemSeqId(s.getOrderItemSeqId());
+        this.setShipGroupSeqId(s.getShipGroupSeqId());
+        this.setProductId(s.getProductId());
+        this.setLocatorId(s.getLocatorId());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setShipmentItemSeqId(s.getShipmentItemSeqId());
+        this.setFixedAssetId(s.getFixedAssetId());
+        this.setMaintHistSeqId(s.getMaintHistSeqId());
+        this.setIssuedDateTime(s.getIssuedDateTime());
+        this.setIssuedByUserLoginId(s.getIssuedByUserLoginId());
+        this.setQuantity(s.getQuantity());
+        this.setCancelQuantity(s.getCancelQuantity());
+        this.setActive(s.getActive());
     }
 
     public void when(ItemIssuanceStateMergePatched e)

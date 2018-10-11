@@ -405,6 +405,16 @@ public abstract class AbstractMovementState implements MovementState.SqlMovement
         movementLines = new SimpleMovementLineStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getDocumentNumber().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDocumentNumber(), ((MovementState)obj).getDocumentNumber());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -453,6 +463,42 @@ public abstract class AbstractMovementState implements MovementState.SqlMovement
         for (MovementLineEvent.MovementLineStateCreated innerEvent : e.getMovementLineEvents()) {
             MovementLineState innerState = this.getMovementLines().get(((MovementLineEvent.SqlMovementLineEvent)innerEvent).getMovementLineEventId().getLineNumber());
             ((MovementLineState.SqlMovementLineState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(MovementState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDocumentStatusId(s.getDocumentStatusId());
+        this.setMovementDate(s.getMovementDate());
+        this.setPosted(s.getPosted());
+        this.setProcessed(s.getProcessed());
+        this.setProcessing(s.getProcessing());
+        this.setDateReceived(s.getDateReceived());
+        this.setDocumentTypeId(s.getDocumentTypeId());
+        this.setIsInTransit(s.getIsInTransit());
+        this.setIsApproved(s.getIsApproved());
+        this.setApprovalAmount(s.getApprovalAmount());
+        this.setShipperId(s.getShipperId());
+        this.setSalesRepresentativeId(s.getSalesRepresentativeId());
+        this.setBusinessPartnerId(s.getBusinessPartnerId());
+        this.setChargeAmount(s.getChargeAmount());
+        this.setCreateFrom(s.getCreateFrom());
+        this.setFreightAmount(s.getFreightAmount());
+        this.setReversalDocumentNumber(s.getReversalDocumentNumber());
+        this.setWarehouseIdFrom(s.getWarehouseIdFrom());
+        this.setWarehouseIdTo(s.getWarehouseIdTo());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
+
+        for (MovementLineState ss : s.getMovementLines().getLoadedStates()) {
+            MovementLineState thisInnerState = this.getMovementLines().get(ss.getLineNumber());
+            ((AbstractMovementLineState) thisInnerState).merge(ss);
+        }
+        for (MovementLineState ss : s.getMovementLines().getRemovedStates()) {
+            MovementLineState thisInnerState = this.getMovementLines().get(ss.getLineNumber());
+            this.getMovementLines().remove(thisInnerState);
         }
     }
 

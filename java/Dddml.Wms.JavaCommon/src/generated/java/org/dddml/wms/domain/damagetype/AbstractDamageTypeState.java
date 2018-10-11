@@ -185,6 +185,16 @@ public abstract class AbstractDamageTypeState implements DamageTypeState.SqlDama
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getDamageTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDamageTypeId(), ((DamageTypeState)obj).getDamageTypeId());
+    }
+
     public void save()
     {
     }

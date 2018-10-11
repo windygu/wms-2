@@ -133,6 +133,14 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         this.loadedShipmentReceiptStates.put(((ShipmentReceiptState.SqlShipmentReceiptState)state).getShipmentReceiptId(), state);
     }
 
+    public Collection<ShipmentReceiptState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedShipmentReceiptStates.values());
+    }
+
+    public Collection<ShipmentReceiptState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedShipmentReceiptStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

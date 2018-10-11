@@ -133,6 +133,14 @@ public abstract class AbstractAttributeValueStateCollection implements EntitySta
         this.loadedAttributeValueStates.put(((AttributeValueState.SqlAttributeValueState)state).getAttributeValueId(), state);
     }
 
+    public Collection<AttributeValueState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedAttributeValueStates.values());
+    }
+
+    public Collection<AttributeValueState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedAttributeValueStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

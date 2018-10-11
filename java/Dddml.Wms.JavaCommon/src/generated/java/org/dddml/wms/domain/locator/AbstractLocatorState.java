@@ -271,6 +271,16 @@ public abstract class AbstractLocatorState implements LocatorState.SqlLocatorSta
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getLocatorId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getLocatorId(), ((LocatorState)obj).getLocatorId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -309,6 +319,23 @@ public abstract class AbstractLocatorState implements LocatorState.SqlLocatorSta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(LocatorState s) {
+        if (s == this) {
+            return;
+        }
+        this.setWarehouseId(s.getWarehouseId());
+        this.setParentLocatorId(s.getParentLocatorId());
+        this.setLocatorType(s.getLocatorType());
+        this.setPriorityNumber(s.getPriorityNumber());
+        this.setIsDefault(s.getIsDefault());
+        this.setX(s.getX());
+        this.setY(s.getY());
+        this.setZ(s.getZ());
+        this.setDescription(s.getDescription());
+        this.setLocatorTypeId(s.getLocatorTypeId());
+        this.setActive(s.getActive());
     }
 
     public void when(LocatorStateMergePatched e)

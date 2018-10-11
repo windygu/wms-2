@@ -211,6 +211,16 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getName(), ((AttributeSetInstanceExtensionFieldState)obj).getName());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -241,6 +251,18 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldState implements
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeSetInstanceExtensionFieldState s) {
+        if (s == this) {
+            return;
+        }
+        this.setType(s.getType());
+        this.setLength(s.getLength());
+        this.setAlias(s.getAlias());
+        this.setDescription(s.getDescription());
+        this.setGroupId(s.getGroupId());
+        this.setActive(s.getActive());
     }
 
     public void when(AttributeSetInstanceExtensionFieldStateMergePatched e)

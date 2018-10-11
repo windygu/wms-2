@@ -19,7 +19,7 @@ public interface MovementConfirmationAggregate
 
     void delete(MovementConfirmationCommand.DeleteMovementConfirmation c);
 
-    void documentAction(String value, Long version, String commandId, String requesterId);
+    void documentAction(String value, Long version, String commandId, String requesterId, MovementConfirmationCommands.DocumentAction c);
 
     void throwOnInvalidStateTransition(Command c);
 }

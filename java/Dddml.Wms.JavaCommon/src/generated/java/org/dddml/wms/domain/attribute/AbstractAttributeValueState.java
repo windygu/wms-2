@@ -190,7 +190,6 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof AttributeValueStateCreated) {
@@ -218,6 +217,16 @@ public abstract class AbstractAttributeValueState implements AttributeValueState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeValueState s) {
+        if (s == this) {
+            return;
+        }
+        this.setAttributeValueName(s.getAttributeValueName());
+        this.setDescription(s.getDescription());
+        this.setReferenceId(s.getReferenceId());
+        this.setActive(s.getActive());
     }
 
     public void when(AttributeValueStateMergePatched e)

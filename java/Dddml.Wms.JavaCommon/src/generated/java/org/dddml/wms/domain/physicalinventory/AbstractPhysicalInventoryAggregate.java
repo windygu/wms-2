@@ -345,12 +345,12 @@ public abstract class AbstractPhysicalInventoryAggregate extends AbstractAggrega
         }
 
         @Override
-        public void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId) {
+        public void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId, PhysicalInventoryCommands.CountItem c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void documentAction(String value, Long version, String commandId, String requesterId) {
+        public void documentAction(String value, Long version, String commandId, String requesterId, PhysicalInventoryCommands.DocumentAction c) {
             PhysicalInventoryEvent.PhysicalInventoryStateMergePatched e = newPhysicalInventoryStateMergePatched(version, commandId, requesterId);
             documentAction(e, value);
             apply(e);

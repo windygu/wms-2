@@ -526,6 +526,16 @@ public abstract class AbstractInOutState implements InOutState.SqlInOutState, Sa
         inOutLines = new SimpleInOutLineStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getDocumentNumber().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDocumentNumber(), ((InOutState)obj).getDocumentNumber());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -584,6 +594,61 @@ public abstract class AbstractInOutState implements InOutState.SqlInOutState, Sa
         for (InOutLineEvent.InOutLineStateCreated innerEvent : e.getInOutLineEvents()) {
             InOutLineState innerState = this.getInOutLines().get(((InOutLineEvent.SqlInOutLineEvent)innerEvent).getInOutLineEventId().getLineNumber());
             ((InOutLineState.SqlInOutLineState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(InOutState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDocumentStatusId(s.getDocumentStatusId());
+        this.setPosted(s.getPosted());
+        this.setProcessed(s.getProcessed());
+        this.setProcessing(s.getProcessing());
+        this.setDocumentTypeId(s.getDocumentTypeId());
+        this.setDescription(s.getDescription());
+        this.setOrderId(s.getOrderId());
+        this.setDateOrdered(s.getDateOrdered());
+        this.setIsPrinted(s.getIsPrinted());
+        this.setMovementTypeId(s.getMovementTypeId());
+        this.setMovementDate(s.getMovementDate());
+        this.setBusinessPartnerId(s.getBusinessPartnerId());
+        this.setWarehouseId(s.getWarehouseId());
+        this.setPOReference(s.getPOReference());
+        this.setFreightAmount(s.getFreightAmount());
+        this.setShipperId(s.getShipperId());
+        this.setChargeAmount(s.getChargeAmount());
+        this.setDatePrinted(s.getDatePrinted());
+        this.setCreatedFrom(s.getCreatedFrom());
+        this.setSalesRepresentativeId(s.getSalesRepresentativeId());
+        this.setNumberOfPackages(s.getNumberOfPackages());
+        this.setPickDate(s.getPickDate());
+        this.setShipDate(s.getShipDate());
+        this.setTrackingNumber(s.getTrackingNumber());
+        this.setDateReceived(s.getDateReceived());
+        this.setIsInTransit(s.getIsInTransit());
+        this.setIsApproved(s.getIsApproved());
+        this.setIsInDispute(s.getIsInDispute());
+        this.setRmaDocumentNumber(s.getRmaDocumentNumber());
+        this.setReversalDocumentNumber(s.getReversalDocumentNumber());
+        this.setActive(s.getActive());
+
+        for (InOutImageState ss : s.getInOutImages().getLoadedStates()) {
+            InOutImageState thisInnerState = this.getInOutImages().get(ss.getSequenceId());
+            ((AbstractInOutImageState) thisInnerState).merge(ss);
+        }
+        for (InOutImageState ss : s.getInOutImages().getRemovedStates()) {
+            InOutImageState thisInnerState = this.getInOutImages().get(ss.getSequenceId());
+            this.getInOutImages().remove(thisInnerState);
+        }
+
+        for (InOutLineState ss : s.getInOutLines().getLoadedStates()) {
+            InOutLineState thisInnerState = this.getInOutLines().get(ss.getLineNumber());
+            ((AbstractInOutLineState) thisInnerState).merge(ss);
+        }
+        for (InOutLineState ss : s.getInOutLines().getRemovedStates()) {
+            InOutLineState thisInnerState = this.getInOutLines().get(ss.getLineNumber());
+            this.getInOutLines().remove(thisInnerState);
         }
     }
 

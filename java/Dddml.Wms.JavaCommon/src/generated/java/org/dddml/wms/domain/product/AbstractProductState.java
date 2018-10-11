@@ -944,6 +944,16 @@ public abstract class AbstractProductState implements ProductState.SqlProductSta
         goodIdentifications = new SimpleGoodIdentificationStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getProductId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getProductId(), ((ProductState)obj).getProductId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -1034,6 +1044,88 @@ public abstract class AbstractProductState implements ProductState.SqlProductSta
         for (GoodIdentificationEvent.GoodIdentificationStateCreated innerEvent : e.getGoodIdentificationEvents()) {
             GoodIdentificationState innerState = this.getGoodIdentifications().get(((GoodIdentificationEvent.SqlGoodIdentificationEvent)innerEvent).getGoodIdentificationEventId().getGoodIdentificationTypeId());
             ((GoodIdentificationState.SqlGoodIdentificationState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(ProductState s) {
+        if (s == this) {
+            return;
+        }
+        this.setProductTypeId(s.getProductTypeId());
+        this.setPrimaryProductCategoryId(s.getPrimaryProductCategoryId());
+        this.setManufacturerPartyId(s.getManufacturerPartyId());
+        this.setFacilityId(s.getFacilityId());
+        this.setIntroductionDate(s.getIntroductionDate());
+        this.setReleaseDate(s.getReleaseDate());
+        this.setSupportDiscontinuationDate(s.getSupportDiscontinuationDate());
+        this.setSalesDiscontinuationDate(s.getSalesDiscontinuationDate());
+        this.setSalesDiscWhenNotAvail(s.getSalesDiscWhenNotAvail());
+        this.setInternalName(s.getInternalName());
+        this.setBrandName(s.getBrandName());
+        this.setComments(s.getComments());
+        this.setProductName(s.getProductName());
+        this.setDescription(s.getDescription());
+        this.setPriceDetailText(s.getPriceDetailText());
+        this.setSmallImageUrl(s.getSmallImageUrl());
+        this.setMediumImageUrl(s.getMediumImageUrl());
+        this.setLargeImageUrl(s.getLargeImageUrl());
+        this.setDetailImageUrl(s.getDetailImageUrl());
+        this.setOriginalImageUrl(s.getOriginalImageUrl());
+        this.setDetailScreen(s.getDetailScreen());
+        this.setInventoryMessage(s.getInventoryMessage());
+        this.setInventoryItemTypeId(s.getInventoryItemTypeId());
+        this.setRequireInventory(s.getRequireInventory());
+        this.setQuantityUomId(s.getQuantityUomId());
+        this.setQuantityIncluded(s.getQuantityIncluded());
+        this.setPiecesIncluded(s.getPiecesIncluded());
+        this.setRequireAmount(s.getRequireAmount());
+        this.setFixedAmount(s.getFixedAmount());
+        this.setAmountUomTypeId(s.getAmountUomTypeId());
+        this.setWeightUomId(s.getWeightUomId());
+        this.setShippingWeight(s.getShippingWeight());
+        this.setProductWeight(s.getProductWeight());
+        this.setHeightUomId(s.getHeightUomId());
+        this.setProductHeight(s.getProductHeight());
+        this.setShippingHeight(s.getShippingHeight());
+        this.setWidthUomId(s.getWidthUomId());
+        this.setProductWidth(s.getProductWidth());
+        this.setShippingWidth(s.getShippingWidth());
+        this.setDepthUomId(s.getDepthUomId());
+        this.setProductDepth(s.getProductDepth());
+        this.setShippingDepth(s.getShippingDepth());
+        this.setDiameterUomId(s.getDiameterUomId());
+        this.setProductDiameter(s.getProductDiameter());
+        this.setProductRating(s.getProductRating());
+        this.setRatingTypeEnum(s.getRatingTypeEnum());
+        this.setReturnable(s.getReturnable());
+        this.setTaxable(s.getTaxable());
+        this.setChargeShipping(s.getChargeShipping());
+        this.setAutoCreateKeywords(s.getAutoCreateKeywords());
+        this.setIncludeInPromotions(s.getIncludeInPromotions());
+        this.setIsVirtual(s.getIsVirtual());
+        this.setIsVariant(s.getIsVariant());
+        this.setVirtualVariantMethodEnum(s.getVirtualVariantMethodEnum());
+        this.setInShippingBox(s.getInShippingBox());
+        this.setDefaultShipmentBoxTypeId(s.getDefaultShipmentBoxTypeId());
+        this.setIsSerialNumbered(s.getIsSerialNumbered());
+        this.setIsManagedByLot(s.getIsManagedByLot());
+        this.setAttributeSetId(s.getAttributeSetId());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setGrade(s.getGrade());
+        this.setGsm(s.getGsm());
+        this.setCoreDiameter(s.getCoreDiameter());
+        this.setOutsideDiameter(s.getOutsideDiameter());
+        this.setMoisturePct(s.getMoisturePct());
+        this.setRollCnt(s.getRollCnt());
+        this.setActive(s.getActive());
+
+        for (GoodIdentificationState ss : s.getGoodIdentifications().getLoadedStates()) {
+            GoodIdentificationState thisInnerState = this.getGoodIdentifications().get(ss.getGoodIdentificationTypeId());
+            ((AbstractGoodIdentificationState) thisInnerState).merge(ss);
+        }
+        for (GoodIdentificationState ss : s.getGoodIdentifications().getRemovedStates()) {
+            GoodIdentificationState thisInnerState = this.getGoodIdentifications().get(ss.getGoodIdentificationTypeId());
+            this.getGoodIdentifications().remove(thisInnerState);
         }
     }
 

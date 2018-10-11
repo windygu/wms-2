@@ -283,6 +283,16 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState.SqlIn
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getInOutNoticeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getInOutNoticeId(), ((InOutNoticeState)obj).getInOutNoticeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -319,6 +329,24 @@ public abstract class AbstractInOutNoticeState implements InOutNoticeState.SqlIn
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InOutNoticeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setWarehouseId(s.getWarehouseId());
+        this.setInOutNoticeType(s.getInOutNoticeType());
+        this.setTelecomContactMechId(s.getTelecomContactMechId());
+        this.setTrackingNumber(s.getTrackingNumber());
+        this.setContactPartyId(s.getContactPartyId());
+        this.setVehiclePlateNumber(s.getVehiclePlateNumber());
+        this.setShippingInstructions(s.getShippingInstructions());
+        this.setEstimatedShipDate(s.getEstimatedShipDate());
+        this.setEstimatedDeliveryDate(s.getEstimatedDeliveryDate());
+        this.setIsScheduleNeeded(s.getIsScheduleNeeded());
+        this.setStatusId(s.getStatusId());
+        this.setActive(s.getActive());
     }
 
     public void when(InOutNoticeStateMergePatched e)

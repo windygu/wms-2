@@ -731,8 +731,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         //}
 
         @Override
-        public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId) {
-            purchaseShipmentAction(PurchaseShipmentAction.RECEIVE, version, commandId, requesterId);
+        public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId, ShipmentCommands.ConfirmAllItemsReceived c) {
+            purchaseShipmentAction(PurchaseShipmentAction.RECEIVE, version, commandId, requesterId, null);
             //            boolean isStatusOk = false;
             //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.PURCH_SHIP_SHIPPED.toLowerCase())) {
             //                isStatusOk = true;
@@ -746,8 +746,8 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
 
         @Override
-        public void confirmAllItemsIssued(Long version, String commandId, String requesterId) {
-            salesShipmentAction(SalesShipmentAction.SHIP, version, commandId, requesterId);
+        public void confirmAllItemsIssued(Long version, String commandId, String requesterId, ShipmentCommands.ConfirmAllItemsIssued c) {
+            salesShipmentAction(SalesShipmentAction.SHIP, version, commandId, requesterId, null);
             //            boolean isStatusOk = false;
             //            if (Objects.equals(getState().getStatusId().toLowerCase(), StatusItemIds.SHIPMENT_INPUT.toLowerCase())) {
             //                isStatusOk = true;

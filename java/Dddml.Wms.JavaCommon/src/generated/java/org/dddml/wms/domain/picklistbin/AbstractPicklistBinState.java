@@ -212,6 +212,16 @@ public abstract class AbstractPicklistBinState implements PicklistBinState.SqlPi
         picklistItems = new SimplePicklistItemStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getPicklistBinId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getPicklistBinId(), ((PicklistBinState)obj).getPicklistBinId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -244,6 +254,26 @@ public abstract class AbstractPicklistBinState implements PicklistBinState.SqlPi
         for (PicklistItemEvent.PicklistItemStateCreated innerEvent : e.getPicklistItemEvents()) {
             PicklistItemState innerState = this.getPicklistItems().get(((PicklistItemEvent.SqlPicklistItemEvent)innerEvent).getPicklistItemEventId().getPicklistItemOrderShipGrpInvId());
             ((PicklistItemState.SqlPicklistItemState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(PicklistBinState s) {
+        if (s == this) {
+            return;
+        }
+        this.setPicklistId(s.getPicklistId());
+        this.setBinLocationNumber(s.getBinLocationNumber());
+        this.setPrimaryOrderId(s.getPrimaryOrderId());
+        this.setPrimaryShipGroupSeqId(s.getPrimaryShipGroupSeqId());
+        this.setActive(s.getActive());
+
+        for (PicklistItemState ss : s.getPicklistItems().getLoadedStates()) {
+            PicklistItemState thisInnerState = this.getPicklistItems().get(ss.getPicklistItemOrderShipGrpInvId());
+            ((AbstractPicklistItemState) thisInnerState).merge(ss);
+        }
+        for (PicklistItemState ss : s.getPicklistItems().getRemovedStates()) {
+            PicklistItemState thisInnerState = this.getPicklistItems().get(ss.getPicklistItemOrderShipGrpInvId());
+            this.getPicklistItems().remove(thisInnerState);
         }
     }
 

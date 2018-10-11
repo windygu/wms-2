@@ -190,7 +190,6 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ShipmentItemStateCreated) {
@@ -215,6 +214,17 @@ public abstract class AbstractShipmentItemState implements ShipmentItemState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ShipmentItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setProductId(s.getProductId());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setQuantity(s.getQuantity());
+        this.setShipmentContentDescription(s.getShipmentContentDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(ShipmentItemStateMergePatched e)

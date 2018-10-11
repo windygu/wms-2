@@ -378,7 +378,7 @@ public abstract class AbstractMovementConfirmationAggregate extends AbstractAggr
         }
 
         @Override
-        public void documentAction(String value, Long version, String commandId, String requesterId) {
+        public void documentAction(String value, Long version, String commandId, String requesterId, MovementConfirmationCommands.DocumentAction c) {
             MovementConfirmationEvent.MovementConfirmationStateMergePatched e = newMovementConfirmationStateMergePatched(version, commandId, requesterId);
             documentAction(e, value);
             apply(e);

@@ -467,6 +467,16 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         orderShipGroups = new SimpleOrderShipGroupStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getOrderId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getOrderId(), ((OrderState)obj).getOrderId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -523,6 +533,64 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         for (OrderShipGroupEvent.OrderShipGroupStateCreated innerEvent : e.getOrderShipGroupEvents()) {
             OrderShipGroupState innerState = this.getOrderShipGroups().get(((OrderShipGroupEvent.SqlOrderShipGroupEvent)innerEvent).getOrderShipGroupEventId().getShipGroupSeqId());
             ((OrderShipGroupState.SqlOrderShipGroupState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(OrderState s) {
+        if (s == this) {
+            return;
+        }
+        this.setOrderTypeId(s.getOrderTypeId());
+        this.setOrderName(s.getOrderName());
+        this.setExternalId(s.getExternalId());
+        this.setSalesChannelEnumId(s.getSalesChannelEnumId());
+        this.setOrderDate(s.getOrderDate());
+        this.setPriority(s.getPriority());
+        this.setEntryDate(s.getEntryDate());
+        this.setPickSheetPrintedDate(s.getPickSheetPrintedDate());
+        this.setStatusId(s.getStatusId());
+        this.setCurrencyUomId(s.getCurrencyUomId());
+        this.setSyncStatusId(s.getSyncStatusId());
+        this.setBillingAccountId(s.getBillingAccountId());
+        this.setOriginFacilityId(s.getOriginFacilityId());
+        this.setWebSiteId(s.getWebSiteId());
+        this.setProductStoreId(s.getProductStoreId());
+        this.setTerminalId(s.getTerminalId());
+        this.setTransactionId(s.getTransactionId());
+        this.setAutoOrderShoppingListId(s.getAutoOrderShoppingListId());
+        this.setNeedsInventoryIssuance(s.getNeedsInventoryIssuance());
+        this.setIsRushOrder(s.getIsRushOrder());
+        this.setInternalCode(s.getInternalCode());
+        this.setRemainingSubTotal(s.getRemainingSubTotal());
+        this.setGrandTotal(s.getGrandTotal());
+        this.setInvoicePerShipment(s.getInvoicePerShipment());
+        this.setActive(s.getActive());
+
+        for (OrderRoleState ss : s.getOrderRoles().getLoadedStates()) {
+            OrderRoleState thisInnerState = this.getOrderRoles().get(ss.getPartyRoleId());
+            ((AbstractOrderRoleState) thisInnerState).merge(ss);
+        }
+        for (OrderRoleState ss : s.getOrderRoles().getRemovedStates()) {
+            OrderRoleState thisInnerState = this.getOrderRoles().get(ss.getPartyRoleId());
+            this.getOrderRoles().remove(thisInnerState);
+        }
+
+        for (OrderItemState ss : s.getOrderItems().getLoadedStates()) {
+            OrderItemState thisInnerState = this.getOrderItems().get(ss.getOrderItemSeqId());
+            ((AbstractOrderItemState) thisInnerState).merge(ss);
+        }
+        for (OrderItemState ss : s.getOrderItems().getRemovedStates()) {
+            OrderItemState thisInnerState = this.getOrderItems().get(ss.getOrderItemSeqId());
+            this.getOrderItems().remove(thisInnerState);
+        }
+
+        for (OrderShipGroupState ss : s.getOrderShipGroups().getLoadedStates()) {
+            OrderShipGroupState thisInnerState = this.getOrderShipGroups().get(ss.getShipGroupSeqId());
+            ((AbstractOrderShipGroupState) thisInnerState).merge(ss);
+        }
+        for (OrderShipGroupState ss : s.getOrderShipGroups().getRemovedStates()) {
+            OrderShipGroupState thisInnerState = this.getOrderShipGroups().get(ss.getShipGroupSeqId());
+            this.getOrderShipGroups().remove(thisInnerState);
         }
     }
 

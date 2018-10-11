@@ -134,6 +134,14 @@ public abstract class AbstractInventoryItemRequirementEntryStateCollection imple
         this.loadedInventoryItemRequirementEntryStates.put(((InventoryItemRequirementEntryState.SqlInventoryItemRequirementEntryState)state).getInventoryItemRequirementEntryId(), state);
     }
 
+    public Collection<InventoryItemRequirementEntryState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedInventoryItemRequirementEntryStates.values());
+    }
+
+    public Collection<InventoryItemRequirementEntryState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedInventoryItemRequirementEntryStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

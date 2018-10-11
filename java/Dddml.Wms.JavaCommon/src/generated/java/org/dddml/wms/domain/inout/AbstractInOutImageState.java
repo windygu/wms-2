@@ -166,7 +166,6 @@ public abstract class AbstractInOutImageState implements InOutImageState.SqlInOu
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof InOutImageStateCreated) {
@@ -192,6 +191,14 @@ public abstract class AbstractInOutImageState implements InOutImageState.SqlInOu
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InOutImageState s) {
+        if (s == this) {
+            return;
+        }
+        this.setUrl(s.getUrl());
+        this.setActive(s.getActive());
     }
 
     public void when(InOutImageStateMergePatched e)

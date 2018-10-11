@@ -149,6 +149,16 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getInventoryPRTriggeredId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getInventoryPRTriggeredId(), ((InventoryPRTriggeredState)obj).getInventoryPRTriggeredId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -170,6 +180,13 @@ public abstract class AbstractInventoryPRTriggeredState implements InventoryPRTr
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InventoryPRTriggeredState s) {
+        if (s == this) {
+            return;
+        }
+        this.setIsProcessed(s.getIsProcessed());
     }
 
     public void when(InventoryPRTriggeredStateMergePatched e)

@@ -271,6 +271,16 @@ public abstract class AbstractOrderItemShipGrpInvReservationState implements Ord
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getOrderItemShipGrpInvResId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getOrderItemShipGrpInvResId(), ((OrderItemShipGrpInvReservationState)obj).getOrderItemShipGrpInvResId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -306,6 +316,23 @@ public abstract class AbstractOrderItemShipGrpInvReservationState implements Ord
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrderItemShipGrpInvReservationState s) {
+        if (s == this) {
+            return;
+        }
+        this.setReserveOrderEnumId(s.getReserveOrderEnumId());
+        this.setQuantity(s.getQuantity());
+        this.setQuantityNotAvailable(s.getQuantityNotAvailable());
+        this.setReservedDatetime(s.getReservedDatetime());
+        this.setCreatedDatetime(s.getCreatedDatetime());
+        this.setPromisedDatetime(s.getPromisedDatetime());
+        this.setCurrentPromisedDate(s.getCurrentPromisedDate());
+        this.setPriority(s.getPriority());
+        this.setSequenceId(s.getSequenceId());
+        this.setOldPickStartDate(s.getOldPickStartDate());
+        this.setActive(s.getActive());
     }
 
     public void when(OrderItemShipGrpInvReservationStateMergePatched e)

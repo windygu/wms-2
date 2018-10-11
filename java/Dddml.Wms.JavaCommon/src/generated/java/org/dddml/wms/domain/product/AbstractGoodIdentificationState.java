@@ -166,7 +166,6 @@ public abstract class AbstractGoodIdentificationState implements GoodIdentificat
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof GoodIdentificationStateCreated) {
@@ -192,6 +191,14 @@ public abstract class AbstractGoodIdentificationState implements GoodIdentificat
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(GoodIdentificationState s) {
+        if (s == this) {
+            return;
+        }
+        this.setIdValue(s.getIdValue());
+        this.setActive(s.getActive());
     }
 
     public void when(GoodIdentificationStateMergePatched e)

@@ -135,6 +135,14 @@ public abstract class AbstractPhysicalInventoryLineStateCollection implements En
         this.loadedPhysicalInventoryLineStates.put(((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)state).getPhysicalInventoryLineId(), state);
     }
 
+    public Collection<PhysicalInventoryLineState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedPhysicalInventoryLineStates.values());
+    }
+
+    public Collection<PhysicalInventoryLineState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedPhysicalInventoryLineStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

@@ -197,6 +197,16 @@ public abstract class AbstractStatusItemState implements StatusItemState.SqlStat
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getStatusId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getStatusId(), ((StatusItemState)obj).getStatusId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -222,6 +232,17 @@ public abstract class AbstractStatusItemState implements StatusItemState.SqlStat
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(StatusItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setStatusTypeId(s.getStatusTypeId());
+        this.setStatusCode(s.getStatusCode());
+        this.setSequenceId(s.getSequenceId());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(StatusItemStateMergePatched e)

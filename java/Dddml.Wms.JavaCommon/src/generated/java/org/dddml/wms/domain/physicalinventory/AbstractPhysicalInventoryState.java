@@ -322,6 +322,16 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         physicalInventoryLines = new SimplePhysicalInventoryLineStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getDocumentNumber().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDocumentNumber(), ((PhysicalInventoryState)obj).getDocumentNumber());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -360,6 +370,36 @@ public abstract class AbstractPhysicalInventoryState implements PhysicalInventor
         for (PhysicalInventoryLineEvent.PhysicalInventoryLineStateCreated innerEvent : e.getPhysicalInventoryLineEvents()) {
             PhysicalInventoryLineState innerState = this.getPhysicalInventoryLines().get(((PhysicalInventoryLineEvent.SqlPhysicalInventoryLineEvent)innerEvent).getPhysicalInventoryLineEventId().getInventoryItemId());
             ((PhysicalInventoryLineState.SqlPhysicalInventoryLineState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(PhysicalInventoryState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDocumentStatusId(s.getDocumentStatusId());
+        this.setWarehouseId(s.getWarehouseId());
+        this.setLocatorIdPattern(s.getLocatorIdPattern());
+        this.setProductIdPattern(s.getProductIdPattern());
+        this.setPosted(s.getPosted());
+        this.setProcessed(s.getProcessed());
+        this.setProcessing(s.getProcessing());
+        this.setDocumentTypeId(s.getDocumentTypeId());
+        this.setMovementDate(s.getMovementDate());
+        this.setDescription(s.getDescription());
+        this.setIsApproved(s.getIsApproved());
+        this.setApprovalAmount(s.getApprovalAmount());
+        this.setIsQuantityUpdated(s.getIsQuantityUpdated());
+        this.setReversalDocumentNumber(s.getReversalDocumentNumber());
+        this.setActive(s.getActive());
+
+        for (PhysicalInventoryLineState ss : s.getPhysicalInventoryLines().getLoadedStates()) {
+            PhysicalInventoryLineState thisInnerState = this.getPhysicalInventoryLines().get(ss.getInventoryItemId());
+            ((AbstractPhysicalInventoryLineState) thisInnerState).merge(ss);
+        }
+        for (PhysicalInventoryLineState ss : s.getPhysicalInventoryLines().getRemovedStates()) {
+            PhysicalInventoryLineState thisInnerState = this.getPhysicalInventoryLines().get(ss.getInventoryItemId());
+            this.getPhysicalInventoryLines().remove(thisInnerState);
         }
     }
 

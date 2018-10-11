@@ -133,6 +133,14 @@ public abstract class AbstractOrderItemStateCollection implements EntityStateCol
         this.loadedOrderItemStates.put(((OrderItemState.SqlOrderItemState)state).getOrderItemId(), state);
     }
 
+    public Collection<OrderItemState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedOrderItemStates.values());
+    }
+
+    public Collection<OrderItemState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedOrderItemStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

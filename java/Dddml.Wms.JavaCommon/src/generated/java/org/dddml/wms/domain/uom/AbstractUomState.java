@@ -187,6 +187,16 @@ public abstract class AbstractUomState implements UomState.SqlUomState
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getUomId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getUomId(), ((UomState)obj).getUomId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -215,6 +225,16 @@ public abstract class AbstractUomState implements UomState.SqlUomState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(UomState s) {
+        if (s == this) {
+            return;
+        }
+        this.setUomTypeId(s.getUomTypeId());
+        this.setAbbreviation(s.getAbbreviation());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(UomStateMergePatched e)

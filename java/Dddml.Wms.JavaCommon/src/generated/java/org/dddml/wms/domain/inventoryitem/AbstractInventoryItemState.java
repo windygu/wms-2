@@ -201,6 +201,16 @@ public abstract class AbstractInventoryItemState implements InventoryItemState.S
         entries = new SimpleInventoryItemEntryStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getInventoryItemId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getInventoryItemId(), ((InventoryItemState)obj).getInventoryItemId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -229,6 +239,26 @@ public abstract class AbstractInventoryItemState implements InventoryItemState.S
         for (InventoryItemEntryEvent.InventoryItemEntryStateCreated innerEvent : e.getInventoryItemEntryEvents()) {
             InventoryItemEntryState innerState = this.getEntries().get(((InventoryItemEntryEvent.SqlInventoryItemEntryEvent)innerEvent).getInventoryItemEntryEventId().getEntrySeqId());
             ((InventoryItemEntryState.SqlInventoryItemEntryState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(InventoryItemState s) {
+        if (s == this) {
+            return;
+        }
+        this.setOnHandQuantity(s.getOnHandQuantity());
+        this.setInTransitQuantity(s.getInTransitQuantity());
+        this.setReservedQuantity(s.getReservedQuantity());
+        this.setOccupiedQuantity(s.getOccupiedQuantity());
+        this.setVirtualQuantity(s.getVirtualQuantity());
+
+        for (InventoryItemEntryState ss : s.getEntries().getLoadedStates()) {
+            InventoryItemEntryState thisInnerState = this.getEntries().get(ss.getEntrySeqId());
+            ((AbstractInventoryItemEntryState) thisInnerState).merge(ss);
+        }
+        for (InventoryItemEntryState ss : s.getEntries().getRemovedStates()) {
+            InventoryItemEntryState thisInnerState = this.getEntries().get(ss.getEntrySeqId());
+            this.getEntries().remove(thisInnerState);
         }
     }
 

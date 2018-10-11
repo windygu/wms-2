@@ -225,7 +225,6 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof InventoryItemEntryStateCreated) {
@@ -250,6 +249,19 @@ public abstract class AbstractInventoryItemEntryState implements InventoryItemEn
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InventoryItemEntryState s) {
+        if (s == this) {
+            return;
+        }
+        this.setOnHandQuantity(s.getOnHandQuantity());
+        this.setInTransitQuantity(s.getInTransitQuantity());
+        this.setReservedQuantity(s.getReservedQuantity());
+        this.setOccupiedQuantity(s.getOccupiedQuantity());
+        this.setVirtualQuantity(s.getVirtualQuantity());
+        this.setSource(s.getSource());
+        this.setOccurredAt(s.getOccurredAt());
     }
 
     public void save()

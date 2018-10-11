@@ -175,6 +175,16 @@ public abstract class AbstractDamageReasonState implements DamageReasonState.Sql
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getDamageReasonId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDamageReasonId(), ((DamageReasonState)obj).getDamageReasonId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -202,6 +212,15 @@ public abstract class AbstractDamageReasonState implements DamageReasonState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(DamageReasonState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setSequenceId(s.getSequenceId());
+        this.setActive(s.getActive());
     }
 
     public void when(DamageReasonStateMergePatched e)

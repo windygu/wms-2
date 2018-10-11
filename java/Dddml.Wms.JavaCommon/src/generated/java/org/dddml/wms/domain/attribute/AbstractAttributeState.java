@@ -285,6 +285,16 @@ public abstract class AbstractAttributeState implements AttributeState.SqlAttrib
         aliases = new SimpleAttributeAliasStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getAttributeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getAttributeId(), ((AttributeState)obj).getAttributeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -326,6 +336,40 @@ public abstract class AbstractAttributeState implements AttributeState.SqlAttrib
         for (AttributeAliasEvent.AttributeAliasStateCreated innerEvent : e.getAttributeAliasEvents()) {
             AttributeAliasState innerState = this.getAliases().get(((AttributeAliasEvent.SqlAttributeAliasEvent)innerEvent).getAttributeAliasEventId().getCode());
             ((AttributeAliasState.SqlAttributeAliasState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(AttributeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setAttributeName(s.getAttributeName());
+        this.setOrganizationId(s.getOrganizationId());
+        this.setDescription(s.getDescription());
+        this.setIsMandatory(s.getIsMandatory());
+        this.setAttributeValueType(s.getAttributeValueType());
+        this.setAttributeValueLength(s.getAttributeValueLength());
+        this.setIsList(s.getIsList());
+        this.setFieldName(s.getFieldName());
+        this.setReferenceId(s.getReferenceId());
+        this.setActive(s.getActive());
+
+        for (AttributeValueState ss : s.getAttributeValues().getLoadedStates()) {
+            AttributeValueState thisInnerState = this.getAttributeValues().get(ss.getValue());
+            ((AbstractAttributeValueState) thisInnerState).merge(ss);
+        }
+        for (AttributeValueState ss : s.getAttributeValues().getRemovedStates()) {
+            AttributeValueState thisInnerState = this.getAttributeValues().get(ss.getValue());
+            this.getAttributeValues().remove(thisInnerState);
+        }
+
+        for (AttributeAliasState ss : s.getAliases().getLoadedStates()) {
+            AttributeAliasState thisInnerState = this.getAliases().get(ss.getCode());
+            ((AbstractAttributeAliasState) thisInnerState).merge(ss);
+        }
+        for (AttributeAliasState ss : s.getAliases().getRemovedStates()) {
+            AttributeAliasState thisInnerState = this.getAliases().get(ss.getCode());
+            this.getAliases().remove(thisInnerState);
         }
     }
 

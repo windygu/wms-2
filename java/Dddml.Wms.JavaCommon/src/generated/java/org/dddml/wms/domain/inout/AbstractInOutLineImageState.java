@@ -174,7 +174,6 @@ public abstract class AbstractInOutLineImageState implements InOutLineImageState
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof InOutLineImageStateCreated) {
@@ -200,6 +199,14 @@ public abstract class AbstractInOutLineImageState implements InOutLineImageState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InOutLineImageState s) {
+        if (s == this) {
+            return;
+        }
+        this.setUrl(s.getUrl());
+        this.setActive(s.getActive());
     }
 
     public void when(InOutLineImageStateMergePatched e)

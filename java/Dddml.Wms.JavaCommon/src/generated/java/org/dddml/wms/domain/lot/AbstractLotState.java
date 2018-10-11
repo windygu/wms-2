@@ -175,6 +175,16 @@ public abstract class AbstractLotState implements LotState.SqlLotState
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getLotId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getLotId(), ((LotState)obj).getLotId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -202,6 +212,15 @@ public abstract class AbstractLotState implements LotState.SqlLotState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(LotState s) {
+        if (s == this) {
+            return;
+        }
+        this.setQuantity(s.getQuantity());
+        this.setExpirationDate(s.getExpirationDate());
+        this.setActive(s.getActive());
     }
 
     public void when(LotStateMergePatched e)

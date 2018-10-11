@@ -133,6 +133,14 @@ public abstract class AbstractShipmentImageStateCollection implements EntityStat
         this.loadedShipmentImageStates.put(((ShipmentImageState.SqlShipmentImageState)state).getShipmentImageId(), state);
     }
 
+    public Collection<ShipmentImageState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedShipmentImageStates.values());
+    }
+
+    public Collection<ShipmentImageState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedShipmentImageStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

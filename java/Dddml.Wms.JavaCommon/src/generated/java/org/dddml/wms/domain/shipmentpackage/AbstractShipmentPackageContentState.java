@@ -190,7 +190,6 @@ public abstract class AbstractShipmentPackageContentState implements ShipmentPac
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ShipmentPackageContentStateCreated) {
@@ -218,6 +217,16 @@ public abstract class AbstractShipmentPackageContentState implements ShipmentPac
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ShipmentPackageContentState s) {
+        if (s == this) {
+            return;
+        }
+        this.setQuantity(s.getQuantity());
+        this.setSubProductId(s.getSubProductId());
+        this.setSubProductQuantity(s.getSubProductQuantity());
+        this.setActive(s.getActive());
     }
 
     public void when(ShipmentPackageContentStateMergePatched e)

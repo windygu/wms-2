@@ -18,7 +18,7 @@ public interface InOutNoticeAggregate
 
     void delete(InOutNoticeCommand.DeleteInOutNotice c);
 
-    void inOutNoticeAction(String value, Long version, String commandId, String requesterId);
+    void inOutNoticeAction(String value, Long version, String commandId, String requesterId, InOutNoticeCommands.InOutNoticeAction c);
 
     void throwOnInvalidStateTransition(Command c);
 }

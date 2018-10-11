@@ -134,6 +134,14 @@ public abstract class AbstractMovementConfirmationLineStateCollection implements
         this.loadedMovementConfirmationLineStates.put(((MovementConfirmationLineState.SqlMovementConfirmationLineState)state).getMovementConfirmationLineId(), state);
     }
 
+    public Collection<MovementConfirmationLineState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedMovementConfirmationLineStates.values());
+    }
+
+    public Collection<MovementConfirmationLineState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedMovementConfirmationLineStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

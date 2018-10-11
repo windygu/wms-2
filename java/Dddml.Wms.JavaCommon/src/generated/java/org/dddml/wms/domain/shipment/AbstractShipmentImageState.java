@@ -166,7 +166,6 @@ public abstract class AbstractShipmentImageState implements ShipmentImageState.S
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof ShipmentImageStateCreated) {
@@ -192,6 +191,14 @@ public abstract class AbstractShipmentImageState implements ShipmentImageState.S
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ShipmentImageState s) {
+        if (s == this) {
+            return;
+        }
+        this.setUrl(s.getUrl());
+        this.setActive(s.getActive());
     }
 
     public void when(ShipmentImageStateMergePatched e)

@@ -134,6 +134,14 @@ public abstract class AbstractPicklistRoleStateCollection implements EntityState
         this.loadedPicklistRoleStates.put(((PicklistRoleState.SqlPicklistRoleState)state).getPicklistRoleId(), state);
     }
 
+    public Collection<PicklistRoleState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedPicklistRoleStates.values());
+    }
+
+    public Collection<PicklistRoleState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedPicklistRoleStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

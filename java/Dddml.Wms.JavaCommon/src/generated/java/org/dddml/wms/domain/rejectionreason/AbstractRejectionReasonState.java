@@ -163,6 +163,16 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getRejectionReasonId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getRejectionReasonId(), ((RejectionReasonState)obj).getRejectionReasonId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -189,6 +199,14 @@ public abstract class AbstractRejectionReasonState implements RejectionReasonSta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(RejectionReasonState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(RejectionReasonStateMergePatched e)

@@ -167,7 +167,6 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof InventoryItemRequirementEntryStateCreated) {
@@ -187,6 +186,14 @@ public abstract class AbstractInventoryItemRequirementEntryState implements Inve
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(InventoryItemRequirementEntryState s) {
+        if (s == this) {
+            return;
+        }
+        this.setQuantity(s.getQuantity());
+        this.setSourceEventId(s.getSourceEventId());
     }
 
     public void save()

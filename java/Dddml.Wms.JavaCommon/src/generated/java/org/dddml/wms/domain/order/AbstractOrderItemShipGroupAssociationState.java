@@ -234,7 +234,6 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof OrderItemShipGroupAssociationStateCreated) {
@@ -265,6 +264,19 @@ public abstract class AbstractOrderItemShipGroupAssociationState implements Orde
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrderItemShipGroupAssociationState s) {
+        if (s == this) {
+            return;
+        }
+        this.setQuantity(s.getQuantity());
+        this.setCancelQuantity(s.getCancelQuantity());
+        this.setNumberOfPackages(s.getNumberOfPackages());
+        this.setNumberOfContainers(s.getNumberOfContainers());
+        this.setNumberOfPakagesPerContainer(s.getNumberOfPakagesPerContainer());
+        this.setOrderItemShipGroupAssociationKey(s.getOrderItemShipGroupAssociationKey());
+        this.setActive(s.getActive());
     }
 
     public void when(OrderItemShipGroupAssociationStateMergePatched e)

@@ -161,6 +161,16 @@ public abstract class AbstractMovementTypeState implements MovementTypeState.Sql
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getMovementTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getMovementTypeId(), ((MovementTypeState)obj).getMovementTypeId());
+    }
+
     public void save()
     {
     }

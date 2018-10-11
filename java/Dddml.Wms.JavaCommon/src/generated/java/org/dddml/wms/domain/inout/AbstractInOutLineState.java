@@ -312,7 +312,6 @@ public abstract class AbstractInOutLineState implements InOutLineState.SqlInOutL
         inOutLineImages = new SimpleInOutLineImageStateCollection(this);
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof InOutLineStateCreated) {
@@ -352,6 +351,34 @@ public abstract class AbstractInOutLineState implements InOutLineState.SqlInOutL
         for (InOutLineImageEvent.InOutLineImageStateCreated innerEvent : e.getInOutLineImageEvents()) {
             InOutLineImageState innerState = this.getInOutLineImages().get(((InOutLineImageEvent.SqlInOutLineImageEvent)innerEvent).getInOutLineImageEventId().getSequenceId());
             ((InOutLineImageState.SqlInOutLineImageState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(InOutLineState s) {
+        if (s == this) {
+            return;
+        }
+        this.setLocatorId(s.getLocatorId());
+        this.setProductId(s.getProductId());
+        this.setAttributeSetInstanceId(s.getAttributeSetInstanceId());
+        this.setDamageStatusIds(s.getDamageStatusIds());
+        this.setDescription(s.getDescription());
+        this.setQuantityUomId(s.getQuantityUomId());
+        this.setMovementQuantity(s.getMovementQuantity());
+        this.setPickedQuantity(s.getPickedQuantity());
+        this.setIsInvoiced(s.getIsInvoiced());
+        this.setProcessed(s.getProcessed());
+        this.setRmaLineNumber(s.getRmaLineNumber());
+        this.setReversalLineNumber(s.getReversalLineNumber());
+        this.setActive(s.getActive());
+
+        for (InOutLineImageState ss : s.getInOutLineImages().getLoadedStates()) {
+            InOutLineImageState thisInnerState = this.getInOutLineImages().get(ss.getSequenceId());
+            ((AbstractInOutLineImageState) thisInnerState).merge(ss);
+        }
+        for (InOutLineImageState ss : s.getInOutLineImages().getRemovedStates()) {
+            InOutLineImageState thisInnerState = this.getInOutLineImages().get(ss.getSequenceId());
+            this.getInOutLineImages().remove(thisInnerState);
         }
     }
 

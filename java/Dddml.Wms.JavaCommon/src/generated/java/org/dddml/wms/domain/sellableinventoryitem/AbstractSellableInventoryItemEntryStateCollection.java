@@ -134,6 +134,14 @@ public abstract class AbstractSellableInventoryItemEntryStateCollection implemen
         this.loadedSellableInventoryItemEntryStates.put(((SellableInventoryItemEntryState.SqlSellableInventoryItemEntryState)state).getSellableInventoryItemEntryId(), state);
     }
 
+    public Collection<SellableInventoryItemEntryState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedSellableInventoryItemEntryStates.values());
+    }
+
+    public Collection<SellableInventoryItemEntryState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedSellableInventoryItemEntryStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

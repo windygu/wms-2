@@ -133,6 +133,14 @@ public abstract class AbstractInOutLineImageStateCollection implements EntitySta
         this.loadedInOutLineImageStates.put(((InOutLineImageState.SqlInOutLineImageState)state).getInOutLineImageId(), state);
     }
 
+    public Collection<InOutLineImageState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedInOutLineImageStates.values());
+    }
+
+    public Collection<InOutLineImageState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedInOutLineImageStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

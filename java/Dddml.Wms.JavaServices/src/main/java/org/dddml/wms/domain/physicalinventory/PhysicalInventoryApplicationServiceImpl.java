@@ -293,8 +293,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
         }
 
         @Override
-        public void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId) {
-            String attributeSetInstanceId = (String) attributeSetInstance.get(ATTRIBUTE_SET_INSTANCE_ID_KEY);
+        public void countItem(String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, BigDecimal countedQuantity, Long version, String commandId, String requesterId, PhysicalInventoryCommands.CountItem c) {            String attributeSetInstanceId = (String) attributeSetInstance.get(ATTRIBUTE_SET_INSTANCE_ID_KEY);
             if (attributeSetInstanceId == null || attributeSetInstanceId.trim().isEmpty()) {
                 throw new NullPointerException("The value of 'attributeSetInstanceId' is null.");
             }

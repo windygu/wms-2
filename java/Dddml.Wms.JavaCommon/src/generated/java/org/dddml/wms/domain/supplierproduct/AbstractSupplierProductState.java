@@ -295,6 +295,16 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getSupplierProductId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getSupplierProductId(), ((SupplierProductState)obj).getSupplierProductId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -329,6 +339,26 @@ public abstract class AbstractSupplierProductState implements SupplierProductSta
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(SupplierProductState s) {
+        if (s == this) {
+            return;
+        }
+        this.setAvailableThruDate(s.getAvailableThruDate());
+        this.setSupplierPrefOrderId(s.getSupplierPrefOrderId());
+        this.setSupplierRatingTypeId(s.getSupplierRatingTypeId());
+        this.setStandardLeadTimeDays(s.getStandardLeadTimeDays());
+        this.setManufacturingLeadTimeDays(s.getManufacturingLeadTimeDays());
+        this.setDeliveryLeadTimeDays(s.getDeliveryLeadTimeDays());
+        this.setQuantityUomId(s.getQuantityUomId());
+        this.setLastPrice(s.getLastPrice());
+        this.setShippingPrice(s.getShippingPrice());
+        this.setExternalProductName(s.getExternalProductName());
+        this.setExternalProductId(s.getExternalProductId());
+        this.setCanDropShip(s.getCanDropShip());
+        this.setComments(s.getComments());
+        this.setActive(s.getActive());
     }
 
     public void when(SupplierProductStateMergePatched e)

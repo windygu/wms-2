@@ -261,6 +261,16 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         movementConfirmationLines = new SimpleMovementConfirmationLineStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getDocumentNumber().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getDocumentNumber(), ((MovementConfirmationState)obj).getDocumentNumber());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -297,6 +307,30 @@ public abstract class AbstractMovementConfirmationState implements MovementConfi
         for (MovementConfirmationLineEvent.MovementConfirmationLineStateCreated innerEvent : e.getMovementConfirmationLineEvents()) {
             MovementConfirmationLineState innerState = this.getMovementConfirmationLines().get(((MovementConfirmationLineEvent.SqlMovementConfirmationLineEvent)innerEvent).getMovementConfirmationLineEventId().getLineNumber());
             ((MovementConfirmationLineState.SqlMovementConfirmationLineState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(MovementConfirmationState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDocumentStatusId(s.getDocumentStatusId());
+        this.setMovementDocumentNumber(s.getMovementDocumentNumber());
+        this.setIsApproved(s.getIsApproved());
+        this.setApprovalAmount(s.getApprovalAmount());
+        this.setProcessed(s.getProcessed());
+        this.setProcessing(s.getProcessing());
+        this.setDocumentTypeId(s.getDocumentTypeId());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
+
+        for (MovementConfirmationLineState ss : s.getMovementConfirmationLines().getLoadedStates()) {
+            MovementConfirmationLineState thisInnerState = this.getMovementConfirmationLines().get(ss.getLineNumber());
+            ((AbstractMovementConfirmationLineState) thisInnerState).merge(ss);
+        }
+        for (MovementConfirmationLineState ss : s.getMovementConfirmationLines().getRemovedStates()) {
+            MovementConfirmationLineState thisInnerState = this.getMovementConfirmationLines().get(ss.getLineNumber());
+            this.getMovementConfirmationLines().remove(thisInnerState);
         }
     }
 

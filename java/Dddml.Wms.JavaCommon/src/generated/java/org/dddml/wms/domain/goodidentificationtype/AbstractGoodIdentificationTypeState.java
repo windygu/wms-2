@@ -187,6 +187,16 @@ public abstract class AbstractGoodIdentificationTypeState implements GoodIdentif
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getGoodIdentificationTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getGoodIdentificationTypeId(), ((GoodIdentificationTypeState)obj).getGoodIdentificationTypeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -215,6 +225,16 @@ public abstract class AbstractGoodIdentificationTypeState implements GoodIdentif
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(GoodIdentificationTypeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setParentTypeId(s.getParentTypeId());
+        this.setHasTable(s.getHasTable());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(GoodIdentificationTypeStateMergePatched e)

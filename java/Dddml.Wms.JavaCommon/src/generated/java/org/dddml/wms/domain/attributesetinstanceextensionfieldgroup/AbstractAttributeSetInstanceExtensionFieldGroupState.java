@@ -211,6 +211,16 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getId(), ((AttributeSetInstanceExtensionFieldGroupState)obj).getId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -241,6 +251,18 @@ public abstract class AbstractAttributeSetInstanceExtensionFieldGroupState imple
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeSetInstanceExtensionFieldGroupState s) {
+        if (s == this) {
+            return;
+        }
+        this.setFieldType(s.getFieldType());
+        this.setFieldLength(s.getFieldLength());
+        this.setFieldCount(s.getFieldCount());
+        this.setNameFormat(s.getNameFormat());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(AttributeSetInstanceExtensionFieldGroupStateMergePatched e)

@@ -59,7 +59,6 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         super.initializeProperties();
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof OrganizationStateCreated) {
@@ -93,6 +92,25 @@ public abstract class AbstractOrganizationState extends AbstractPartyState imple
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    @Override
+    protected void merge(PartyState s) {
+        merge((OrganizationState)s);
+    }
+
+    protected void merge(OrganizationState s) {
+        if (s == this) {
+            return;
+        }
+        this.setPartyTypeId(s.getPartyTypeId());
+        this.setPrimaryRoleTypeId(s.getPrimaryRoleTypeId());
+        this.setExternalId(s.getExternalId());
+        this.setPreferredCurrencyUomId(s.getPreferredCurrencyUomId());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
+        this.setOrganizationName(s.getOrganizationName());
+        this.setIsSummary(s.getIsSummary());
     }
 
     public void when(OrganizationStateMergePatched e)

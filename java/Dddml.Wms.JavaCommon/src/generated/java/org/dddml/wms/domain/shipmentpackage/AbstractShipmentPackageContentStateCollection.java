@@ -133,6 +133,14 @@ public abstract class AbstractShipmentPackageContentStateCollection implements E
         this.loadedShipmentPackageContentStates.put(((ShipmentPackageContentState.SqlShipmentPackageContentState)state).getShipmentPackageContentId(), state);
     }
 
+    public Collection<ShipmentPackageContentState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedShipmentPackageContentStates.values());
+    }
+
+    public Collection<ShipmentPackageContentState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedShipmentPackageContentStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

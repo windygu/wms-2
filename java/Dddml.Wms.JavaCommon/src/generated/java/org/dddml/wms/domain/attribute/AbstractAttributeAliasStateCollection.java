@@ -133,6 +133,14 @@ public abstract class AbstractAttributeAliasStateCollection implements EntitySta
         this.loadedAttributeAliasStates.put(((AttributeAliasState.SqlAttributeAliasState)state).getAttributeAliasId(), state);
     }
 
+    public Collection<AttributeAliasState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedAttributeAliasStates.values());
+    }
+
+    public Collection<AttributeAliasState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedAttributeAliasStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

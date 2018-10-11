@@ -133,6 +133,14 @@ public abstract class AbstractOrderItemShipGroupAssociationStateCollection imple
         this.loadedOrderItemShipGroupAssociationStates.put(((OrderItemShipGroupAssociationState.SqlOrderItemShipGroupAssociationState)state).getOrderItemShipGroupAssociationId(), state);
     }
 
+    public Collection<OrderItemShipGroupAssociationState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedOrderItemShipGroupAssociationStates.values());
+    }
+
+    public Collection<OrderItemShipGroupAssociationState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedOrderItemShipGroupAssociationStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

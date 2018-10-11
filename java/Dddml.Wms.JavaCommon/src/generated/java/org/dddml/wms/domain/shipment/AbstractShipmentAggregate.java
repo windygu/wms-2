@@ -999,32 +999,32 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, Boolean onlyOneOrder, Boolean onlyOneOrderShipGroup, String bolNumber, String vehicleId, String sealNumber, String externalOrderNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId) {
+        public void _import(String shipmentTypeId, String primaryOrderId, String primaryReturnId, Boolean onlyOneOrder, Boolean onlyOneOrderShipGroup, String bolNumber, String vehicleId, String sealNumber, String externalOrderNumber, String carrier, java.sql.Timestamp dateShipped, java.sql.Timestamp estimatedReadyDate, java.sql.Timestamp estimatedShipDate, java.sql.Timestamp estimatedArrivalDate, java.sql.Timestamp latestCancelDate, java.math.BigDecimal estimatedShipCost, String currencyUomId, String handlingInstructions, String originFacilityId, String destinationFacilityId, String partyIdTo, String partyIdFrom, java.math.BigDecimal additionalShippingCharge, String addtlShippingChargeDesc, Iterable<ImportingShipmentItem> shipmentItems, Long version, String commandId, String requesterId, ShipmentCommands.Import c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void receiveItem(String receiptSeqId, String shipmentItemSeqId, String orderId, String orderItemSeqId, String locatorId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, Iterable<String> damageStatusIds, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void receiveItem(String receiptSeqId, String shipmentItemSeqId, String orderId, String orderItemSeqId, String locatorId, java.util.Map<String, Object> attributeSetInstance, String rejectionReasonId, Iterable<String> damageStatusIds, String damageReasonId, java.math.BigDecimal acceptedQuantity, java.math.BigDecimal rejectedQuantity, java.math.BigDecimal damagedQuantity, String itemDescription, Long version, String commandId, String requesterId, ShipmentCommands.ReceiveItem c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void issueItem(String itemIssuanceSeqId, String shipmentItemSeqId, String orderId, String orderItemSeqId, String shipGroupSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId) {
+        public void issueItem(String itemIssuanceSeqId, String shipmentItemSeqId, String orderId, String orderItemSeqId, String shipGroupSeqId, String productId, String locatorId, java.util.Map<String, Object> attributeSetInstance, java.math.BigDecimal quantity, java.math.BigDecimal cancelQuantity, String itemDescription, Long version, String commandId, String requesterId, ShipmentCommands.IssueItem c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId) {
+        public void confirmAllItemsReceived(String destinationLocatorId, Long version, String commandId, String requesterId, ShipmentCommands.ConfirmAllItemsReceived c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void confirmAllItemsIssued(Long version, String commandId, String requesterId) {
+        public void confirmAllItemsIssued(Long version, String commandId, String requesterId, ShipmentCommands.ConfirmAllItemsIssued c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void purchaseShipmentAction(String value, Long version, String commandId, String requesterId) {
+        public void purchaseShipmentAction(String value, Long version, String commandId, String requesterId, ShipmentCommands.PurchaseShipmentAction c) {
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
             purchaseShipmentAction(e, value);
             apply(e);
@@ -1049,7 +1049,7 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         }
 
         @Override
-        public void salesShipmentAction(String value, Long version, String commandId, String requesterId) {
+        public void salesShipmentAction(String value, Long version, String commandId, String requesterId, ShipmentCommands.SalesShipmentAction c) {
             ShipmentEvent.ShipmentStateMergePatched e = newShipmentStateMergePatched(version, commandId, requesterId);
             salesShipmentAction(e, value);
             apply(e);

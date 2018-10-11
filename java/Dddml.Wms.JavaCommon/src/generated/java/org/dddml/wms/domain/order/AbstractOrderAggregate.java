@@ -850,7 +850,7 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void orderShipGroupAction(String shipGroupSeqId, String value, Long version, String commandId, String requesterId) {
+        public void orderShipGroupAction(String shipGroupSeqId, String value, Long version, String commandId, String requesterId, OrderCommands.OrderShipGroupAction c) {
             OrderEvent.OrderStateMergePatched eventOfOrder = newOrderStateMergePatched(version, commandId, requesterId);
             OrderShipGroupEvent.OrderShipGroupStateMergePatched eventOfOrderShipGroup = newOrderShipGroupStateMergePatched(new OrderShipGroupEventId(this.getState().getOrderId(), shipGroupSeqId, version));
             eventOfOrder.addOrderShipGroupEvent(eventOfOrderShipGroup);

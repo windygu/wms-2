@@ -272,6 +272,16 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         shipmentPackageContents = new SimpleShipmentPackageContentStateCollection(this);
     }
 
+    @Override
+    public int hashCode() {
+        return getShipmentPackageId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getShipmentPackageId(), ((ShipmentPackageState)obj).getShipmentPackageId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -309,6 +319,31 @@ public abstract class AbstractShipmentPackageState implements ShipmentPackageSta
         for (ShipmentPackageContentEvent.ShipmentPackageContentStateCreated innerEvent : e.getShipmentPackageContentEvents()) {
             ShipmentPackageContentState innerState = this.getShipmentPackageContents().get(((ShipmentPackageContentEvent.SqlShipmentPackageContentEvent)innerEvent).getShipmentPackageContentEventId().getShipmentItemSeqId());
             ((ShipmentPackageContentState.SqlShipmentPackageContentState)innerState).mutate(innerEvent);
+        }
+    }
+
+    protected void merge(ShipmentPackageState s) {
+        if (s == this) {
+            return;
+        }
+        this.setShipmentBoxTypeId(s.getShipmentBoxTypeId());
+        this.setDateCreated(s.getDateCreated());
+        this.setBoxLength(s.getBoxLength());
+        this.setBoxHeight(s.getBoxHeight());
+        this.setBoxWidth(s.getBoxWidth());
+        this.setDimensionUomId(s.getDimensionUomId());
+        this.setWeight(s.getWeight());
+        this.setWeightUomId(s.getWeightUomId());
+        this.setInsuredValue(s.getInsuredValue());
+        this.setActive(s.getActive());
+
+        for (ShipmentPackageContentState ss : s.getShipmentPackageContents().getLoadedStates()) {
+            ShipmentPackageContentState thisInnerState = this.getShipmentPackageContents().get(ss.getShipmentItemSeqId());
+            ((AbstractShipmentPackageContentState) thisInnerState).merge(ss);
+        }
+        for (ShipmentPackageContentState ss : s.getShipmentPackageContents().getRemovedStates()) {
+            ShipmentPackageContentState thisInnerState = this.getShipmentPackageContents().get(ss.getShipmentItemSeqId());
+            this.getShipmentPackageContents().remove(thisInnerState);
         }
     }
 

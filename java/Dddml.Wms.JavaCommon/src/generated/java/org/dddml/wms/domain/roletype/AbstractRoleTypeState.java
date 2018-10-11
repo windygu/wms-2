@@ -187,6 +187,16 @@ public abstract class AbstractRoleTypeState implements RoleTypeState.SqlRoleType
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getRoleTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getRoleTypeId(), ((RoleTypeState)obj).getRoleTypeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -215,6 +225,16 @@ public abstract class AbstractRoleTypeState implements RoleTypeState.SqlRoleType
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(RoleTypeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setParentTypeId(s.getParentTypeId());
+        this.setHasTable(s.getHasTable());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(RoleTypeStateMergePatched e)

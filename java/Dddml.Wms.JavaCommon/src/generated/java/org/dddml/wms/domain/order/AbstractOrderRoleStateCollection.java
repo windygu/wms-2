@@ -134,6 +134,14 @@ public abstract class AbstractOrderRoleStateCollection implements EntityStateCol
         this.loadedOrderRoleStates.put(((OrderRoleState.SqlOrderRoleState)state).getOrderRoleId(), state);
     }
 
+    public Collection<OrderRoleState> getLoadedStates() {
+        return Collections.unmodifiableCollection(this.loadedOrderRoleStates.values());
+    }
+
+    public Collection<OrderRoleState> getRemovedStates() {
+        return Collections.unmodifiableCollection(this.removedOrderRoleStates.values());
+    }
+
     //region Saveable Implements
 
     public void save ()

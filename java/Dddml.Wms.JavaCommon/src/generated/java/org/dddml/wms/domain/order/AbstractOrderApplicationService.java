@@ -55,7 +55,7 @@ public abstract class AbstractOrderApplicationService implements OrderApplicatio
     }
 
     public void when(OrderCommands.OrderShipGroupAction c) {
-        update(c, ar -> ar.orderShipGroupAction(c.getOrderShipGroupId().getShipGroupSeqId(), c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId()));
+        update(c, ar -> ar.orderShipGroupAction(c.getOrderShipGroupId().getShipGroupSeqId(), c.getValue(), c.getVersion(), c.getCommandId(), c.getRequesterId(), c));
     }
 
     public OrderState get(String id) {

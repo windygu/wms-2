@@ -379,6 +379,16 @@ public abstract class AbstractContactMechState implements ContactMechState.SqlCo
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getContactMechId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getContactMechId(), ((ContactMechState)obj).getContactMechId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -423,6 +433,32 @@ public abstract class AbstractContactMechState implements ContactMechState.SqlCo
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(ContactMechState s) {
+        if (s == this) {
+            return;
+        }
+        this.setContactMechTypeId(s.getContactMechTypeId());
+        this.setInfoString(s.getInfoString());
+        this.setToName(s.getToName());
+        this.setAttnName(s.getAttnName());
+        this.setAddress1(s.getAddress1());
+        this.setAddress2(s.getAddress2());
+        this.setDirections(s.getDirections());
+        this.setCity(s.getCity());
+        this.setPostalCode(s.getPostalCode());
+        this.setPostalCodeExt(s.getPostalCodeExt());
+        this.setCountryGeoId(s.getCountryGeoId());
+        this.setStateProvinceGeoId(s.getStateProvinceGeoId());
+        this.setCountyGeoId(s.getCountyGeoId());
+        this.setPostalCodeGeoId(s.getPostalCodeGeoId());
+        this.setGeoPointId(s.getGeoPointId());
+        this.setCountryCode(s.getCountryCode());
+        this.setAreaCode(s.getAreaCode());
+        this.setContactNumber(s.getContactNumber());
+        this.setAskForName(s.getAskForName());
+        this.setActive(s.getActive());
     }
 
     public void when(ContactMechStateMergePatched e)

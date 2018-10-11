@@ -978,6 +978,16 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getAttributeSetInstanceId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getAttributeSetInstanceId(), ((AttributeSetInstanceState)obj).getAttributeSetInstanceId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -1066,6 +1076,82 @@ public abstract class AbstractAttributeSetInstanceState implements AttributeSetI
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeSetInstanceState s) {
+        if (s == this) {
+            return;
+        }
+        this.setAttributeSetId(s.getAttributeSetId());
+        this.setOrganizationId(s.getOrganizationId());
+        this.setReferenceId(s.getReferenceId());
+        this.setSerialNumber(s.getSerialNumber());
+        this.setLotId(s.getLotId());
+        this.setStatusIds(s.getStatusIds());
+        this.setImageUrl(s.getImageUrl());
+        this.setDescription(s.getDescription());
+        this.setHash(s.getHash());
+        this.setWidthInch(s.getWidthInch());
+        this.setDiameterInch(s.getDiameterInch());
+        this.setWeightLbs(s.getWeightLbs());
+        this.setWeightKg(s.getWeightKg());
+        this.setAirDryWeightLbs(s.getAirDryWeightLbs());
+        this.setAirDryWeightKg(s.getAirDryWeightKg());
+        this.setAirDryMetricTon(s.getAirDryMetricTon());
+        this.setRollCnt(s.getRollCnt());
+        this.setAirDryPct(s.getAirDryPct());
+        this.set_F_B_0_(s.get_F_B_0_());
+        this.set_F_I_0_(s.get_F_I_0_());
+        this.set_F_L_0_(s.get_F_L_0_());
+        this.set_F_DT_0_(s.get_F_DT_0_());
+        this.set_F_N_0_(s.get_F_N_0_());
+        this.set_F_C5_0_(s.get_F_C5_0_());
+        this.set_F_C10_0_(s.get_F_C10_0_());
+        this.set_F_C20_0_(s.get_F_C20_0_());
+        this.set_F_C50_0_(s.get_F_C50_0_());
+        this.set_F_C100_0_(s.get_F_C100_0_());
+        this.set_F_C200_0_(s.get_F_C200_0_());
+        this.set_F_C500_0_(s.get_F_C500_0_());
+        this.set_F_C1000_0_(s.get_F_C1000_0_());
+        this.set_F_B_1_(s.get_F_B_1_());
+        this.set_F_I_1_(s.get_F_I_1_());
+        this.set_F_L_1_(s.get_F_L_1_());
+        this.set_F_DT_1_(s.get_F_DT_1_());
+        this.set_F_N_1_(s.get_F_N_1_());
+        this.set_F_C5_1_(s.get_F_C5_1_());
+        this.set_F_C10_1_(s.get_F_C10_1_());
+        this.set_F_C20_1_(s.get_F_C20_1_());
+        this.set_F_C50_1_(s.get_F_C50_1_());
+        this.set_F_C100_1_(s.get_F_C100_1_());
+        this.set_F_C200_1_(s.get_F_C200_1_());
+        this.set_F_B_2_(s.get_F_B_2_());
+        this.set_F_I_2_(s.get_F_I_2_());
+        this.set_F_L_2_(s.get_F_L_2_());
+        this.set_F_DT_2_(s.get_F_DT_2_());
+        this.set_F_N_2_(s.get_F_N_2_());
+        this.set_F_C5_2_(s.get_F_C5_2_());
+        this.set_F_C10_2_(s.get_F_C10_2_());
+        this.set_F_C20_2_(s.get_F_C20_2_());
+        this.set_F_C50_2_(s.get_F_C50_2_());
+        this.set_F_B_3_(s.get_F_B_3_());
+        this.set_F_I_3_(s.get_F_I_3_());
+        this.set_F_L_3_(s.get_F_L_3_());
+        this.set_F_DT_3_(s.get_F_DT_3_());
+        this.set_F_N_3_(s.get_F_N_3_());
+        this.set_F_C5_3_(s.get_F_C5_3_());
+        this.set_F_C10_3_(s.get_F_C10_3_());
+        this.set_F_C20_3_(s.get_F_C20_3_());
+        this.set_F_C50_3_(s.get_F_C50_3_());
+        this.set_F_B_4_(s.get_F_B_4_());
+        this.set_F_I_4_(s.get_F_I_4_());
+        this.set_F_L_4_(s.get_F_L_4_());
+        this.set_F_DT_4_(s.get_F_DT_4_());
+        this.set_F_N_4_(s.get_F_N_4_());
+        this.set_F_C5_4_(s.get_F_C5_4_());
+        this.set_F_C10_4_(s.get_F_C10_4_());
+        this.set_F_C20_4_(s.get_F_C20_4_());
+        this.set_F_C50_4_(s.get_F_C50_4_());
+        this.setActive(s.getActive());
     }
 
     public void save()

@@ -151,6 +151,16 @@ public abstract class AbstractOrganizationStructureState implements Organization
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getId(), ((OrganizationStructureState)obj).getId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -176,6 +186,13 @@ public abstract class AbstractOrganizationStructureState implements Organization
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(OrganizationStructureState s) {
+        if (s == this) {
+            return;
+        }
+        this.setActive(s.getActive());
     }
 
     public void when(OrganizationStructureStateMergePatched e)

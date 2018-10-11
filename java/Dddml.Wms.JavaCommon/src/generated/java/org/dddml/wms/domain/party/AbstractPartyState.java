@@ -211,6 +211,16 @@ public abstract class AbstractPartyState implements PartyState.SqlPartyState
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getPartyId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getPartyId(), ((PartyState)obj).getPartyId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -241,6 +251,18 @@ public abstract class AbstractPartyState implements PartyState.SqlPartyState
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(PartyState s) {
+        if (s == this) {
+            return;
+        }
+        this.setPartyTypeId(s.getPartyTypeId());
+        this.setPrimaryRoleTypeId(s.getPrimaryRoleTypeId());
+        this.setExternalId(s.getExternalId());
+        this.setPreferredCurrencyUomId(s.getPreferredCurrencyUomId());
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(PartyStateMergePatched e)

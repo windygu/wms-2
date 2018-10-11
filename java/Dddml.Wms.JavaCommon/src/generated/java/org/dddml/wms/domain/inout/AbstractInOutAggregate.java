@@ -725,37 +725,37 @@ public abstract class AbstractInOutAggregate extends AbstractAggregate implement
         }
 
         @Override
-        public void complete(Long version, String commandId, String requesterId) {
+        public void complete(Long version, String commandId, String requesterId, InOutCommands.Complete c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void close(Long version, String commandId, String requesterId) {
+        public void close(Long version, String commandId, String requesterId, InOutCommands.Close c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void _void(Long version, String commandId, String requesterId) {
+        public void _void(Long version, String commandId, String requesterId, InOutCommands.Void c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void reverse(Long version, String commandId, String requesterId) {
+        public void reverse(Long version, String commandId, String requesterId, InOutCommands.Reverse c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, Iterable<String> damageStatusIds, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId) {
+        public void addLine(String lineNumber, String locatorId, String productId, java.util.Map<String, Object> attributeSetInstance, Iterable<String> damageStatusIds, String description, String quantityUomId, BigDecimal movementQuantity, Long version, String commandId, String requesterId, InOutCommands.AddLine c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void _import(String documentTypeId, String description, String orderId, Date dateOrdered, String movementTypeId, Date movementDate, String warehouseId, String POReference, String shipperId, Iterable<ImportingInOutLine> inOutLines, Long version, String commandId, String requesterId) {
+        public void _import(String documentTypeId, String description, String orderId, Date dateOrdered, String movementTypeId, Date movementDate, String warehouseId, String POReference, String shipperId, Iterable<ImportingInOutLine> inOutLines, Long version, String commandId, String requesterId, InOutCommands.Import c) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void documentAction(String value, Long version, String commandId, String requesterId) {
+        public void documentAction(String value, Long version, String commandId, String requesterId, InOutCommands.DocumentAction c) {
             InOutEvent.InOutStateMergePatched e = newInOutStateMergePatched(version, commandId, requesterId);
             documentAction(e, value);
             apply(e);

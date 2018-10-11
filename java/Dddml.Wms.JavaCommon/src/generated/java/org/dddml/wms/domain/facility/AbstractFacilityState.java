@@ -355,6 +355,16 @@ public abstract class AbstractFacilityState implements FacilityState.SqlFacility
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getFacilityId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getFacilityId(), ((FacilityState)obj).getFacilityId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -397,6 +407,30 @@ public abstract class AbstractFacilityState implements FacilityState.SqlFacility
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(FacilityState s) {
+        if (s == this) {
+            return;
+        }
+        this.setFacilityTypeId(s.getFacilityTypeId());
+        this.setParentFacilityId(s.getParentFacilityId());
+        this.setOwnerPartyId(s.getOwnerPartyId());
+        this.setDefaultInventoryItemTypeId(s.getDefaultInventoryItemTypeId());
+        this.setFacilityName(s.getFacilityName());
+        this.setPrimaryFacilityGroupId(s.getPrimaryFacilityGroupId());
+        this.setOldSquareFootage(s.getOldSquareFootage());
+        this.setFacilitySize(s.getFacilitySize());
+        this.setFacilitySizeUomId(s.getFacilitySizeUomId());
+        this.setProductStoreId(s.getProductStoreId());
+        this.setDefaultDaysToShip(s.getDefaultDaysToShip());
+        this.setOpenedDate(s.getOpenedDate());
+        this.setClosedDate(s.getClosedDate());
+        this.setDescription(s.getDescription());
+        this.setDefaultDimensionUomId(s.getDefaultDimensionUomId());
+        this.setDefaultWeightUomId(s.getDefaultWeightUomId());
+        this.setGeoPointId(s.getGeoPointId());
+        this.setActive(s.getActive());
     }
 
     public void when(FacilityStateMergePatched e)

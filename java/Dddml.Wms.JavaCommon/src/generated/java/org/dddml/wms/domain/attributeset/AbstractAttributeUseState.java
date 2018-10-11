@@ -166,7 +166,6 @@ public abstract class AbstractAttributeUseState implements AttributeUseState.Sql
     protected void initializeProperties() {
     }
 
-
     public void mutate(Event e) {
         setStateReadOnly(false);
         if (e instanceof AttributeUseStateCreated) {
@@ -192,6 +191,14 @@ public abstract class AbstractAttributeUseState implements AttributeUseState.Sql
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(AttributeUseState s) {
+        if (s == this) {
+            return;
+        }
+        this.setSequenceNumber(s.getSequenceNumber());
+        this.setActive(s.getActive());
     }
 
     public void when(AttributeUseStateMergePatched e)

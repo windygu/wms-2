@@ -163,6 +163,16 @@ public abstract class AbstractLocatorTypeState implements LocatorTypeState.SqlLo
     protected void initializeProperties() {
     }
 
+    @Override
+    public int hashCode() {
+        return getLocatorTypeId().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return Objects.equals(this.getLocatorTypeId(), ((LocatorTypeState)obj).getLocatorTypeId());
+    }
+
 
     public void mutate(Event e) {
         setStateReadOnly(false);
@@ -189,6 +199,14 @@ public abstract class AbstractLocatorTypeState implements LocatorTypeState.SqlLo
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
 
+    }
+
+    protected void merge(LocatorTypeState s) {
+        if (s == this) {
+            return;
+        }
+        this.setDescription(s.getDescription());
+        this.setActive(s.getActive());
     }
 
     public void when(LocatorTypeStateMergePatched e)
