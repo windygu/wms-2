@@ -3,6 +3,7 @@ package org.dddml.wms.restful.tests;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.http.HttpEntity;
@@ -19,6 +20,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.dddml.wms.domain.product.CreateOrMergePatchProductDto;
 import org.dddml.wms.security.JwtUser;
+import org.dddml.wms.security.JwtUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,6 +38,19 @@ public class JwtTests {
     private static String baseUrl = "http://localhost:8080/api/";
 
     public static void main(String[] args) {
+
+//        String token_0 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOaWNrTmFtZSI6IuWOpumXqOa5lua7qOWNl-i3r-W6lyIsIlBob25lIjoiMTE4MTE2MTQzODI1IiwiVXNlcklkIjoiMzE1NDY2IiwiVXNlclR5cGUiOiJBIiwiUm9sZXMiOiIxIiwiU3RvcmVJZCI6IjMxNTQ2NiIsImV4cCI6MTUzOTI3MzAyMSwiaXNzIjoiY3JtIiwiYXVkIjoiY3JtIn0.s3uhIME7ylozXBk7FDwGLOFsKSZ8NIViENpqgQaycF0";
+//        token_0 = token_0.substring(0, token_0.lastIndexOf(".") + 1);
+//        Claims claims = Jwts.parser()
+//                .setSigningKey("xxxx")
+//                .parseClaimsJwt(token_0)
+//                .getBody();
+//        System.out.println(claims);
+//        //{NickName=厦门湖滨南路店, Phone=118116143825, UserId=315466, UserType=A, Roles=1, StoreId=315466, exp=1539273021, iss=crm, aud=crm}
+//        //System.out.print(claims.get("NickName"));
+//        if(true) return;
+
+
         String token = null;
         String url = null;
 

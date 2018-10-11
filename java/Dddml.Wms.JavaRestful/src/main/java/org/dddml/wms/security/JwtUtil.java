@@ -35,23 +35,19 @@ public class JwtUtil {
     public JwtUser parseToken(String token) {
         try {
 
-            Claims body = Jwts.parser()
-                    .setSigningKey(secret)
-                    .parseClaimsJws(token)
-                    .getBody();
-
-            JwtUser u = new JwtUser();
-            u.setUsername(body.getSubject());
-            //u.setId((String) body.get("userId"));
-            u.setRole((String) body.get("role"));
-            List<GrantedAuthority> authorityList = null;
-            if (u.getRole() != null) {
-                authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
+            Claims body = null;
+            if (secret == null || secret.trim().isEmpty()) {
+                String unsignedToken = token.substring(0, token.lastIndexOf(".") + 1);
+                body = Jwts.parser()
+                        .parseClaimsJwt(unsignedToken)
+                        .getBody();
             } else {
-                authorityList = new ArrayList<>();
+                body = Jwts.parser()
+                        .setSigningKey(secret)
+                        .parseClaimsJws(token)
+                        .getBody();
             }
-            u.setAuthorities(authorityList);
-            return u;
+            return getJwtUser(body);
 
         } catch (JwtException | ClassCastException e) {
             //e.printStackTrace();
@@ -60,6 +56,21 @@ public class JwtUtil {
             }
             return null;
         }
+    }
+
+    private JwtUser getJwtUser(Claims body) {
+        JwtUser u = new JwtUser();
+        u.setUsername(body.getSubject());
+        //u.setId((String) body.get("userId"));
+        u.setRole((String) body.get("role"));
+        List<GrantedAuthority> authorityList = null;
+        if (u.getRole() != null) {
+            authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
+        } else {
+            authorityList = new ArrayList<>();
+        }
+        u.setAuthorities(authorityList);
+        return u;
     }
 
     /**
