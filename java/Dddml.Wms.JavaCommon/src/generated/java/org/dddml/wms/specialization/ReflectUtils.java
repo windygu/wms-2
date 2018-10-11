@@ -143,4 +143,28 @@ public class ReflectUtils {
         return pn;
     }
 
+
+    public static Object invokeStaticMethod(String className, String methodName, Class<?>[] parameterTypes, Object[] args) {
+        try {
+            Class clazz = Class.forName(className);
+            Method method = clazz.getDeclaredMethod(
+                    methodName,
+                    parameterTypes
+            );
+            return method.invoke(null, args);
+        } catch (ClassNotFoundException e) {
+            //e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            //e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            //e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            //e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }
