@@ -38,18 +38,38 @@ public class JwtTests {
     private static String baseUrl = "http://localhost:8080/api/";
 
     public static void main(String[] args) {
+        // ///////////////////////////////////////////////
+        //        CRM JWT Token:
+        //        String token_0 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOaWNrTmFtZSI6IuWOpumXqOa5lua7qOWNl-i3r-W6lyIsIlBob25lIjoiMTE4MTE2MTQzODI1IiwiVXNlcklkIjoiMzE1NDY2IiwiVXNlclR5cGUiOiJBIiwiUm9sZXMiOiIxIiwiU3RvcmVJZCI6IjMxNTQ2NiIsImV4cCI6MTUzOTI3MzAyMSwiaXNzIjoiY3JtIiwiYXVkIjoiY3JtIn0.s3uhIME7ylozXBk7FDwGLOFsKSZ8NIViENpqgQaycF0";
+        //        token_0 = token_0.substring(0, token_0.lastIndexOf(".") + 1);
+        //        Claims claims = Jwts.parser()
+        //                .setSigningKey("xxxx")
+        //                .parseClaimsJwt(token_0)
+        //                .getBody();
+        //        System.out.println(claims);
+        //        //{NickName=厦门湖滨南路店, Phone=118116143825, UserId=315466, UserType=A, Roles=1, StoreId=315466, exp=1539273021, iss=crm, aud=crm}
+        //        //System.out.print(claims.get("NickName"));
+        //        if(true) return;
 
-//        String token_0 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOaWNrTmFtZSI6IuWOpumXqOa5lua7qOWNl-i3r-W6lyIsIlBob25lIjoiMTE4MTE2MTQzODI1IiwiVXNlcklkIjoiMzE1NDY2IiwiVXNlclR5cGUiOiJBIiwiUm9sZXMiOiIxIiwiU3RvcmVJZCI6IjMxNTQ2NiIsImV4cCI6MTUzOTI3MzAyMSwiaXNzIjoiY3JtIiwiYXVkIjoiY3JtIn0.s3uhIME7ylozXBk7FDwGLOFsKSZ8NIViENpqgQaycF0";
-//        token_0 = token_0.substring(0, token_0.lastIndexOf(".") + 1);
-//        Claims claims = Jwts.parser()
-//                .setSigningKey("xxxx")
-//                .parseClaimsJwt(token_0)
-//                .getBody();
-//        System.out.println(claims);
-//        //{NickName=厦门湖滨南路店, Phone=118116143825, UserId=315466, UserType=A, Roles=1, StoreId=315466, exp=1539273021, iss=crm, aud=crm}
-//        //System.out.print(claims.get("NickName"));
-//        if(true) return;
+        // ///////////////////////////////////////////////
+        //        String token_1 = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3bXMtaWFtIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJ3bXMiLCJleHAiOjE1NDAzODIxOTMsImlhdCI6MTU0MDM3ODU5Mywicm9sZSI6ImFkbWluLGd1ZXN0LGNlc2hpMyIsInVzZXJfZ3JvdXAiOiJjazAwMSxjazAwMixjazAwMyJ9.sm_4EYtE6VNNj1fZaNDFTVWmiBOb316NeYS9l0VW8Sw";
+        //        token_1 = token_1.substring(0, token_1.lastIndexOf(".") + 1);
+        //        Claims claims = Jwts.parser()
+        //                .setSigningKey("xxxx")
+        //                .parseClaimsJwt(token_1)
+        //                .getBody();
+        //        System.out.println(claims);
+        //        //{iss=wms-iam, sub=admin, aud=wms, exp=1540382193, iat=1540378593, role=admin,guest,ceshi3, user_group=ck001,ck002,ck003}
+        //        if(true) return;
 
+        //        String token_1 = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3bXMtaWFtIiwic3ViIjoiYWRtaW4iLCJhdWQiOiJ3bXMiLCJleHAiOjE1NDAzODIxOTMsImlhdCI6MTU0MDM3ODU5Mywicm9sZSI6ImFkbWluLGd1ZXN0LGNlc2hpMyIsInVzZXJfZ3JvdXAiOiJjazAwMSxjazAwMixjazAwMyJ9.sm_4EYtE6VNNj1fZaNDFTVWmiBOb316NeYS9l0VW8Sw";
+        //        JwtUtil jwtUtil = new JwtUtil();
+        //        JwtUser jwtUser = jwtUtil.parseToken(token_1);
+        //        System.out.println(jwtUser.getAuthorities());
+        //        //[admin, guest, ceshi3]
+        //        System.out.println(jwtUser.getUserGroups());
+        //        //[ck001, ck002, ck003]
+        //        if (true) return;
 
         String token = null;
         String url = null;

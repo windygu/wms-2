@@ -12,10 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class JwtUtil {
@@ -60,8 +59,9 @@ public class JwtUtil {
 
     private JwtUser getJwtUser(Claims body) {
         JwtUser u = new JwtUser();
+        // ///////////////////////////////////
         u.setUsername(body.getSubject());
-        //u.setId((String) body.get("userId"));
+        // ///////////////////////////////////
         u.setRole((String) body.get("role"));
         List<GrantedAuthority> authorityList = null;
         if (u.getRole() != null) {
@@ -70,6 +70,12 @@ public class JwtUtil {
             authorityList = new ArrayList<>();
         }
         u.setAuthorities(authorityList);
+        // ///////////////////////////////////
+        String userGroupStr =(String) body.get("user_group");
+        if (userGroupStr != null) {
+            u.setUserGroups(commaSeparatedStringToList(userGroupStr));
+        }
+        // ///////////////////////////////////
         return u;
     }
 
@@ -90,5 +96,9 @@ public class JwtUtil {
                 .setClaims(claims)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
+    }
+
+    private static List<String> commaSeparatedStringToList(String str) {
+        return Arrays.asList(StringUtils.tokenizeToStringArray(str, ","));
     }
 }

@@ -22,16 +22,16 @@ public class JwtUser implements UserDetails {
             //            Date lastPasswordResetDate,
             Collection<? extends GrantedAuthority> authorities
     ) {
-
+        //{iss=wms-iam, sub=admin, aud=wms, exp=1540382193, iat=1540378593, role=admin,guest,ceshi3, user_group=ck001,ck002,ck003}
         //this.id = id;
-        this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
+        //        this.username = username;
+        //        this.firstname = firstname;
+        //        this.lastname = lastname;
+        //        this.email = email;
+        //        this.password = password;
         this.authorities = authorities;
-        this.enabled = enabled;
-        this.lastPasswordResetDate = lastPasswordResetDate;
+        //        this.enabled = enabled;
+        //        this.lastPasswordResetDate = lastPasswordResetDate;
     }
 
     // //////////////////////////////////
@@ -55,6 +55,8 @@ public class JwtUser implements UserDetails {
     private Date lastPasswordResetDate;
 
     private String role;
+
+    private Collection<String> userGroups;
 
     // //////////////////////////////////
 
@@ -157,5 +159,12 @@ public class JwtUser implements UserDetails {
         return lastPasswordResetDate;
     }
 
+    public Collection<String> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Collection<String> userGroups) {
+        this.userGroups = userGroups;
+    }
 
 }
