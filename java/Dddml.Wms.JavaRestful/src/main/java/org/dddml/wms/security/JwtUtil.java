@@ -18,6 +18,9 @@ import java.util.*;
 
 @Component
 public class JwtUtil {
+    private static final String CLAIM_KEY_ROLE = "role";
+    private static final String CLAIM_KEY_USER_GROUP = "user_group";
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Value("${jwt.secret}")
@@ -62,7 +65,7 @@ public class JwtUtil {
         // ///////////////////////////////////
         u.setUsername(body.getSubject());
         // ///////////////////////////////////
-        u.setRole((String) body.get("role"));
+        u.setRole((String) body.get(CLAIM_KEY_ROLE));
         List<GrantedAuthority> authorityList = null;
         if (u.getRole() != null) {
             authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList(u.getRole());
@@ -71,7 +74,7 @@ public class JwtUtil {
         }
         u.setAuthorities(authorityList);
         // ///////////////////////////////////
-        String userGroupStr =(String) body.get("user_group");
+        String userGroupStr = (String) body.get(CLAIM_KEY_USER_GROUP);
         if (userGroupStr != null) {
             u.setUserGroups(commaSeparatedStringToList(userGroupStr));
         }
