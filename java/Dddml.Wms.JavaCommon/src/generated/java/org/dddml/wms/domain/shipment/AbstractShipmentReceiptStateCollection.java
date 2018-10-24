@@ -59,7 +59,7 @@ public abstract class AbstractShipmentReceiptStateCollection implements EntitySt
         } else {
             List<ShipmentReceiptState> ss = new ArrayList<ShipmentReceiptState>();
             for (ShipmentReceiptState s : loadedShipmentReceiptStates.values()) {
-                if (!(removedShipmentReceiptStates.containsKey(((ShipmentReceiptState.SqlShipmentReceiptState)s).getShipmentReceiptId()))) {
+                if (!(removedShipmentReceiptStates.containsKey(((ShipmentReceiptState.SqlShipmentReceiptState)s).getShipmentReceiptId()) && s.getDeleted())) {
                     ss.add(s);
                 }
             }

@@ -217,6 +217,16 @@ public interface ShipmentReceiptEvent extends Event {
 
     }
 
+    interface ShipmentReceiptStateRemoved extends ShipmentReceiptStateEvent
+    {
+        Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> getShipmentReceiptImageEvents();
+        
+        void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e);
+        
+        ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved newShipmentReceiptImageStateRemoved(String sequenceId);
+
+    }
+
 
 }
 

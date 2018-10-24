@@ -311,6 +311,18 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.active = active;
     }
 
+    private Boolean deleted;
+
+    public Boolean getDeleted()
+    {
+        return this.deleted;
+    }
+
+    public void setDeleted(Boolean deleted)
+    {
+        this.deleted = deleted;
+    }
+
     private Set<String> damageStatusIds;
 
     public Set<String> getDamageStatusIds()
@@ -377,6 +389,8 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
             when((ShipmentReceiptStateCreated) e);
         } else if (e instanceof ShipmentReceiptStateMergePatched) {
             when((ShipmentReceiptStateMergePatched) e);
+        } else if (e instanceof ShipmentReceiptStateRemoved) {
+            when((ShipmentReceiptStateRemoved) e);
         } else {
             throw new UnsupportedOperationException(String.format("Unsupported event type: %1$s", e.getClass().getName()));
         }
@@ -405,6 +419,8 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
         this.setRejectedQuantity(e.getRejectedQuantity());
         this.setDamagedQuantity(e.getDamagedQuantity());
         this.setActive(e.getActive());
+
+        this.setDeleted(false);
 
         this.setCreatedBy(e.getCreatedBy());
         this.setCreatedAt(e.getCreatedAt());
@@ -674,6 +690,26 @@ public abstract class AbstractShipmentReceiptState implements ShipmentReceiptSta
                 //ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved removed = (ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)innerEvent;
                 this.getShipmentReceiptImages().remove(innerState);
             }
+        }
+    }
+
+    public void when(ShipmentReceiptStateRemoved e)
+    {
+        throwOnWrongEvent(e);
+
+        this.setDeleted(true);
+        this.setUpdatedBy(e.getCreatedBy());
+        this.setUpdatedAt(e.getCreatedAt());
+
+        for (ShipmentReceiptImageState innerState : this.getShipmentReceiptImages())
+        {
+            this.getShipmentReceiptImages().remove(innerState);
+        
+            ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved innerE = e.newShipmentReceiptImageStateRemoved(innerState.getSequenceId());
+            innerE.setCreatedAt(e.getCreatedAt());
+            innerE.setCreatedBy(e.getCreatedBy());
+            ((ShipmentReceiptImageState.MutableShipmentReceiptImageState)innerState).when(innerE);
+            //e.addShipmentReceiptImageEvent(innerE);
         }
     }
 

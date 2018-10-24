@@ -1193,6 +1193,11 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         for (ShipmentReceiptEvent innerEvent : e.getShipmentReceiptEvents()) {
             ShipmentReceiptState innerState = this.getShipmentReceipts().get(((ShipmentReceiptEvent.SqlShipmentReceiptEvent)innerEvent).getShipmentReceiptEventId().getReceiptSeqId());
             ((ShipmentReceiptState.SqlShipmentReceiptState)innerState).mutate(innerEvent);
+            if (innerEvent instanceof ShipmentReceiptEvent.ShipmentReceiptStateRemoved)
+            {
+                //ShipmentReceiptEvent.ShipmentReceiptStateRemoved removed = (ShipmentReceiptEvent.ShipmentReceiptStateRemoved)innerEvent;
+                this.getShipmentReceipts().remove(innerState);
+            }
         }
         for (ItemIssuanceEvent innerEvent : e.getItemIssuanceEvents()) {
             ItemIssuanceState innerState = this.getItemIssuances().get(((ItemIssuanceEvent.SqlItemIssuanceEvent)innerEvent).getItemIssuanceEventId().getItemIssuanceSeqId());

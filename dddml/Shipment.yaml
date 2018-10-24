@@ -403,8 +403,8 @@ aggregates:
             
         # references: {}
         
-        reservedProperties:
-          noDeleted: true
+        # reservedProperties:
+          # noDeleted: true
           
         # metadata:
           # StateEventDatabaseTableName: SHIPMENT_RECEIPT_STATE_EVENT

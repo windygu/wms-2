@@ -60,6 +60,8 @@ public interface ShipmentReceiptState
 
     Boolean getActive();
 
+    Boolean getDeleted();
+
     String getShipmentId();
 
     Set<String> getDamageStatusIds();
@@ -119,6 +121,8 @@ public interface ShipmentReceiptState
 
         void setActive(Boolean active);
 
+        void setDeleted(Boolean deleted);
+
         void setShipmentId(String shipmentId);
 
         void setDamageStatusIds(Set<String> damageStatusIds);
@@ -130,6 +134,7 @@ public interface ShipmentReceiptState
 
         void when(ShipmentReceiptEvent.ShipmentReceiptStateMergePatched e);
 
+        void when(ShipmentReceiptEvent.ShipmentReceiptStateRemoved e);
     }
 
     interface SqlShipmentReceiptState extends MutableShipmentReceiptState {

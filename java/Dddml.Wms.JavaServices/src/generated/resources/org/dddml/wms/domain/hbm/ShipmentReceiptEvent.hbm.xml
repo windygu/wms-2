@@ -103,6 +103,11 @@
 
     </subclass>
 
+    <subclass name="AbstractShipmentReceiptEvent$SimpleShipmentReceiptStateRemoved" discriminator-value="Removed">
+
+    </subclass>
+
+
         </subclass>
 
   </class>

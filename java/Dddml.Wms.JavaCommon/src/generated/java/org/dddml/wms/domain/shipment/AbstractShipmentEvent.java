@@ -214,6 +214,10 @@ public abstract class AbstractShipmentEvent extends AbstractEvent implements Shi
         return new AbstractShipmentReceiptEvent.SimpleShipmentReceiptStateMergePatched(newShipmentReceiptEventId(receiptSeqId));
     }
 
+    public ShipmentReceiptEvent.ShipmentReceiptStateRemoved newShipmentReceiptStateRemoved(String receiptSeqId) {
+        return new AbstractShipmentReceiptEvent.SimpleShipmentReceiptStateRemoved(newShipmentReceiptEventId(receiptSeqId));
+    }
+
     public ItemIssuanceEvent.ItemIssuanceStateCreated newItemIssuanceStateCreated(String itemIssuanceSeqId) {
         return new AbstractItemIssuanceEvent.SimpleItemIssuanceStateCreated(newItemIssuanceEventId(itemIssuanceSeqId));
     }

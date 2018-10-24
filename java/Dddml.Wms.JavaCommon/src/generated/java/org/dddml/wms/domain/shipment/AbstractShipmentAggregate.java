@@ -385,6 +385,11 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
             return mapMergePatch(merge, outerCommand, version, outerState);
         }
 
+        ShipmentReceiptCommand.RemoveShipmentReceipt remove = (c.getCommandType().equals(CommandType.REMOVE)) ? ((ShipmentReceiptCommand.RemoveShipmentReceipt)c) : null;
+        if (remove != null)
+        {
+            return mapRemove(remove, outerCommand, version);
+        }
         throw new UnsupportedOperationException();
     }
 
@@ -488,6 +493,19 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
         return e;
 
     }// END map(IMergePatch... ////////////////////////////
+
+    protected ShipmentReceiptEvent.ShipmentReceiptStateRemoved mapRemove(ShipmentReceiptCommand.RemoveShipmentReceipt c, ShipmentCommand outerCommand, Long version)
+    {
+        ((AbstractCommand)c).setRequesterId(outerCommand.getRequesterId());
+        ShipmentReceiptEventId stateEventId = new ShipmentReceiptEventId(c.getShipmentId(), c.getReceiptSeqId(), version);
+        ShipmentReceiptEvent.ShipmentReceiptStateRemoved e = newShipmentReceiptStateRemoved(stateEventId);
+
+        e.setCreatedBy(c.getRequesterId());
+        e.setCreatedAt((java.util.Date)ApplicationContext.current.getTimestampService().now(java.util.Date.class));
+
+        return e;
+
+    }// END map(IRemove... ////////////////////////////
 
 
     protected ShipmentReceiptImageEvent map(ShipmentReceiptImageCommand c, ShipmentReceiptCommand outerCommand, Long version, ShipmentReceiptState outerState)
@@ -824,6 +842,11 @@ public abstract class AbstractShipmentAggregate extends AbstractAggregate implem
 
     protected ShipmentReceiptEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(ShipmentReceiptEventId stateEventId) {
         return new AbstractShipmentReceiptEvent.SimpleShipmentReceiptStateMergePatched(stateEventId);
+    }
+
+    protected ShipmentReceiptEvent.ShipmentReceiptStateRemoved newShipmentReceiptStateRemoved(ShipmentReceiptEventId stateEventId)
+    {
+        return new AbstractShipmentReceiptEvent.SimpleShipmentReceiptStateRemoved(stateEventId);
     }
 
     protected ShipmentReceiptImageEvent.ShipmentReceiptImageStateCreated newShipmentReceiptImageStateCreated(ShipmentReceiptImageEventId stateEventId) {

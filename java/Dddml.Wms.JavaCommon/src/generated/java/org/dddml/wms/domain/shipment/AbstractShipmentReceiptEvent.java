@@ -687,6 +687,70 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
     }
 
 
+    public static abstract class AbstractShipmentReceiptStateRemoved extends AbstractShipmentReceiptStateEvent implements ShipmentReceiptEvent.ShipmentReceiptStateRemoved, Saveable
+    {
+        public AbstractShipmentReceiptStateRemoved() {
+            this(new ShipmentReceiptEventId());
+        }
+
+        public AbstractShipmentReceiptStateRemoved(ShipmentReceiptEventId eventId) {
+            super(eventId);
+        }
+
+        public String getEventType() {
+            return StateEventType.REMOVED;
+        }
+
+		
+        private Map<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> shipmentReceiptImageEvents = new HashMap<ShipmentReceiptImageEventId, ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved>();
+        
+        private Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> readOnlyShipmentReceiptImageEvents;
+
+        public Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> getShipmentReceiptImageEvents()
+        {
+            if (!getEventReadOnly())
+            {
+                return this.shipmentReceiptImageEvents.values();
+            }
+            else
+            {
+                if (readOnlyShipmentReceiptImageEvents != null) { return readOnlyShipmentReceiptImageEvents; }
+                ShipmentReceiptImageEventDao eventDao = getShipmentReceiptImageEventDao();
+                List<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> eL = new ArrayList<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved>();
+                for (ShipmentReceiptImageEvent e : eventDao.findByShipmentReceiptEventId(this.getShipmentReceiptEventId()))
+                {
+                    ((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).setEventReadOnly(true);
+                    eL.add((ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved)e);
+                }
+                return (readOnlyShipmentReceiptImageEvents = eL);
+            }
+        }
+
+        public void setShipmentReceiptImageEvents(Iterable<ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved> es)
+        {
+            if (es != null)
+            {
+                for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e : es)
+                {
+                    addShipmentReceiptImageEvent(e);
+                }
+            }
+            else { this.shipmentReceiptImageEvents.clear(); }
+        }
+        
+        public void addShipmentReceiptImageEvent(ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e)
+        {
+            throwOnInconsistentEventIds((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e);
+            this.shipmentReceiptImageEvents.put(((ShipmentReceiptImageEvent.SqlShipmentReceiptImageEvent)e).getShipmentReceiptImageEventId(), e);
+        }
+
+        public void save()
+        {
+            for (ShipmentReceiptImageEvent.ShipmentReceiptImageStateRemoved e : this.getShipmentReceiptImageEvents()) {
+                getShipmentReceiptImageEventDao().save(e);
+            }
+        }
+    }
     public static class SimpleShipmentReceiptStateCreated extends AbstractShipmentReceiptStateCreated
     {
         public SimpleShipmentReceiptStateCreated() {
@@ -703,6 +767,16 @@ public abstract class AbstractShipmentReceiptEvent extends AbstractEvent impleme
         }
 
         public SimpleShipmentReceiptStateMergePatched(ShipmentReceiptEventId eventId) {
+            super(eventId);
+        }
+    }
+
+    public static class SimpleShipmentReceiptStateRemoved extends AbstractShipmentReceiptStateRemoved
+    {
+        public SimpleShipmentReceiptStateRemoved() {
+        }
+
+        public SimpleShipmentReceiptStateRemoved(ShipmentReceiptEventId eventId) {
             super(eventId);
         }
     }

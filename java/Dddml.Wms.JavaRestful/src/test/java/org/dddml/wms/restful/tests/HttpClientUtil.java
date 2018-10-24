@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
@@ -46,6 +47,24 @@ public class HttpClientUtil {
         try {
             CloseableHttpClient client = HttpClientBuilder.create().build();
             HttpResponse response = doHttpPut(client, token, url, obj);
+            int responseCode = response.getStatusLine().getStatusCode();
+            //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
+            System.out.println("==========================================");
+            System.out.println(responseCode);
+            System.out.println("==========================================");
+            System.out.println(readString(response));
+            client.close();
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static void delete(String token, String url) {
+        try {
+            CloseableHttpClient client = HttpClientBuilder.create().build();
+            HttpResponse response = doHttpDelete(client, token, url);
             int responseCode = response.getStatusLine().getStatusCode();
             //Assert.assertEquals("20", String.valueOf(responseCode).substring(0, 2));
             System.out.println("==========================================");
@@ -129,6 +148,22 @@ public class HttpClientUtil {
         httpPut.setEntity(entity);
         //getContentFromResponse(response);
         return client.execute(httpPut);
+    }
+
+    /**
+     * 执行 Http DELETE
+     */
+    private static HttpResponse doHttpDelete(CloseableHttpClient client, String token, String url) throws IOException {
+        HttpDelete httpDelete = new HttpDelete(url);
+        httpDelete.setHeader("Accept", "application/json");
+        httpDelete.setHeader("Content-Type", "application/json");
+        httpDelete.setHeader("Authorization", "Bearer " + token);
+        //String json = JSON.toJSONString(dto);
+        //StringEntity entity = new StringEntity(json, "utf-8");
+        //entity.setContentType("application/json");
+        //httpPut.setEntity(entity);
+        //getContentFromResponse(response);
+        return client.execute(httpDelete);
     }
 
     /**

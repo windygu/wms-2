@@ -384,6 +384,8 @@ public interface ShipmentEvent extends Event {
 
         ShipmentReceiptEvent.ShipmentReceiptStateMergePatched newShipmentReceiptStateMergePatched(String receiptSeqId);
 
+        ShipmentReceiptEvent.ShipmentReceiptStateRemoved newShipmentReceiptStateRemoved(String receiptSeqId);
+
         Iterable<ItemIssuanceEvent> getItemIssuanceEvents();
         
         void addItemIssuanceEvent(ItemIssuanceEvent e);
