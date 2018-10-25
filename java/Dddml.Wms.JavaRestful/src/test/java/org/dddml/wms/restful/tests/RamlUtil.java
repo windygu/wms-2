@@ -20,8 +20,8 @@ public class RamlUtil {
         // combine
         PartialRaml[] ramls = new PartialRaml[] {
                 new PartialRaml(getRaml0(), null),
-                new PartialRaml(getRaml1(), "queries"),
-                new PartialRaml(getRaml2(), "iam")
+                new PartialRaml(getRaml1(), "queries")//,
+                //new PartialRaml(getRaml2(), "iam")
         };
         Raml fullRaml = combine(ramls, baseUri);
 
@@ -45,10 +45,10 @@ public class RamlUtil {
         return getRamlFromFile(queryRamlPath);
     }
 
-    private static Raml getRaml2() {
-        String iamRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\iam\\src\\main\\resources\\malls-sso.raml";
-        return getRamlFromFile(iamRamlPath);
-    }
+    //    private static Raml getRaml2() {
+    //        String iamRamlPath = "C:\\Users\\yangjiefeng\\Documents\\coding.net\\wms\\iam\\src\\main\\resources\\malls-sso.raml";
+    //        return getRamlFromFile(iamRamlPath);
+    //    }
 
     // //////////////////////////////////////////////////////////////
 
