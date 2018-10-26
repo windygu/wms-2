@@ -47,8 +47,8 @@ public class OrderShipGroupTests {
         orderApplicationService = (OrderApplicationService) ApplicationContext.current.get("orderApplicationService");
         inOutNoticeApplicationService = (InOutNoticeApplicationService) ApplicationContext.current.get("inOutNoticeApplicationService");
     }
-    //todo 重写这些注释掉的测试代码
-/*
+
+    /*
     public void testCreatePOShipGroup1() {
         String partyId = createTestPersonParty();
 
@@ -80,54 +80,6 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createPOShipGroup);
     }
 
-
-    public void testCreatePOShipGroupAndShipment2() {
-        String partyId = createTestPersonParty();
-
-        OrderShipGroupServiceCommands.CreatePOShipGroup createPOShipGroup = new OrderShipGroupServiceCommands.CreatePOShipGroup();
-        //订单 Id（合同号）
-        createPOShipGroup.setOrderId("" + new Date().getTime());
-        //装运组序号（通知单号），长整数
-        createPOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
-        //（预计）入库时间
-        createPOShipGroup.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
-        //件数
-        createPOShipGroup.setNumberOfPackages(400);
-        //柜数
-        createPOShipGroup.setNumberOfContainers(10);
-        //每柜件数
-        createPOShipGroup.setNumberOfPakagesPerContainer(40);
-        //产品 Id
-        ProductCommand.CreateProduct createProduct = createNotSerialNumberedProduct_1();
-        createPOShipGroup.setProductId(createProduct.getProductId());
-        //数量（以产品的主计量单位计算）
-        createPOShipGroup.setQuantity(BigDecimal.valueOf(100000));
-        //跟踪单号
-        createPOShipGroup.setTrackingNumber("" + new Date().getTime());
-        //
-        createPOShipGroup.setCommandId(createPOShipGroup.getOrderId());
-
-        //联系人 Id
-        createPOShipGroup.setContactPartyId(partyId);
-
-        orderShipGroupApplicationService.when(createPOShipGroup);
-
-        OrderShipGroupServiceCommands.CreatePOShipment createPOShipment = new OrderShipGroupServiceCommands.CreatePOShipment();
-        createPOShipment.setOrderId(createPOShipGroup.getOrderId());
-        createPOShipment.setShipGroupSeqId(createPOShipGroup.getShipGroupSeqId());
-        createPOShipment.setCommandId(createPOShipGroup.getShipGroupSeqId() + "");
-        orderShipGroupApplicationService.when(createPOShipment);
-
-        String orderId = createPOShipGroup.getOrderId();
-        String shipGroupSeqId = createPOShipGroup.getShipGroupSeqId();
-        OrderState orderState = orderApplicationService.get(orderId);
-        Long version = orderState.getVersion();
-
-        //OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
-        //orderShipGroupAction.setOrderShipGroupId(new OrderShipGroupId(orderId, shipGroupSeqId));//订单 Id（合同号）,与通知单号
-
-
-    }
 
 
     public void testCreateSOShipGroup1() {
@@ -165,8 +117,96 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createSOShipGroup);
     }
 
-*/
+    */
 
+
+    public void testCreatePOShipGroupAndShipment2() {
+        String testPersonPartyId = createTestPersonParty();
+        String shipGroupSeqId = getTestShipGroupSeqId();
+
+        // /////////////////////////////////////////
+        String noticeId = shipGroupSeqId;
+        InOutNoticeCommand.CreateInOutNotice createInOutNotice = new AbstractInOutNoticeCommand.SimpleCreateInOutNotice();
+        createInOutNotice.setInOutNoticeId(noticeId);
+        createInOutNotice.setInOutNoticeType(InOutNoticeType.INCOMING_NOTICE);
+        createInOutNotice.setActive(true);
+        createInOutNotice.setCommandId(noticeId);
+        //联系人:
+        createInOutNotice.setContactPartyId(testPersonPartyId);//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
+        //（预计）入库时间
+        createInOutNotice.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
+        //跟踪（物流）单号:	（选填）
+        createInOutNotice.setTrackingNumber("X" + UUID.randomUUID().hashCode());
+        //联系人 Id
+        createInOutNotice.setContactPartyId(testPersonPartyId);
+        inOutNoticeApplicationService.when(createInOutNotice);
+        // /////////////////////////////////////////
+
+        OrderShipGroupServiceCommands.CreatePOShipGroups createPOShipGroups = new OrderShipGroupServiceCommands.CreatePOShipGroups();
+        OrderItemShipGroupAssociationInfo line1 = new OrderItemShipGroupAssociationInfo();
+        //订单 Id（合同号）
+        line1.setOrderId("" + new Date().getTime());
+        //装运组序号（通知单号），长整数
+        line1.setShipGroupSeqId(shipGroupSeqId);
+        //件数
+        line1.setNumberOfPackages(400);
+        //柜数
+        line1.setNumberOfContainers(10);
+        //每柜件数
+        line1.setNumberOfPakagesPerContainer(40);
+        //产品 Id
+        ProductCommand.CreateProduct createProduct = createNotSerialNumberedProduct_1();
+        line1.setProductId(createProduct.getProductId());
+        //数量（以产品的主计量单位计算）
+        line1.setQuantity(BigDecimal.valueOf(100000));
+        createPOShipGroups.setOrderItemShipGroupAssociations(Arrays.asList(line1));
+        createPOShipGroups.setCommandId(line1.getOrderId());
+        orderShipGroupApplicationService.when(createPOShipGroups);
+
+        // ////////////////////////////////////
+        OrderShipGroupServiceCommands.CreatePOShipment createPOShipment = new OrderShipGroupServiceCommands.CreatePOShipment();
+        OrderIdShipGroupSeqIdPair OrderIdShipGroupSeqIdPair_1= new OrderIdShipGroupSeqIdPair();
+        OrderIdShipGroupSeqIdPair_1.setOrderId(line1.getOrderId());
+        OrderIdShipGroupSeqIdPair_1.setShipGroupSeqId(line1.getShipGroupSeqId());
+        createPOShipment.setOrderIdShipGroupSeqIdPairs(Arrays.asList(OrderIdShipGroupSeqIdPair_1));
+        createPOShipment.setCommandId(line1.getShipGroupSeqId() + "");
+        createPOShipment.setIsShipped(true);
+        String shipmentId = orderShipGroupApplicationService.when(createPOShipment);
+
+        // /////////////////////////////////////////////////
+        // String shipGroupSeqId = line1.getShipGroupSeqId();
+        // String orderId = line1.getOrderId();
+        // OrderState orderState = orderApplicationService.get(orderId);
+        Map<String, Object> attributeSetInstance = new HashMap<>();
+        ShipmentState shipmentState = shipmentApplicationService.get(shipmentId);
+        Long shipmentVersion = shipmentState.getVersion();
+        for (ShipmentItemState i : shipmentState.getShipmentItems()) {
+            ShipmentCommands.ReceiveItem receiveItem = new ShipmentCommands.ReceiveItem();
+            receiveItem.setShipmentId(shipmentId);
+            receiveItem.setShipmentItemSeqId(i.getShipmentItemSeqId());
+            receiveItem.setReceiptSeqId(i.getShipmentItemSeqId());
+            receiveItem.setAcceptedQuantity(i.getQuantity());
+            receiveItem.setRejectedQuantity(BigDecimal.ZERO);
+            receiveItem.setDamagedQuantity(BigDecimal.ZERO);
+            //receiveItem.setProductId(i.getProductId());
+            receiveItem.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+            receiveItem.setAttributeSetInstance(attributeSetInstance);
+            receiveItem.setVersion(shipmentVersion);
+            receiveItem.setCommandId(UUID.randomUUID().toString());
+            shipmentApplicationService.when(receiveItem);
+            shipmentVersion++;
+        }
+
+        //OrderCommands.OrderShipGroupAction orderShipGroupAction = new OrderCommands.OrderShipGroupAction();
+        //orderShipGroupAction.setOrderShipGroupId(new OrderShipGroupId(orderId, shipGroupSeqId));//订单 Id（合同号）,与通知单号
+
+        ShipmentCommands.ConfirmAllItemsReceived confirmAllItemsReceived = new ShipmentCommands.ConfirmAllItemsReceived();
+        confirmAllItemsReceived.setShipmentId(shipmentId);
+        confirmAllItemsReceived.setCommandId(UUID.randomUUID().toString());
+        confirmAllItemsReceived.setVersion(shipmentVersion);
+        confirmAllItemsReceived.setDestinationLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+        shipmentApplicationService.when(confirmAllItemsReceived);
+    }
 
 
     public void testCreateSOShipGroupAndShipment2() {
@@ -177,7 +217,7 @@ public class OrderShipGroupTests {
         String noticeId = shipGroupSeqId;
         InOutNoticeCommand.CreateInOutNotice createInOutNotice = new AbstractInOutNoticeCommand.SimpleCreateInOutNotice();
         createInOutNotice.setInOutNoticeId(noticeId);
-        createInOutNotice.setInOutNoticeType(InOutNoticeType.OUTGOING_NOTICE);//todo 拼写错误
+        createInOutNotice.setInOutNoticeType(InOutNoticeType.OUTGOING_NOTICE);
         createInOutNotice.setActive(true);
         createInOutNotice.setCommandId(noticeId);
         //联系人:

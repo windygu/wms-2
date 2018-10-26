@@ -49,16 +49,16 @@ public class TestMain {
 
 //        OrderShipGroupTests orderShipGroupTests_0 = new OrderShipGroupTests();
 //        orderShipGroupTests_0.setUp();
-//        orderShipGroupTests_0.testCreateSOShipGroupAndShipment2();
+//        //orderShipGroupTests_0.testCreateSOShipGroupAndShipment2();
+//        orderShipGroupTests_0.testCreatePOShipGroupAndShipment2();
 //        //orderShipGroupTests_0.testCreatePOShipGroup1();
-//        //orderShipGroupTests_0.testCreatePOShipGroupAndShipment2();
 //        //orderShipGroupTests_0.testCreateSOShipGroup1();
 //        if (true) return;
 
-        ShipmentTests shipmentTests_0 = new ShipmentTests();
-        shipmentTests_0.setUp();
-        shipmentTests_0.testImportAndReceive();
-        //if (true) return;
+        //        ShipmentTests shipmentTests_0 = new ShipmentTests();
+        //        shipmentTests_0.setUp();
+        //        shipmentTests_0.testImportAndReceive();
+        //        //if (true) return;
 
         //InOutTests inOutTests_0 = new InOutTests();
         //inOutTests_0.setUp();
@@ -119,12 +119,12 @@ public class TestMain {
         //        inOutTests0.testCompleteInOut();
         //        if (true) return;
 
-        //        OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
-        //        orderShipGroupTests.setUp();
-        //        //orderShipGroupTests.testCreatePOShipGroup1();
-        //        //orderShipGroupTests.testCreatePOShipGroupAndShipment2();
-        //        orderShipGroupTests.testCreateSOShipGroup1();
-        //        orderShipGroupTests.testCreateSOShipGroupAndShipment2();
+        OrderShipGroupTests orderShipGroupTests = new OrderShipGroupTests();
+        orderShipGroupTests.setUp();
+        //orderShipGroupTests.testCreatePOShipGroup1();
+        //orderShipGroupTests.testCreateSOShipGroup1();
+        orderShipGroupTests.testCreatePOShipGroupAndShipment2();
+        orderShipGroupTests.testCreateSOShipGroupAndShipment2();
         //if (true) return;
 
         InOutTests inOutTests = new InOutTests();
