@@ -200,6 +200,12 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         if ("NOTICE_APPROVED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
             return;
         }
+        if (!"NOTICE_CREATED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
+            if (throwOnError) {
+                throw new NullPointerException("Not a NOTICE_CREATED inOutNotice.");
+            }
+            return;
+        }
         updateInOutNoticeStatus(getInOutNoticeApplicationService(), noticeId, cmd, inOutNoticeState, InOutNoticeAction.APPROVE);
     }
 

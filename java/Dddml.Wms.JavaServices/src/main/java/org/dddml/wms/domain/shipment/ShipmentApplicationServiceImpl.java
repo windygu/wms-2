@@ -279,6 +279,12 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         if ("NOTICE_COMPLETED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
             return;
         }
+        if (!"NOTICE_APPROVED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
+            if (throwOnError) {
+                throw new NullPointerException("Not a NOTICE_APPROVED inOutNotice.");
+            }
+            return;
+        }
         OrderShipGroupApplicationServiceImpl.updateInOutNoticeStatus(
                 getInOutNoticeApplicationService(), noticeId, cmd, inOutNoticeState, InOutNoticeAction.COMPLETE);
     }
