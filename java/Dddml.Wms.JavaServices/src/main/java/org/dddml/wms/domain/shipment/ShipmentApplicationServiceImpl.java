@@ -1,14 +1,19 @@
 package org.dddml.wms.domain.shipment;
 
+import org.dddml.wms.domain.Command;
 import org.dddml.wms.domain.PurchaseShipmentAction;
 import org.dddml.wms.domain.SalesShipmentAction;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceApplicationService;
 import org.dddml.wms.domain.attributesetinstance.AttributeSetInstanceUtils;
 import org.dddml.wms.domain.documenttype.DocumentTypeIds;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeAction;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeApplicationService;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeState;
 import org.dddml.wms.domain.inventoryitem.*;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductState;
 import org.dddml.wms.domain.service.AttributeSetService;
+import org.dddml.wms.domain.service.OrderShipGroupApplicationServiceImpl;
 import org.dddml.wms.domain.shipmenttype.ShipmentTypeIds;
 import org.dddml.wms.domain.statusitem.StatusItemIds;
 import org.dddml.wms.domain.warehouse.WarehouseUtils;
@@ -41,6 +46,10 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
 
     InventoryItemApplicationService getInventoryItemApplicationService() {
         return (InventoryItemApplicationService) ApplicationContext.current.get("inventoryItemApplicationService");
+    }
+
+    InOutNoticeApplicationService getInOutNoticeApplicationService() {
+        return (InOutNoticeApplicationService) ApplicationContext.current.get("inOutNoticeApplicationService");
     }
 
     private IdGenerator<Long, Object, Object> seqIdGenerator = new TableIdGenerator();
@@ -251,7 +260,27 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 confirmAllItemsIssuedCreateInventoryItemEntries(shipment, itemIssuanceStates);
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
+        // //////////////////////////////////////////////////
         super.when(c);
+        // //////////////////////////////////////////////////
+        if (shipment.getPrimaryShipGroupSeqId() != null) {
+            updateInOutNoticeToCompleted(shipment.getPrimaryShipGroupSeqId(), c, false);
+        }
+    }
+
+    private void updateInOutNoticeToCompleted(String noticeId, Command cmd, boolean throwOnError) {
+        InOutNoticeState inOutNoticeState = getInOutNoticeApplicationService().get(noticeId);
+        if (inOutNoticeState == null) {
+            if (throwOnError) {
+                throw new NullPointerException("Null inOutNoticeState.");
+            }
+            return;
+        }
+        if ("NOTICE_COMPLETED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
+            return;
+        }
+        OrderShipGroupApplicationServiceImpl.updateInOutNoticeStatus(
+                getInOutNoticeApplicationService(), noticeId, cmd, inOutNoticeState, InOutNoticeAction.COMPLETE);
     }
 
     @Override

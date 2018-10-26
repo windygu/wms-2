@@ -22,10 +22,8 @@ import org.dddml.wms.specialization.IdGenerator;
 import org.dddml.wms.specialization.hibernate.TableIdGenerator;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by yangjiefeng on 2018/8/18.
@@ -199,13 +197,21 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
             }
             return;
         }
+        if ("NOTICE_APPROVED".equalsIgnoreCase(inOutNoticeState.getStatusId())) {
+            return;
+        }
+        updateInOutNoticeStatus(getInOutNoticeApplicationService(), noticeId, cmd, inOutNoticeState, InOutNoticeAction.APPROVE);
+    }
+
+    public static void updateInOutNoticeStatus(InOutNoticeApplicationService inOutNoticeApplicationService,
+                                               String noticeId, Command cmd, InOutNoticeState inOutNoticeState, String actionValue) {
         InOutNoticeCommands.InOutNoticeAction inOutNoticeAction = new InOutNoticeCommands.InOutNoticeAction();
         inOutNoticeAction.setInOutNoticeId(noticeId);
-        inOutNoticeAction.setValue(InOutNoticeAction.APPROVE);
+        inOutNoticeAction.setValue(actionValue);
         inOutNoticeAction.setVersion(inOutNoticeState.getVersion());
         inOutNoticeAction.setCommandId(cmd.getCommandId());
         inOutNoticeAction.setRequesterId(cmd.getRequesterId());
-        getInOutNoticeApplicationService().when(inOutNoticeAction);
+        inOutNoticeApplicationService.when(inOutNoticeAction);
     }
 
     @Override
