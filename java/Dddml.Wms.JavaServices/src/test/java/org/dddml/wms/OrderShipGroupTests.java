@@ -1,5 +1,6 @@
 package org.dddml.wms;
 
+import org.dddml.wms.domain.inoutnotice.*;
 import org.dddml.wms.domain.order.*;
 import org.dddml.wms.domain.party.AbstractPartyCommand;
 import org.dddml.wms.domain.party.PartyApplicationService;
@@ -7,6 +8,8 @@ import org.dddml.wms.domain.party.PartyCommand;
 import org.dddml.wms.domain.product.AbstractProductCommand;
 import org.dddml.wms.domain.product.ProductApplicationService;
 import org.dddml.wms.domain.product.ProductCommand;
+import org.dddml.wms.domain.service.OrderIdShipGroupSeqIdPair;
+import org.dddml.wms.domain.service.OrderItemShipGroupAssociationInfo;
 import org.dddml.wms.domain.service.OrderShipGroupServiceCommands;
 import org.dddml.wms.domain.shipment.ShipmentApplicationService;
 import org.dddml.wms.domain.shipment.ShipmentCommands;
@@ -18,10 +21,7 @@ import org.dddml.wms.domain.service.OrderShipGroupApplicationService;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by yangjiefeng on 2018/8/18.
@@ -37,12 +37,15 @@ public class OrderShipGroupTests {
 
     private OrderApplicationService orderApplicationService;
 
+    private InOutNoticeApplicationService inOutNoticeApplicationService;
+
     public final void setUp() {
         orderShipGroupApplicationService = (OrderShipGroupApplicationService) ApplicationContext.current.get("orderShipGroupApplicationService");
         partyApplicationService = (PartyApplicationService) ApplicationContext.current.get("partyApplicationService");
         productApplicationService = (ProductApplicationService) ApplicationContext.current.get("productApplicationService");
         shipmentApplicationService = (ShipmentApplicationService) ApplicationContext.current.get("shipmentApplicationService");
         orderApplicationService = (OrderApplicationService) ApplicationContext.current.get("orderApplicationService");
+        inOutNoticeApplicationService = (InOutNoticeApplicationService) ApplicationContext.current.get("inOutNoticeApplicationService");
     }
     //todo 重写这些注释掉的测试代码
 /*
@@ -162,47 +165,71 @@ public class OrderShipGroupTests {
         orderShipGroupApplicationService.when(createSOShipGroup);
     }
 
+*/
+
 
 
     public void testCreateSOShipGroupAndShipment2() {
-        String partyId = createTestPersonParty();
+        String testPersonPartyId = createTestPersonParty();
+        String shipGroupSeqId = getTestShipGroupSeqId();
 
-        OrderShipGroupServiceCommands.CreateSOShipGroup createSOShipGroup = new OrderShipGroupServiceCommands.CreateSOShipGroup();
+        // /////////////////////////////////////////
+        String noticeId = shipGroupSeqId;
+        InOutNoticeCommand.CreateInOutNotice createInOutNotice = new AbstractInOutNoticeCommand.SimpleCreateInOutNotice();
+        createInOutNotice.setInOutNoticeId(noticeId);
+        createInOutNotice.setInOutNoticeType(InOutNoticeType.OUTGOING_NOTICE);//todo 拼写错误
+        createInOutNotice.setActive(true);
+        createInOutNotice.setCommandId(noticeId);
+        //联系人:
+        createInOutNotice.setContactPartyId(testPersonPartyId);//个人的 Id，如果没有，需要到 {baseUri}/People 中新建个人信息
+        //时间:
+        createInOutNotice.setEstimatedDeliveryDate(new Timestamp(new Date().getTime()));
+        //跟踪（物流）单号:	（选填）
+        createInOutNotice.setTrackingNumber("X" + UUID.randomUUID().hashCode());
+        inOutNoticeApplicationService.when(createInOutNotice);
+        // /////////////////////////////////////////
+
+        OrderShipGroupServiceCommands.CreateSOShipGroups createSOShipGroups = new OrderShipGroupServiceCommands.CreateSOShipGroups();
+        OrderItemShipGroupAssociationInfo line1 = new OrderItemShipGroupAssociationInfo();
         //订单 Id（合同号）
-        createSOShipGroup.setOrderId("" + new Date().getTime());
+        line1.setOrderId("" + new Date().getTime());
         //装运组序号（通知单号），长整数
-        createSOShipGroup.setShipGroupSeqId(getTestShipGroupSeqId());
+        line1.setShipGroupSeqId(shipGroupSeqId);
         //（预计）出库时间
-        createSOShipGroup.setEstimatedShipDate(new Timestamp(new Date().getTime()));
+        //line1.setEstimatedShipDate(new Timestamp(new Date().getTime()));
         //件数
-        createSOShipGroup.setNumberOfPackages(400);
+        line1.setNumberOfPackages(400);
         //柜数
-        createSOShipGroup.setNumberOfContainers(10);
+        line1.setNumberOfContainers(10);
         //每柜件数
-        createSOShipGroup.setNumberOfPakagesPerContainer(40);
+        line1.setNumberOfPakagesPerContainer(40);
         //产品 Id
         ProductCommand.CreateProduct createProduct = createNotSerialNumberedProduct_1();
-        createSOShipGroup.setProductId(createProduct.getProductId());
+        line1.setProductId(createProduct.getProductId());
         //数量（以产品的主计量单位计算）
-        createSOShipGroup.setQuantity(BigDecimal.valueOf(100000));
+        line1.setQuantity(BigDecimal.valueOf(100000));
+
+        createSOShipGroups.setOrderItemShipGroupAssociations(Arrays.asList(line1));
         //跟踪单号
-        createSOShipGroup.setTrackingNumber("" + new Date().getTime());
-        //
-        createSOShipGroup.setCommandId(createSOShipGroup.getOrderId());
+        //createSOShipGroups.setTrackingNumber("" + new Date().getTime());
+        createSOShipGroups.setCommandId(line1.getOrderId());
 
         //联系人 Id
-        createSOShipGroup.setContactPartyId(partyId);
+        //createSOShipGroups.setContactPartyId(partyId);
         //车牌号
-        createSOShipGroup.setVehiclePlateNumber("LU" + new Date().getTime());
+        //createSOShipGroups.setVehiclePlateNumber("LU" + new Date().getTime());
         //发货指示 / 备注等
-        createSOShipGroup.setShippingInstructions("Customer Name:" + UUID.randomUUID().toString());
+        //createSOShipGroups.setShippingInstructions("Customer Name:" + UUID.randomUUID().toString());
 
-        orderShipGroupApplicationService.when(createSOShipGroup);
+        orderShipGroupApplicationService.when(createSOShipGroups);
 
         OrderShipGroupServiceCommands.CreateSOShipment  createSOShipment = new OrderShipGroupServiceCommands.CreateSOShipment();
-        createSOShipment.setOrderId(createSOShipGroup.getOrderId());
-        createSOShipment.setShipGroupSeqId(createSOShipGroup.getShipGroupSeqId());
-        createSOShipment.setCommandId(createSOShipGroup.getShipGroupSeqId() + "");
+        OrderIdShipGroupSeqIdPair OrderIdShipGroupSeqIdPair_1= new OrderIdShipGroupSeqIdPair();
+        OrderIdShipGroupSeqIdPair_1.setOrderId(line1.getOrderId());
+        OrderIdShipGroupSeqIdPair_1.setShipGroupSeqId(line1.getShipGroupSeqId());
+        createSOShipment.setOrderIdShipGroupSeqIdPairs(Arrays.asList(OrderIdShipGroupSeqIdPair_1));
+        createSOShipment.setCommandId(line1.getShipGroupSeqId() + "");
+        createSOShipment.setOriginFacilityId(InOutTests.TEST_WAREHOUSE_ID);
         String shipmentId = orderShipGroupApplicationService.when(createSOShipment);
 
         Map<String, Object> attributeSetInstance = new HashMap<>();
@@ -213,6 +240,7 @@ public class OrderShipGroupTests {
             ShipmentCommands.IssueItem issueItem = new ShipmentCommands.IssueItem();
             issueItem.setShipmentId(shipmentId);
             issueItem.setShipmentItemSeqId(i.getShipmentItemSeqId());
+            issueItem.setItemIssuanceSeqId(i.getShipmentItemSeqId());
             issueItem.setQuantity(i.getQuantity());
             issueItem.setProductId(i.getProductId());
             issueItem.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
@@ -223,17 +251,17 @@ public class OrderShipGroupTests {
             shipmentVersion++;
         }
 
-        ShipmentCommands.AddItemAndIssuance addItemAndIssuance = new ShipmentCommands.AddItemAndIssuance();
-        addItemAndIssuance.setShipmentId(shipmentId);
-        addItemAndIssuance.setItemIssuanceSeqId(getRandomSeqId());
-        addItemAndIssuance.setProductId(createProduct.getProductId());
-        addItemAndIssuance.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
-        addItemAndIssuance.setQuantity(BigDecimal.valueOf(5000));
-        addItemAndIssuance.setAttributeSetInstance(attributeSetInstance);
-        addItemAndIssuance.setCommandId(UUID.randomUUID().toString());
-        addItemAndIssuance.setVersion(shipmentVersion);
-        shipmentApplicationService.when(addItemAndIssuance);
-        shipmentVersion++;
+        //        ShipmentCommands.AddItemAndIssuance addItemAndIssuance = new ShipmentCommands.AddItemAndIssuance();
+        //        addItemAndIssuance.setShipmentId(shipmentId);
+        //        addItemAndIssuance.setItemIssuanceSeqId(getRandomSeqId());
+        //        addItemAndIssuance.setProductId(createProduct.getProductId());
+        //        addItemAndIssuance.setLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+        //        addItemAndIssuance.setQuantity(BigDecimal.valueOf(5000));
+        //        addItemAndIssuance.setAttributeSetInstance(attributeSetInstance);
+        //        addItemAndIssuance.setCommandId(UUID.randomUUID().toString());
+        //        addItemAndIssuance.setVersion(shipmentVersion);
+        //        shipmentApplicationService.when(addItemAndIssuance);
+        //        shipmentVersion++;
 
         ShipmentCommands.ConfirmAllItemsIssued confirmAllItemsIssued = new ShipmentCommands.ConfirmAllItemsIssued();
         confirmAllItemsIssued.setShipmentId(shipmentId);
@@ -242,7 +270,7 @@ public class OrderShipGroupTests {
         shipmentApplicationService.when(confirmAllItemsIssued);
 
     }
-*/
+
     private String createTestPersonParty() {
         PartyCommand.CreateParty createPerson = new AbstractPartyCommand.SimpleCreatePerson();
         String partyId = "" + new Date().getTime();

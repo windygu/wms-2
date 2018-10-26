@@ -160,10 +160,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
         String shipmentTypeId = ShipmentTypeIds.SALES_SHIPMENT;
         // //////////////////////////////////////////////
+        String primaryOrderId = c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId();
+        String primaryShipGroupSeqId = c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId();
+        // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
-                createShipment(c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId(),
-                        c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
-                        shipmentId, shipmentTypeId); //shipmentStatusId,
+                createShipment(primaryOrderId, primaryShipGroupSeqId ,shipmentId, shipmentTypeId); //shipmentStatusId,
         setShipmentProperties(createShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
                 c.getOriginContactMechId(), c.getDestinationContactMechId(),
                 c.getHandlingInstructions(), c.getEstimatedShipDate());

@@ -98,8 +98,8 @@ aggregates:
         values:
           IncomingNotice:
             description: Incoming Notice
-          OutgingNotice:
-            description: Outging Notice
+          OutgoingNotice:
+            description: Outgoing Notice
       
       # ----------------------------
       # 通知单操作

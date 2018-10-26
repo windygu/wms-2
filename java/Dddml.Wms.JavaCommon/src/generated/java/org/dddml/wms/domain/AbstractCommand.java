@@ -40,7 +40,7 @@ public abstract class AbstractCommand implements Command {
         this.requesterId = requesterId;
     }
 
-    private java.util.Map<String, Object> commandContext;
+    private java.util.Map<String, Object> commandContext = new java.util.HashMap<>();
 
     public java.util.Map<String, Object> getCommandContext() {
         return commandContext;

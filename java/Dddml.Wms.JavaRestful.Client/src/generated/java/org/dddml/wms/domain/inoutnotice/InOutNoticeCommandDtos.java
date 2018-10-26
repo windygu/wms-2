@@ -16,19 +16,6 @@ public class InOutNoticeCommandDtos
         }
 
         /**
-         * Value
-         */
-        private String value;
-
-        public String getValue() {
-            return this.value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-
-        /**
          * In Out Notice Id
          */
         private String inOutNoticeId;
@@ -39,6 +26,19 @@ public class InOutNoticeCommandDtos
 
         public void setInOutNoticeId(String inOutNoticeId) {
             this.inOutNoticeId = inOutNoticeId;
+        }
+
+        /**
+         * Value
+         */
+        private String value;
+
+        public String getValue() {
+            return this.value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
 
         /**

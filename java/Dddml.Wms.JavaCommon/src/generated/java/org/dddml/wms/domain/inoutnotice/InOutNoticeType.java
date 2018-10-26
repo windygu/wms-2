@@ -13,7 +13,7 @@ public class InOutNoticeType
     public static final String INCOMING_NOTICE = "IncomingNotice";
 
 		
-    public static final String OUTGING_NOTICE = "OutgingNotice";
+    public static final String OUTGOING_NOTICE = "OutgoingNotice";
 
 }
 
