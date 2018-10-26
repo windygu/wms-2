@@ -2,6 +2,10 @@ package org.dddml.wms.domain.service;
 
 import org.dddml.wms.domain.Command;
 import org.dddml.wms.domain.PurchaseShipmentAction;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeAction;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeApplicationService;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeCommands;
+import org.dddml.wms.domain.inoutnotice.InOutNoticeState;
 import org.dddml.wms.domain.order.*;
 import org.dddml.wms.domain.ordershipment.AbstractOrderShipmentCommand;
 import org.dddml.wms.domain.ordershipment.OrderShipmentApplicationService;
@@ -42,6 +46,10 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
 
     private OrderShipmentApplicationService getOrderShipmentApplicationService() {
         return (OrderShipmentApplicationService) ApplicationContext.current.get("orderShipmentApplicationService");
+    }
+
+    private InOutNoticeApplicationService getInOutNoticeApplicationService() {
+        return (InOutNoticeApplicationService) ApplicationContext.current.get("inOutNoticeApplicationService");
     }
 
     private IdGenerator<Long, Object, Object> seqIdGenerator = new TableIdGenerator();
@@ -108,10 +116,11 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         }
         String shipmentTypeId = ShipmentTypeIds.PURCHASE_SHIPMENT;
         // //////////////////////////////////////////////
+        String primaryOrderId = c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId();
+        String primaryShipGroupSeqId = c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId();
+        // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
-                createShipment(c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId(),
-                        c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId(),
-                        shipmentId, shipmentTypeId);
+                createShipment(primaryOrderId, primaryShipGroupSeqId, shipmentId, shipmentTypeId);
         setShipmentProperties(createShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
                 c.getOriginContactMechId(), c.getDestinationContactMechId(),
                 c.getHandlingInstructions(), c.getEstimatedShipDate());
@@ -162,6 +171,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         String primaryOrderId = c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId();
         String primaryShipGroupSeqId = c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId();
+        updateInOutNoticeToApproved(primaryShipGroupSeqId, c, false);
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(primaryOrderId, primaryShipGroupSeqId ,shipmentId, shipmentTypeId); //shipmentStatusId,
@@ -179,6 +189,23 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         getShipmentApplicationService().when(createShipment);
         createOrderShipmentMap(orderShipmentMap, c.getRequesterId());
         return shipmentId;
+    }
+
+    private void updateInOutNoticeToApproved(String noticeId, Command cmd, boolean throwOnError) {
+        InOutNoticeState inOutNoticeState = getInOutNoticeApplicationService().get(noticeId);
+        if (inOutNoticeState == null) {
+            if (throwOnError) {
+                throw new NullPointerException("Null inOutNoticeState.");
+            }
+            return;
+        }
+        InOutNoticeCommands.InOutNoticeAction inOutNoticeAction = new InOutNoticeCommands.InOutNoticeAction();
+        inOutNoticeAction.setInOutNoticeId(noticeId);
+        inOutNoticeAction.setValue(InOutNoticeAction.APPROVE);
+        inOutNoticeAction.setVersion(inOutNoticeState.getVersion());
+        inOutNoticeAction.setCommandId(cmd.getCommandId());
+        inOutNoticeAction.setRequesterId(cmd.getRequesterId());
+        getInOutNoticeApplicationService().when(inOutNoticeAction);
     }
 
     @Override
