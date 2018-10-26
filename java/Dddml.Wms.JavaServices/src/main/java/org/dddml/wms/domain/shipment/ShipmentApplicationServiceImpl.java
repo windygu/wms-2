@@ -177,7 +177,12 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptStates, c.getDestinationLocatorId());
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
+        // //////////////////////////////////////////////////
         super.when(c);
+        // //////////////////////////////////////////////////
+        if (shipment.getPrimaryShipGroupSeqId() != null) {
+            updateInOutNoticeToCompleted(shipment.getPrimaryShipGroupSeqId(), c, false);
+        }
     }
 
     @Override

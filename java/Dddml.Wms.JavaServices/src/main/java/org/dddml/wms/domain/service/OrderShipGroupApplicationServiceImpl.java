@@ -116,6 +116,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         // //////////////////////////////////////////////
         String primaryOrderId = c.getOrderIdShipGroupSeqIdPairs().get(0).getOrderId();
         String primaryShipGroupSeqId = c.getOrderIdShipGroupSeqIdPairs().get(0).getShipGroupSeqId();
+        updateInOutNoticeToApproved(primaryShipGroupSeqId, c, false);
         // //////////////////////////////////////////////
         ShipmentCommand.CreateShipment createShipment =
                 createShipment(primaryOrderId, primaryShipGroupSeqId, shipmentId, shipmentTypeId);
