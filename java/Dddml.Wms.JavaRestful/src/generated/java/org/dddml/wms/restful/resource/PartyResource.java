@@ -85,8 +85,8 @@ public class PartyResource {
                     @RequestParam(value = "size", defaultValue = "20") Integer size,
                     @RequestParam(value = "filter", required = false) String filter) {
         try {
-            Integer firstResult = (page == null ? 0 : page) * size;
-            Integer maxResults = (size ==null ? 0 : size);
+            Integer firstResult = (page == null ? 0 : page) * (size == null ? 20 : size);
+            Integer maxResults = (size == null ? 20 : size);
             Iterable<PartyState> states = null; 
             CriterionDto criterion = null;
             if (!StringHelper.isNullOrEmpty(filter)) {
