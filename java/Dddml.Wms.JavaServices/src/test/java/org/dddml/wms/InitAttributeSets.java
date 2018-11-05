@@ -70,7 +70,15 @@ public class InitAttributeSets {
 
     static final String ATTR_PO_REFERENCE_ID = "POReference";
 
+    static final String ATTR_LINEAR_M_ID = "LinearM";
+
+    static final String ATTR_AREA_SQM_ID = "AreaSQM";
+
     public static final String PO_REFERENCE_FIELD_NAME = "_F_C20_3_";
+
+    public static final String LINEAR_M_NAME = "_F_I_0_";
+
+    public static final String AREA_SQM_NAME = "_F_I_2_";
 
     private static AttributeCommand.CreateAttribute createPOReferenceAttribute() {
         AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
@@ -81,6 +89,30 @@ public class InitAttributeSets {
         a.setAttributeValueType("String");
         a.setAttributeValueLength(20);
         a.setFieldName(PO_REFERENCE_FIELD_NAME);//占用一个扩展字段
+        return a;
+    }
+
+    private static AttributeCommand.CreateAttribute createLinearMeterAttribute() {
+        AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
+        a.setAttributeId(ATTR_LINEAR_M_ID);
+        a.setAttributeName("LinearM");
+        a.setActive(true);
+        a.setIsMandatory(false);
+        a.setAttributeValueType("Int32");
+        a.setAttributeValueLength(11);
+        a.setFieldName(LINEAR_M_NAME);//占用一个扩展字段 _F_I_0_
+        return a;
+    }
+
+    private static AttributeCommand.CreateAttribute createAreaSqmAttribute() {
+        AttributeCommand.CreateAttribute a = new AbstractAttributeCommand.SimpleCreateAttribute();
+        a.setAttributeId(ATTR_AREA_SQM_ID);
+        a.setAttributeName("AreaSQM");
+        a.setActive(true);
+        a.setIsMandatory(false);
+        a.setAttributeValueType("Int32");
+        a.setAttributeValueLength(11);
+        a.setFieldName(AREA_SQM_NAME);//占用一个扩展字段  _F_I_2_
         return a;
     }
 
@@ -140,6 +172,8 @@ public class InitAttributeSets {
         List<AttributeCommand.CreateAttribute> klbAttrs = createAttributes(KRAFT_LINERBOARD_ATTRS);
         //klbAttrs.add(createQualityStatusAttribute());
         klbAttrs.add(createPOReferenceAttribute());
+        klbAttrs.add(createLinearMeterAttribute());
+        klbAttrs.add(createAreaSqmAttribute());
         AttributeSetCommand.CreateAttributeSet klbAttrSet = createAttributeSet(KRAFT_LINERBOARD_ATTR_SET_ID,
                 klbAttrs.stream().map(a -> a.getAttributeId()).toArray(String[]::new));
         save(klbAttrs, Collections.singletonList(klbAttrSet));
