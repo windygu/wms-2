@@ -26077,6 +26077,56 @@ types:
         type: number
         required: false
         description: 接收重量汇总
+  org.dddml.wms.query.dto.InventoryItemDto: 
+    displayName: 库存单元信息（货位-产品-属性集-数量）
+    type: object
+    description: 库存单元信息（货位-产品-属性集-数量）.
+    properties: 
+      productId: 
+        displayName: 产品 Id
+        type: string
+        required: false
+        description: 产品 Id.
+      locatorId: 
+        displayName: 货位 Id
+        type: string
+        required: false
+        description: 货位 Id.
+      attributeSetInstanceId: 
+        displayName: 属性集实例 Id
+        type: string
+        required: false
+        description: 属性集实例 Id.
+      serialNumber: 
+        displayName: 卷号
+        type: string
+        required: false
+        description: 卷号
+      lotId: 
+        displayName: 批次 Id
+        type: string
+        required: false
+        description: 批次 Id.
+      onHandQuantity: 
+        displayName: 在库数量
+        type: number
+        required: false
+        description: 在库数量
+      inTransitQuantity: 
+        displayName: 在途数量
+        type: number
+        required: false
+        description: 在途数量
+      occupiedQuantity: 
+        displayName: 占用数量
+        type: number
+        required: false
+        description: 占用数量
+      reservedQuantity: 
+        displayName: 保留数量
+        type: number
+        required: false
+        description: 保留数量
   org.dddml.wms.query.dto.SimilarStatementDto: 
     displayName: SimilarStatementDto
     type: object
@@ -26132,56 +26182,6 @@ types:
         type: datetime
         required: false
         description: 入库时间
-  org.dddml.wms.query.dto.InventoryItemDto: 
-    displayName: 库存单元信息（货位-产品-属性集-数量）
-    type: object
-    description: 库存单元信息（货位-产品-属性集-数量）.
-    properties: 
-      productId: 
-        displayName: 产品 Id
-        type: string
-        required: false
-        description: 产品 Id.
-      locatorId: 
-        displayName: 货位 Id
-        type: string
-        required: false
-        description: 货位 Id.
-      attributeSetInstanceId: 
-        displayName: 属性集实例 Id
-        type: string
-        required: false
-        description: 属性集实例 Id.
-      serialNumber: 
-        displayName: 卷号
-        type: string
-        required: false
-        description: 卷号
-      lotId: 
-        displayName: 批次 Id
-        type: string
-        required: false
-        description: 批次 Id.
-      onHandQuantity: 
-        displayName: 在库数量
-        type: number
-        required: false
-        description: 在库数量
-      inTransitQuantity: 
-        displayName: 在途数量
-        type: number
-        required: false
-        description: 在途数量
-      occupiedQuantity: 
-        displayName: 占用数量
-        type: number
-        required: false
-        description: 占用数量
-      reservedQuantity: 
-        displayName: 保留数量
-        type: number
-        required: false
-        description: 保留数量
   org.dddml.wms.query.dto.WarehouseProductDto: 
     displayName: 仓库-产品-数量
     type: object
@@ -57667,10 +57667,10 @@ types:
   /document: 
     displayName: DocumentController
     description: DocumentController
-    /receipt: 
+    /issuances: 
       get: 
-        displayName: getDocumentLineById
-        description: getDocumentLineById
+        displayName: getIssuancesLineById
+        description: getIssuancesLineById
         queryParameters: 
           shipmentId: 
             displayName: shipmentId
@@ -57687,10 +57687,29 @@ types:
             body: 
               application/json: 
                 type: org.dddml.wms.query.dto.DocumentDto.DocumentLine
-    /issuances: 
+    /movement: 
+      /{documentId}: 
+        uriParameters: 
+          documentId: 
+            type: string
+        get: 
+          displayName: getDocumentDtoByMovementId
+          description: getDocumentDtoByMovementId
+          headers: 
+            documentId: 
+              displayName: documentId
+              type: string
+              required: true
+              description: documentId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.query.dto.DocumentDto
+    /receipt: 
       get: 
-        displayName: getIssuancesLineById
-        description: getIssuancesLineById
+        displayName: getDocumentLineById
+        description: getDocumentLineById
         queryParameters: 
           shipmentId: 
             displayName: shipmentId
@@ -57715,25 +57734,6 @@ types:
         get: 
           displayName: getDocumentDtoByShipmentId
           description: getDocumentDtoByShipmentId
-          headers: 
-            documentId: 
-              displayName: documentId
-              type: string
-              required: true
-              description: documentId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.query.dto.DocumentDto
-    /movement: 
-      /{documentId}: 
-        uriParameters: 
-          documentId: 
-            type: string
-        get: 
-          displayName: getDocumentDtoByMovementId
-          description: getDocumentDtoByMovementId
           headers: 
             documentId: 
               displayName: documentId
@@ -57786,104 +57786,6 @@ types:
   /fuzzyQuery: 
     displayName: FuzzyQueryController
     description: FuzzyQueryController
-    /product: 
-      /{proId}: 
-        uriParameters: 
-          proId: 
-            type: string
-        get: 
-          displayName: getFuzzyQueryDtoByProId
-          description: getFuzzyQueryDtoByProId
-          headers: 
-            proId: 
-              displayName: proId
-              type: string
-              required: true
-              description: proId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: array
-                  items: 
-                    type: string
-
-    /shipment: 
-      /{shipmentId}: 
-        uriParameters: 
-          shipmentId: 
-            type: string
-        get: 
-          displayName: getFuzzyQueryDtoByShipmentId
-          description: getFuzzyQueryDtoByShipmentId
-          headers: 
-            shipmentId: 
-              displayName: shipmentId
-              type: string
-              required: true
-              description: shipmentId
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: array
-                  items: 
-                    type: string
-
-    /orderId: 
-      get: 
-        displayName: 通过通知单号  获取合同号
-        description: 通过通知单号  获取合同号
-        queryParameters: 
-          seqId: 
-            displayName: seqId
-            type: string
-            required: true
-            description: seqId
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: string
-
-    /serial: 
-      get: 
-        displayName: getAllSerialNumbers
-        description: getAllSerialNumbers
-        queryParameters: 
-          fileUrl: 
-            displayName: fileUrl
-            type: string
-            required: true
-            description: fileUrl
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: string
-
-    /allOrderGroup: 
-      get: 
-        displayName: getAllOrderGroup
-        description: getAllOrderGroup
-        queryParameters: 
-          type: 
-            displayName: type
-            type: string
-            required: true
-            description: type
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: string
-
     /noticeDocument: 
       /{noticeDocumentId}: 
         uriParameters: 
@@ -57912,9 +57814,143 @@ types:
                   items: 
                     type: string
 
+    /product: 
+      /{proId}: 
+        uriParameters: 
+          proId: 
+            type: string
+        get: 
+          displayName: getFuzzyQueryDtoByProId
+          description: getFuzzyQueryDtoByProId
+          headers: 
+            proId: 
+              displayName: proId
+              type: string
+              required: true
+              description: proId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: array
+                  items: 
+                    type: string
+
+    /serial: 
+      get: 
+        displayName: getAllSerialNumbers
+        description: getAllSerialNumbers
+        queryParameters: 
+          fileUrl: 
+            displayName: fileUrl
+            type: string
+            required: true
+            description: fileUrl
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: string
+
+    /orderId: 
+      get: 
+        displayName: 通过通知单号  获取合同号
+        description: 通过通知单号  获取合同号
+        queryParameters: 
+          seqId: 
+            displayName: seqId
+            type: string
+            required: true
+            description: seqId
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: string
+
+    /shipment: 
+      /{shipmentId}: 
+        uriParameters: 
+          shipmentId: 
+            type: string
+        get: 
+          displayName: getFuzzyQueryDtoByShipmentId
+          description: getFuzzyQueryDtoByShipmentId
+          headers: 
+            shipmentId: 
+              displayName: shipmentId
+              type: string
+              required: true
+              description: shipmentId
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: array
+                  items: 
+                    type: string
+
+    /allOrderGroup: 
+      get: 
+        displayName: getAllOrderGroup
+        description: getAllOrderGroup
+        queryParameters: 
+          type: 
+            displayName: type
+            type: string
+            required: true
+            description: type
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: string
+
   /inventoryItemQuery: 
     displayName: 库存单元查询。
     description: 库存单元查询。
+    /inventoryItemLots: 
+      get: 
+        displayName: 货位-产品-批次-数量查询
+        description: 货位-产品-批次-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemLotDto
+
+    /inventoryItems: 
+      get: 
+        displayName: 货位-产品-属性集-数量查询
+        description: 货位-产品-属性集-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemDto
+
+      /_xls: 
+        get: 
+          displayName: 货位-产品-属性集-数量查询
+          description: 货位-产品-属性集-数量查询
+          responses: 
+            200: 
+              body: 
+                application/vnd.ms-excel: 
+                  type: array
+                  items: 
+                    type: org.dddml.wms.query.dto.InventoryItemDto
+
     /all: 
       get: 
         displayName: getSimilarStatementDtoMap
@@ -57988,6 +58024,18 @@ types:
                   totalElements: 
                     type: number
                     required: false
+    /inventoryItemSerialNumbers: 
+      get: 
+        displayName: 货位-产品-序列号-数量查询
+        description: 货位-产品-序列号-数量查询
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: array
+                items: 
+                  type: org.dddml.wms.query.dto.InventoryItemSerialNumberDto
+
     /inventoryItemProducts: 
       get: 
         displayName: 货位-产品-数量查询
@@ -58012,18 +58060,6 @@ types:
                 items: 
                   type: org.dddml.wms.query.dto.WarehouseSerialNumberDto
 
-    /inventoryItemLots: 
-      get: 
-        displayName: 货位-产品-批次-数量查询
-        description: 货位-产品-批次-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemLotDto
-
     /timePointWarehouseProducts: 
       get: 
         displayName: （截至时间点的）仓库-产品-数量查询
@@ -58041,42 +58077,6 @@ types:
                 type: array
                 items: 
                   type: org.dddml.wms.query.dto.TimePointWarehouseProductDto
-
-    /inventoryItemSerialNumbers: 
-      get: 
-        displayName: 货位-产品-序列号-数量查询
-        description: 货位-产品-序列号-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemSerialNumberDto
-
-    /inventoryItems: 
-      get: 
-        displayName: 货位-产品-属性集-数量查询
-        description: 货位-产品-属性集-数量查询
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: array
-                items: 
-                  type: org.dddml.wms.query.dto.InventoryItemDto
-
-      /_xls: 
-        get: 
-          displayName: 货位-产品-属性集-数量查询
-          description: 货位-产品-属性集-数量查询
-          responses: 
-            200: 
-              body: 
-                application/vnd.ms-excel: 
-                  type: array
-                  items: 
-                    type: org.dddml.wms.query.dto.InventoryItemDto
 
     /warehouseProducts: 
       get: 
@@ -58139,25 +58139,6 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.query.dto.MandatoryAttributeDto.MandatoryAttributeSimpleDto
-    /issuance: 
-      /{id}: 
-        uriParameters: 
-          id: 
-            type: string
-        get: 
-          displayName: getIssuanceAttributeByShipmentId
-          description: getIssuanceAttributeByShipmentId
-          headers: 
-            id: 
-              displayName: id
-              type: string
-              required: true
-              description: id
-          responses: 
-            200: 
-              body: 
-                application/json: 
-                  type: org.dddml.wms.query.dto.MandatoryAttributeDto.MandatoryAttributeSimpleDto
     /shipment: 
       /{id}: 
         uriParameters: 
@@ -58196,27 +58177,28 @@ types:
               body: 
                 application/json: 
                   type: org.dddml.wms.query.dto.MandatoryAttributeDto.MandatoryAttributeSimpleDto
+    /issuance: 
+      /{id}: 
+        uriParameters: 
+          id: 
+            type: string
+        get: 
+          displayName: getIssuanceAttributeByShipmentId
+          description: getIssuanceAttributeByShipmentId
+          headers: 
+            id: 
+              displayName: id
+              type: string
+              required: true
+              description: id
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  type: org.dddml.wms.query.dto.MandatoryAttributeDto.MandatoryAttributeSimpleDto
   /noticeDocument: 
     displayName: NoticeDocumentController
     description: NoticeDocumentController
-    /{id}: 
-      uriParameters: 
-        id: 
-          type: string
-      get: 
-        displayName: getNoticeDocumentDtoById
-        description: getNoticeDocumentDtoById
-        headers: 
-          id: 
-            displayName: id
-            type: string
-            required: true
-            description: id
-        responses: 
-          200: 
-            body: 
-              application/json: 
-                type: org.dddml.wms.query.dto.NoticeDocumentDto
     /getVersion: 
       /{id}: 
         uriParameters: 
@@ -58236,6 +58218,24 @@ types:
               body: 
                 application/json: 
                   type: number
+    /{id}: 
+      uriParameters: 
+        id: 
+          type: string
+      get: 
+        displayName: getNoticeDocumentDtoById
+        description: getNoticeDocumentDtoById
+        headers: 
+          id: 
+            displayName: id
+            type: string
+            required: true
+            description: id
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                type: org.dddml.wms.query.dto.NoticeDocumentDto
     /delivery: 
       get: 
         displayName: getDeliveryInformationDtoById
