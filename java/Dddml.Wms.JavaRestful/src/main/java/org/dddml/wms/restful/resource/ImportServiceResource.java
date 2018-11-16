@@ -150,6 +150,20 @@ public class ImportServiceResource {
          */
         private String fileUrl;
 
+
+        /**
+         * Destination Facility Id.
+         */
+        private String destinationFacilityId;
+
+        public String getDestinationFacilityId() {
+            return destinationFacilityId;
+        }
+
+        public void setDestinationFacilityId(String destinationFacilityId) {
+            this.destinationFacilityId = destinationFacilityId;
+        }
+
         public String getFileUrl() {
             return fileUrl;
         }
@@ -824,6 +838,7 @@ public class ImportServiceResource {
                 shipmentImport.setEstimatedArrivalDate(shipmentHeader.getEstimatedArrivalDate());
                 //shipmentImport.setShipmentTypeId(ShipmentTypeIds.INCOMING_SHIPMENT);
                 shipmentImport.setShipmentTypeId(ShipmentTypeIds.PURCHASE_SHIPMENT);//todo 先把导入装运单都当作采购装运
+                shipmentImport.setDestinationFacilityId(shipmentHeader.getDestinationFacilityId());
                 // -------------------------------------------------------------
                 shipmentImport.setShipmentItems(new ArrayList<>());
                 shipmentMap.put(shipmentId, shipmentImport);
