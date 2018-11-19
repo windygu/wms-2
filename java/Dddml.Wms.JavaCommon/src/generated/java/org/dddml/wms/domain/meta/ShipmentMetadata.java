@@ -54,6 +54,9 @@ public final class ShipmentMetadata {
             "partyIdFrom",
             "additionalShippingCharge",
             "addtlShippingChargeDesc",
+            "_F_B_1_",
+            "_F_B_2_",
+            "_F_B_3_",
             "version",
             "createdBy",
             "createdAt",
@@ -100,6 +103,9 @@ public final class ShipmentMetadata {
             "String",
             "java.math.BigDecimal",
             "String",
+            "Boolean",
+            "Boolean",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -193,6 +199,12 @@ public final class ShipmentMetadata {
         aliasMap.put("AdditionalShippingCharge", "additionalShippingCharge");
         aliasMap.put("addtlShippingChargeDesc", "addtlShippingChargeDesc");
         aliasMap.put("AddtlShippingChargeDesc", "addtlShippingChargeDesc");
+        aliasMap.put("_F_B_1_", "_F_B_1_");
+        aliasMap.put("_F_B_1_", "_F_B_1_");
+        aliasMap.put("_F_B_2_", "_F_B_2_");
+        aliasMap.put("_F_B_2_", "_F_B_2_");
+        aliasMap.put("_F_B_3_", "_F_B_3_");
+        aliasMap.put("_F_B_3_", "_F_B_3_");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

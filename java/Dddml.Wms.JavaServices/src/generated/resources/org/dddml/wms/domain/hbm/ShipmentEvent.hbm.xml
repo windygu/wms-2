@@ -59,6 +59,9 @@
 	<property name="partyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
+	<property name="_F_B_1_" ></property>
+	<property name="_F_B_2_" ></property>
+	<property name="_F_B_3_" ></property>
 	<property name="active" ></property>
 
     <subclass name="AbstractShipmentEvent$SimpleShipmentStateCreated" discriminator-value="Created">
@@ -136,6 +139,12 @@
         <property name="isPropertyAdditionalShippingChargeRemoved" column="IsPropertyAdditionalShippingChargeRemoved"/>
 
         <property name="isPropertyAddtlShippingChargeDescRemoved" column="IsPropertyAddtlShippingChargeDescRemoved"/>
+
+        <property name="isProperty_F_B_1_Removed" column="IsProperty_F_B_1_Removed"/>
+
+        <property name="isProperty_F_B_2_Removed" column="IsProperty_F_B_2_Removed"/>
+
+        <property name="isProperty_F_B_3_Removed" column="IsProperty_F_B_3_Removed"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

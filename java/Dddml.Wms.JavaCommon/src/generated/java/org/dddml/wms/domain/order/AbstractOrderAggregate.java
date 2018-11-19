@@ -76,6 +76,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setRemainingSubTotal(c.getRemainingSubTotal());
         e.setGrandTotal(c.getGrandTotal());
         e.setInvoicePerShipment(c.getInvoicePerShipment());
+        e.set_F_B_1_(c.get_F_B_1_());
+        e.set_F_B_2_(c.get_F_B_2_());
+        e.set_F_B_3_(c.get_F_B_3_());
         e.setActive(c.getActive());
         ((AbstractOrderEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());
@@ -132,6 +135,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setRemainingSubTotal(c.getRemainingSubTotal());
         e.setGrandTotal(c.getGrandTotal());
         e.setInvoicePerShipment(c.getInvoicePerShipment());
+        e.set_F_B_1_(c.get_F_B_1_());
+        e.set_F_B_2_(c.get_F_B_2_());
+        e.set_F_B_3_(c.get_F_B_3_());
         e.setActive(c.getActive());
         e.setIsPropertyOrderTypeIdRemoved(c.getIsPropertyOrderTypeIdRemoved());
         e.setIsPropertyOrderNameRemoved(c.getIsPropertyOrderNameRemoved());
@@ -157,6 +163,9 @@ public abstract class AbstractOrderAggregate extends AbstractAggregate implement
         e.setIsPropertyRemainingSubTotalRemoved(c.getIsPropertyRemainingSubTotalRemoved());
         e.setIsPropertyGrandTotalRemoved(c.getIsPropertyGrandTotalRemoved());
         e.setIsPropertyInvoicePerShipmentRemoved(c.getIsPropertyInvoicePerShipmentRemoved());
+        e.setIsProperty_F_B_1_Removed(c.getIsProperty_F_B_1_Removed());
+        e.setIsProperty_F_B_2_Removed(c.getIsProperty_F_B_2_Removed());
+        e.setIsProperty_F_B_3_Removed(c.getIsProperty_F_B_3_Removed());
         e.setIsPropertyActiveRemoved(c.getIsPropertyActiveRemoved());
         ((AbstractOrderEvent)e).setCommandId(c.getCommandId());
         e.setCreatedBy(c.getRequesterId());

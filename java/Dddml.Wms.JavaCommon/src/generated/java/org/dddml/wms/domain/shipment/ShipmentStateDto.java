@@ -441,6 +441,42 @@ public class ShipmentStateDto
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    private Boolean _F_B_1_;
+
+    public Boolean get_F_B_1_()
+    {
+        return this._F_B_1_;
+    }
+
+    public void set_F_B_1_(Boolean _F_B_1_)
+    {
+        this._F_B_1_ = _F_B_1_;
+    }
+
+    private Boolean _F_B_2_;
+
+    public Boolean get_F_B_2_()
+    {
+        return this._F_B_2_;
+    }
+
+    public void set_F_B_2_(Boolean _F_B_2_)
+    {
+        this._F_B_2_ = _F_B_2_;
+    }
+
+    private Boolean _F_B_3_;
+
+    public Boolean get_F_B_3_()
+    {
+        return this._F_B_3_;
+    }
+
+    public void set_F_B_3_(Boolean _F_B_3_)
+    {
+        this._F_B_3_ = _F_B_3_;
+    }
+
     private Boolean active;
 
     public Boolean getActive()
@@ -697,6 +733,15 @@ public class ShipmentStateDto
             }
             if (returnedFieldsContains("AddtlShippingChargeDesc")) {
                 dto.setAddtlShippingChargeDesc(state.getAddtlShippingChargeDesc());
+            }
+            if (returnedFieldsContains("_F_B_1_")) {
+                dto.set_F_B_1_(state.get_F_B_1_());
+            }
+            if (returnedFieldsContains("_F_B_2_")) {
+                dto.set_F_B_2_(state.get_F_B_2_());
+            }
+            if (returnedFieldsContains("_F_B_3_")) {
+                dto.set_F_B_3_(state.get_F_B_3_());
             }
             if (returnedFieldsContains("Active")) {
                 dto.setActive(state.getActive());

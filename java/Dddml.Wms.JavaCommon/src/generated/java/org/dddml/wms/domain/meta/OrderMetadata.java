@@ -43,6 +43,9 @@ public final class OrderMetadata {
             "remainingSubTotal",
             "grandTotal",
             "invoicePerShipment",
+            "_F_B_1_",
+            "_F_B_2_",
+            "_F_B_3_",
             "version",
             "createdBy",
             "createdAt",
@@ -78,6 +81,9 @@ public final class OrderMetadata {
             "java.math.BigDecimal",
             "java.math.BigDecimal",
             "String",
+            "Boolean",
+            "Boolean",
+            "Boolean",
             "Long",
             "String",
             "Date",
@@ -149,6 +155,12 @@ public final class OrderMetadata {
         aliasMap.put("GrandTotal", "grandTotal");
         aliasMap.put("invoicePerShipment", "invoicePerShipment");
         aliasMap.put("InvoicePerShipment", "invoicePerShipment");
+        aliasMap.put("_F_B_1_", "_F_B_1_");
+        aliasMap.put("_F_B_1_", "_F_B_1_");
+        aliasMap.put("_F_B_2_", "_F_B_2_");
+        aliasMap.put("_F_B_2_", "_F_B_2_");
+        aliasMap.put("_F_B_3_", "_F_B_3_");
+        aliasMap.put("_F_B_3_", "_F_B_3_");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

@@ -516,6 +516,51 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * _ F_ B_1_
+     */
+    private Boolean _F_B_1_;
+
+    public Boolean get_F_B_1_()
+    {
+        return this._F_B_1_;
+    }
+
+    public void set_F_B_1_(Boolean _F_B_1_)
+    {
+        this._F_B_1_ = _F_B_1_;
+    }
+
+    /**
+     * _ F_ B_2_
+     */
+    private Boolean _F_B_2_;
+
+    public Boolean get_F_B_2_()
+    {
+        return this._F_B_2_;
+    }
+
+    public void set_F_B_2_(Boolean _F_B_2_)
+    {
+        this._F_B_2_ = _F_B_2_;
+    }
+
+    /**
+     * _ F_ B_3_
+     */
+    private Boolean _F_B_3_;
+
+    public Boolean get_F_B_3_()
+    {
+        return this._F_B_3_;
+    }
+
+    public void set_F_B_3_(Boolean _F_B_3_)
+    {
+        this._F_B_3_ = _F_B_3_;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -984,6 +1029,42 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed)
     {
         this.isPropertyAddtlShippingChargeDescRemoved = removed;
+    }
+
+    private Boolean isProperty_F_B_1_Removed;
+
+    public Boolean getIsProperty_F_B_1_Removed()
+    {
+        return this.isProperty_F_B_1_Removed;
+    }
+
+    public void setIsProperty_F_B_1_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_1_Removed = removed;
+    }
+
+    private Boolean isProperty_F_B_2_Removed;
+
+    public Boolean getIsProperty_F_B_2_Removed()
+    {
+        return this.isProperty_F_B_2_Removed;
+    }
+
+    public void setIsProperty_F_B_2_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_2_Removed = removed;
+    }
+
+    private Boolean isProperty_F_B_3_Removed;
+
+    public Boolean getIsProperty_F_B_3_Removed()
+    {
+        return this.isProperty_F_B_3_Removed;
+    }
+
+    public void setIsProperty_F_B_3_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_3_Removed = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

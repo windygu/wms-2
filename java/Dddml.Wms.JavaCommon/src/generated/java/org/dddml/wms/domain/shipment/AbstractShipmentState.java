@@ -441,6 +441,42 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
+    private Boolean _F_B_1_;
+
+    public Boolean get_F_B_1_()
+    {
+        return this._F_B_1_;
+    }
+
+    public void set_F_B_1_(Boolean _F_B_1_)
+    {
+        this._F_B_1_ = _F_B_1_;
+    }
+
+    private Boolean _F_B_2_;
+
+    public Boolean get_F_B_2_()
+    {
+        return this._F_B_2_;
+    }
+
+    public void set_F_B_2_(Boolean _F_B_2_)
+    {
+        this._F_B_2_ = _F_B_2_;
+    }
+
+    private Boolean _F_B_3_;
+
+    public Boolean get_F_B_3_()
+    {
+        return this._F_B_3_;
+    }
+
+    public void set_F_B_3_(Boolean _F_B_3_)
+    {
+        this._F_B_3_ = _F_B_3_;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -672,6 +708,9 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.setPartyIdFrom(e.getPartyIdFrom());
         this.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        this.set_F_B_1_(e.get_F_B_1_());
+        this.set_F_B_2_(e.get_F_B_2_());
+        this.set_F_B_3_(e.get_F_B_3_());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -734,6 +773,9 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.setPartyIdFrom(s.getPartyIdFrom());
         this.setAdditionalShippingCharge(s.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(s.getAddtlShippingChargeDesc());
+        this.set_F_B_1_(s.get_F_B_1_());
+        this.set_F_B_2_(s.get_F_B_2_());
+        this.set_F_B_3_(s.get_F_B_3_());
         this.setActive(s.getActive());
 
         for (ShipmentImageState ss : s.getShipmentImages().getLoadedStates()) {
@@ -1161,6 +1203,39 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         else
         {
             this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
+        }
+        if (e.get_F_B_1_() == null)
+        {
+            if (e.getIsProperty_F_B_1_Removed() != null && e.getIsProperty_F_B_1_Removed())
+            {
+                this.set_F_B_1_(null);
+            }
+        }
+        else
+        {
+            this.set_F_B_1_(e.get_F_B_1_());
+        }
+        if (e.get_F_B_2_() == null)
+        {
+            if (e.getIsProperty_F_B_2_Removed() != null && e.getIsProperty_F_B_2_Removed())
+            {
+                this.set_F_B_2_(null);
+            }
+        }
+        else
+        {
+            this.set_F_B_2_(e.get_F_B_2_());
+        }
+        if (e.get_F_B_3_() == null)
+        {
+            if (e.getIsProperty_F_B_3_Removed() != null && e.getIsProperty_F_B_3_Removed())
+            {
+                this.set_F_B_3_(null);
+            }
+        }
+        else
+        {
+            this.set_F_B_3_(e.get_F_B_3_());
         }
         if (e.getActive() == null)
         {

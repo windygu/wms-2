@@ -516,6 +516,51 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * _ F_ B_1_
+     */
+    private Boolean _F_B_1_;
+
+    public Boolean get_F_B_1_()
+    {
+        return this._F_B_1_;
+    }
+
+    public void set_F_B_1_(Boolean _F_B_1_)
+    {
+        this._F_B_1_ = _F_B_1_;
+    }
+
+    /**
+     * _ F_ B_2_
+     */
+    private Boolean _F_B_2_;
+
+    public Boolean get_F_B_2_()
+    {
+        return this._F_B_2_;
+    }
+
+    public void set_F_B_2_(Boolean _F_B_2_)
+    {
+        this._F_B_2_ = _F_B_2_;
+    }
+
+    /**
+     * _ F_ B_3_
+     */
+    private Boolean _F_B_3_;
+
+    public Boolean get_F_B_3_()
+    {
+        return this._F_B_3_;
+    }
+
+    public void set_F_B_3_(Boolean _F_B_3_)
+    {
+        this._F_B_3_ = _F_B_3_;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -986,6 +1031,42 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         this.isPropertyAddtlShippingChargeDescRemoved = removed;
     }
 
+    private Boolean isProperty_F_B_1_Removed;
+
+    public Boolean getIsProperty_F_B_1_Removed()
+    {
+        return this.isProperty_F_B_1_Removed;
+    }
+
+    public void setIsProperty_F_B_1_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_1_Removed = removed;
+    }
+
+    private Boolean isProperty_F_B_2_Removed;
+
+    public Boolean getIsProperty_F_B_2_Removed()
+    {
+        return this.isProperty_F_B_2_Removed;
+    }
+
+    public void setIsProperty_F_B_2_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_2_Removed = removed;
+    }
+
+    private Boolean isProperty_F_B_3_Removed;
+
+    public Boolean getIsProperty_F_B_3_Removed()
+    {
+        return this.isProperty_F_B_3_Removed;
+    }
+
+    public void setIsProperty_F_B_3_Removed(Boolean removed)
+    {
+        this.isProperty_F_B_3_Removed = removed;
+    }
+
     private Boolean isPropertyActiveRemoved;
 
     public Boolean getIsPropertyActiveRemoved()
@@ -1035,6 +1116,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setPartyIdFrom(this.getPartyIdFrom());
         command.setAdditionalShippingCharge(this.getAdditionalShippingCharge());
         command.setAddtlShippingChargeDesc(this.getAddtlShippingChargeDesc());
+        command.set_F_B_1_(this.get_F_B_1_());
+        command.set_F_B_2_(this.get_F_B_2_());
+        command.set_F_B_3_(this.get_F_B_3_());
         command.setActive(this.getActive());
     }
 
@@ -1137,6 +1221,9 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
         command.setIsPropertyPartyIdFromRemoved(this.getIsPropertyPartyIdFromRemoved());
         command.setIsPropertyAdditionalShippingChargeRemoved(this.getIsPropertyAdditionalShippingChargeRemoved());
         command.setIsPropertyAddtlShippingChargeDescRemoved(this.getIsPropertyAddtlShippingChargeDescRemoved());
+        command.setIsProperty_F_B_1_Removed(this.getIsProperty_F_B_1_Removed());
+        command.setIsProperty_F_B_2_Removed(this.getIsProperty_F_B_2_Removed());
+        command.setIsProperty_F_B_3_Removed(this.getIsProperty_F_B_3_Removed());
         command.setIsPropertyActiveRemoved(this.getIsPropertyActiveRemoved());
     }
 

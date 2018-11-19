@@ -82,6 +82,15 @@ aggregates:
       
       OrderShipGroups:
         itemType: OrderShipGroup
+        
+      # ------------------------------
+      _F_B_1_:
+        type: bool?
+      _F_B_2_:
+        type: bool?
+      _F_B_3_:
+        type: bool?
+      # ------------------------------
       
     references: {}
     

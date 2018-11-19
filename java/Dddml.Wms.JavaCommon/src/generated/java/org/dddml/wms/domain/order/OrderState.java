@@ -63,6 +63,12 @@ public interface OrderState
 
     String getInvoicePerShipment();
 
+    Boolean get_F_B_1_();
+
+    Boolean get_F_B_2_();
+
+    Boolean get_F_B_3_();
+
     Long getVersion();
 
     String getCreatedBy();
@@ -131,6 +137,12 @@ public interface OrderState
         void setGrandTotal(java.math.BigDecimal grandTotal);
 
         void setInvoicePerShipment(String invoicePerShipment);
+
+        void set_F_B_1_(Boolean _F_B_1_);
+
+        void set_F_B_2_(Boolean _F_B_2_);
+
+        void set_F_B_3_(Boolean _F_B_3_);
 
         void setVersion(Long version);
 

@@ -48,6 +48,9 @@
 	<property name="remainingSubTotal" ><column name="RemainingSubTotal" sql-type="DECIMAL(18,2)" /></property>
 	<property name="grandTotal" ><column name="GrandTotal" sql-type="DECIMAL(18,2)" /></property>
 	<property name="invoicePerShipment" ><column name="InvoicePerShipment" sql-type="CHAR(1)" /></property>
+	<property name="_F_B_1_" ></property>
+	<property name="_F_B_2_" ></property>
+	<property name="_F_B_3_" ></property>
 	<property name="active" ></property>
 
     <subclass name="AbstractOrderEvent$SimpleOrderStateCreated" discriminator-value="Created">
@@ -103,6 +106,12 @@
         <property name="isPropertyGrandTotalRemoved" column="IsPropertyGrandTotalRemoved"/>
 
         <property name="isPropertyInvoicePerShipmentRemoved" column="IsPropertyInvoicePerShipmentRemoved"/>
+
+        <property name="isProperty_F_B_1_Removed" column="IsProperty_F_B_1_Removed"/>
+
+        <property name="isProperty_F_B_2_Removed" column="IsProperty_F_B_2_Removed"/>
+
+        <property name="isProperty_F_B_3_Removed" column="IsProperty_F_B_3_Removed"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

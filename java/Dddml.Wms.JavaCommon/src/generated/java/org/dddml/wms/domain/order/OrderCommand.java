@@ -133,6 +133,18 @@ public interface OrderCommand extends Command
 
         void setInvoicePerShipment(String invoicePerShipment);
 
+        Boolean get_F_B_1_();
+
+        void set_F_B_1_(Boolean _F_B_1_);
+
+        Boolean get_F_B_2_();
+
+        void set_F_B_2_(Boolean _F_B_2_);
+
+        Boolean get_F_B_3_();
+
+        void set_F_B_3_(Boolean _F_B_3_);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -252,6 +264,18 @@ public interface OrderCommand extends Command
         Boolean getIsPropertyInvoicePerShipmentRemoved();
 
         void setIsPropertyInvoicePerShipmentRemoved(Boolean removed);
+
+        Boolean getIsProperty_F_B_1_Removed();
+
+        void setIsProperty_F_B_1_Removed(Boolean removed);
+
+        Boolean getIsProperty_F_B_2_Removed();
+
+        void setIsProperty_F_B_2_Removed(Boolean removed);
+
+        Boolean getIsProperty_F_B_3_Removed();
+
+        void setIsProperty_F_B_3_Removed(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 
