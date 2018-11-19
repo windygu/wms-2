@@ -346,6 +346,42 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         this._F_B_3_ = _F_B_3_;
     }
 
+    private String _F_C10_1_;
+
+    public String get_F_C10_1_()
+    {
+        return this._F_C10_1_;
+    }
+
+    public void set_F_C10_1_(String _F_C10_1_)
+    {
+        this._F_C10_1_ = _F_C10_1_;
+    }
+
+    private String _F_C10_2_;
+
+    public String get_F_C10_2_()
+    {
+        return this._F_C10_2_;
+    }
+
+    public void set_F_C10_2_(String _F_C10_2_)
+    {
+        this._F_C10_2_ = _F_C10_2_;
+    }
+
+    private String _F_C10_3_;
+
+    public String get_F_C10_3_()
+    {
+        return this._F_C10_3_;
+    }
+
+    public void set_F_C10_3_(String _F_C10_3_)
+    {
+        this._F_C10_3_ = _F_C10_3_;
+    }
+
     private Long version;
 
     public Long getVersion()
@@ -556,6 +592,9 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         this.set_F_B_1_(e.get_F_B_1_());
         this.set_F_B_2_(e.get_F_B_2_());
         this.set_F_B_3_(e.get_F_B_3_());
+        this.set_F_C10_1_(e.get_F_C10_1_());
+        this.set_F_C10_2_(e.get_F_C10_2_());
+        this.set_F_C10_3_(e.get_F_C10_3_());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -606,6 +645,9 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         this.set_F_B_1_(s.get_F_B_1_());
         this.set_F_B_2_(s.get_F_B_2_());
         this.set_F_B_3_(s.get_F_B_3_());
+        this.set_F_C10_1_(s.get_F_C10_1_());
+        this.set_F_C10_2_(s.get_F_C10_2_());
+        this.set_F_C10_3_(s.get_F_C10_3_());
         this.setActive(s.getActive());
 
         for (OrderRoleState ss : s.getOrderRoles().getLoadedStates()) {
@@ -936,6 +978,39 @@ public abstract class AbstractOrderState implements OrderState.SqlOrderState, Sa
         else
         {
             this.set_F_B_3_(e.get_F_B_3_());
+        }
+        if (e.get_F_C10_1_() == null)
+        {
+            if (e.getIsProperty_F_C10_1_Removed() != null && e.getIsProperty_F_C10_1_Removed())
+            {
+                this.set_F_C10_1_(null);
+            }
+        }
+        else
+        {
+            this.set_F_C10_1_(e.get_F_C10_1_());
+        }
+        if (e.get_F_C10_2_() == null)
+        {
+            if (e.getIsProperty_F_C10_2_Removed() != null && e.getIsProperty_F_C10_2_Removed())
+            {
+                this.set_F_C10_2_(null);
+            }
+        }
+        else
+        {
+            this.set_F_C10_2_(e.get_F_C10_2_());
+        }
+        if (e.get_F_C10_3_() == null)
+        {
+            if (e.getIsProperty_F_C10_3_Removed() != null && e.getIsProperty_F_C10_3_Removed())
+            {
+                this.set_F_C10_3_(null);
+            }
+        }
+        else
+        {
+            this.set_F_C10_3_(e.get_F_C10_3_());
         }
         if (e.getActive() == null)
         {

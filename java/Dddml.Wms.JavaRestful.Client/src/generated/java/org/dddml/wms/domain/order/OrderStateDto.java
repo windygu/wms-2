@@ -346,6 +346,42 @@ public class OrderStateDto
         this._F_B_3_ = _F_B_3_;
     }
 
+    private String _F_C10_1_;
+
+    public String get_F_C10_1_()
+    {
+        return this._F_C10_1_;
+    }
+
+    public void set_F_C10_1_(String _F_C10_1_)
+    {
+        this._F_C10_1_ = _F_C10_1_;
+    }
+
+    private String _F_C10_2_;
+
+    public String get_F_C10_2_()
+    {
+        return this._F_C10_2_;
+    }
+
+    public void set_F_C10_2_(String _F_C10_2_)
+    {
+        this._F_C10_2_ = _F_C10_2_;
+    }
+
+    private String _F_C10_3_;
+
+    public String get_F_C10_3_()
+    {
+        return this._F_C10_3_;
+    }
+
+    public void set_F_C10_3_(String _F_C10_3_)
+    {
+        this._F_C10_3_ = _F_C10_3_;
+    }
+
     private Boolean active;
 
     public Boolean getActive()

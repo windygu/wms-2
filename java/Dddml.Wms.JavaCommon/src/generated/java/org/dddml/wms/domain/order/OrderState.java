@@ -69,6 +69,12 @@ public interface OrderState
 
     Boolean get_F_B_3_();
 
+    String get_F_C10_1_();
+
+    String get_F_C10_2_();
+
+    String get_F_C10_3_();
+
     Long getVersion();
 
     String getCreatedBy();
@@ -143,6 +149,12 @@ public interface OrderState
         void set_F_B_2_(Boolean _F_B_2_);
 
         void set_F_B_3_(Boolean _F_B_3_);
+
+        void set_F_C10_1_(String _F_C10_1_);
+
+        void set_F_C10_2_(String _F_C10_2_);
+
+        void set_F_C10_3_(String _F_C10_3_);
 
         void setVersion(Long version);
 

@@ -57,6 +57,9 @@ public final class ShipmentMetadata {
             "_F_B_1_",
             "_F_B_2_",
             "_F_B_3_",
+            "_F_C10_1_",
+            "_F_C10_2_",
+            "_F_C10_3_",
             "version",
             "createdBy",
             "createdAt",
@@ -106,6 +109,9 @@ public final class ShipmentMetadata {
             "Boolean",
             "Boolean",
             "Boolean",
+            "String",
+            "String",
+            "String",
             "Long",
             "String",
             "Date",
@@ -205,6 +211,12 @@ public final class ShipmentMetadata {
         aliasMap.put("_F_B_2_", "_F_B_2_");
         aliasMap.put("_F_B_3_", "_F_B_3_");
         aliasMap.put("_F_B_3_", "_F_B_3_");
+        aliasMap.put("_F_C10_1_", "_F_C10_1_");
+        aliasMap.put("_F_C10_1_", "_F_C10_1_");
+        aliasMap.put("_F_C10_2_", "_F_C10_2_");
+        aliasMap.put("_F_C10_2_", "_F_C10_2_");
+        aliasMap.put("_F_C10_3_", "_F_C10_3_");
+        aliasMap.put("_F_C10_3_", "_F_C10_3_");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

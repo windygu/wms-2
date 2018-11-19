@@ -62,6 +62,9 @@
 	<property name="_F_B_1_" ></property>
 	<property name="_F_B_2_" ></property>
 	<property name="_F_B_3_" ></property>
+	<property name="_F_C10_1_" ><column name="_F_C10_1_" length="10" /></property>
+	<property name="_F_C10_2_" ><column name="_F_C10_2_" length="10" /></property>
+	<property name="_F_C10_3_" ><column name="_F_C10_3_" length="10" /></property>
 	<property name="active" ></property>
 
     <subclass name="AbstractShipmentEvent$SimpleShipmentStateCreated" discriminator-value="Created">
@@ -145,6 +148,12 @@
         <property name="isProperty_F_B_2_Removed" column="IsProperty_F_B_2_Removed"/>
 
         <property name="isProperty_F_B_3_Removed" column="IsProperty_F_B_3_Removed"/>
+
+        <property name="isProperty_F_C10_1_Removed" column="IsProperty_F_C10_1_Removed"/>
+
+        <property name="isProperty_F_C10_2_Removed" column="IsProperty_F_C10_2_Removed"/>
+
+        <property name="isProperty_F_C10_3_Removed" column="IsProperty_F_C10_3_Removed"/>
 
         <property name="isPropertyActiveRemoved" column="IsPropertyActiveRemoved"/>
 

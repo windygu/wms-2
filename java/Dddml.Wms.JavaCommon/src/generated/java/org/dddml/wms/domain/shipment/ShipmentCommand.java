@@ -184,6 +184,18 @@ public interface ShipmentCommand extends Command
 
         void set_F_B_3_(Boolean _F_B_3_);
 
+        String get_F_C10_1_();
+
+        void set_F_C10_1_(String _F_C10_1_);
+
+        String get_F_C10_2_();
+
+        void set_F_C10_2_(String _F_C10_2_);
+
+        String get_F_C10_3_();
+
+        void set_F_C10_3_(String _F_C10_3_);
+
         Boolean getActive();
 
         void setActive(Boolean active);
@@ -367,6 +379,18 @@ public interface ShipmentCommand extends Command
         Boolean getIsProperty_F_B_3_Removed();
 
         void setIsProperty_F_B_3_Removed(Boolean removed);
+
+        Boolean getIsProperty_F_C10_1_Removed();
+
+        void setIsProperty_F_C10_1_Removed(Boolean removed);
+
+        Boolean getIsProperty_F_C10_2_Removed();
+
+        void setIsProperty_F_C10_2_Removed(Boolean removed);
+
+        Boolean getIsProperty_F_C10_3_Removed();
+
+        void setIsProperty_F_C10_3_Removed(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

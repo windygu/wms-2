@@ -561,6 +561,51 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     }
 
     /**
+     * _ F_ C10_1_
+     */
+    private String _F_C10_1_;
+
+    public String get_F_C10_1_()
+    {
+        return this._F_C10_1_;
+    }
+
+    public void set_F_C10_1_(String _F_C10_1_)
+    {
+        this._F_C10_1_ = _F_C10_1_;
+    }
+
+    /**
+     * _ F_ C10_2_
+     */
+    private String _F_C10_2_;
+
+    public String get_F_C10_2_()
+    {
+        return this._F_C10_2_;
+    }
+
+    public void set_F_C10_2_(String _F_C10_2_)
+    {
+        this._F_C10_2_ = _F_C10_2_;
+    }
+
+    /**
+     * _ F_ C10_3_
+     */
+    private String _F_C10_3_;
+
+    public String get_F_C10_3_()
+    {
+        return this._F_C10_3_;
+    }
+
+    public void set_F_C10_3_(String _F_C10_3_)
+    {
+        this._F_C10_3_ = _F_C10_3_;
+    }
+
+    /**
      * Active
      */
     private Boolean active;
@@ -1065,6 +1110,42 @@ public class CreateOrMergePatchShipmentDto extends AbstractShipmentCommandDto
     public void setIsProperty_F_B_3_Removed(Boolean removed)
     {
         this.isProperty_F_B_3_Removed = removed;
+    }
+
+    private Boolean isProperty_F_C10_1_Removed;
+
+    public Boolean getIsProperty_F_C10_1_Removed()
+    {
+        return this.isProperty_F_C10_1_Removed;
+    }
+
+    public void setIsProperty_F_C10_1_Removed(Boolean removed)
+    {
+        this.isProperty_F_C10_1_Removed = removed;
+    }
+
+    private Boolean isProperty_F_C10_2_Removed;
+
+    public Boolean getIsProperty_F_C10_2_Removed()
+    {
+        return this.isProperty_F_C10_2_Removed;
+    }
+
+    public void setIsProperty_F_C10_2_Removed(Boolean removed)
+    {
+        this.isProperty_F_C10_2_Removed = removed;
+    }
+
+    private Boolean isProperty_F_C10_3_Removed;
+
+    public Boolean getIsProperty_F_C10_3_Removed()
+    {
+        return this.isProperty_F_C10_3_Removed;
+    }
+
+    public void setIsProperty_F_C10_3_Removed(Boolean removed)
+    {
+        this.isProperty_F_C10_3_Removed = removed;
     }
 
     private Boolean isPropertyActiveRemoved;

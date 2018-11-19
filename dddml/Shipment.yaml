@@ -144,6 +144,15 @@ aggregates:
         type: bool?
       _F_B_3_:
         type: bool?
+      _F_C10_1_:
+        type: string
+        length: 10
+      _F_C10_2_:
+        type: string
+        length: 10
+      _F_C10_3_:
+        type: string
+        length: 10
       # ------------------------------
         
     references:
