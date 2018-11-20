@@ -356,6 +356,19 @@ public class OrderShipGroupServiceCommandDtos {
             this.isScheduleNeeded = isScheduleNeeded;
         }
 
+        /**
+         * Vehicle Id
+         */
+        private String vehicleId;
+
+        public String getVehicleId() {
+            return vehicleId;
+        }
+
+        public void setVehicleId(String vehicleId) {
+            this.vehicleId = vehicleId;
+        }
+
     }
 
     public static class ShipPOShipmentDto extends org.dddml.wms.domain.AbstractCommand {

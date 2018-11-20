@@ -235,6 +235,11 @@ services:
           # 是否需要先备货
           IsScheduleNeeded:
             type: bool
+          # ------------------------------
+          # 集装箱号
+          # （这里可以放车牌号？）
+          VehicleId:
+            type: id-long
         
         # 返回结果，装运单 Id
         result:

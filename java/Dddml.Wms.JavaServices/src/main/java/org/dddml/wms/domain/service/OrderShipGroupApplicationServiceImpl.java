@@ -177,6 +177,7 @@ public class OrderShipGroupApplicationServiceImpl implements OrderShipGroupAppli
         setShipmentProperties(createShipment, c.getOriginFacilityId(), c.getDestinationFacilityId(),
                 c.getOriginContactMechId(), c.getDestinationContactMechId(),
                 c.getHandlingInstructions(), c.getEstimatedShipDate());
+        createShipment.setVehicleId(c.getVehicleId());
         createShipment.setRequesterId(c.getRequesterId());
         createShipment.setCommandId(c.getCommandId());
         // ///////////////////////////////////////////////
