@@ -323,76 +323,76 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.invoicePerShipment = invoicePerShipment;
         }
 
-        private Boolean _F_B_1_;
+        private Boolean f_B_1_;
 
-        public Boolean get_F_B_1_()
+        public Boolean getF_B_1_()
         {
-            return this._F_B_1_;
+            return this.f_B_1_;
         }
 
-        public void set_F_B_1_(Boolean _F_B_1_)
+        public void setF_B_1_(Boolean f_B_1_)
         {
-            this._F_B_1_ = _F_B_1_;
+            this.f_B_1_ = f_B_1_;
         }
 
-        private Boolean _F_B_2_;
+        private Boolean f_B_2_;
 
-        public Boolean get_F_B_2_()
+        public Boolean getF_B_2_()
         {
-            return this._F_B_2_;
+            return this.f_B_2_;
         }
 
-        public void set_F_B_2_(Boolean _F_B_2_)
+        public void setF_B_2_(Boolean f_B_2_)
         {
-            this._F_B_2_ = _F_B_2_;
+            this.f_B_2_ = f_B_2_;
         }
 
-        private Boolean _F_B_3_;
+        private Boolean f_B_3_;
 
-        public Boolean get_F_B_3_()
+        public Boolean getF_B_3_()
         {
-            return this._F_B_3_;
+            return this.f_B_3_;
         }
 
-        public void set_F_B_3_(Boolean _F_B_3_)
+        public void setF_B_3_(Boolean f_B_3_)
         {
-            this._F_B_3_ = _F_B_3_;
+            this.f_B_3_ = f_B_3_;
         }
 
-        private String _F_C10_1_;
+        private String f_C10_1_;
 
-        public String get_F_C10_1_()
+        public String getF_C10_1_()
         {
-            return this._F_C10_1_;
+            return this.f_C10_1_;
         }
 
-        public void set_F_C10_1_(String _F_C10_1_)
+        public void setF_C10_1_(String f_C10_1_)
         {
-            this._F_C10_1_ = _F_C10_1_;
+            this.f_C10_1_ = f_C10_1_;
         }
 
-        private String _F_C10_2_;
+        private String f_C10_2_;
 
-        public String get_F_C10_2_()
+        public String getF_C10_2_()
         {
-            return this._F_C10_2_;
+            return this.f_C10_2_;
         }
 
-        public void set_F_C10_2_(String _F_C10_2_)
+        public void setF_C10_2_(String f_C10_2_)
         {
-            this._F_C10_2_ = _F_C10_2_;
+            this.f_C10_2_ = f_C10_2_;
         }
 
-        private String _F_C10_3_;
+        private String f_C10_3_;
 
-        public String get_F_C10_3_()
+        public String getF_C10_3_()
         {
-            return this._F_C10_3_;
+            return this.f_C10_3_;
         }
 
-        public void set_F_C10_3_(String _F_C10_3_)
+        public void setF_C10_3_(String f_C10_3_)
         {
-            this._F_C10_3_ = _F_C10_3_;
+            this.f_C10_3_ = f_C10_3_;
         }
 
         private Boolean active;
@@ -815,76 +815,76 @@ public abstract class AbstractOrderCommand extends AbstractCommand implements Or
             this.isPropertyInvoicePerShipmentRemoved = removed;
         }
 
-        private Boolean isProperty_F_B_1_Removed;
+        private Boolean isPropertyF_B_1_Removed;
 
-        public Boolean getIsProperty_F_B_1_Removed()
+        public Boolean getIsPropertyF_B_1_Removed()
         {
-            return this.isProperty_F_B_1_Removed;
+            return this.isPropertyF_B_1_Removed;
         }
 
-        public void setIsProperty_F_B_1_Removed(Boolean removed)
+        public void setIsPropertyF_B_1_Removed(Boolean removed)
         {
-            this.isProperty_F_B_1_Removed = removed;
+            this.isPropertyF_B_1_Removed = removed;
         }
 
-        private Boolean isProperty_F_B_2_Removed;
+        private Boolean isPropertyF_B_2_Removed;
 
-        public Boolean getIsProperty_F_B_2_Removed()
+        public Boolean getIsPropertyF_B_2_Removed()
         {
-            return this.isProperty_F_B_2_Removed;
+            return this.isPropertyF_B_2_Removed;
         }
 
-        public void setIsProperty_F_B_2_Removed(Boolean removed)
+        public void setIsPropertyF_B_2_Removed(Boolean removed)
         {
-            this.isProperty_F_B_2_Removed = removed;
+            this.isPropertyF_B_2_Removed = removed;
         }
 
-        private Boolean isProperty_F_B_3_Removed;
+        private Boolean isPropertyF_B_3_Removed;
 
-        public Boolean getIsProperty_F_B_3_Removed()
+        public Boolean getIsPropertyF_B_3_Removed()
         {
-            return this.isProperty_F_B_3_Removed;
+            return this.isPropertyF_B_3_Removed;
         }
 
-        public void setIsProperty_F_B_3_Removed(Boolean removed)
+        public void setIsPropertyF_B_3_Removed(Boolean removed)
         {
-            this.isProperty_F_B_3_Removed = removed;
+            this.isPropertyF_B_3_Removed = removed;
         }
 
-        private Boolean isProperty_F_C10_1_Removed;
+        private Boolean isPropertyF_C10_1_Removed;
 
-        public Boolean getIsProperty_F_C10_1_Removed()
+        public Boolean getIsPropertyF_C10_1_Removed()
         {
-            return this.isProperty_F_C10_1_Removed;
+            return this.isPropertyF_C10_1_Removed;
         }
 
-        public void setIsProperty_F_C10_1_Removed(Boolean removed)
+        public void setIsPropertyF_C10_1_Removed(Boolean removed)
         {
-            this.isProperty_F_C10_1_Removed = removed;
+            this.isPropertyF_C10_1_Removed = removed;
         }
 
-        private Boolean isProperty_F_C10_2_Removed;
+        private Boolean isPropertyF_C10_2_Removed;
 
-        public Boolean getIsProperty_F_C10_2_Removed()
+        public Boolean getIsPropertyF_C10_2_Removed()
         {
-            return this.isProperty_F_C10_2_Removed;
+            return this.isPropertyF_C10_2_Removed;
         }
 
-        public void setIsProperty_F_C10_2_Removed(Boolean removed)
+        public void setIsPropertyF_C10_2_Removed(Boolean removed)
         {
-            this.isProperty_F_C10_2_Removed = removed;
+            this.isPropertyF_C10_2_Removed = removed;
         }
 
-        private Boolean isProperty_F_C10_3_Removed;
+        private Boolean isPropertyF_C10_3_Removed;
 
-        public Boolean getIsProperty_F_C10_3_Removed()
+        public Boolean getIsPropertyF_C10_3_Removed()
         {
-            return this.isProperty_F_C10_3_Removed;
+            return this.isPropertyF_C10_3_Removed;
         }
 
-        public void setIsProperty_F_C10_3_Removed(Boolean removed)
+        public void setIsPropertyF_C10_3_Removed(Boolean removed)
         {
-            this.isProperty_F_C10_3_Removed = removed;
+            this.isPropertyF_C10_3_Removed = removed;
         }
 
         private Boolean isPropertyActiveRemoved;

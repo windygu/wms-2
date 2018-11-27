@@ -54,12 +54,12 @@ public final class ShipmentMetadata {
             "partyIdFrom",
             "additionalShippingCharge",
             "addtlShippingChargeDesc",
-            "_F_B_1_",
-            "_F_B_2_",
-            "_F_B_3_",
-            "_F_C10_1_",
-            "_F_C10_2_",
-            "_F_C10_3_",
+            "f_B_1_",
+            "f_B_2_",
+            "f_B_3_",
+            "f_C10_1_",
+            "f_C10_2_",
+            "f_C10_3_",
             "version",
             "createdBy",
             "createdAt",
@@ -205,18 +205,18 @@ public final class ShipmentMetadata {
         aliasMap.put("AdditionalShippingCharge", "additionalShippingCharge");
         aliasMap.put("addtlShippingChargeDesc", "addtlShippingChargeDesc");
         aliasMap.put("AddtlShippingChargeDesc", "addtlShippingChargeDesc");
-        aliasMap.put("_F_B_1_", "_F_B_1_");
-        aliasMap.put("_F_B_1_", "_F_B_1_");
-        aliasMap.put("_F_B_2_", "_F_B_2_");
-        aliasMap.put("_F_B_2_", "_F_B_2_");
-        aliasMap.put("_F_B_3_", "_F_B_3_");
-        aliasMap.put("_F_B_3_", "_F_B_3_");
-        aliasMap.put("_F_C10_1_", "_F_C10_1_");
-        aliasMap.put("_F_C10_1_", "_F_C10_1_");
-        aliasMap.put("_F_C10_2_", "_F_C10_2_");
-        aliasMap.put("_F_C10_2_", "_F_C10_2_");
-        aliasMap.put("_F_C10_3_", "_F_C10_3_");
-        aliasMap.put("_F_C10_3_", "_F_C10_3_");
+        aliasMap.put("f_B_1_", "f_B_1_");
+        aliasMap.put("F_B_1_", "f_B_1_");
+        aliasMap.put("f_B_2_", "f_B_2_");
+        aliasMap.put("F_B_2_", "f_B_2_");
+        aliasMap.put("f_B_3_", "f_B_3_");
+        aliasMap.put("F_B_3_", "f_B_3_");
+        aliasMap.put("f_C10_1_", "f_C10_1_");
+        aliasMap.put("F_C10_1_", "f_C10_1_");
+        aliasMap.put("f_C10_2_", "f_C10_2_");
+        aliasMap.put("F_C10_2_", "f_C10_2_");
+        aliasMap.put("f_C10_3_", "f_C10_3_");
+        aliasMap.put("F_C10_3_", "f_C10_3_");
         aliasMap.put("version", "version");
         aliasMap.put("Version", "version");
         aliasMap.put("createdBy", "createdBy");

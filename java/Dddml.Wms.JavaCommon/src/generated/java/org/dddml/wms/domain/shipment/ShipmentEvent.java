@@ -176,29 +176,29 @@ public interface ShipmentEvent extends Event {
 
         void setAddtlShippingChargeDesc(String addtlShippingChargeDesc);
 
-        Boolean get_F_B_1_();
+        Boolean getF_B_1_();
 
-        void set_F_B_1_(Boolean _F_B_1_);
+        void setF_B_1_(Boolean f_B_1_);
 
-        Boolean get_F_B_2_();
+        Boolean getF_B_2_();
 
-        void set_F_B_2_(Boolean _F_B_2_);
+        void setF_B_2_(Boolean f_B_2_);
 
-        Boolean get_F_B_3_();
+        Boolean getF_B_3_();
 
-        void set_F_B_3_(Boolean _F_B_3_);
+        void setF_B_3_(Boolean f_B_3_);
 
-        String get_F_C10_1_();
+        String getF_C10_1_();
 
-        void set_F_C10_1_(String _F_C10_1_);
+        void setF_C10_1_(String f_C10_1_);
 
-        String get_F_C10_2_();
+        String getF_C10_2_();
 
-        void set_F_C10_2_(String _F_C10_2_);
+        void setF_C10_2_(String f_C10_2_);
 
-        String get_F_C10_3_();
+        String getF_C10_3_();
 
-        void set_F_C10_3_(String _F_C10_3_);
+        void setF_C10_3_(String f_C10_3_);
 
         Boolean getActive();
 
@@ -378,29 +378,29 @@ public interface ShipmentEvent extends Event {
 
         void setIsPropertyAddtlShippingChargeDescRemoved(Boolean removed);
 
-        Boolean getIsProperty_F_B_1_Removed();
+        Boolean getIsPropertyF_B_1_Removed();
 
-        void setIsProperty_F_B_1_Removed(Boolean removed);
+        void setIsPropertyF_B_1_Removed(Boolean removed);
 
-        Boolean getIsProperty_F_B_2_Removed();
+        Boolean getIsPropertyF_B_2_Removed();
 
-        void setIsProperty_F_B_2_Removed(Boolean removed);
+        void setIsPropertyF_B_2_Removed(Boolean removed);
 
-        Boolean getIsProperty_F_B_3_Removed();
+        Boolean getIsPropertyF_B_3_Removed();
 
-        void setIsProperty_F_B_3_Removed(Boolean removed);
+        void setIsPropertyF_B_3_Removed(Boolean removed);
 
-        Boolean getIsProperty_F_C10_1_Removed();
+        Boolean getIsPropertyF_C10_1_Removed();
 
-        void setIsProperty_F_C10_1_Removed(Boolean removed);
+        void setIsPropertyF_C10_1_Removed(Boolean removed);
 
-        Boolean getIsProperty_F_C10_2_Removed();
+        Boolean getIsPropertyF_C10_2_Removed();
 
-        void setIsProperty_F_C10_2_Removed(Boolean removed);
+        void setIsPropertyF_C10_2_Removed(Boolean removed);
 
-        Boolean getIsProperty_F_C10_3_Removed();
+        Boolean getIsPropertyF_C10_3_Removed();
 
-        void setIsProperty_F_C10_3_Removed(Boolean removed);
+        void setIsPropertyF_C10_3_Removed(Boolean removed);
 
         Boolean getIsPropertyActiveRemoved();
 

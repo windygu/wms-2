@@ -46,12 +46,12 @@
 	<property name="partyIdFrom" ><column name="PartyIdFrom" sql-type="VARCHAR(20)" /></property>
 	<property name="additionalShippingCharge" ><column name="AdditionalShippingCharge" sql-type="DECIMAL(18,2)" /></property>
 	<property name="addtlShippingChargeDesc" ><column name="AddtlShippingChargeDesc" sql-type="VARCHAR(255)" /></property>
-	<property name="_F_B_1_" ></property>
-	<property name="_F_B_2_" ></property>
-	<property name="_F_B_3_" ></property>
-	<property name="_F_C10_1_" ><column name="_F_C10_1_" length="10" /></property>
-	<property name="_F_C10_2_" ><column name="_F_C10_2_" length="10" /></property>
-	<property name="_F_C10_3_" ><column name="_F_C10_3_" length="10" /></property>
+	<property name="f_B_1_" ></property>
+	<property name="f_B_2_" ></property>
+	<property name="f_B_3_" ></property>
+	<property name="f_C10_1_" ><column name="F_C10_1_" length="10" /></property>
+	<property name="f_C10_2_" ><column name="F_C10_2_" length="10" /></property>
+	<property name="f_C10_3_" ><column name="F_C10_3_" length="10" /></property>
 	<property name="createdBy" ></property>
 	<property name="updatedBy" ></property>
 	<property name="active" ></property>

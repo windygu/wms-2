@@ -12,8 +12,30 @@ namespace Dddml.Wms.CmdLineTools
             //@"..\..\..\Dddml.Wms.Common",
             //@"..\..\..\Dddml.Wms.Services",
             //@"..\..\..\Dddml.Wms.HttpServices"
-            @"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Serialization",
-            @"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Core"
+            // ----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Serialization",
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Core"
+            //-----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4"
+            //-----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.Templates"
+            //-----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.Templates.Java"
+            //-----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.Templates.Php"
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4\Extensions\Php",
+            //-----------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.Templates.JavaScript\",
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.Templates.TypeScript\"
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4\Extensions\JavaScript",
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4\Extensions\TypeScript"
+            //------------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Ofbiz.Importer\",
+            //@"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.Ofbiz\"
+            //------------------------------------------
+            //@"C:\Users\yangjiefeng\Documents\coding.net\wms\wms-query\src"
+            //------------------------------------------
+            @"C:\Users\yangjiefeng\Documents\GitHub\dddml-dotnet-tools\Dddml.T4.AdminUI.Tests"
         };
 
         public string[] SourceDirectories
@@ -30,11 +52,15 @@ namespace Dddml.Wms.CmdLineTools
             var allDirs = _sourceDirectories.SelectMany(d => Flatten(d, c => Directory.EnumerateDirectories(c)));
             foreach(var d in allDirs){
                 //System.Console.WriteLine(d);
-                foreach (var f in Directory.EnumerateFiles(d, "*.cs"))
+                //foreach (var f in Directory.EnumerateFiles(d, "*.tt"))
+                //foreach (var f in Directory.EnumerateFiles(d, "*.cs"))
+                //foreach (var f in Directory.EnumerateFiles(d, "*.java"))
+                foreach (var f in Directory.EnumerateFiles(d, "*.ts"))
                 {
                     Console.WriteLine(f);
                     if (f.StartsWith("TemporaryGeneratedFile", StringComparison.InvariantCultureIgnoreCase))
                     {
+                        Console.WriteLine("Ignored: " + f);
                         continue;
                     }
                     i += ReadAllLines(f, allLines);

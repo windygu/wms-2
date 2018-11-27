@@ -441,76 +441,76 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.addtlShippingChargeDesc = addtlShippingChargeDesc;
     }
 
-    private Boolean _F_B_1_;
+    private Boolean f_B_1_;
 
-    public Boolean get_F_B_1_()
+    public Boolean getF_B_1_()
     {
-        return this._F_B_1_;
+        return this.f_B_1_;
     }
 
-    public void set_F_B_1_(Boolean _F_B_1_)
+    public void setF_B_1_(Boolean f_B_1_)
     {
-        this._F_B_1_ = _F_B_1_;
+        this.f_B_1_ = f_B_1_;
     }
 
-    private Boolean _F_B_2_;
+    private Boolean f_B_2_;
 
-    public Boolean get_F_B_2_()
+    public Boolean getF_B_2_()
     {
-        return this._F_B_2_;
+        return this.f_B_2_;
     }
 
-    public void set_F_B_2_(Boolean _F_B_2_)
+    public void setF_B_2_(Boolean f_B_2_)
     {
-        this._F_B_2_ = _F_B_2_;
+        this.f_B_2_ = f_B_2_;
     }
 
-    private Boolean _F_B_3_;
+    private Boolean f_B_3_;
 
-    public Boolean get_F_B_3_()
+    public Boolean getF_B_3_()
     {
-        return this._F_B_3_;
+        return this.f_B_3_;
     }
 
-    public void set_F_B_3_(Boolean _F_B_3_)
+    public void setF_B_3_(Boolean f_B_3_)
     {
-        this._F_B_3_ = _F_B_3_;
+        this.f_B_3_ = f_B_3_;
     }
 
-    private String _F_C10_1_;
+    private String f_C10_1_;
 
-    public String get_F_C10_1_()
+    public String getF_C10_1_()
     {
-        return this._F_C10_1_;
+        return this.f_C10_1_;
     }
 
-    public void set_F_C10_1_(String _F_C10_1_)
+    public void setF_C10_1_(String f_C10_1_)
     {
-        this._F_C10_1_ = _F_C10_1_;
+        this.f_C10_1_ = f_C10_1_;
     }
 
-    private String _F_C10_2_;
+    private String f_C10_2_;
 
-    public String get_F_C10_2_()
+    public String getF_C10_2_()
     {
-        return this._F_C10_2_;
+        return this.f_C10_2_;
     }
 
-    public void set_F_C10_2_(String _F_C10_2_)
+    public void setF_C10_2_(String f_C10_2_)
     {
-        this._F_C10_2_ = _F_C10_2_;
+        this.f_C10_2_ = f_C10_2_;
     }
 
-    private String _F_C10_3_;
+    private String f_C10_3_;
 
-    public String get_F_C10_3_()
+    public String getF_C10_3_()
     {
-        return this._F_C10_3_;
+        return this.f_C10_3_;
     }
 
-    public void set_F_C10_3_(String _F_C10_3_)
+    public void setF_C10_3_(String f_C10_3_)
     {
-        this._F_C10_3_ = _F_C10_3_;
+        this.f_C10_3_ = f_C10_3_;
     }
 
     private Long version;
@@ -744,12 +744,12 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.setPartyIdFrom(e.getPartyIdFrom());
         this.setAdditionalShippingCharge(e.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
-        this.set_F_B_1_(e.get_F_B_1_());
-        this.set_F_B_2_(e.get_F_B_2_());
-        this.set_F_B_3_(e.get_F_B_3_());
-        this.set_F_C10_1_(e.get_F_C10_1_());
-        this.set_F_C10_2_(e.get_F_C10_2_());
-        this.set_F_C10_3_(e.get_F_C10_3_());
+        this.setF_B_1_(e.getF_B_1_());
+        this.setF_B_2_(e.getF_B_2_());
+        this.setF_B_3_(e.getF_B_3_());
+        this.setF_C10_1_(e.getF_C10_1_());
+        this.setF_C10_2_(e.getF_C10_2_());
+        this.setF_C10_3_(e.getF_C10_3_());
         this.setActive(e.getActive());
 
         this.setCreatedBy(e.getCreatedBy());
@@ -812,12 +812,12 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         this.setPartyIdFrom(s.getPartyIdFrom());
         this.setAdditionalShippingCharge(s.getAdditionalShippingCharge());
         this.setAddtlShippingChargeDesc(s.getAddtlShippingChargeDesc());
-        this.set_F_B_1_(s.get_F_B_1_());
-        this.set_F_B_2_(s.get_F_B_2_());
-        this.set_F_B_3_(s.get_F_B_3_());
-        this.set_F_C10_1_(s.get_F_C10_1_());
-        this.set_F_C10_2_(s.get_F_C10_2_());
-        this.set_F_C10_3_(s.get_F_C10_3_());
+        this.setF_B_1_(s.getF_B_1_());
+        this.setF_B_2_(s.getF_B_2_());
+        this.setF_B_3_(s.getF_B_3_());
+        this.setF_C10_1_(s.getF_C10_1_());
+        this.setF_C10_2_(s.getF_C10_2_());
+        this.setF_C10_3_(s.getF_C10_3_());
         this.setActive(s.getActive());
 
         for (ShipmentImageState ss : s.getShipmentImages().getLoadedStates()) {
@@ -1246,71 +1246,71 @@ public abstract class AbstractShipmentState implements ShipmentState.SqlShipment
         {
             this.setAddtlShippingChargeDesc(e.getAddtlShippingChargeDesc());
         }
-        if (e.get_F_B_1_() == null)
+        if (e.getF_B_1_() == null)
         {
-            if (e.getIsProperty_F_B_1_Removed() != null && e.getIsProperty_F_B_1_Removed())
+            if (e.getIsPropertyF_B_1_Removed() != null && e.getIsPropertyF_B_1_Removed())
             {
-                this.set_F_B_1_(null);
+                this.setF_B_1_(null);
             }
         }
         else
         {
-            this.set_F_B_1_(e.get_F_B_1_());
+            this.setF_B_1_(e.getF_B_1_());
         }
-        if (e.get_F_B_2_() == null)
+        if (e.getF_B_2_() == null)
         {
-            if (e.getIsProperty_F_B_2_Removed() != null && e.getIsProperty_F_B_2_Removed())
+            if (e.getIsPropertyF_B_2_Removed() != null && e.getIsPropertyF_B_2_Removed())
             {
-                this.set_F_B_2_(null);
+                this.setF_B_2_(null);
             }
         }
         else
         {
-            this.set_F_B_2_(e.get_F_B_2_());
+            this.setF_B_2_(e.getF_B_2_());
         }
-        if (e.get_F_B_3_() == null)
+        if (e.getF_B_3_() == null)
         {
-            if (e.getIsProperty_F_B_3_Removed() != null && e.getIsProperty_F_B_3_Removed())
+            if (e.getIsPropertyF_B_3_Removed() != null && e.getIsPropertyF_B_3_Removed())
             {
-                this.set_F_B_3_(null);
+                this.setF_B_3_(null);
             }
         }
         else
         {
-            this.set_F_B_3_(e.get_F_B_3_());
+            this.setF_B_3_(e.getF_B_3_());
         }
-        if (e.get_F_C10_1_() == null)
+        if (e.getF_C10_1_() == null)
         {
-            if (e.getIsProperty_F_C10_1_Removed() != null && e.getIsProperty_F_C10_1_Removed())
+            if (e.getIsPropertyF_C10_1_Removed() != null && e.getIsPropertyF_C10_1_Removed())
             {
-                this.set_F_C10_1_(null);
+                this.setF_C10_1_(null);
             }
         }
         else
         {
-            this.set_F_C10_1_(e.get_F_C10_1_());
+            this.setF_C10_1_(e.getF_C10_1_());
         }
-        if (e.get_F_C10_2_() == null)
+        if (e.getF_C10_2_() == null)
         {
-            if (e.getIsProperty_F_C10_2_Removed() != null && e.getIsProperty_F_C10_2_Removed())
+            if (e.getIsPropertyF_C10_2_Removed() != null && e.getIsPropertyF_C10_2_Removed())
             {
-                this.set_F_C10_2_(null);
+                this.setF_C10_2_(null);
             }
         }
         else
         {
-            this.set_F_C10_2_(e.get_F_C10_2_());
+            this.setF_C10_2_(e.getF_C10_2_());
         }
-        if (e.get_F_C10_3_() == null)
+        if (e.getF_C10_3_() == null)
         {
-            if (e.getIsProperty_F_C10_3_Removed() != null && e.getIsProperty_F_C10_3_Removed())
+            if (e.getIsPropertyF_C10_3_Removed() != null && e.getIsPropertyF_C10_3_Removed())
             {
-                this.set_F_C10_3_(null);
+                this.setF_C10_3_(null);
             }
         }
         else
         {
-            this.set_F_C10_3_(e.get_F_C10_3_());
+            this.setF_C10_3_(e.getF_C10_3_());
         }
         if (e.getActive() == null)
         {
