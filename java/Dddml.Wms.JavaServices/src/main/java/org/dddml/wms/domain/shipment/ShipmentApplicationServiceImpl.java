@@ -174,7 +174,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         }
 
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
-                confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptStates, c.getDestinationLocatorId());
+                confirmAllItemsReceivedCreateInventoryItemEntries(shipment, shipmentReceiptStates, c.getDestinationLocatorId(), c.getRequesterId());
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
         // //////////////////////////////////////////////////
@@ -207,7 +207,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
                 c.getAttributeSetInstance(),
                 c.getAcceptedQuantity(),
                 c.getRejectedQuantity(),
-                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId()
+                c.getDamagedQuantity(), c.getDamageStatusIds(), c.getDamageReasonId(), c.getLocatorId()
                 );
         // ////////////////////////////////////////////////////
         updateShipment(c, updateReceipt);
@@ -262,7 +262,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             }
         }
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
-                confirmAllItemsIssuedCreateInventoryItemEntries(shipment, itemIssuanceStates);
+                confirmAllItemsIssuedCreateInventoryItemEntries(shipment, itemIssuanceStates, c.getRequesterId());
         InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
         // //////////////////////////////////////////////////
@@ -470,28 +470,29 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         when(shipment);
     }
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts, String destinationLocatorId) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsReceivedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ShipmentReceiptState> receipts, String destinationLocatorId, String requesterId) {
         if (destinationLocatorId == null || destinationLocatorId.isEmpty()) {
             throw new IllegalArgumentException("Null destinationLocatorId.");
         }
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (ShipmentReceiptState d : receipts) {
-            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, destinationLocatorId);
+            String locId = d.getLocatorId() != null ? d.getLocatorId() : destinationLocatorId;
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, locId, requesterId);
             entries.add(e);
         }
         return entries;
     }
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsIssuedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ItemIssuanceState> itemIssuances) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmAllItemsIssuedCreateInventoryItemEntries(ShipmentState shipment, Iterable<ItemIssuanceState> itemIssuances, String requesterId) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (ItemIssuanceState d : itemIssuances) {
-            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d);
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(shipment, d, requesterId);
             entries.add(e);
         }
         return entries;
     }
 
-    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt, String destinationLocatorId) {
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ShipmentReceiptState lineReceipt, String destinationLocatorId, String requesterId) {
         //String targetLocatorId = WarehouseUtils.getReceivingLocatorId();//shipment.getDestinationFacilityId()?
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = lineReceipt.getAttributeSetInstanceId();
@@ -509,10 +510,11 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
+        entry.setRequesterId(requesterId);
         return entry;
     }
 
-    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ItemIssuanceState itemIssuance) {
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(ShipmentState shipment, ItemIssuanceState itemIssuance, String requesterId) {
         //String targetLocatorId = WarehouseUtils.getReceivingLocatorId();//shipment.getDestinationFacilityId()?
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = itemIssuance.getAttributeSetInstanceId();
@@ -532,6 +534,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
+        entry.setRequesterId(requesterId);
         return entry;
     }
 
@@ -610,7 +613,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
             Map<String, Object> attributeSetInstance,
             BigDecimal acceptedQuantity,
             BigDecimal rejectedQuantity,
-            BigDecimal damagedQuantity, List<String> damageStatusIds, String damageReasonId
+            BigDecimal damagedQuantity, List<String> damageStatusIds, String damageReasonId, String locatorId
     ) {
         ShipmentReceiptCommand.CreateOrMergePatchShipmentReceipt updateReceipt = null;
         //String receiptSeqId = shipmentItemSeqId;
@@ -648,6 +651,7 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         updateReceipt.setDamageStatusIds(damageStatusIds == null ? null : new HashSet<>(damageStatusIds));
         updateReceipt.setDamageReasonId(damageReasonId);
         updateReceipt.setReceivedBy(c.getRequesterId());
+        updateReceipt.setLocatorId(locatorId);
         return updateReceipt;
     }
 

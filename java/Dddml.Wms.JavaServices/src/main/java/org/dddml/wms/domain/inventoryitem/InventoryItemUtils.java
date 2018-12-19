@@ -7,6 +7,9 @@ public class InventoryItemUtils {
 
     public static void createOrUpdateInventoryItems(InventoryItemApplicationService invItemApplicationService, java.util.List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries) {
         for (InventoryItemEntryCommand.CreateInventoryItemEntry e : inventoryItemEntries) {
+            if (e.getRequesterId() == null) {
+                throw new NullPointerException("requesterId is null.");
+            }
             InventoryItemState iitem = invItemApplicationService.get(e.getInventoryItemId());
             if (iitem == null) {
                 InventoryItemCommand.CreateInventoryItem createInventoryItem = new AbstractInventoryItemCommand.SimpleCreateInventoryItem();

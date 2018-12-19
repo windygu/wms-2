@@ -123,7 +123,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
         if (Objects.equals(c.getValue(), DocumentAction.COMPLETE)) {
             PhysicalInventoryState physicalInventoryState = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
             // 操作库存（InventoryItem）
-            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completePhysicalInventoryCreateInventoryItemEntries(physicalInventoryState);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completePhysicalInventoryCreateInventoryItemEntries(physicalInventoryState, c.getRequesterId());
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
             super.when(c);
         } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
@@ -232,17 +232,17 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
     }
 
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completePhysicalInventoryCreateInventoryItemEntries(PhysicalInventoryState physicalInventoryState) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completePhysicalInventoryCreateInventoryItemEntries(PhysicalInventoryState physicalInventoryState, String requesterId) {
         EntityStateCollection<InventoryItemId, PhysicalInventoryLineState> physicalInventoryLines = physicalInventoryState.getPhysicalInventoryLines();
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (PhysicalInventoryLineState d : physicalInventoryLines) {
-            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(physicalInventoryState, d);// signum);
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(physicalInventoryState, d, requesterId);// signum);
             entries.add(e);
         }
         return entries;
     }
 
-    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(PhysicalInventoryState physicalInventory, PhysicalInventoryLineState line) {
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(PhysicalInventoryState physicalInventory, PhysicalInventoryLineState line, String requesterId) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         //        String attrSetInstId = physicalInventoryLineState.getInventoryItemId().getAttributeSetInstanceId();
         //        if (attrSetInstId == null || attrSetInstId.isEmpty()) {
@@ -258,6 +258,7 @@ public class PhysicalInventoryApplicationServiceImpl extends AbstractPhysicalInv
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
+        entry.setRequesterId(requesterId);
         return entry;
     }
 

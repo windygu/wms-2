@@ -50,6 +50,7 @@ public class CreateLotInfo {
         // ////////////////////////////////////////
         url = HttpClientUtil.appendUrl(baseUrl, "Lots/" + lotId);
         HttpClientUtil.put(token, url, createLotDto);
+        //todo 使用 POST 方法试试？
 
     }
 

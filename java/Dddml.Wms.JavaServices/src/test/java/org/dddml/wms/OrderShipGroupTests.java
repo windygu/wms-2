@@ -205,6 +205,7 @@ public class OrderShipGroupTests {
         confirmAllItemsReceived.setCommandId(UUID.randomUUID().toString());
         confirmAllItemsReceived.setVersion(shipmentVersion);
         confirmAllItemsReceived.setDestinationLocatorId(InOutTests.TEST_LOCATOR_ID_1);
+        confirmAllItemsReceived.setRequesterId("test");
         shipmentApplicationService.when(confirmAllItemsReceived);
     }
 
@@ -307,6 +308,7 @@ public class OrderShipGroupTests {
         confirmAllItemsIssued.setShipmentId(shipmentId);
         confirmAllItemsIssued.setCommandId(UUID.randomUUID().toString());
         confirmAllItemsIssued.setVersion(shipmentVersion);
+        confirmAllItemsIssued.setRequesterId("test");
         shipmentApplicationService.when(confirmAllItemsIssued);
 
     }

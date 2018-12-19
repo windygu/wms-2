@@ -61,7 +61,7 @@ public class MovementConfirmationApplicationServiceImpl extends AbstractMovement
             Map<String, BigDecimal> cqDict = getConfirmedQuantityMap(movConfirm);
             assertAllLinesConfirmed(mov, cqDict);
 
-            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = confirmMovementCreateInventoryItemEntries(mov, cqDict);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = confirmMovementCreateInventoryItemEntries(mov, cqDict, c.getRequesterId());
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
 
             confirmUpdateMovement(c, mov);
@@ -93,11 +93,11 @@ public class MovementConfirmationApplicationServiceImpl extends AbstractMovement
     }
 
     private List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmMovementCreateInventoryItemEntries(
-            MovementState mov, Map<String, BigDecimal> quantitiesDict) {
+            MovementState mov, Map<String, BigDecimal> quantitiesDict, String requesterId) {
 
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = MovementApplicationServiceImpl
                 .confirmMovementCreateInventoryItemEntries(
-                        mov, line -> quantitiesDict.get(line.getLineNumber()), () -> getSeqIdGenerator().getNextId()
+                        mov, line -> quantitiesDict.get(line.getLineNumber()), () -> getSeqIdGenerator().getNextId(), requesterId
                 ); // confirmedQuantity
         return inventoryItemEntries;
     }

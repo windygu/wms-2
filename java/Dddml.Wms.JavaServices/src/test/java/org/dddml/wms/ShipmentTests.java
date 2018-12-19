@@ -62,6 +62,7 @@ public class ShipmentTests {
         updateShipment.setVersion(shipmentState.getVersion());
         updateShipment.setDestinationLocatorId(InOutTests.TEST_LOCATOR_ID_1_RECEIVING_AREA);
         updateShipment.setCommandId(UUID.randomUUID().toString());
+        updateShipment.setRequesterId("test");
         //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
         shipmentApplicationService.when(updateShipment);
     }
@@ -116,6 +117,7 @@ public class ShipmentTests {
             //}
 
             receiveItem.setCommandId(UUID.randomUUID().toString());
+            receiveItem.setRequesterId("test");
             receiveItem.setVersion(version);
             receiveItem.setReceiptSeqId(receiveItem.getShipmentItemSeqId());
             shipmentApplicationService.when(receiveItem);
@@ -130,6 +132,7 @@ public class ShipmentTests {
         OrderShipGroupServiceCommands.ShipPOShipment updateShipment = new OrderShipGroupServiceCommands.ShipPOShipment();
         updateShipment.setShipmentId(shipmentId);
         updateShipment.setCommandId(UUID.randomUUID().toString());
+        updateShipment.setRequesterId("test");
         updateShipment.setHintShipmentItemsEnabled(true);
         //updateShipment.StatusId = StatusItemIds.PurchShipShipped;
         //updateShipment.setVersion(firstVersion);

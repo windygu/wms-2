@@ -58,6 +58,7 @@ public class InOutTests {
         InOutCommands.Reverse reverse = new InOutCommands.Reverse();
         reverse.setCommandId(UUID.randomUUID().toString());
         reverse.setVersion(1L);
+        reverse.setRequesterId("test");
         reverse.setDocumentNumber(documentNumber);
         InOutApplicationService inOutApplicationService = (InOutApplicationService) ApplicationContext.current.get("inOutApplicationService");
         inOutApplicationService.when(reverse);
@@ -76,6 +77,7 @@ public class InOutTests {
         addLine.setLineNumber(new java.util.Date().getTime() + "");
         addLine.setVersion(inOut_1.getVersion());
         addLine.setCommandId(UUID.randomUUID().toString());
+        addLine.setRequesterId("test");
         addLine.setProductId(prd_1.getProductId());
         addLine.setLocatorId(TEST_LOCATOR_ID_1);
         //addLine.setQuantityUomId();
@@ -148,6 +150,7 @@ public class InOutTests {
         complete.setDocumentNumber(documentNumber);
         complete.setVersion(inout.getVersion());
         complete.setCommandId(UUID.randomUUID().toString());
+        complete.setRequesterId("test");
         inOutApplicationService.when(complete);
     }
 
@@ -158,6 +161,7 @@ public class InOutTests {
         InOutCommand.CreateInOut inOut = new AbstractInOutCommand.SimpleCreateInOut();
         inOut.setDocumentNumber(documentNumber);
         inOut.setCommandId(UUID.randomUUID().toString());
+        inOut.setRequesterId("test");
         //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
         //inOut.ChargeAmount = new Money(10000, "CNY");
         //inOut.FreightAmount = new Money(400, "CNY");
@@ -184,6 +188,7 @@ public class InOutTests {
         InOutCommand.CreateInOut inOut = new AbstractInOutCommand.SimpleCreateInOut();
         inOut.setDocumentNumber(documentNumber);
         inOut.setCommandId(UUID.randomUUID().toString());
+        inOut.setRequesterId("test");
         //inOut.DocumentAction = DocumentAction.Draft;// 不能这样写：inOut.DocumentStatus = DocumentStatus.Drafted
         //inOut.ChargeAmount = new Money(10000, "CNY");
         //inOut.FreightAmount = new Money(400, "CNY");

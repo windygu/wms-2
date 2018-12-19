@@ -65,7 +65,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
             // 操作出入库单（IN_OUT）
             InOutState inOut = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
             // 操作库存（InventoryItem）
-            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeInOutCreateInventoryItemEntries(inOut);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeInOutCreateInventoryItemEntries(inOut, c.getRequesterId());
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
             super.when(c);
         } else if (Objects.equals(c.getValue(), DocumentAction.REVERSE)) {
@@ -210,18 +210,18 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         return reversalLine;
     }
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeInOutCreateInventoryItemEntries(InOutState inOut) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeInOutCreateInventoryItemEntries(InOutState inOut, String requesterId) {
         //int signum = GetSignumOfMovementType(inOut.MovementTypeId);
         EntityStateCollection<String, InOutLineState> ioLines = inOut.getInOutLines();
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> entries = new ArrayList<>();
         for (InOutLineState d : ioLines) {
-            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(inOut, d);// signum);
+            InventoryItemEntryCommand.CreateInventoryItemEntry e = createInventoryItemEntry(inOut, d, requesterId);// signum);
             entries.add(e);
         }
         return entries;
     }
 
-    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(InOutState inOut, InOutLineState inOutLine) {
+    protected InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(InOutState inOut, InOutLineState inOutLine, String requesterId) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = inOutLine.getAttributeSetInstanceId();
         if (attrSetInstId == null || attrSetInstId.isEmpty()) {
@@ -236,7 +236,7 @@ public class InOutApplicationServiceImpl extends AbstractInOutApplicationService
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
-
+        entry.setRequesterId(requesterId);
         return entry;
     }
 

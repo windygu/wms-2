@@ -66,7 +66,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     public void when(MovementCommands.DocumentAction c) {
         if (Objects.equals(c.getValue(), DocumentAction.COMPLETE)) {
             MovementState mov = assertDocumentStatus(c.getDocumentNumber(), DocumentStatusIds.DRAFTED);
-            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeMovementCreateInventoryItemEntries(mov);
+            List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries = completeMovementCreateInventoryItemEntries(mov, c.getRequesterId());
             InventoryItemUtils.createOrUpdateInventoryItems(getInventoryItemApplicationService(), inventoryItemEntries);
             if (mov.getIsInTransit()) {
                 MovementConfirmationCommand.CreateMovementConfirmation movConfirm = createMovementConfirmation(mov);
@@ -141,11 +141,11 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         update(c, ar -> ((MovementAggregateImpl)ar).reverse(reversalDocumentNumber, description, c.getVersion(), c.getCommandId(), c.getRequesterId()));
     }
 
-    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeMovementCreateInventoryItemEntries(MovementState movement) {
+    protected List<InventoryItemEntryCommand.CreateInventoryItemEntry> completeMovementCreateInventoryItemEntries(MovementState movement, String requesterId) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> invItemEntries = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
         for (MovementLineState d : movement.getMovementLines()) {
             InventoryItemEntryCommand.CreateInventoryItemEntry[] trxPair =
-                    completeMovementCreateInventoryItemEntryPair(movement, d, () -> getSeqIdGenerator().getNextId());
+                    completeMovementCreateInventoryItemEntryPair(movement, d, () -> getSeqIdGenerator().getNextId(), requesterId);
             invItemEntries.addAll(Arrays.asList(trxPair));
         }
 
@@ -272,11 +272,11 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
     }
 
     public static List<InventoryItemEntryCommand.CreateInventoryItemEntry> confirmMovementCreateInventoryItemEntries(
-            MovementState movement, java.util.function.Function<MovementLineState, BigDecimal> getConfirmedQty, Supplier<Long> nextEntrySeqId) {
+            MovementState movement, java.util.function.Function<MovementLineState, BigDecimal> getConfirmedQty, Supplier<Long> nextEntrySeqId, String requesterId) {
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> invItemEntries = new ArrayList<InventoryItemEntryCommand.CreateInventoryItemEntry>();
         for (MovementLineState d : movement.getMovementLines()) {
             InventoryItemEntryCommand.CreateInventoryItemEntry[] trxPair =
-                    confirmMovementCreateInventoryItemEntryPair(movement, d, getConfirmedQty.apply(d), nextEntrySeqId);
+                    confirmMovementCreateInventoryItemEntryPair(movement, d, getConfirmedQty.apply(d), nextEntrySeqId, requesterId);
             invItemEntries.addAll(Arrays.asList(trxPair));
         }
         return invItemEntries;
@@ -284,7 +284,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
 
     static InventoryItemEntryCommand.CreateInventoryItemEntry[] completeMovementCreateInventoryItemEntryPair(
             MovementState movement, MovementLineState movementLine,
-            Supplier<Long> nextEntrySeqId) {
+            Supplier<Long> nextEntrySeqId, String requesterId) {
         InventoryItemEntryCommand.CreateInventoryItemEntry[] trxPair = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry[2];
 
         BigDecimal quantity = movementLine.getMovementQuantity();
@@ -292,24 +292,24 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         BigDecimal signum = BigDecimal.valueOf(-1);
         trxPair[0] = createInventoryItemEntry(
                 movement, movementLine, movementLine.getLocatorIdFrom(), quantity.multiply(signum),
-                0, nextEntrySeqId, false);
+                0, nextEntrySeqId, false, requesterId);
 
         /////////////////////// To:   ////////////////////////////
         signum = BigDecimal.valueOf(1);
         if (!movement.getIsInTransit()) {
             trxPair[1] = createInventoryItemEntry(movement, movementLine, movementLine.getLocatorIdTo(),
-                    quantity.multiply(signum), 1, nextEntrySeqId, false);
+                    quantity.multiply(signum), 1, nextEntrySeqId, false, requesterId);
         } else {
             String locId = WarehouseUtils.getInTransitLocatorId(movement.getWarehouseIdFrom());
             trxPair[1] = createInventoryItemEntry(movement, movementLine, locId, quantity.multiply(signum),
-                    1, nextEntrySeqId, true);
+                    1, nextEntrySeqId, true, requesterId);
         }
         return trxPair;
     }
 
     static InventoryItemEntryCommand.CreateInventoryItemEntry[] confirmMovementCreateInventoryItemEntryPair(
             MovementState movement, MovementLineState movementLine, BigDecimal confirmedQty,
-            Supplier<Long> nextEntrySeqId) {
+            Supplier<Long> nextEntrySeqId, String requesterId) {
         if (!movement.getIsInTransit()) {
             throw new IllegalArgumentException("Movement is NOT In-Transit.");
         }
@@ -320,18 +320,20 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         String locIdFrom = WarehouseUtils.getInTransitLocatorId(movement.getWarehouseIdFrom());
         trxPair[0] = createInventoryItemEntry(
                 movement, movementLine, locIdFrom, confirmedQty.multiply(signum),
-                2, nextEntrySeqId, true);
+                2, nextEntrySeqId, true, requesterId);
 
         /////////////////////// To:   ////////////////////////////
         signum = BigDecimal.valueOf(1);
         trxPair[1] = createInventoryItemEntry(
                 movement, movementLine, movementLine.getLocatorIdTo(), confirmedQty.multiply(signum),
-                3, nextEntrySeqId, false);
+                3, nextEntrySeqId, false, requesterId);
 
         return trxPair;
     }
 
-    static InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(MovementState movement, MovementLineState movementLine, String locatorId, java.math.BigDecimal quantity, int lineSubSeqId, Supplier<Long> nextEntrySeqId, boolean usingInTransitQty) {
+    static InventoryItemEntryCommand.CreateInventoryItemEntry createInventoryItemEntry(MovementState movement, MovementLineState movementLine,
+                                                                                       String locatorId, java.math.BigDecimal quantity, int lineSubSeqId,
+                                                                                       Supplier<Long> nextEntrySeqId, boolean usingInTransitQty, String requesterId) {
         InventoryItemEntryCommand.CreateInventoryItemEntry entry = new AbstractInventoryItemEntryCommand.SimpleCreateInventoryItemEntry();
         String attrSetInstId = movementLine.getAttributeSetInstanceId();
         if(attrSetInstId == null || attrSetInstId.isEmpty()) {
@@ -353,6 +355,7 @@ public class MovementApplicationServiceImpl extends AbstractMovementApplicationS
         } else {
             entry.setOccurredAt((Timestamp) ApplicationContext.current.getTimestampService().now(Timestamp.class));
         }
+        entry.setRequesterId(requesterId);
         return entry;
     }
 

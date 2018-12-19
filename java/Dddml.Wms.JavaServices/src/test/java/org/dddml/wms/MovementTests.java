@@ -65,6 +65,7 @@ public class MovementTests {
         updateMovConfirm.setDocumentNumber(confirmDocNumber);
         updateMovConfirm.setVersion(firstVersion);
         updateMovConfirm.setCommandId(UUID.randomUUID().toString());
+        updateMovConfirm.setRequesterId("test");
         for (MovementConfirmationLineState line : movConfirm.getMovementConfirmationLines()) {
             MovementConfirmationLineCommand.MergePatchMovementConfirmationLine updateLine = updateMovConfirm.newMergePatchMovementConfirmationLine();
             updateLine.setLineNumber(line.getLineNumber());
@@ -81,6 +82,7 @@ public class MovementTests {
         actionConfirm.setDocumentNumber(confirmDocNumber);
         actionConfirm.setVersion(firstVersion + 1);
         actionConfirm.setCommandId(UUID.randomUUID().toString());
+        actionConfirm.setRequesterId("test");
         movementConfirmationApplicationService.when(actionConfirm);
 
         return actionConfirm.getDocumentNumber();
@@ -92,6 +94,7 @@ public class MovementTests {
         MovementCommand.CreateMovement movement = new AbstractMovementCommand.SimpleCreateMovement();
         movement.setDocumentNumber(documentNumber);
         movement.setCommandId(UUID.randomUUID().toString());
+        movement.setRequesterId("test");
         movement.setWarehouseIdFrom("1");
         movement.setWarehouseIdTo("2");
         //movement.DocumentAction = DocumentAction.Draft;// 不能这样写：movement.DocumentStatus = DocumentStatus.Drafted
@@ -121,6 +124,7 @@ public class MovementTests {
         complete.setDocumentNumber(documentNumber);
         complete.setVersion(firstVersion);
         complete.setCommandId(UUID.randomUUID().toString());
+        complete.setRequesterId("test");
         movementApplicationService.when(complete);
         return documentNumber;
     }
@@ -131,6 +135,7 @@ public class MovementTests {
         MovementCommand.CreateMovement movement = new AbstractMovementCommand.SimpleCreateMovement();
         movement.setDocumentNumber(documentNumber);
         movement.setCommandId(UUID.randomUUID().toString());
+        movement.setRequesterId("test");
         movement.setWarehouseIdFrom("1");
         movement.setWarehouseIdTo("2");
         movement.setMovementDate(new java.util.Date());
@@ -153,6 +158,7 @@ public class MovementTests {
         complete.setDocumentNumber(documentNumber);
         complete.setVersion(firstVersion);
         complete.setCommandId(UUID.randomUUID().toString());
+        complete.setRequesterId("test");
         movementApplicationService.when(complete);
 
         MovementCommands.DocumentAction reverse = new MovementCommands.DocumentAction();
@@ -160,6 +166,7 @@ public class MovementTests {
         reverse.setDocumentNumber(documentNumber);
         reverse.setVersion(firstVersion + 1);
         reverse.setCommandId(UUID.randomUUID().toString());
+        reverse.setRequesterId("test");
         movementApplicationService.when(reverse);
 
         return documentNumber;

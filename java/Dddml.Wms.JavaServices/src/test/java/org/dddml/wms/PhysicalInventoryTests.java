@@ -75,6 +75,7 @@ public class PhysicalInventoryTests {
         documentAction.setValue(DocumentAction.COMPLETE);
         documentAction.setVersion(version);
         documentAction.setCommandId(UUID.randomUUID().toString());
+        documentAction.setRequesterId("test");
         physicalInventoryApplicationService.when(documentAction);
     }
 
@@ -84,6 +85,7 @@ public class PhysicalInventoryTests {
         documentAction.setValue(DocumentAction.REVERSE);
         documentAction.setVersion(version);
         documentAction.setCommandId(UUID.randomUUID().toString());
+        documentAction.setRequesterId("test");
         physicalInventoryApplicationService.when(documentAction);
     }
 
@@ -96,6 +98,7 @@ public class PhysicalInventoryTests {
         PhysicalInventoryCommand.MergePatchPhysicalInventory patchPhysicalInventory = new AbstractPhysicalInventoryCommand.SimpleMergePatchPhysicalInventory();
         patchPhysicalInventory.setDocumentNumber(piId);
         patchPhysicalInventory.setCommandId(UUID.randomUUID().toString());
+        patchPhysicalInventory.setRequesterId("test");
         patchPhysicalInventory.setVersion(physicalInventoryState.getVersion());
         for (PhysicalInventoryLineState line : physicalInventoryState.getPhysicalInventoryLines()) {
             PhysicalInventoryLineCommand.MergePatchPhysicalInventoryLine patchLine = patchPhysicalInventory.newMergePatchPhysicalInventoryLine();
@@ -129,6 +132,7 @@ public class PhysicalInventoryTests {
         countItem_1.setAttributeSetInstance(attrSetInst_1);
         countItem_1.setCountedQuantity(BigDecimal.valueOf(773.5));
         countItem_1.setCommandId(UUID.randomUUID().toString());
+        countItem_1.setRequesterId("test");
         return countItem_1;
     }
 
@@ -140,6 +144,7 @@ public class PhysicalInventoryTests {
         createPhysicalInventory.setProductIdPattern("%%");
         createPhysicalInventory.setActive(true);
         createPhysicalInventory.setCommandId(createPhysicalInventory.getDocumentNumber());
+        createPhysicalInventory.setRequesterId("test");
         physicalInventoryApplicationService.when(createPhysicalInventory);
     }
 
