@@ -44,6 +44,13 @@
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
+    <!--<bean id="entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">-->
+        <!--<property name="persistenceUnitName" value="wmsPU"/>-->
+        <!--<property name="persistenceProvider" ref="persistenceProvider" />-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 用于指定持久化实现厂商类 &ndash;&gt;-->
+    <!--<bean id="persistenceProvider" class="org.hibernate.jpa.HibernatePersistenceProvider" />-->
+
     <tx:annotation-driven/>
 
     <bean id="stateReadOnlyProxyGenerator" class="org.dddml.wms.specialization.ReflectReadOnlyProxyGenerator"></bean>
