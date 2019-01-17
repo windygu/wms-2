@@ -273,11 +273,11 @@ public class OrderShipGroupTests {
         createSOShipment.setOriginFacilityId(InOutTests.TEST_WAREHOUSE_ID);
         String shipmentId = orderShipGroupApplicationService.when(createSOShipment);
 
-        Map<String, Object> attributeSetInstance = new HashMap<>();
-
         ShipmentState shipmentState = shipmentApplicationService.get(shipmentId);
         Long shipmentVersion = shipmentState.getVersion();
         for (ShipmentItemState i : shipmentState.getShipmentItems()) {
+            Map<String, Object> attributeSetInstance = new HashMap<>();
+            attributeSetInstance.put("serialNumber", UUID.randomUUID().toString());
             ShipmentCommands.IssueItem issueItem = new ShipmentCommands.IssueItem();
             issueItem.setShipmentId(shipmentId);
             issueItem.setShipmentItemSeqId(i.getShipmentItemSeqId());

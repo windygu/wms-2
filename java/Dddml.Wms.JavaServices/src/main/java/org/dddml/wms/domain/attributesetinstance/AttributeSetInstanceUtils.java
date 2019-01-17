@@ -18,6 +18,17 @@ public class AttributeSetInstanceUtils {
     private static final String ATTRIBUTE_SET_INSTANCE_ID_KEY = "attributeSetInstanceId";
     private static final String ATTRIBUTE_SET_INSTANCE_ID_KEY_2 = "AttributeSetInstanceId";
 
+    public static String getSerialNumber(AttributeSetInstanceApplicationService attrSetInstApplicationService,  String attrSetInstId) {
+        if (attrSetInstId == null) {
+            throw new IllegalArgumentException("attrSetInstId is null.");
+        }
+        AttributeSetInstanceState attrSetInstState = attrSetInstApplicationService.get(attrSetInstId);
+        if (attrSetInstState == null) {
+            return null;
+        }
+        return attrSetInstState.getSerialNumber();
+    }
+
     public static String createAttributeSetInstance(
             AttributeSetService attributeSetService, AttributeSetInstanceApplicationService attrSetInstApplicationService,
                                                     String attrSetId, Map<String, Object> attributeSetInstanceMap) {

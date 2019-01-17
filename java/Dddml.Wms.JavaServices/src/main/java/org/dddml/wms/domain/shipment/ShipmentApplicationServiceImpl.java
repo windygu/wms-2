@@ -256,10 +256,24 @@ public class ShipmentApplicationServiceImpl extends AbstractShipmentApplicationS
         //    throw new IllegalArgumentException(String.format("Shipment item NOT issued. ShipmentItemSeqId.: %1$s", itemIdNotFound.get()));
         //}
         // /////////////////////////////
+        Map<String, String> snToIssuanceSeqIdMap = new HashMap<>();
         for (ItemIssuanceState i : itemIssuanceStates) {
             if (!shipmentItemSeqIdToItemMap.containsKey(i.getShipmentItemSeqId())) {
                 throw new IllegalArgumentException(String.format("Item issuance has unknown ShipmentItemSeqId.: %1$s", i.getShipmentItemSeqId()));
             }
+            // /////////////////////////  repeated serialNumber NOT allowed /////////////////////////////
+            String attrSetInstanceId = i.getAttributeSetInstanceId();
+            if (attrSetInstanceId != null) {
+                String serialNumber = AttributeSetInstanceUtils.getSerialNumber(getAttributeSetInstanceApplicationService(), attrSetInstanceId);
+                if (serialNumber != null) {
+                    if (snToIssuanceSeqIdMap.containsKey(serialNumber)) {
+                        throw new IllegalArgumentException(String.format("Item issuance has repeated serialNumber: %1$s", serialNumber));
+                    } else {
+                        snToIssuanceSeqIdMap.put(serialNumber, i.getItemIssuanceSeqId());
+                    }
+                }
+            }
+            // ///////////////////////////////////////////////////////////////////////////////////////////
         }
         List<InventoryItemEntryCommand.CreateInventoryItemEntry> inventoryItemEntries =
                 confirmAllItemsIssuedCreateInventoryItemEntries(shipment, itemIssuanceStates, c.getRequesterId());
