@@ -123,7 +123,9 @@ public class HttpClientUtil {
      */
     private static HttpResponse doHttpPost(CloseableHttpClient client, String token, String url, Object dto) throws IOException {
         HttpPost httpPost = new HttpPost(url);
-        httpPost.setHeader("Accept", "application/json");
+        // ///////////////////////////////////////////////////////////
+        httpPost.setHeader("Accept", "application/json, text/plain");
+        // ///////////////////////////////////////////////////////////
         httpPost.setHeader("Content-Type", "application/json");
         httpPost.setHeader("Authorization", "Bearer " + token);
         String json = JSON.toJSONString(dto);

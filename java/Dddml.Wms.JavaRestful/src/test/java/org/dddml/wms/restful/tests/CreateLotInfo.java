@@ -48,9 +48,13 @@ public class CreateLotInfo {
         createLotDto.setCommandId(lotId);
 
         // ////////////////////////////////////////
-        url = HttpClientUtil.appendUrl(baseUrl, "Lots/" + lotId);
-        HttpClientUtil.put(token, url, createLotDto);
-        //todo 使用 POST 方法试试？
+        // 使用 PUT 方法
+        //url = HttpClientUtil.appendUrl(baseUrl, "Lots/" + lotId);
+        //HttpClientUtil.put(token, url, createLotDto);
+        // ////////////////////////////////////////
+        // 使用 POST 方法试试？
+        url = HttpClientUtil.appendUrl(baseUrl, "Lots");
+        HttpClientUtil.post(token, url, createLotDto);
 
     }
 
